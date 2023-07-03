@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/63127791/change-size-of-image-in-blogdown-about-md-file-inserted-via-insert-image-option

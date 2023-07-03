@@ -1,0 +1,312 @@
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2023-06-21T02:24:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/cluster-analysis/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2023/07/02/cluster-analysis/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/multivariate-analysis/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2023-07-02T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/design-of-experiment/</loc>
+    <lastmod>2023-05-29T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/manova/</loc>
+    <lastmod>2023-05-29T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2023/05/29/manova/</loc>
+    <lastmod>2023-05-29T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/jupyternotebook/</loc>
+    <lastmod>2022-07-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/tech/</loc>
+    <lastmod>2022-07-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2022/07/19/r-in-jupyter-notebook/</loc>
+    <lastmod>2022-07-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/biostatisics/</loc>
+    <lastmod>2022-06-21T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/biostatistics/</loc>
+    <lastmod>2022-06-21T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2022/06/21/kaplan-meier-estimatior-in-r/</loc>
+    <lastmod>2022-06-21T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/multivariate-analysis/</loc>
+    <lastmod>2022-06-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2022/06/19/books-multivariate-analysis/</loc>
+    <lastmod>2022-06-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/resources/</loc>
+    <lastmod>2022-06-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/statistics/</loc>
+    <lastmod>2022-06-19T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/hypothesis-test/</loc>
+    <lastmod>2022-03-31T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/hypothesis-tests/</loc>
+    <lastmod>2022-03-31T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/normality-test/</loc>
+    <lastmod>2022-03-31T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/shapiro-wilk-test/</loc>
+    <lastmod>2022-03-31T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2022/03/31/shapiro-wilk-test/</loc>
+    <lastmod>2022-03-31T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/biplot/</loc>
+    <lastmod>2022-03-21T19:20:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/pca/</loc>
+    <lastmod>2022-03-21T19:20:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2022/03/21/pca-introduction-r/</loc>
+    <lastmod>2022-03-21T19:20:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/scree-plot/</loc>
+    <lastmod>2022-03-21T19:20:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/others/</loc>
+    <lastmod>2021-11-20T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/subject-review/</loc>
+    <lastmod>2021-11-20T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2021/11/20/statistics-subject-review/</loc>
+    <lastmod>2021-11-20T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/bar-plot/</loc>
+    <lastmod>2021-05-25T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2021/05/25/ggplot2-bar-plot/</loc>
+    <lastmod>2021-05-25T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ggplot2/</loc>
+    <lastmod>2021-05-25T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r-programming/</loc>
+    <lastmod>2021-05-25T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2021/05/23/ggplot2-scatter-plot/</loc>
+    <lastmod>2021-05-23T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/markov-chain/</loc>
+    <lastmod>2021-05-23T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2021/05/23/markov-chain/</loc>
+    <lastmod>2021-05-23T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/scatter-plot/</loc>
+    <lastmod>2021-05-23T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/stochastic-process/</loc>
+    <lastmod>2021-05-23T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tidyverse/</loc>
+    <lastmod>2021-05-23T00:00:00+06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>

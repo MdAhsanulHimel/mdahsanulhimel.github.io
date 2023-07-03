@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Shapiro Wilk Test using R - Ahsanul&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="iBD1L5iU9O9ELsXiS9NFeW_Qyt7w2phRuHzfOCbCGwY" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Md. Ahsanul Islam" /><meta name="description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test." /><meta name="keywords" content="Ahsanul, statistics, R programming, Bangladesh" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.95.0 with theme even" />
+
+
+<link rel="canonical" href="/2022/03/31/shapiro-wilk-test/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Shapiro Wilk Test using R" />
+<meta property="og:description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2022/03/31/shapiro-wilk-test/" /><meta property="og:image" content="https://ahsanhimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-31T00:00:00+06:00" />
+<meta property="article:modified_time" content="2022-03-31T00:00:00+06:00" />
+
+<meta itemprop="name" content="Shapiro Wilk Test using R">
+<meta itemprop="description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test."><meta itemprop="datePublished" content="2022-03-31T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2022-03-31T00:00:00+06:00" />
+<meta itemprop="wordCount" content="319"><meta itemprop="image" content="https://ahsanhimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png">
+<meta itemprop="keywords" content="shapiro wilk test,normality test,hypothesis test,R," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ahsanhimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png"/>
+
+<meta name="twitter:title" content="Shapiro Wilk Test using R"/>
+<meta name="twitter:description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Posts</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About Me</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7037202679826113"
+     crossorigin="anonymous"></script>
+ 
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHMN5CZBNV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-XHMN5CZBNV', { 'anonymize_ip': true });
+}
+</script>
+<meta property="og:title" content="Shapiro Wilk Test using R" />
+<meta property="og:description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2022/03/31/shapiro-wilk-test/" /><meta property="og:image" content="https://ahsanhimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-31T00:00:00+06:00" />
+<meta property="article:modified_time" content="2022-03-31T00:00:00+06:00" />
+
+<meta itemprop="name" content="Shapiro Wilk Test using R">
+<meta itemprop="description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test."><meta itemprop="datePublished" content="2022-03-31T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2022-03-31T00:00:00+06:00" />
+<meta itemprop="wordCount" content="319"><meta itemprop="image" content="https://ahsanhimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png">
+<meta itemprop="keywords" content="shapiro wilk test,normality test,hypothesis test,R," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ahsanhimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png"/>
+
+<meta name="twitter:title" content="Shapiro Wilk Test using R"/>
+<meta name="twitter:description" content="Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test."/>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Posts</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About Me</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Shapiro Wilk Test using R</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Mar 31, 2022 </span>
+        <div class="post-category">
+            <a href="/categories/hypothesis-tests/"> Hypothesis Tests </a>
+            </div>
+          <span class="more-meta"> 319 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      <hr>
+<p>The normality of data is crucial in parametric hypothesis tests because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, analysis needs to be performed on a small number of samples. As a result, checking for normality is a necessary step.</p>
+<p>Samuel Sanford Shapiro and Martin Wilk developed a test in <a href="https://doi.org/10.1093%2Fbiomet%2F52.3-4.591">1965</a> for checking the normality of data, which was later named after them as Shapiro-Wilk test. It is appropriate when sample size is less than 50. For data greater than that Shapiro and Francia in <a href="https://academic.oup.com/biomet/article-abstract/62/2/445/337172">1972</a> developed a new testing procedure. For now we will stick to Shapiro-Wilk test.</p>
+<h1 id="shapiro-wilk-test-using-r">Shapiro-Wilk Test using R</h1>
+<p>Suppose we have the data on age of 18 randomly selected students in a primary school. We need to test whether the data follows a normal distribution or not.</p>
+<p>Data -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>age = <span style="color:#0087ff">c</span>(<span style="color:#00afaf">9</span>,<span style="color:#00afaf">12</span>,<span style="color:#00afaf">11</span>,<span style="color:#00afaf">10</span>,<span style="color:#00afaf">12</span>,<span style="color:#00afaf">9</span>,<span style="color:#00afaf">7</span>,<span style="color:#00afaf">8</span>,<span style="color:#00afaf">8</span>,<span style="color:#00afaf">7</span>,<span style="color:#00afaf">10</span>,<span style="color:#00afaf">10</span>,<span style="color:#00afaf">8</span>,<span style="color:#00afaf">7</span>,<span style="color:#00afaf">9</span>,<span style="color:#00afaf">10</span>,<span style="color:#00afaf">11</span>,<span style="color:#00afaf">12</span>)
+</span></span><span style="display:flex;"><span>age
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#  [1]  9 12 11 10 12  9  7  8  8  7 10 10  8  7  9 10 11 12
+</span></span></code></pre></div><p>Graphically representing the data in a histogram -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0087ff">hist</span>(age)
+</span></span></code></pre></div><img src="/2022/03/31/shapiro-wilk-test/index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<p>From the visualization, it is not clear whether the data follows a normal distribution or not because the sample size is small.</p>
+<p>Hypothesis formulation - <br>
+$H_0$: The data follows a normal distribution with unknown mean and variance.<br>
+$H_1$: The data does not follow a normal distribution. <br>
+We want to test the hypothesis at 5% significance level.</p>
+<p>Hypothesis testing -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0087ff">shapiro.test</span>(x = age)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 
+</span></span><span style="display:flex;"><span># 	Shapiro-Wilk normality test
+</span></span><span style="display:flex;"><span># 
+</span></span><span style="display:flex;"><span># data:  age
+</span></span><span style="display:flex;"><span># W = 0.92157, p-value = 0.1378
+</span></span></code></pre></div><p>Since the p-value is 0.1378 &gt; significance level (0.05), we may not reject the null hypothesis. It means we do not have enough statistical evidence to reject the null hypothesis that the data come from a normal distribution at 5% level of significance.</p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/shapiro-wilk-test/">shapiro wilk test</a>
+          <a href="/tags/normality-test/">normality test</a>
+          <a href="/tags/hypothesis-test/">hypothesis test</a>
+          <a href="/tags/r/">R</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2022/06/19/books-multivariate-analysis/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Recommended Books For Multivariate Analysis</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/2022/03/21/pca-introduction-r/">
+            <span class="next-text nav-default">Principal Component Analysis - Theory and Application with R</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ahsanul';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ahsanulislam10@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/13323413/md-ahsanul-himel" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/mdahsanulhimel" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/MdAhsanulHimel/" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/MdAhsanulHimel/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/MdAhsanulHimel" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Md. Ahsanul Islam</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+</script>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-XHMN5CZBNV', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Markov Chain - A Practical Example - Ahsanul&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="iBD1L5iU9O9ELsXiS9NFeW_Qyt7w2phRuHzfOCbCGwY" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Md. Ahsanul Islam" /><meta name="description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes." /><meta name="keywords" content="Ahsanul, statistics, R programming, Bangladesh" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.95.0 with theme even" />
+
+
+<link rel="canonical" href="/2021/05/23/markov-chain/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Markov Chain - A Practical Example" />
+<meta property="og:description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/05/23/markov-chain/" /><meta property="og:image" content="https://ahsanhimel.github.io/2022/03/21/markov-chain/TPMDiagramPreview.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-23T00:00:00+06:00" />
+<meta property="article:modified_time" content="2021-05-23T00:00:00+06:00" />
+
+<meta itemprop="name" content="Markov Chain - A Practical Example">
+<meta itemprop="description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes."><meta itemprop="datePublished" content="2021-05-23T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2021-05-23T00:00:00+06:00" />
+<meta itemprop="wordCount" content="1021"><meta itemprop="image" content="https://ahsanhimel.github.io/2022/03/21/markov-chain/TPMDiagramPreview.jpg">
+<meta itemprop="keywords" content="markov chain,R," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ahsanhimel.github.io/2022/03/21/markov-chain/TPMDiagramPreview.jpg"/>
+
+<meta name="twitter:title" content="Markov Chain - A Practical Example"/>
+<meta name="twitter:description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Posts</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About Me</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7037202679826113"
+     crossorigin="anonymous"></script>
+ 
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHMN5CZBNV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-XHMN5CZBNV', { 'anonymize_ip': true });
+}
+</script>
+<meta property="og:title" content="Markov Chain - A Practical Example" />
+<meta property="og:description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/05/23/markov-chain/" /><meta property="og:image" content="https://ahsanhimel.github.io/2022/03/21/markov-chain/TPMDiagramPreview.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-23T00:00:00+06:00" />
+<meta property="article:modified_time" content="2021-05-23T00:00:00+06:00" />
+
+<meta itemprop="name" content="Markov Chain - A Practical Example">
+<meta itemprop="description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes."><meta itemprop="datePublished" content="2021-05-23T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2021-05-23T00:00:00+06:00" />
+<meta itemprop="wordCount" content="1021"><meta itemprop="image" content="https://ahsanhimel.github.io/2022/03/21/markov-chain/TPMDiagramPreview.jpg">
+<meta itemprop="keywords" content="markov chain,R," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ahsanhimel.github.io/2022/03/21/markov-chain/TPMDiagramPreview.jpg"/>
+
+<meta name="twitter:title" content="Markov Chain - A Practical Example"/>
+<meta name="twitter:description" content="Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes."/>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Posts</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About Me</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Markov Chain - A Practical Example</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> May 23, 2021 </span>
+        <div class="post-category">
+            <a href="/categories/stochastic-process/"> Stochastic Process </a>
+            </div>
+          <span class="more-meta"> 1021 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#intro-to-the-problem">Intro to the problem</a></li>
+        <li><a href="#transition-probability-matrix">Transition Probability Matrix</a></li>
+        <li><a href="#transition-diagram">Transition Diagram</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#steady-state">Steady State</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <hr>
+<h2 id="intro-to-the-problem">Intro to the problem</h2>
+<p>In this post I will show a practical example of markov chain.</p>
+<p>Let’s try to map the movement of freelancer drivers in Dhaka. We can divide the area of Dhaka into three zones – North Dhaka, Middle Dhaka and South Dhaka.<br>
+So we can find the following probabilities for the movement of a driver:</p>
+<ul>
+<li>Among the North Dhaka&rsquo;s freelancer drivers, 30% will remain in North Dhaka, 30% will move to Middle Dhaka, while the remaining 40% will go to South Dhaka.</li>
+<li>Of all the drivers in Middle Dhaka, 50% and 30% will move to North Dhaka and South Dhaka, respectively; 20% will remain in Middle Zone.</li>
+<li>In the South Dhaka, drivers have a 40% chance of moving to North Dhaka, 40% chance  of staying in the South Dhaka;  20% drivers will move to Middle Dhaka.</li>
+</ul>
+<p>Once a driver is in a particular zone, he can either move to the next zone or stay back in the same zone. His movement will be decided <strong>only by his current state</strong> and not by the sequence of past states.</p>
+<p>The <strong>state space</strong> in this example includes North Dhaka, Middle Dhaka and South Dhaka. It follows all the properties of Markov Chains because the current state has the power to predict the next stage.</p>
+<h2 id="transition-probability-matrix">Transition Probability Matrix</h2>
+<p>Let&rsquo;s construct the transition probability matrix -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>zone &lt;- <span style="color:#0087ff">c</span>(<span style="color:#00afaf">&#34;North&#34;</span>,<span style="color:#00afaf">&#34;Middle&#34;</span>,<span style="color:#00afaf">&#34;South&#34;</span>)
+</span></span><span style="display:flex;"><span>zoneTPM &lt;- <span style="color:#0087ff">matrix</span>(<span style="color:#0087ff">c</span>(<span style="color:#00afaf">0.3</span>,<span style="color:#00afaf">0.3</span>,<span style="color:#00afaf">0.4</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#00afaf">0.5</span>,<span style="color:#00afaf">0.2</span>,<span style="color:#00afaf">0.3</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#00afaf">0.4</span>,<span style="color:#00afaf">0.2</span>,<span style="color:#00afaf">0.4</span>), 
+</span></span><span style="display:flex;"><span>                  nrow=<span style="color:#00afaf">3</span>, byrow=<span style="color:#0087ff">T</span>, dimnames = <span style="color:#0087ff">list</span>(zone,zone))
+</span></span></code></pre></div><p>Hence, the TPM is -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>zoneTPM
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#        North Middle South
+</span></span><span style="display:flex;"><span># North    0.3    0.3   0.4
+</span></span><span style="display:flex;"><span># Middle   0.5    0.2   0.3
+</span></span><span style="display:flex;"><span># South    0.4    0.2   0.4
+</span></span></code></pre></div><p>The package named <code>markovchain</code> can help us in implementing Markov Chains in R.</p>
+<p>Install and load the package -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#4e4e4e"># install.packages(&#34;markovchain&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#0087ff">library</span>(markovchain)
+</span></span></code></pre></div><p>Now using the function <code>new()</code> create a Markov Chain object -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>driverzone &lt;- <span style="color:#0087ff">new</span>(<span style="color:#00afaf">&#34;markovchain&#34;</span>,
+</span></span><span style="display:flex;"><span>                  states = zone,
+</span></span><span style="display:flex;"><span>                  transitionMatrix = zoneTPM,
+</span></span><span style="display:flex;"><span>                  name = <span style="color:#00afaf">&#34;Driver Movement&#34;</span>)
+</span></span><span style="display:flex;"><span>driverzone
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Driver Movement 
+</span></span><span style="display:flex;"><span>#  A  3 - dimensional discrete Markov Chain defined by the following states: 
+</span></span><span style="display:flex;"><span>#  North, Middle, South 
+</span></span><span style="display:flex;"><span>#  The transition matrix  (by rows)  is defined as follows: 
+</span></span><span style="display:flex;"><span>#        North Middle South
+</span></span><span style="display:flex;"><span># North    0.3    0.3   0.4
+</span></span><span style="display:flex;"><span># Middle   0.5    0.2   0.3
+</span></span><span style="display:flex;"><span># South    0.4    0.2   0.4
+</span></span></code></pre></div><h2 id="transition-diagram">Transition Diagram</h2>
+<p>To plot the above transition matrix we can use R package, <code>diagram</code>. The package has a function called <code>plotmat()</code> that can help us in plotting a state space diagram of the transition matrix in an easy-to-understand manner.</p>
+<p>Install and load the package -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#4e4e4e"># install.packages(&#34;diagram&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#0087ff">library</span>(diagram)
+</span></span></code></pre></div><p>Code for plotting the transition probability diagram -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0087ff">plotmat</span>(A = zoneTPM,
+</span></span><span style="display:flex;"><span>        box.type = <span style="color:#00afaf">&#34;circle&#34;</span>,          <span style="color:#4e4e4e"># shape of box</span>
+</span></span><span style="display:flex;"><span>        box.lwd = <span style="color:#00afaf">1</span>,                  <span style="color:#4e4e4e"># border density of box</span>
+</span></span><span style="display:flex;"><span>        relsize = <span style="color:#00afaf">0.9</span>,                <span style="color:#4e4e4e"># scaling factor for size of graph</span>
+</span></span><span style="display:flex;"><span>        cex.txt = <span style="color:#00afaf">0.7</span>,                <span style="color:#4e4e4e"># size of probabilities</span>
+</span></span><span style="display:flex;"><span>        lwd = <span style="color:#00afaf">1</span>,                      <span style="color:#4e4e4e"># border density of state to state arrows</span>
+</span></span><span style="display:flex;"><span>        lcol = <span style="color:#00afaf">&#34;black&#34;</span>,
+</span></span><span style="display:flex;"><span>        box.col = <span style="color:#00afaf">&#34;cornsilk1&#34;</span>,
+</span></span><span style="display:flex;"><span>        box.size = <span style="color:#00afaf">0.1</span>,               <span style="color:#4e4e4e"># size of box</span>
+</span></span><span style="display:flex;"><span>        box.prop = <span style="color:#00afaf">0.6</span>,               <span style="color:#4e4e4e"># height to width ratio of box</span>
+</span></span><span style="display:flex;"><span>        arr.length = <span style="color:#00afaf">0.5</span>, arr.width = <span style="color:#00afaf">0.2</span>,
+</span></span><span style="display:flex;"><span>        self.cex = <span style="color:#00afaf">0.5</span>,                          <span style="color:#4e4e4e"># size of self probability box</span>
+</span></span><span style="display:flex;"><span>        self.shifty = <span style="color:#00afaf">-0.03</span>, self.shiftx = <span style="color:#00afaf">0.13</span>, <span style="color:#4e4e4e"># location of self prob. box</span>
+</span></span><span style="display:flex;"><span>        name = <span style="color:#0087ff">c</span>(<span style="color:#00afaf">&#34;North Dhaka&#34;</span>,<span style="color:#00afaf">&#34;Middle Dhaka&#34;</span>,<span style="color:#00afaf">&#34;South Dhaka&#34;</span>),  <span style="color:#4e4e4e"># Optional</span>
+</span></span><span style="display:flex;"><span>        main = <span style="color:#00afaf">&#34;Transition Diagram&#34;</span>,
+</span></span><span style="display:flex;"><span>        cex.main = <span style="color:#00afaf">1.3</span>                <span style="color:#4e4e4e"># relative size of main title</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span></code></pre></div><img src="/2021/05/23/markov-chain/index.en_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<p>The above Markov Chain can be used to answer some of the future state questions.</p>
+<h2 id="questions">Questions</h2>
+<p><strong>Assuming that a driver is currently in the North Zone, what is the probability that the driver will again be in the North Zone after two trips?</strong></p>
+<p><strong>Answer:</strong></p>
+<p>Manually:</p>
+<p>A driver can reach the North Zone again in his second trip in three different ways:</p>
+<ol>
+<li>Staying in the same zone i.e. North Dhaka to North Dhaka
+Probability: P(N-N) = 0.3*0.3 = 0.09</li>
+<li>Middle Dhaka to North Dhaka
+Probability: P(M-N) = 0.4*0.4 = 0.12</li>
+<li>South Dhaka to North Dhaka
+Probability: P(S-N) = 0.5*0.4 = 0.2</li>
+</ol>
+<p>Therefore, probability of second trip to North = 0.09 + 0.12 + 0.20 = 0.41 (0.40 approximately)</p>
+<p>Using code:</p>
+<p>Using the markov chain object created earlier using the function <code>new()</code> -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>driverzone^2
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Driver Movement^2 
+</span></span><span style="display:flex;"><span>#  A  3 - dimensional discrete Markov Chain defined by the following states: 
+</span></span><span style="display:flex;"><span>#  North, Middle, South 
+</span></span><span style="display:flex;"><span>#  The transition matrix  (by rows)  is defined as follows: 
+</span></span><span style="display:flex;"><span>#        North Middle South
+</span></span><span style="display:flex;"><span># North   0.40   0.23  0.37
+</span></span><span style="display:flex;"><span># Middle  0.37   0.25  0.38
+</span></span><span style="display:flex;"><span># South   0.38   0.24  0.38
+</span></span></code></pre></div><p>This gives us the direct probability of a driver coming back to the North Zone after two trips.</p>
+<p>The calculation can be done for subsequent trips as well. For example, the probability of coming back to North Zone in 4th trip :</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>driverzone^3
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Driver Movement^3 
+</span></span><span style="display:flex;"><span>#  A  3 - dimensional discrete Markov Chain defined by the following states: 
+</span></span><span style="display:flex;"><span>#  North, Middle, South 
+</span></span><span style="display:flex;"><span>#  The transition matrix  (by rows)  is defined as follows: 
+</span></span><span style="display:flex;"><span>#        North Middle South
+</span></span><span style="display:flex;"><span># North  0.383  0.240 0.377
+</span></span><span style="display:flex;"><span># Middle 0.388  0.237 0.375
+</span></span><span style="display:flex;"><span># South  0.386  0.238 0.376
+</span></span></code></pre></div><p>However if we increase n (No. of trips) the predictive power tends to go down, where the Markov Chain reaches an equilibrium called <code>stationary state</code>. 
+In the above case, after 9 trips the state becomes stationary -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>driverzone^9
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Driver Movement^9 
+</span></span><span style="display:flex;"><span>#  A  3 - dimensional discrete Markov Chain defined by the following states: 
+</span></span><span style="display:flex;"><span>#  North, Middle, South 
+</span></span><span style="display:flex;"><span>#  The transition matrix  (by rows)  is defined as follows: 
+</span></span><span style="display:flex;"><span>#            North    Middle     South
+</span></span><span style="display:flex;"><span># North  0.3853211 0.2385321 0.3761468
+</span></span><span style="display:flex;"><span># Middle 0.3853211 0.2385321 0.3761468
+</span></span><span style="display:flex;"><span># South  0.3853211 0.2385321 0.3761468
+</span></span></code></pre></div><h2 id="steady-state">Steady State</h2>
+<p>The stationary state can be calculated using some linear algebra methods; however, the <code>driverzone</code> package has a function called <code>steadyStates()</code> that can do the work -</p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0087ff">steadyStates</span>(driverzone)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#          North    Middle     South
+</span></span><span style="display:flex;"><span># [1,] 0.3853211 0.2385321 0.3761468
+</span></span></code></pre></div><p>So we can say that, in the stationary state, a driver has a probability of 0.385 of ending up in the North Dhaka.</p>
+<p><strong>If there were 100 drivers in all and each completes 9 trips in a day, how many of them will end up in the Middle Dhaka?</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0087ff">steadyStates</span>(driverzone)*<span style="color:#00afaf">100</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#         North   Middle    South
+</span></span><span style="display:flex;"><span># [1,] 38.53211 23.85321 37.61468
+</span></span></code></pre></div><p>So, around 38 drivers will end up in North Dhaka, 24 in the Middle Dhaka and 37 in the South Dhaka.</p>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://dataconomy.com/2018/03/an-introduction-to-markov-chains-using-r/">AN INTRODUCTION TO MARKOV CHAINS USING R</a> by <a href="https://www.linkedin.com/in/chaitanyasagar/">CHAITANYA SAGAR</a></li>
+</ol>
+<hr>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/markov-chain/">markov chain</a>
+          <a href="/tags/r/">R</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2021/05/23/ggplot2-scatter-plot/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Complete guide to scatter plot using ggplot2</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ahsanul';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ahsanulislam10@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/13323413/md-ahsanul-himel" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/mdahsanulhimel" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/MdAhsanulHimel/" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/MdAhsanulHimel/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/MdAhsanulHimel" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Md. Ahsanul Islam</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+</script>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-XHMN5CZBNV', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

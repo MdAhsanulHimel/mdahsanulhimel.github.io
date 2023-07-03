@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Biostatisics on Ahsanul&#39;s Blog</title>
+    <link>/tags/biostatisics/</link>
+    <description>Recent content in Biostatisics on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jun 2022 00:00:00 +0600</lastBuildDate><atom:link href="/tags/biostatisics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Kaplan-Meier Estimatior in R</title>
+      <link>/2022/06/21/kaplan-meier-estimatior-in-r/</link>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 +0600</pubDate>
+      
+      <guid>/2022/06/21/kaplan-meier-estimatior-in-r/</guid>
+      <description>The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R.</description>
+    </item>
+    
+  </channel>
+</rss>

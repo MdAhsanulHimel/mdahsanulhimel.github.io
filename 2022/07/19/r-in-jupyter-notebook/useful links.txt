@@ -1,0 +1,13 @@
+Using R in a Jupyter Notebook 
+
+https://datatofish.com/r-jupyter-notebook/ (first tried, had an error)
+
+https://github.com/IRkernel/IRkernel/issues/583  (same error, solve at the last comment)
+
+https://irkernel.github.io/installation/ (it worked)
+
+https://izoda.github.io/site/anaconda/r-jupyter-notebook/  
+
+https://www.codegrepper.com/code-examples/whatever/anaconda+install+r+kernel
+
+https://phoenixnap.com/kb/install-pip-windows

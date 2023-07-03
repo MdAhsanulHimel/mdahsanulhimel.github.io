@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scatter plot on Ahsanul&#39;s Blog</title>
+    <link>/tags/scatter-plot/</link>
+    <description>Recent content in scatter plot on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0600</lastBuildDate><atom:link href="/tags/scatter-plot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Complete guide to scatter plot using ggplot2</title>
+      <link>/2021/05/23/ggplot2-scatter-plot/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0600</pubDate>
+      
+      <guid>/2021/05/23/ggplot2-scatter-plot/</guid>
+      <description>R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson&amp;rsquo;s Grammar of Graphics. It divides graphs into semantic components like scales and layers.</description>
+    </item>
+    
+  </channel>
+</rss>

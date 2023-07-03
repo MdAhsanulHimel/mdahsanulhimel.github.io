@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design of Experiment on Ahsanul&#39;s Blog</title>
+    <link>/categories/design-of-experiment/</link>
+    <description>Recent content in Design of Experiment on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 May 2023 00:00:00 +0600</lastBuildDate><atom:link href="/categories/design-of-experiment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</title>
+      <link>/2023/05/29/manova/</link>
+      <pubDate>Mon, 29 May 2023 00:00:00 +0600</pubDate>
+      
+      <guid>/2023/05/29/manova/</guid>
+      <description>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

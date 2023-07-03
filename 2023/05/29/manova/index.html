@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python - Ahsanul&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="iBD1L5iU9O9ELsXiS9NFeW_Qyt7w2phRuHzfOCbCGwY" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Md. Ahsanul Islam" /><meta name="description" content="Learn about the fundamental concepts of MANOVA in R and Python." /><meta name="keywords" content="Ahsanul, statistics, R programming, Bangladesh" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.95.0 with theme even" />
+
+
+<link rel="canonical" href="/2023/05/29/manova/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python" />
+<meta property="og:description" content="Learn about the fundamental concepts of MANOVA in R and Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2023/05/29/manova/" /><meta property="og:image" content="https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-05-29T00:00:00+06:00" />
+<meta property="article:modified_time" content="2023-05-29T00:00:00+06:00" />
+
+<meta itemprop="name" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python">
+<meta itemprop="description" content="Learn about the fundamental concepts of MANOVA in R and Python."><meta itemprop="datePublished" content="2023-05-29T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2023-05-29T00:00:00+06:00" />
+<meta itemprop="wordCount" content="1036"><meta itemprop="image" content="https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png">
+<meta itemprop="keywords" content="R,MANOVA," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png"/>
+
+<meta name="twitter:title" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python"/>
+<meta name="twitter:description" content="Learn about the fundamental concepts of MANOVA in R and Python."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Posts</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About Me</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7037202679826113"
+     crossorigin="anonymous"></script>
+ 
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHMN5CZBNV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-XHMN5CZBNV', { 'anonymize_ip': true });
+}
+</script>
+<meta property="og:title" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python" />
+<meta property="og:description" content="Learn about the fundamental concepts of MANOVA in R and Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2023/05/29/manova/" /><meta property="og:image" content="https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-05-29T00:00:00+06:00" />
+<meta property="article:modified_time" content="2023-05-29T00:00:00+06:00" />
+
+<meta itemprop="name" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python">
+<meta itemprop="description" content="Learn about the fundamental concepts of MANOVA in R and Python."><meta itemprop="datePublished" content="2023-05-29T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2023-05-29T00:00:00+06:00" />
+<meta itemprop="wordCount" content="1036"><meta itemprop="image" content="https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png">
+<meta itemprop="keywords" content="R,MANOVA," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png"/>
+
+<meta name="twitter:title" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python"/>
+<meta name="twitter:description" content="Learn about the fundamental concepts of MANOVA in R and Python."/>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Posts</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About Me</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> May 29, 2023 </span>
+        <div class="post-category">
+            <a href="/categories/design-of-experiment/"> Design of Experiment </a>
+            <a href="/categories/multivariate-analysis/"> Multivariate Analysis </a>
+            </div>
+          <span class="more-meta"> 1036 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<div id="TOC">
+<ul>
+<li><a href="#intro" id="toc-intro">Intro</a>
+<ul>
+<li><a href="#example" id="toc-example">Example</a></li>
+</ul></li>
+<li><a href="#assumptions" id="toc-assumptions">Assumptions</a></li>
+<li><a href="#hypothesis" id="toc-hypothesis">Hypothesis</a></li>
+<li><a href="#manova-test-statistics" id="toc-manova-test-statistics">MANOVA Test Statistics</a></li>
+<li><a href="#experiment" id="toc-experiment">Experiment</a>
+<ul>
+<li><a href="#data-description" id="toc-data-description">Data Description</a></li>
+<li><a href="#hypothesis-1" id="toc-hypothesis-1">Hypothesis</a></li>
+<li><a href="#manova" id="toc-manova">MANOVA</a></li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<div id="intro" class="section level1">
+<h1>Intro</h1>
+<p>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their relationships to provide a more comprehensive understanding of the effects of the independent variables. If you have only a single dependent variable, then MANOVA is not required. Regular ANOVA would be more appropriate in such cases.</p>
+<p>Although separate F tests could be computed for each outcome variable, multiple
+hypothesis testing would result in an increased likelihood of at least one Type I
+error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.<span class="math inline">\(^6\)</span></p>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>For example, if you want to determine if the height of individuals varies across different age groups, ANOVA would be suitable since you have a single dependent variable (height).</p>
+<p>However, if you have multiple dependent variables that are related to the same set of independent variables, then using MANOVA would be advantageous. For instance, suppose you have data on the height, weight, and body fat percentage of individuals, and you want to investigate if these variables differ based on different exercise routines. In this scenario, MANOVA would be appropriate as you have multiple dependent variables (height, weight, and body fat percentage) that are of interest and are potentially influenced by the independent variable (exercise routine).</p>
+</div>
+</div>
+<div id="assumptions" class="section level1">
+<h1>Assumptions</h1>
+<ol style="list-style-type: decimal">
+<li>The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.<br />
+</li>
+<li>The observations should be independent of each other.<br />
+</li>
+<li>There should be no multivariate outliers in the dependent variables.<br />
+</li>
+<li>The dependent variables are linearly related.</li>
+</ol>
+</div>
+<div id="hypothesis" class="section level1">
+<h1>Hypothesis</h1>
+<p><span class="math inline">\(H_0:\)</span> μ1 = ··· = μk against <span class="math inline">\(H_1:\)</span> not all μi’s are the same.<span class="math inline">\(^3\)</span><br />
+or,<br />
+<span class="math inline">\(H_0:\)</span> Group mean vectors are all equal to one another.<br />
+<span class="math inline">\(H_1:\)</span> At least one pair of treatments is different on at least one variable.</p>
+</div>
+<div id="manova-test-statistics" class="section level1">
+<h1>MANOVA Test Statistics</h1>
+<ol style="list-style-type: decimal">
+<li>Wilk’s Lambda: <span class="math inline">\(\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}\)</span><br />
+</li>
+<li>Hotelling-Lawley Trace: <span class="math inline">\(T^2_0 = trace(\mathbf{HE}^{-1})\)</span><br />
+</li>
+<li>Pillai Trace: <span class="math inline">\(V = trace(\mathbf{H(H+E)^{-1}})\)</span><br />
+</li>
+<li>Roy’s Maximum Root: Largest eigenvalue of <span class="math inline">\(HE^{-1}\)</span></li>
+</ol>
+<p>The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai’s test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai’s test is also locally most powerful. <span class="math inline">\(^7\)</span></p>
+</div>
+<div id="experiment" class="section level1">
+<h1>Experiment</h1>
+<div id="data-description" class="section level2">
+<h2>Data Description</h2>
+<p>The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. <span class="math inline">\(^4\)</span></p>
+<pre class="r"><code># reading data
+data &lt;- read.table(&quot;data/MANOVA.txt&quot;, header = T, sep = &quot;\t&quot;)
+
+library(tidyverse)
+data &lt;- data %&gt;% mutate(across(c(&quot;Temperature&quot;,&quot;N.source&quot;), factor))
+summary(data)</code></pre>
+<pre><code>#   Experiment        Temperature              N.source     Replica     
+#  Length:120         30:40       ammonium chloride:60   Min.   : 1.00  
+#  Class :character   35:40       yeast extract    :60   1st Qu.: 5.75  
+#  Mode  :character   37:40                              Median :10.50  
+#                                                        Mean   :10.50  
+#                                                        3rd Qu.:15.25  
+#                                                        Max.   :20.00  
+#    Dry.weight     Optical.density Product.yield  
+#  Min.   : 1.670   Min.   :0.210   Min.   : 8.40  
+#  1st Qu.: 4.805   1st Qu.:1.770   1st Qu.:41.90  
+#  Median : 6.070   Median :1.910   Median :57.65  
+#  Mean   : 6.024   Mean   :1.976   Mean   :57.10  
+#  3rd Qu.: 7.080   3rd Qu.:2.223   3rd Qu.:72.70  
+#  Max.   :10.300   Max.   :2.480   Max.   :93.10</code></pre>
+<pre class="r"><code>data %&gt;% 
+  group_by(Temperature) %&gt;% 
+  summarise(Mean_dry_weight = mean(Dry.weight), 
+            Mean_optical_density = mean(Optical.density),
+            Mean_product_yield = mean(Product.yield))</code></pre>
+<pre><code># # A tibble: 3 × 4
+#   Temperature Mean_dry_weight Mean_optical_density Mean_product_yield
+#   &lt;fct&gt;                 &lt;dbl&gt;                &lt;dbl&gt;              &lt;dbl&gt;
+# 1 30                     5.92                 1.92               56.6
+# 2 35                     5.93                 1.99               56.5
+# 3 37                     6.22                 2.01               58.3</code></pre>
+</div>
+<div id="hypothesis-1" class="section level2">
+<h2>Hypothesis</h2>
+<p><span class="math inline">\(H_0:\)</span> There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.</p>
+</div>
+<div id="manova" class="section level2">
+<h2>MANOVA</h2>
+<pre class="r"><code>manova_result &lt;- manova(cbind(Dry.weight, Optical.density, Product.yield) ~ Temperature,
+                        data = data)
+summary(manova_result, test = &quot;Pillai&quot;)</code></pre>
+<pre><code>#              Df   Pillai approx F num Df den Df Pr(&gt;F)
+# Temperature   2 0.030774  0.60427      6    232 0.7268
+# Residuals   117</code></pre>
+<pre class="r"><code>summary(manova_result, test = &quot;Wilks&quot;)</code></pre>
+<pre><code>#              Df   Wilks approx F num Df den Df Pr(&gt;F)
+# Temperature   2 0.96939  0.60053      6    230 0.7298
+# Residuals   117</code></pre>
+<pre class="r"><code>summary(manova_result, test = &quot;Hotelling-Lawley&quot;)</code></pre>
+<pre><code>#              Df Hotelling-Lawley approx F num Df den Df Pr(&gt;F)
+# Temperature   2         0.031409  0.59677      6    228 0.7328
+# Residuals   117</code></pre>
+<pre class="r"><code>summary(manova_result, test = &quot;Roy&quot;)</code></pre>
+<pre><code>#              Df      Roy approx F num Df den Df Pr(&gt;F)
+# Temperature   2 0.024543  0.94899      3    116 0.4195
+# Residuals   117</code></pre>
+<p>A p-value lower than 0.05 means the null hypothesis can be rejected.</p>
+<pre class="python"><code>import pandas as pd
+from statsmodels.multivariate.manova import MANOVA
+
+# Load the data
+data = pd.read_table(&quot;data/MANOVA.txt&quot;, sep=&quot;\t&quot;)
+
+# Perform MANOVA analysis
+# Change variable names
+new_column_names = {
+    &#39;Dry weight&#39;: &#39;Weight&#39;,
+    &#39;Optical density&#39;: &#39;Density&#39;,
+    &#39;Product yield&#39;: &#39;Yield&#39;
+}
+data = data.rename(columns=new_column_names)
+manova_result = MANOVA.from_formula(&#39;Weight + Density + Yield ~ Temperature&#39;, data)
+print(manova_result.mv_test()) </code></pre>
+<pre><code>#                   Multivariate linear model
+# =============================================================
+#                                                              
+# -------------------------------------------------------------
+#        Intercept        Value  Num DF  Den DF  F Value Pr &gt; F
+# -------------------------------------------------------------
+#           Wilks&#39; lambda 0.8059 3.0000 116.0000  9.3151 0.0000
+#          Pillai&#39;s trace 0.1941 3.0000 116.0000  9.3151 0.0000
+#  Hotelling-Lawley trace 0.2409 3.0000 116.0000  9.3151 0.0000
+#     Roy&#39;s greatest root 0.2409 3.0000 116.0000  9.3151 0.0000
+# -------------------------------------------------------------
+#                                                              
+# -------------------------------------------------------------
+#       Temperature       Value  Num DF  Den DF  F Value Pr &gt; F
+# -------------------------------------------------------------
+#           Wilks&#39; lambda 0.9771 3.0000 116.0000  0.9079 0.4396
+#          Pillai&#39;s trace 0.0229 3.0000 116.0000  0.9079 0.4396
+#  Hotelling-Lawley trace 0.0235 3.0000 116.0000  0.9079 0.4396
+#     Roy&#39;s greatest root 0.0235 3.0000 116.0000  0.9079 0.4396
+# =============================================================</code></pre>
+<hr />
+<p><strong>Refererences:</strong></p>
+<ol style="list-style-type: decimal">
+<li><a href="https://online.stat.psu.edu/stat505/lesson/8">Stat PSU - Lesson 8: Multivariate Analysis of Variance (MANOVA)</a><br />
+</li>
+<li><a href="https://towardsdatascience.com/manova-97e675a96158">MANOVA, towards data science</a></li>
+<li>P.K. Bhattacharya, Prabir Burman - Theory and Methods of Statistics<br />
+</li>
+<li><a href="https://www.chegg.com/homework-help/questions-and-answers/experiment-temperature-n-source-replica-dry-weight-optical-density-product-yield-batch30aa-q35487503">Data description</a><br />
+</li>
+<li><a href="https://www.applied-maths.com/download/sample-data">Data source</a><br />
+</li>
+<li>Applied MANOVA and Discriminant Analysis-Wiley-Interscience (2006)<br />
+</li>
+<li>Srivastava Multivariate Statistics - page 187</li>
+</ol>
+</div>
+</div>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/r/">R</a>
+          <a href="/tags/manova/">MANOVA</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2023/07/02/cluster-analysis/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cluster Analysis</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/2022/07/19/r-in-jupyter-notebook/">
+            <span class="next-text nav-default">Use R in Jupyter Notebook</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ahsanul';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ahsanulislam10@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/13323413/md-ahsanul-himel" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/mdahsanulhimel" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/MdAhsanulHimel/" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/MdAhsanulHimel/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/MdAhsanulHimel" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Md. Ahsanul Islam</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+</script>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-XHMN5CZBNV', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
