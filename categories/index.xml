@@ -1,92 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Ahsanul&#39;s Blog</title>
-    <link>/categories/</link>
-    <description>Recent content in Categories on Ahsanul&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0600</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Multivariate Analysis</title>
-      <link>/categories/multivariate-analysis/</link>
-      <pubDate>Sun, 02 Jul 2023 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/multivariate-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Design of Experiment</title>
-      <link>/categories/design-of-experiment/</link>
-      <pubDate>Mon, 29 May 2023 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/design-of-experiment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tech</title>
-      <link>/categories/tech/</link>
-      <pubDate>Tue, 19 Jul 2022 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/tech/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Biostatistics</title>
-      <link>/categories/biostatistics/</link>
-      <pubDate>Tue, 21 Jun 2022 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/biostatistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Resources</title>
-      <link>/categories/resources/</link>
-      <pubDate>Sun, 19 Jun 2022 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/resources/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hypothesis Tests</title>
-      <link>/categories/hypothesis-tests/</link>
-      <pubDate>Thu, 31 Mar 2022 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/hypothesis-tests/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Others</title>
-      <link>/categories/others/</link>
-      <pubDate>Sat, 20 Nov 2021 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/others/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Programming</title>
-      <link>/categories/r-programming/</link>
-      <pubDate>Tue, 25 May 2021 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/r-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Stochastic Process</title>
-      <link>/categories/stochastic-process/</link>
-      <pubDate>Sun, 23 May 2021 00:00:00 +0600</pubDate>
-      
-      <guid>/categories/stochastic-process/</guid>
-      <description></description>
-    </item>
+    <title>Categories | Md Ahsanul Islam</title>
+    <link>http://example.org/categories/</link>
+      <atom:link href="http://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    <description>Categories</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png</url>
+      <title>Categories</title>
+      <link>http://example.org/categories/</link>
+    </image>
     
   </channel>
 </rss>
