@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Demographic and Health Survey - Ahsanul&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="iBD1L5iU9O9ELsXiS9NFeW_Qyt7w2phRuHzfOCbCGwY" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Md. Ahsanul Islam" /><meta name="description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data." /><meta name="keywords" content="Ahsanul, statistics, R programming, Bangladesh" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.95.0 with theme even" />
+
+
+<link rel="canonical" href="/2023/07/08/dhs/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Demographic and Health Survey" />
+<meta property="og:description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2023/07/08/dhs/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-07-08T00:00:00+06:00" />
+<meta property="article:modified_time" content="2023-07-08T00:00:00+06:00" />
+
+<meta itemprop="name" content="Demographic and Health Survey">
+<meta itemprop="description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data."><meta itemprop="datePublished" content="2023-07-08T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2023-07-08T00:00:00+06:00" />
+<meta itemprop="wordCount" content="1169">
+<meta itemprop="keywords" content="Survey,DHS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Demographic and Health Survey"/>
+<meta name="twitter:description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Posts</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About Me</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ahsanul&#39;s Blog</a>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7037202679826113"
+     crossorigin="anonymous"></script>
+ 
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVTJF37MBV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZVTJF37MBV', { 'anonymize_ip': true });
+}
+</script>
+<meta property="og:title" content="Demographic and Health Survey" />
+<meta property="og:description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2023/07/08/dhs/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-07-08T00:00:00+06:00" />
+<meta property="article:modified_time" content="2023-07-08T00:00:00+06:00" />
+
+<meta itemprop="name" content="Demographic and Health Survey">
+<meta itemprop="description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data."><meta itemprop="datePublished" content="2023-07-08T00:00:00+06:00" />
+<meta itemprop="dateModified" content="2023-07-08T00:00:00+06:00" />
+<meta itemprop="wordCount" content="1169">
+<meta itemprop="keywords" content="Survey,DHS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Demographic and Health Survey"/>
+<meta name="twitter:description" content="Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data."/>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Posts</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About Me</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Demographic and Health Survey</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 8, 2023 </span>
+        <div class="post-category">
+            <a href="/categories/survey/"> Survey </a>
+            </div>
+          <span class="more-meta"> 1169 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#application" id="toc-application">Application</a></li>
+<li><a href="#questionnaire" id="toc-questionnaire">Questionnaire</a></li>
+<li><a href="#data-files" id="toc-data-files">Data Files</a>
+<ul>
+<li><a href="#de-jure-vs-de-facto" id="toc-de-jure-vs-de-facto">De Jure vs De Facto</a></li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>DHS stands for Demographic and Health Surveys. It is a program that conducts nationally representative household surveys to collect data on a wide range of demographic and health indicators.</p>
+<p>The DHS program is funded by the United States Agency for International Development (USAID) and is implemented by ICF, a global consulting and technology services company. However, the surveys themselves are conducted in collaboration with local government agencies, including national statistical offices and ministries of health, in the countries where the surveys take place.</p>
+<p>In the case of Bangladesh, the DHS surveys are conducted by the National Institute of Population Research and Training (NIPORT). NIPORT is the leading institution in Bangladesh responsible for population research, training, and data collection. They work closely with the DHS program and oversee the implementation of the surveys within the country.</p>
+<p>The collaboration between the DHS program and NIPORT ensures that the surveys in Bangladesh adhere to international standards and protocols while also being tailored to the specific context and needs of the country. This partnership helps to ensure the quality and reliability of the data collected, making it a valuable resource for researchers and policymakers interested in understanding the demographic and health situation in Bangladesh.</p>
+</div>
+<div id="application" class="section level1">
+<h1>Application</h1>
+<p>The DHS dataset has a wide range of applications in various fields related to public health, demography, and social sciences. Some of the common applications include:</p>
+<ol style="list-style-type: decimal">
+<li><p>Health and population research: The dataset provides valuable information on key health indicators such as maternal and child health, family planning, nutrition, and infectious diseases. Researchers can use the data to study trends, patterns, and determinants of health outcomes, as well as evaluate the effectiveness of health interventions and programs.</p></li>
+<li><p>Policy and program evaluation: Policymakers and program managers can utilize the dataset to assess the impact and effectiveness of existing policies and interventions. The data can help in identifying areas of improvement and designing evidence-based strategies to address health and population challenges.</p></li>
+<li><p>Health system planning: The dataset provides insights into the utilization of healthcare services, access to healthcare facilities, and health-seeking behaviors. Planners and policymakers can use this information to assess the adequacy and distribution of healthcare resources and plan for the future needs of the population.</p></li>
+<li><p>Socioeconomic and demographic analysis: The dataset includes variables related to household characteristics, education, employment, and socioeconomic status. Researchers can explore the relationships between demographic factors and health outcomes, as well as investigate social determinants of health.</p></li>
+<li><p>Health disparities and equity: The dataset allows for the analysis of health disparities across different population groups, such as urban-rural divide, socioeconomic strata, and ethnic or regional variations. It can shed light on inequalities in access to healthcare and health outcomes, helping to inform policies and interventions aimed at reducing health disparities.</p></li>
+<li><p>International comparisons: The DHS dataset follows standardized methodologies, allowing for cross-country comparisons. Researchers and policymakers can compare health and demographic indicators between countries, identify best practices, and learn from successful interventions implemented elsewhere.</p></li>
+</ol>
+<p>These are just a few examples of the applications of the DHS dataset. The rich and comprehensive nature of the data makes it a valuable resource for researchers, policymakers, and organizations interested in understanding and addressing public health and demographic challenges.</p>
+</div>
+<div id="questionnaire" class="section level1">
+<h1>Questionnaire</h1>
+<p>A household questionnaire is used to collect information on characteristics of the household’s dwelling unit, and data related to the height and weight for women and children in the household. It is also used to identify members of the household who are eligible for an individual interview. Eligible respondents are then interviewed using an individual questionnaire.</p>
+<p>In a majority of DHS surveys eligible individuals include women of reproductive age (15-49) and men age 15-59, or in some cases 15-54. In some countries only women are interviewed. Individual questionnaires include information on fertility, family planning and maternal and child health.</p>
+</div>
+<div id="data-files" class="section level1">
+<h1>Data Files</h1>
+<p>The DHS dataset is available in multiple data files, each corresponding to a specific unit of analysis or topic.</p>
+<p>Here’s a brief explanation of each:</p>
+<ul>
+<li><p>Household recode (HR file): This file contains information at the household level, including household characteristics, socio-economic indicators, and geographical variables. It provides a comprehensive view of the surveyed households. By definition, a household is a person or group of related or unrelated persons who live together in the same dwelling unit(s), who acknowledge one adult male and female as the head of the household, who share the same housekeeping arrangements, and who are considered a single unit.</p></li>
+<li><p>Individual recode (IR file): This file focuses on individual-level data and includes information on demographic characteristics, reproductive health, and other relevant variables for women of reproductive age. Here the unit of analysis is the women at age 15 to 49 (in some countries like Bangladesh, only ever married women aged 15-49).</p></li>
+<li><p>Children’s recode (KR file): This file specifically focuses on data related to children under the age of five within the surveyed households. It includes information on child health, immunization status, nutritional indicators, and other variables related to child well-being. Here the unit of analysis is children under age 5 whose mother is interviewed.</p></li>
+<li><p>Birth recode (BR file): This file contains variables related to birth histories reported by women of reproductive age. It includes information on birth order, birth spacing, birth outcomes, and other characteristics of the reported births. It contains data for every child ever born to an interviewed woman upto 20 births.</p></li>
+<li><p>Household member recode (PR file): This file provides data on all household members (men, women and children), including information on their demographics, relationship to the head of the household, and other relevant variables. It also includes those children in the household whose mothers were not interviewed.</p></li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=BmiSDPebmgc">Learn more</a></p>
+<p>There are also files on:
+- Fieldwork questionnaire: This file includes data related to the fieldwork process, such as survey implementation details, sample design, and other administrative information.</p>
+<ul>
+<li><p>Service availability raw: This file contains information on the availability of healthcare services in the survey area. It includes data on the presence and characteristics of health facilities, equipment, and services available to the population.</p></li>
+<li><p>Verbal autopsy: This file includes data related to verbal autopsy interviews conducted as part of the survey. Verbal autopsy is a method used to determine the probable cause of death in areas with limited medical certification.</p></li>
+</ul>
+<p>These files are typically available in different formats such as SPSS, STATA, SAS, and flat files. The choice of format depends on your preferred statistical software and analysis needs.</p>
+<div id="de-jure-vs-de-facto" class="section level2">
+<h2>De Jure vs De Facto</h2>
+<p>De Jure in latin term means ‘in law’ whereas De Facto in latin term means ‘in fact’ i.e. in practice.</p>
+<p>De Jure residents are all persons who are usual residents of the selected households whether or not they stayed in the household the night before the interviewed.</p>
+<p>De Factor residents are all persons who stayed in the households the night before the interview whether usual residents or visitors.</p>
+<p>In the datasets the variable for De Jure is HV102 (Usual resident) and the variable for De Facto is HV103 (Slept last night).</p>
+<p><a href="https://youtu.be/klClwMgFcCU">Learn more</a></p>
+</div>
+</div>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/survey/">Survey</a>
+          <a href="/tags/dhs/">DHS</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2023/07/02/cluster-analysis/">
+            <span class="next-text nav-default">Cluster Analysis</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ahsanul';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ahsanulislam10@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/13323413/md-ahsanul-himel" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/mdahsanulhimel" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/MdAhsanulHimel/" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/MdAhsanulHimel/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/MdAhsanulHimel" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Md. Ahsanul Islam</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+</script>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-ZVTJF37MBV', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

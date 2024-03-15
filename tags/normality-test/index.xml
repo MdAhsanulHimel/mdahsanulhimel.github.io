@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>normality test on Ahsanul&#39;s Blog</title>
+    <link>/tags/normality-test/</link>
+    <description>Recent content in normality test on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0600</lastBuildDate><atom:link href="/tags/normality-test/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shapiro Wilk Test using R</title>
+      <link>/2022/03/31/shapiro-wilk-test/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0600</pubDate>
+      
+      <guid>/2022/03/31/shapiro-wilk-test/</guid>
+      <description>The normality of data is crucial in parametric hypothesis tests. Because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, an analysis needs to be performed&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resources on Ahsanul&#39;s Blog</title>
+    <link>/categories/resources/</link>
+    <description>Recent content in Resources on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Jun 2022 00:00:00 +0600</lastBuildDate><atom:link href="/categories/resources/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recommended Books For Multivariate Analysis</title>
+      <link>/2022/06/19/books-multivariate-analysis/</link>
+      <pubDate>Sun, 19 Jun 2022 00:00:00 +0600</pubDate>
+      
+      <guid>/2022/06/19/books-multivariate-analysis/</guid>
+      <description>Nothing is better resource than a book. So, in this post, I&amp;rsquo;ve shared some books that have been extremely helpful to me in my quest &amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

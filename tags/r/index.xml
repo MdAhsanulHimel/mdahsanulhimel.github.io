@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Ahsanul&#39;s Blog</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0600</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cluster Analysis</title>
+      <link>/2023/07/02/cluster-analysis/</link>
+      <pubDate>Sun, 02 Jul 2023 00:00:00 +0600</pubDate>
+      
+      <guid>/2023/07/02/cluster-analysis/</guid>
+      <description>Discover the power of cluster analysis in R with this comprehensive blog post. Learn the essential techniques, interpret the results, and gain valuable insights from your data.</description>
+    </item>
+    
+    <item>
+      <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</title>
+      <link>/2023/05/29/manova/</link>
+      <pubDate>Mon, 29 May 2023 00:00:00 +0600</pubDate>
+      
+      <guid>/2023/05/29/manova/</guid>
+      <description>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Use R in Jupyter Notebook</title>
+      <link>/2022/07/19/r-in-jupyter-notebook/</link>
+      <pubDate>Tue, 19 Jul 2022 00:00:00 +0600</pubDate>
+      
+      <guid>/2022/07/19/r-in-jupyter-notebook/</guid>
+      <description>In this post, I have showed complete procedure of enabling R kernal for Jupyter Notebook, so that you can use R in Jupyter Notebook.</description>
+    </item>
+    
+    <item>
+      <title>The Kaplan-Meier Estimatior in R</title>
+      <link>/2022/06/21/kaplan-meier-estimatior-in-r/</link>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 +0600</pubDate>
+      
+      <guid>/2022/06/21/kaplan-meier-estimatior-in-r/</guid>
+      <description>The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R.</description>
+    </item>
+    
+    <item>
+      <title>Shapiro Wilk Test using R</title>
+      <link>/2022/03/31/shapiro-wilk-test/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0600</pubDate>
+      
+      <guid>/2022/03/31/shapiro-wilk-test/</guid>
+      <description>The normality of data is crucial in parametric hypothesis tests. Because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, an analysis needs to be performed&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Principal Component Analysis - Theory and Application with R</title>
+      <link>/2022/03/21/pca-introduction-r/</link>
+      <pubDate>Mon, 21 Mar 2022 19:20:00 +0600</pubDate>
+      
+      <guid>/2022/03/21/pca-introduction-r/</guid>
+      <description>Principal component analysis (PCA) is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information (variance) in the original data is preserved by those linear combinations. It accomplishes this by generating new uncorrelated variables that gradually maximize variance. Before diving into the PCA, there are a few things one should be aware of&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Complete guide to bar plot using ggplot2</title>
+      <link>/2021/05/25/ggplot2-bar-plot/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0600</pubDate>
+      
+      <guid>/2021/05/25/ggplot2-bar-plot/</guid>
+      <description>R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson&amp;rsquo;s Grammar of Graphics. It divides graphs into semantic components like scales and layers.</description>
+    </item>
+    
+    <item>
+      <title>Complete guide to scatter plot using ggplot2</title>
+      <link>/2021/05/23/ggplot2-scatter-plot/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0600</pubDate>
+      
+      <guid>/2021/05/23/ggplot2-scatter-plot/</guid>
+      <description>R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson&amp;rsquo;s Grammar of Graphics. It divides graphs into semantic components like scales and layers.</description>
+    </item>
+    
+    <item>
+      <title>Markov Chain - A Practical Example</title>
+      <link>/2021/05/23/markov-chain/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0600</pubDate>
+      
+      <guid>/2021/05/23/markov-chain/</guid>
+      <description>Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes. In this post I will show a practical example of markov chain. Let’s try to map the movement of freelancer drivers in Dhaka. We can divide the area of Dhaka into three zones – North Dhaka, Middle Dhaka&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

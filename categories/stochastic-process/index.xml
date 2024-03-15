@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stochastic Process on Ahsanul&#39;s Blog</title>
+    <link>/categories/stochastic-process/</link>
+    <description>Recent content in Stochastic Process on Ahsanul&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0600</lastBuildDate><atom:link href="/categories/stochastic-process/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markov Chain - A Practical Example</title>
+      <link>/2021/05/23/markov-chain/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0600</pubDate>
+      
+      <guid>/2021/05/23/markov-chain/</guid>
+      <description>Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes. In this post I will show a practical example of markov chain. Let’s try to map the movement of freelancer drivers in Dhaka. We can divide the area of Dhaka into three zones – North Dhaka, Middle Dhaka&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>
