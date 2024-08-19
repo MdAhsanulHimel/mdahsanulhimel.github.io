@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cluster Analysis | Md Ahsanul Islam</title>
+    <link>http://example.org/tag/cluster-analysis/</link>
+      <atom:link href="http://example.org/tag/cluster-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cluster Analysis</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png</url>
+      <title>Cluster Analysis</title>
+      <link>http://example.org/tag/cluster-analysis/</link>
+    </image>
+    
+    <item>
+      <title>Cluster Analysis</title>
+      <link>http://example.org/post/cluster-analysis/</link>
+      <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>http://example.org/post/cluster-analysis/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34; id=&#34;toc-introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#types&#34; id=&#34;toc-types&#34;&gt;Types&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#centroid-based-clustering&#34; id=&#34;toc-centroid-based-clustering&#34;&gt;Centroid-based Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hierarchical-clustering&#34; id=&#34;toc-hierarchical-clustering&#34;&gt;Hierarchical Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r-code&#34; id=&#34;toc-r-code&#34;&gt;R Code&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#step-1-load-data&#34; id=&#34;toc-step-1-load-data&#34;&gt;Step 1: Load Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-2-complete-cases&#34; id=&#34;toc-step-2-complete-cases&#34;&gt;Step 2: Complete Cases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-3-scaling&#34; id=&#34;toc-step-3-scaling&#34;&gt;Step 3: Scaling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-4-optimal-number-of-clusters&#34; id=&#34;toc-step-4-optimal-number-of-clusters&#34;&gt;Step 4: Optimal Number of Clusters&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#elbow-method&#34; id=&#34;toc-elbow-method&#34;&gt;Elbow Method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#silhouette-scorewidth&#34; id=&#34;toc-silhouette-scorewidth&#34;&gt;Silhouette Score/Width&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gap-statistic-method&#34; id=&#34;toc-gap-statistic-method&#34;&gt;Gap Statistic Method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#combination-of-all&#34; id=&#34;toc-combination-of-all&#34;&gt;Combination of All&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-5-hierarchical-clustering&#34; id=&#34;toc-step-5-hierarchical-clustering&#34;&gt;Step 5: Hierarchical Clustering&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#step-5.1-distance&#34; id=&#34;toc-step-5.1-distance&#34;&gt;Step 5.1: Distance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-5.2-linkage-criteria&#34; id=&#34;toc-step-5.2-linkage-criteria&#34;&gt;Step 5.2: Linkage Criteria&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-5.3-dendrogram&#34; id=&#34;toc-step-5.3-dendrogram&#34;&gt;Step 5.3: Dendrogram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#step-5-k-means-clustering&#34; id=&#34;toc-step-5-k-means-clustering&#34;&gt;Step 5: K-means Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34; id=&#34;toc-references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Cluster analysis is a data analysis technique that aims to identify and group observations or data points that are homogeneous, meaning they share similar characteristics or properties. It is a data mining technique and is considered an unsupervised learning algorithm that helps reveal underlying patterns and structures within the data.&lt;/p&gt;
+&lt;p&gt;Cluster analysis is a powerful tool that can be used for a variety of tasks, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Customer segmentation: Cluster analysis can be used to segment customers into groups based on their purchase behavior, demographics, or other factors. This can help businesses to target their marketing campaigns more effectively.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Fraud detection: Cluster analysis can be used to identify fraudulent transactions by finding groups of transactions that are similar in terms of their characteristics.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Product recommendation: Cluster analysis can be used to recommend products to users based on their past purchase history or other factors.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Anomaly detection: Cluster analysis can be used to identify anomalies or outliers in data. This can be helpful for identifying fraud, detecting system errors, or identifying new trends.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;types&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Types&lt;/h1&gt;
+&lt;p&gt;Centroid-based clustering and Hierarchical clustering are two distinct methods commonly used in clustering analysis.&lt;/p&gt;
+&lt;p&gt;In centroid-based clustering, the number of clusters is predetermined and specified before the clustering process begins. The algorithm aims to partition the observations into the specified number of clusters by minimizing the within-cluster sum of squares.&lt;/p&gt;
+&lt;p&gt;In contrast, hierarchical clustering does not require specifying the number of clusters in advance. It generates a tree-like structure called a dendrogram, which shows the hierarchical relationships between the observations at different levels of similarity. By cutting the dendrogram at different heights, we can obtain clusterings for different numbers of clusters, ranging from 1 to the total number of observations.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;index.en_insertimage_1.png&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;centroid-based-clustering&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Centroid-based Clustering&lt;/h2&gt;
+&lt;p&gt;This is a bottom-up approach to clustering, where objects are assigned to non-overlapping clusters based on their proximity to a central point, called a centroid. The most commonly centroid-based clustering algorithms include k-means, k-medoids, and fuzzy c-means.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;index.en_insertimage_2.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hierarchical-clustering&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Hierarchical Clustering&lt;/h2&gt;
+&lt;p&gt;Hierarchical clustering is a top-down approach to clustering that creates a hierarchy of clusters by recursively merging or splitting them based on their similarity. It can be either agglomerative (where objects are merged together to form clusters) or divisive (where clusters are split apart to form smaller clusters).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;index.en_insertimage_3.png&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-code&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;R Code&lt;/h1&gt;
+&lt;div id=&#34;step-1-load-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 1: Load Data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- read.csv(&amp;quot;df_coffee.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Taking a sample of 20 observations for the demonstration purpose:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(100)
+df &amp;lt;- df[sample(1:nrow(df), size = 20),]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Always check descriptive statistics:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;skimr::skim(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-4&#34;&gt;Table 1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;df&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;character&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;13%&#34; /&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;5%&#34; /&gt;
+&lt;col width=&#34;5%&#34; /&gt;
+&lt;col width=&#34;8%&#34; /&gt;
+&lt;col width=&#34;12%&#34; /&gt;
+&lt;col width=&#34;15%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;min&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;max&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;empty&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;whitespace&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Color&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table style=&#34;width:100%;&#34;&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;22%&#34; /&gt;
+&lt;col width=&#34;10%&#34; /&gt;
+&lt;col width=&#34;15%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;col width=&#34;5%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Aroma&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.35&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.48&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.50&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▆▇▆▃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Flavor&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.34&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.56&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.94&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.50&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▃▃▇▃▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Aftertaste&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.59&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.31&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.58&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.17&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▂▆▇▅▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Acidity&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.30&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.08&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.50&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.71&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.81&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.25&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▂▃▇▃▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Body&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.66&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.25&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.48&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.83&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.17&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▂▃▇▃▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Balance&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.33&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.42&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.25&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▅▃▇▃▃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Uniformity&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Clean.Cup&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Sweetness&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Overall&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.38&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.33&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.62&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.92&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.50&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▃▃▁▃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Defects&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Total.Cup.Points&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;83.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.09&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;80.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;82.50&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;83.70&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;84.89&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;87.58&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▅▇▇▆▅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Moisture.Percentage&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.94&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.31&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9.70&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;11.20&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;11.83&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;13.10&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▃▃▇▃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Category.One.Defects&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.49&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Quakers&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.35&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.14&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Three of the variables have no variability (standard deviation of zero). So they should be removed:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- dplyr::select(df, -c(&amp;quot;Uniformity&amp;quot;,&amp;quot;Clean.Cup&amp;quot;,&amp;quot;Sweetness&amp;quot;,&amp;quot;Defects&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can only use numeric variables in cluster analysis functions in R for now. (There are some advanced techniques that discuss methods related to cluster analysis in mixed data types).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_num &amp;lt;- df[,-ncol(df)]  # removing the last variable in the dataset which is character type&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-2-complete-cases&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 2: Complete Cases&lt;/h2&gt;
+&lt;p&gt;Take only complete cases:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_com &amp;lt;- na.omit(df_num)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-3-scaling&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 3: Scaling&lt;/h2&gt;
+&lt;p&gt;Scaling the dataset is important because different features may have different scales, and if they are not scaled, then the features with larger scales will have a greater influence on the clustering results.&lt;/p&gt;
+&lt;p&gt;Common scaling techniques used in clustering include standardization (subtracting the mean and dividing by the standard deviation), normalization (scaling the values to a specific range).&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(X_{stand} = \frac{X - \mu_x}{\sigma_x}\)&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(X_{norm} = \frac{X - X_{min}}{X_{max}-X_{min}}\)&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(E[Y] = E[\Gamma&amp;#39;X]=\Gamma&amp;#39;E[X]=0\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# standardization
+df_scaled &amp;lt;- data.frame(scale(df_com, center = TRUE, scale = TRUE))
+
+# normalization
+# df_scaled &amp;lt;- scale(df_com, 
+#                    center = apply(df_com, 2, min), 
+#                    scale = apply(df_com, 2, function(x) {max(x) - min(x)}))  &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-4-optimal-number-of-clusters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 4: Optimal Number of Clusters&lt;/h2&gt;
+&lt;p&gt;The optimal number of clusters depends on the specific dataset and the application. However, there are a few methods that can be used to help determine the optimal number of clusters in centroid-based clustering.&lt;/p&gt;
+&lt;div id=&#34;elbow-method&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Elbow Method&lt;/h3&gt;
+&lt;p&gt;This method involves plotting the within-cluster sum of squares (WSS) as a function of the number of clusters. The WSS is a measure of how well the data points are clustered together. The elbow method works by looking for the point in the WSS curve where the rate of decrease starts to slow down. This point is often considered to be the optimal number of clusters.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(factoextra)
+fviz_nbclust(df_scaled, kmeans, method = &amp;quot;wss&amp;quot;) +  
+  geom_vline(xintercept = 2, linetype = 2) + # add line for better viz
+  labs(subtitle = &amp;quot;Elbow method&amp;quot;) # add subtitle&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;silhouette-scorewidth&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Silhouette Score/Width&lt;/h3&gt;
+&lt;p&gt;The silhouette score is a measure of how well each data point is clustered with its own cluster compared to other clusters. It ranges from -1 to 1, with a value of 1 indicating that the data point is perfectly clustered with its own cluster, 0 indicating the data point is on the border between the two clusters and a value of -1 indicating that the data point is equally well-clustered with two or more clusters. The optimal number of clusters is often the number that maximizes the average silhouette score.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_nbclust(df_scaled, kmeans, method = &amp;quot;silhouette&amp;quot;) +  
+  labs(subtitle = &amp;quot;Silhouette method&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To compute Silhouette information for a cluster:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cluster)
+km_res &amp;lt;- kmeans(df_scaled, centers = 2)  # defining cluster
+
+sil &amp;lt;- silhouette(km_res$cluster, dist(df_scaled))
+plot(sil)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_silhouette(sil) + theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#   cluster size ave.sil.width
+# 1       1   12          0.26
+# 2       2    8          0.48&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-11-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A positive silhouette coefficient indicates that an observation is well-matched to its own cluster.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gap-statistic-method&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Gap Statistic Method&lt;/h3&gt;
+&lt;p&gt;The gap statistic helps determine the optimal number of clusters by comparing the observed within-cluster dispersion with a reference distribution. The idea is to select the number of clusters that maximizes the gap statistic. A larger gap indicates a more significant deviation from randomness, suggesting a better-defined clustering structure. By comparing the gaps for different numbers of clusters, we can identify the number of clusters that provides the most distinct and meaningful clustering pattern.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_nbclust(df_scaled, kmeans, method = &amp;quot;gap_stat&amp;quot;) +
+  labs(subtitle = &amp;quot;Gap statistic method&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;combination-of-all&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Combination of All&lt;/h3&gt;
+&lt;p&gt;But the clever way is to try out different methods and see what majority returns. See &lt;a href=&#34;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;parameter&lt;/code&gt; package comes to help in this case:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(parameters)
+n_clust &amp;lt;- n_clusters(df_scaled,
+                      package = c(&amp;quot;easystats&amp;quot;, &amp;quot;NbClust&amp;quot;, &amp;quot;mclust&amp;quot;),
+                      standardize = TRUE
+                      )
+print(n_clust)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# # Method Agreement Procedure:
+# 
+# The choice of 2 clusters is supported by 7 (31.82%) methods out of 22 (Elbow, Silhouette, kl, Duda, Pseudot2, Ratkowsky, Mcclain).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(n_clust)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5-hierarchical-clustering&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 5: Hierarchical Clustering&lt;/h2&gt;
+&lt;div id=&#34;step-5.1-distance&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Step 5.1: Distance&lt;/h3&gt;
+&lt;div id=&#34;numeric-data&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Numeric Data&lt;/h4&gt;
+&lt;p&gt;Use the function &lt;code&gt;dist()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_dist_euc &amp;lt;- dist(df_scaled, method = &amp;#39;euclidian&amp;#39;)
+# df_dist_max &amp;lt;- dist(df_scaled, method = &amp;#39;maximum&amp;#39;)
+# df_dist_man &amp;lt;- dist(df_scaled, method = &amp;#39;manhattan&amp;#39;)
+# df_dist_can &amp;lt;- dist(df_scaled, method = &amp;#39;canberra&amp;#39;)
+# df_dist_mink &amp;lt;- dist(df_scaled, method = &amp;#39;minkowski&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;categorical-data&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Categorical Data&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# dist(dummified_data, method = &amp;quot;binary&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gower-distance&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Gower Distance&lt;/h4&gt;
+&lt;p&gt;Gower distance is a similarity measure commonly used for clustering categorical and numerical mixed data. It takes into account the different types of variables and calculates the dissimilarity between observations based on their attribute values.&lt;/p&gt;
+&lt;p&gt;For categorical variables, Gower distance measures dissimilarity as the proportion of attributes where two observations differ. For numerical variables, it calculates the standardized absolute difference between the values. The Gower distance is then calculated as the weighted sum of the dissimilarities for all variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- dplyr::mutate_if(df, is.character, as.factor) # convert character to factor
+
+df_dist_gower &amp;lt;- cluster::daisy(df, metric = &amp;quot;gower&amp;quot;) # Dissimilarity Matrix Calculation&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5.2-linkage-criteria&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Step 5.2: Linkage Criteria&lt;/h3&gt;
+&lt;p&gt;Linkage refers to the way in which clusters are merged together. There are several different linkage criteria that can be used, and the choice of linkage criterion can have a significant impact on the results of the clustering -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete linkage: Maximum distance between two sets&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Single linkage: Minimum distance between two sets&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Average linkage: Average distance between two sets&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Ward’s linkage: Minimize the total within cluster variance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;index.en_insertimage_4.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;index.en_insertimage_5.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Using the Euclidean distance on the numeric data the following code finds the hierarchical clusters by different linkage methods:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hclust_single &amp;lt;- hclust(df_dist_euc, method = &amp;quot;single&amp;quot;)
+hclust_complete &amp;lt;- hclust(df_dist_euc, method = &amp;quot;complete&amp;quot;)
+hclust_average &amp;lt;- hclust(df_dist_euc, method = &amp;quot;average&amp;quot;)
+hclust_centroid &amp;lt;- hclust(df_dist_euc, method = &amp;quot;centroid&amp;quot;)
+hclust_ward &amp;lt;- hclust(df_dist_euc, method = &amp;quot;ward.D2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Get the cluster information:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cutree(hclust_ward, k = 2) # specify number of clusters&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
+#   1   1   1   1   1   2   2   2   2   1   2   1   2   1   1   2   1   2   2   1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cutree(hclust_ward, h = 0.7) # specify height to cut&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
+#   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Summary by clusters:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+df_num %&amp;gt;%
+  mutate(cluster = cutree(hclust_ward, k = 2)) %&amp;gt;% 
+  group_by(cluster) %&amp;gt;%
+  summarise(across(everything(), list(Average = mean))) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# # A tibble: 2 × 12
+#   cluster Aroma_Average Flavor_Average Aftertaste_Average Acidity_Average
+#     &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;
+# 1       1          7.55           7.55               7.37            7.48
+# 2       2          8.00           8.03               7.85            7.91
+# # ℹ 7 more variables: Body_Average &amp;lt;dbl&amp;gt;, Balance_Average &amp;lt;dbl&amp;gt;,
+# #   Overall_Average &amp;lt;dbl&amp;gt;, Total.Cup.Points_Average &amp;lt;dbl&amp;gt;,
+# #   Moisture.Percentage_Average &amp;lt;dbl&amp;gt;, Category.One.Defects_Average &amp;lt;dbl&amp;gt;,
+# #   Quakers_Average &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dendrogram will help to visualize as well as to determine the number of clusters to use or the height where to cut.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5.3-dendrogram&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Step 5.3: Dendrogram&lt;/h3&gt;
+&lt;p&gt;Pass the hclust object to the plot function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(hclust_ward, hang = -1)
+rect.hclust(hclust_ward, k = 2, border = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Using dendextend package:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;dendextend&amp;quot;)
+library(dendextend)
+
+plot(color_branches(dend = hclust_ward, k = 2)) # specify k, can also use h to specify height&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(color_branches(dend = hclust_ward, k = 2), 
+     # parameters for nodes
+     nodePar = list(col = 3:2, 
+                    cex = c(1.5, 0.75), 
+                    pch =  21:22,
+                    bg =  c(&amp;quot;light blue&amp;quot;, &amp;quot;pink&amp;quot;),
+                    lab.cex = 0.75, 
+                    lab.col = &amp;quot;tomato&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-21-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# function to get color labels; Change color and cut based on number of clusters
+colLab &amp;lt;- function(n, labelColors = c(&amp;quot;#036564&amp;quot;, &amp;quot;#EB6841&amp;quot;), cut = 2) {
+  clusMember = cutree(hclust_ward, cut)
+  if (is.leaf(n)) {
+    a &amp;lt;- attributes(n)
+    labCol &amp;lt;- labelColors[clusMember[which(names(clusMember) == a$label)]]
+    attr(n, &amp;quot;nodePar&amp;quot;) &amp;lt;- c(a$nodePar, lab.col = labCol)
+  }
+  n
+}
+
+hclust_ward %&amp;gt;% 
+  color_branches(k = 2, col = c(&amp;quot;#036564&amp;quot;, &amp;quot;#EB6841&amp;quot;)) %&amp;gt;% 
+  dendrapply(colLab) %&amp;gt;%  # applying to all nodes
+  plot()  # finally plotting&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ape&amp;quot;)
+plot(as.phylo(hclust_ward), type = &amp;quot;unrooted&amp;quot;, cex = 0.7, no.margin = T)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5-k-means-clustering&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 5: K-means Clustering&lt;/h2&gt;
+&lt;p&gt;Categorical data cannot be passed to the kmeans() function in R. The kmeans() function uses the Euclidean distance metric to calculate the distance between observations, and this metric is not defined for categorical data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;km &amp;lt;- kmeans(df_scaled, centers = 2) # centers specify number of clusters
+km&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# K-means clustering with 2 clusters of sizes 12, 8
+# 
+# Cluster means:
+#        Aroma     Flavor Aftertaste    Acidity       Body    Balance    Overall
+# 1 -0.5530586 -0.5889311 -0.6267575 -0.5641766 -0.5577865 -0.6337761 -0.6825517
+# 2  0.8295879  0.8833967  0.9401363  0.8462649  0.8366797  0.9506641  1.0238275
+#   Total.Cup.Points Moisture.Percentage Category.One.Defects    Quakers
+# 1       -0.6521312           0.3165048            0.2043483  0.2052711
+# 2        0.9781969          -0.4747571           -0.3065225 -0.3079067
+# 
+# Clustering vector:
+# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
+#   1   1   1   1   1   2   2   2   1   1   2   1   2   1   1   2   1   2   2   1 
+# 
+# Within cluster sum of squares by cluster:
+# [1] 88.09225 26.35215
+#  (between_SS / total_SS =  45.2 %)
+# 
+# Available components:
+# 
+# [1] &amp;quot;cluster&amp;quot;      &amp;quot;centers&amp;quot;      &amp;quot;totss&amp;quot;        &amp;quot;withinss&amp;quot;     &amp;quot;tot.withinss&amp;quot;
+# [6] &amp;quot;betweenss&amp;quot;    &amp;quot;size&amp;quot;         &amp;quot;iter&amp;quot;         &amp;quot;ifault&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Visualizing clusters:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_cluster(km, df_scaled, ggtheme = theme_minimal())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Visualizing clusters in terms of variables in the dataset:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+df_km &amp;lt;- mutate(df_num, cluster = km$cluster)
+df_km %&amp;gt;% ggplot(aes(x = Aroma, y = Aftertaste)) + 
+  geom_point(aes(color = as.factor(cluster))) +
+  labs(color = &amp;quot;Clusters&amp;quot;) + theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Summary on clusters:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_km %&amp;gt;%
+  group_by(cluster) %&amp;gt;%
+  summarise(across(everything(), list(Average = mean))) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# # A tibble: 2 × 12
+#   cluster Aroma_Average Flavor_Average Aftertaste_Average Acidity_Average
+#     &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;
+# 1       1          7.56           7.57               7.40            7.50
+# 2       2          8.04           8.06               7.88            7.93
+# # ℹ 7 more variables: Body_Average &amp;lt;dbl&amp;gt;, Balance_Average &amp;lt;dbl&amp;gt;,
+# #   Overall_Average &amp;lt;dbl&amp;gt;, Total.Cup.Points_Average &amp;lt;dbl&amp;gt;,
+# #   Moisture.Percentage_Average &amp;lt;dbl&amp;gt;, Category.One.Defects_Average &amp;lt;dbl&amp;gt;,
+# #   Quakers_Average &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;ISLR&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://uc-r.github.io/kmeans_clustering&#34; class=&#34;uri&#34;&gt;https://uc-r.github.io/kmeans_clustering&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&#34; class=&#34;uri&#34;&gt;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gastonsanchez.com/visually-enforced/how-to/2012/10/03/Dendrograms/&#34; class=&#34;uri&#34;&gt;https://www.gastonsanchez.com/visually-enforced/how-to/2012/10/03/Dendrograms/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
