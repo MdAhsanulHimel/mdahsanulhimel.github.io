@@ -318,7 +318,7 @@
 
   
 
-<meta name="description" content="MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their..." />
+<meta name="description" content="This is summary" />
 
 
 
@@ -360,8 +360,8 @@
 <meta property="twitter:image" content="http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png" />
 <meta property="og:site_name" content="Md Ahsanul Islam" />
 <meta property="og:url" content="http://example.org/post/manova/" />
-<meta property="og:title" content="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python | Md Ahsanul Islam" />
-<meta property="og:description" content="MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their..." /><meta property="og:image" content="http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:title" content="MANOVA in R | Md Ahsanul Islam" />
+<meta property="og:description" content="This is summary" /><meta property="og:image" content="http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -398,7 +398,7 @@
     "@type": "WebPage",
     "@id": "http://example.org/post/manova/"
   },
-  "headline": "MANOVA Analysis: Unveiling Multivariate Patterns with R and Python",
+  "headline": "MANOVA in R",
   
   "datePublished": "2023-05-29T00:00:00Z",
   "dateModified": "2023-07-03T19:09:42+06:00",
@@ -416,7 +416,7 @@
       "url": "http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their..."
+  "description": "This is summary"
 }
 </script>
 
@@ -438,7 +438,7 @@
 
 
   
-  <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python | Md Ahsanul Islam</title>
+  <title>MANOVA in R | Md Ahsanul Islam</title>
 
   
   
@@ -458,7 +458,7 @@
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="00acc777d94cc693f1e9464592ddfd90" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="7f04424784ec1b98dd1c8ccbe080b2d9" >
 
   
   
@@ -879,7 +879,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</h1>
+  <h1>MANOVA in R</h1>
 
   
 
@@ -941,187 +941,137 @@
   <div class="article-container">
 
     <div class="article-style">
-      
-
-<div id="TOC">
-<ul>
-<li><a href="#intro" id="toc-intro">Intro</a>
-<ul>
-<li><a href="#example" id="toc-example">Example</a></li>
-</ul></li>
-<li><a href="#assumptions" id="toc-assumptions">Assumptions</a></li>
-<li><a href="#hypothesis" id="toc-hypothesis">Hypothesis</a></li>
-<li><a href="#manova-test-statistics" id="toc-manova-test-statistics">MANOVA Test Statistics</a></li>
-<li><a href="#experiment" id="toc-experiment">Experiment</a>
-<ul>
-<li><a href="#data-description" id="toc-data-description">Data Description</a></li>
-<li><a href="#hypothesis-1" id="toc-hypothesis-1">Hypothesis</a></li>
-<li><a href="#manova" id="toc-manova">MANOVA</a></li>
-</ul></li>
-</ul>
-</div>
-
-<hr />
-<div id="intro" class="section level1">
-<h1>Intro</h1>
+      <hr>
+<h2 id="intro">Intro</h2>
 <p>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their relationships to provide a more comprehensive understanding of the effects of the independent variables. If you have only a single dependent variable, then MANOVA is not required. Regular ANOVA would be more appropriate in such cases.</p>
 <p>Although separate F tests could be computed for each outcome variable, multiple
 hypothesis testing would result in an increased likelihood of at least one Type I
-error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.<span class="math inline">\(^6\)</span></p>
-<div id="example" class="section level2">
-<h2>Example</h2>
+error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.$^6$</p>
+<h3 id="example">Example</h3>
 <p>For example, if you want to determine if the height of individuals varies across different age groups, ANOVA would be suitable since you have a single dependent variable (height).</p>
 <p>However, if you have multiple dependent variables that are related to the same set of independent variables, then using MANOVA would be advantageous. For instance, suppose you have data on the height, weight, and body fat percentage of individuals, and you want to investigate if these variables differ based on different exercise routines. In this scenario, MANOVA would be appropriate as you have multiple dependent variables (height, weight, and body fat percentage) that are of interest and are potentially influenced by the independent variable (exercise routine).</p>
-</div>
-</div>
-<div id="assumptions" class="section level1">
-<h1>Assumptions</h1>
-<ol style="list-style-type: decimal">
-<li>The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.<br />
-</li>
-<li>The observations should be independent of each other.<br />
-</li>
-<li>There should be no multivariate outliers in the dependent variables.<br />
-</li>
+<h3 id="assumptions">Assumptions</h3>
+<ol>
+<li>The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.</li>
+<li>The observations should be independent of each other.</li>
+<li>There should be no multivariate outliers in the dependent variables.</li>
 <li>The dependent variables are linearly related.</li>
 </ol>
-</div>
-<div id="hypothesis" class="section level1">
-<h1>Hypothesis</h1>
-<p><span class="math inline">\(H_0:\)</span> μ1 = ··· = μk against <span class="math inline">\(H_1:\)</span> not all μi’s are the same.<span class="math inline">\(^3\)</span><br />
-or,<br />
-<span class="math inline">\(H_0:\)</span> Group mean vectors are all equal to one another.<br />
-<span class="math inline">\(H_1:\)</span> At least one pair of treatments is different on at least one variable.</p>
-</div>
-<div id="manova-test-statistics" class="section level1">
-<h1>MANOVA Test Statistics</h1>
-<ol style="list-style-type: decimal">
-<li>Wilk’s Lambda: <span class="math inline">\(\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}\)</span><br />
-</li>
-<li>Hotelling-Lawley Trace: <span class="math inline">\(T^2_0 = trace(\mathbf{HE}^{-1})\)</span><br />
-</li>
-<li>Pillai Trace: <span class="math inline">\(V = trace(\mathbf{H(H+E)^{-1}})\)</span><br />
-</li>
-<li>Roy’s Maximum Root: Largest eigenvalue of <span class="math inline">\(HE^{-1}\)</span></li>
+<h3 id="hypothesis">Hypothesis</h3>
+<p><code>\(H_0:\)</code> μ1 = ··· = μk against <code>\(H_1:\)</code> not all μi’s are the same.$^3$<br>
+or,<br>
+<code>\(H_0:\)</code> Group mean vectors are all equal to one another.<br>
+<code>\(H_1:\)</code> At least one pair of treatments is different on at least one variable.</p>
+<h2 id="manova-test-statistics">MANOVA Test Statistics</h2>
+<ol>
+<li>Wilk&rsquo;s Lambda: <code>\(\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}\)</code></li>
+<li>Hotelling-Lawley Trace: <code>\(T^2_0 = trace(\mathbf{HE}^{-1})\)</code></li>
+<li>Pillai Trace: <code>\(V = trace(\mathbf{H(H+E)^{-1}})\)</code></li>
+<li>Roy&rsquo;s Maximum Root: Largest eigenvalue of <code>\(HE^{-1}\)</code></li>
 </ol>
-<p>The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai’s test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai’s test is also locally most powerful. <span class="math inline">\(^7\)</span></p>
-</div>
-<div id="experiment" class="section level1">
-<h1>Experiment</h1>
-<div id="data-description" class="section level2">
-<h2>Data Description</h2>
-<p>The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. <span class="math inline">\(^4\)</span></p>
-<pre class="r"><code># reading data
-data &lt;- read.table(&quot;data/MANOVA.txt&quot;, header = T, sep = &quot;\t&quot;)
-
-library(tidyverse)
-data &lt;- data %&gt;% mutate(across(c(&quot;Temperature&quot;,&quot;N.source&quot;), factor))
-summary(data)</code></pre>
-<pre><code>#   Experiment        Temperature              N.source     Replica     
-#  Length:120         30:40       ammonium chloride:60   Min.   : 1.00  
-#  Class :character   35:40       yeast extract    :60   1st Qu.: 5.75  
-#  Mode  :character   37:40                              Median :10.50  
-#                                                        Mean   :10.50  
-#                                                        3rd Qu.:15.25  
-#                                                        Max.   :20.00  
-#    Dry.weight     Optical.density Product.yield  
-#  Min.   : 1.670   Min.   :0.210   Min.   : 8.40  
-#  1st Qu.: 4.805   1st Qu.:1.770   1st Qu.:41.90  
-#  Median : 6.070   Median :1.910   Median :57.65  
-#  Mean   : 6.024   Mean   :1.976   Mean   :57.10  
-#  3rd Qu.: 7.080   3rd Qu.:2.223   3rd Qu.:72.70  
-#  Max.   :10.300   Max.   :2.480   Max.   :93.10</code></pre>
-<pre class="r"><code>data %&gt;% 
-  group_by(Temperature) %&gt;% 
-  summarise(Mean_dry_weight = mean(Dry.weight), 
-            Mean_optical_density = mean(Optical.density),
-            Mean_product_yield = mean(Product.yield))</code></pre>
-<pre><code># # A tibble: 3 × 4
-#   Temperature Mean_dry_weight Mean_optical_density Mean_product_yield
-#   &lt;fct&gt;                 &lt;dbl&gt;                &lt;dbl&gt;              &lt;dbl&gt;
-# 1 30                     5.92                 1.92               56.6
-# 2 35                     5.93                 1.99               56.5
-# 3 37                     6.22                 2.01               58.3</code></pre>
-</div>
-<div id="hypothesis-1" class="section level2">
-<h2>Hypothesis</h2>
-<p><span class="math inline">\(H_0:\)</span> There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.</p>
-</div>
-<div id="manova" class="section level2">
-<h2>MANOVA</h2>
-<pre class="r"><code>manova_result &lt;- manova(cbind(Dry.weight, Optical.density, Product.yield) ~ Temperature,
-                        data = data)
-summary(manova_result, test = &quot;Pillai&quot;)</code></pre>
-<pre><code>#              Df   Pillai approx F num Df den Df Pr(&gt;F)
-# Temperature   2 0.030774  0.60427      6    232 0.7268
-# Residuals   117</code></pre>
-<pre class="r"><code>summary(manova_result, test = &quot;Wilks&quot;)</code></pre>
-<pre><code>#              Df   Wilks approx F num Df den Df Pr(&gt;F)
-# Temperature   2 0.96939  0.60053      6    230 0.7298
-# Residuals   117</code></pre>
-<pre class="r"><code>summary(manova_result, test = &quot;Hotelling-Lawley&quot;)</code></pre>
-<pre><code>#              Df Hotelling-Lawley approx F num Df den Df Pr(&gt;F)
-# Temperature   2         0.031409  0.59677      6    228 0.7328
-# Residuals   117</code></pre>
-<pre class="r"><code>summary(manova_result, test = &quot;Roy&quot;)</code></pre>
-<pre><code>#              Df      Roy approx F num Df den Df Pr(&gt;F)
-# Temperature   2 0.024543  0.94899      3    116 0.4195
-# Residuals   117</code></pre>
-<p>A p-value lower than 0.05 means the null hypothesis can be rejected.</p>
-<pre class="python"><code>import pandas as pd
-from statsmodels.multivariate.manova import MANOVA
-
-# Load the data
-data = pd.read_table(&quot;data/MANOVA.txt&quot;, sep=&quot;\t&quot;)
-
-# Perform MANOVA analysis
-# Change variable names
-new_column_names = {
-    &#39;Dry weight&#39;: &#39;Weight&#39;,
-    &#39;Optical density&#39;: &#39;Density&#39;,
-    &#39;Product yield&#39;: &#39;Yield&#39;
-}
-data = data.rename(columns=new_column_names)
-manova_result = MANOVA.from_formula(&#39;Weight + Density + Yield ~ Temperature&#39;, data)
-print(manova_result.mv_test()) </code></pre>
-<pre><code>#                   Multivariate linear model
-# =============================================================
-#                                                              
-# -------------------------------------------------------------
-#        Intercept        Value  Num DF  Den DF  F Value Pr &gt; F
-# -------------------------------------------------------------
-#           Wilks&#39; lambda 0.8059 3.0000 116.0000  9.3151 0.0000
-#          Pillai&#39;s trace 0.1941 3.0000 116.0000  9.3151 0.0000
-#  Hotelling-Lawley trace 0.2409 3.0000 116.0000  9.3151 0.0000
-#     Roy&#39;s greatest root 0.2409 3.0000 116.0000  9.3151 0.0000
-# -------------------------------------------------------------
-#                                                              
-# -------------------------------------------------------------
-#       Temperature       Value  Num DF  Den DF  F Value Pr &gt; F
-# -------------------------------------------------------------
-#           Wilks&#39; lambda 0.9771 3.0000 116.0000  0.9079 0.4396
-#          Pillai&#39;s trace 0.0229 3.0000 116.0000  0.9079 0.4396
-#  Hotelling-Lawley trace 0.0235 3.0000 116.0000  0.9079 0.4396
-#     Roy&#39;s greatest root 0.0235 3.0000 116.0000  0.9079 0.4396
-# =============================================================</code></pre>
-<hr />
+<p>The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai&rsquo;s test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai&rsquo;s test is also locally most powerful. <code>\(^7\)</code></p>
+<h2 id="experiment">Experiment</h2>
+<h3 id="data-description">Data Description</h3>
+<p>The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. <code>\(^4\)</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># reading data</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="s">&#34;data/MANOVA.txt&#34;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;\t&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">&lt;-</span> <span class="n">data</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Temperature&#34;</span><span class="p">,</span><span class="s">&#34;N.source&#34;</span><span class="p">),</span> <span class="n">factor</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#   Experiment        Temperature              N.source     Replica     
+</span></span><span class="line"><span class="cl">#  Length:120         30:40       ammonium chloride:60   Min.   : 1.00  
+</span></span><span class="line"><span class="cl">#  Class :character   35:40       yeast extract    :60   1st Qu.: 5.75  
+</span></span><span class="line"><span class="cl">#  Mode  :character   37:40                              Median :10.50  
+</span></span><span class="line"><span class="cl">#                                                        Mean   :10.50  
+</span></span><span class="line"><span class="cl">#                                                        3rd Qu.:15.25  
+</span></span><span class="line"><span class="cl">#                                                        Max.   :20.00  
+</span></span><span class="line"><span class="cl">#    Dry.weight     Optical.density Product.yield  
+</span></span><span class="line"><span class="cl">#  Min.   : 1.670   Min.   :0.210   Min.   : 8.40  
+</span></span><span class="line"><span class="cl">#  1st Qu.: 4.805   1st Qu.:1.770   1st Qu.:41.90  
+</span></span><span class="line"><span class="cl">#  Median : 6.070   Median :1.910   Median :57.65  
+</span></span><span class="line"><span class="cl">#  Mean   : 6.024   Mean   :1.976   Mean   :57.10  
+</span></span><span class="line"><span class="cl">#  3rd Qu.: 7.080   3rd Qu.:2.223   3rd Qu.:72.70  
+</span></span><span class="line"><span class="cl">#  Max.   :10.300   Max.   :2.480   Max.   :93.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">data</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">Temperature</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">Mean_dry_weight</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Dry.weight</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">Mean_optical_density</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Optical.density</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Mean_product_yield</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Product.yield</span><span class="p">))</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># # A tibble: 3 × 4
+</span></span><span class="line"><span class="cl">#   Temperature Mean_dry_weight Mean_optical_density Mean_product_yield
+</span></span><span class="line"><span class="cl">#   &lt;fct&gt;                 &lt;dbl&gt;                &lt;dbl&gt;              &lt;dbl&gt;
+</span></span><span class="line"><span class="cl"># 1 30                     5.92                 1.92               56.6
+</span></span><span class="line"><span class="cl"># 2 35                     5.93                 1.99               56.5
+</span></span><span class="line"><span class="cl"># 3 37                     6.22                 2.01               58.3
+</span></span></code></pre></div><h3 id="hypothesis-1">Hypothesis</h3>
+<p><code>\(H_0:\)</code> There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.</p>
+<h3 id="manova">MANOVA</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">manova_result</span> <span class="o">&lt;-</span> <span class="nf">manova</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">Dry.weight</span><span class="p">,</span> <span class="n">Optical.density</span><span class="p">,</span> <span class="n">Product.yield</span><span class="p">)</span> <span class="o">~</span> <span class="n">Temperature</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">manova_result</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="s">&#34;Pillai&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#              Df   Pillai approx F num Df den Df Pr(&gt;F)
+</span></span><span class="line"><span class="cl"># Temperature   2 0.030774  0.60427      6    232 0.7268
+</span></span><span class="line"><span class="cl"># Residuals   117
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">manova_result</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="s">&#34;Wilks&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#              Df   Wilks approx F num Df den Df Pr(&gt;F)
+</span></span><span class="line"><span class="cl"># Temperature   2 0.96939  0.60053      6    230 0.7298
+</span></span><span class="line"><span class="cl"># Residuals   117
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">manova_result</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="s">&#34;Hotelling-Lawley&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#              Df Hotelling-Lawley approx F num Df den Df Pr(&gt;F)
+</span></span><span class="line"><span class="cl"># Temperature   2         0.031409  0.59677      6    228 0.7328
+</span></span><span class="line"><span class="cl"># Residuals   117
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">manova_result</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="s">&#34;Roy&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#              Df      Roy approx F num Df den Df Pr(&gt;F)
+</span></span><span class="line"><span class="cl"># Temperature   2 0.024543  0.94899      3    116 0.4195
+</span></span><span class="line"><span class="cl"># Residuals   117
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">statsmodels.multivariate.manova</span> <span class="kn">import</span> <span class="n">MANOVA</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load the data</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&#34;data/MANOVA.txt&#34;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&#34;</span><span class="se">\t</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Perform MANOVA analysis</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Change variable names</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_column_names</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Dry weight&#39;</span><span class="p">:</span> <span class="s1">&#39;Weight&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Optical density&#39;</span><span class="p">:</span> <span class="s1">&#39;Density&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Product yield&#39;</span><span class="p">:</span> <span class="s1">&#39;Yield&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">new_column_names</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">manova_result</span> <span class="o">=</span> <span class="n">MANOVA</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="s1">&#39;Weight + Density + Yield ~ Temperature&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">manova_result</span><span class="o">.</span><span class="n">mv_test</span><span class="p">())</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#                   Multivariate linear model
+</span></span><span class="line"><span class="cl"># =============================================================
+</span></span><span class="line"><span class="cl">#                                                              
+</span></span><span class="line"><span class="cl"># -------------------------------------------------------------
+</span></span><span class="line"><span class="cl">#        Intercept        Value  Num DF  Den DF  F Value Pr &gt; F
+</span></span><span class="line"><span class="cl"># -------------------------------------------------------------
+</span></span><span class="line"><span class="cl">#           Wilks&#39; lambda 0.8059 3.0000 116.0000  9.3151 0.0000
+</span></span><span class="line"><span class="cl">#          Pillai&#39;s trace 0.1941 3.0000 116.0000  9.3151 0.0000
+</span></span><span class="line"><span class="cl">#  Hotelling-Lawley trace 0.2409 3.0000 116.0000  9.3151 0.0000
+</span></span><span class="line"><span class="cl">#     Roy&#39;s greatest root 0.2409 3.0000 116.0000  9.3151 0.0000
+</span></span><span class="line"><span class="cl"># -------------------------------------------------------------
+</span></span><span class="line"><span class="cl">#                                                              
+</span></span><span class="line"><span class="cl"># -------------------------------------------------------------
+</span></span><span class="line"><span class="cl">#       Temperature       Value  Num DF  Den DF  F Value Pr &gt; F
+</span></span><span class="line"><span class="cl"># -------------------------------------------------------------
+</span></span><span class="line"><span class="cl">#           Wilks&#39; lambda 0.9771 3.0000 116.0000  0.9079 0.4396
+</span></span><span class="line"><span class="cl">#          Pillai&#39;s trace 0.0229 3.0000 116.0000  0.9079 0.4396
+</span></span><span class="line"><span class="cl">#  Hotelling-Lawley trace 0.0235 3.0000 116.0000  0.9079 0.4396
+</span></span><span class="line"><span class="cl">#     Roy&#39;s greatest root 0.0235 3.0000 116.0000  0.9079 0.4396
+</span></span><span class="line"><span class="cl"># =============================================================
+</span></span></code></pre></div><hr>
 <p><strong>Refererences:</strong></p>
-<ol style="list-style-type: decimal">
-<li><a href="https://online.stat.psu.edu/stat505/lesson/8">Stat PSU - Lesson 8: Multivariate Analysis of Variance (MANOVA)</a><br />
-</li>
-<li><a href="https://towardsdatascience.com/manova-97e675a96158">MANOVA, towards data science</a></li>
-<li>P.K. Bhattacharya, Prabir Burman - Theory and Methods of Statistics<br />
-</li>
-<li><a href="https://www.chegg.com/homework-help/questions-and-answers/experiment-temperature-n-source-replica-dry-weight-optical-density-product-yield-batch30aa-q35487503">Data description</a><br />
-</li>
-<li><a href="https://www.applied-maths.com/download/sample-data">Data source</a><br />
-</li>
-<li>Applied MANOVA and Discriminant Analysis-Wiley-Interscience (2006)<br />
-</li>
+<ol>
+<li><a href="https://online.stat.psu.edu/stat505/lesson/8" target="_blank" rel="noopener">Stat PSU - Lesson 8: Multivariate Analysis of Variance (MANOVA)</a></li>
+<li><a href="https://towardsdatascience.com/manova-97e675a96158" target="_blank" rel="noopener">MANOVA, towards data science</a></li>
+<li>P.K. Bhattacharya, Prabir Burman - Theory and Methods of Statistics</li>
+<li><a href="https://www.chegg.com/homework-help/questions-and-answers/experiment-temperature-n-source-replica-dry-weight-optical-density-product-yield-batch30aa-q35487503" target="_blank" rel="noopener">Data description</a></li>
+<li><a href="https://www.applied-maths.com/download/sample-data" target="_blank" rel="noopener">Data source</a></li>
+<li>Applied MANOVA and Discriminant Analysis-Wiley-Interscience (2006)</li>
 <li>Srivastava Multivariate Statistics - page 187</li>
 </ol>
-</div>
-</div>
 
     </div>
 
@@ -1156,7 +1106,7 @@ print(manova_result.mv_test()) </code></pre>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;text=MANOVA&#43;Analysis%3A&#43;Unveiling&#43;Multivariate&#43;Patterns&#43;with&#43;R&#43;and&#43;Python" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;text=MANOVA&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1173,7 +1123,7 @@ print(manova_result.mv_test()) </code></pre>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;t=MANOVA&#43;Analysis%3A&#43;Unveiling&#43;Multivariate&#43;Patterns&#43;with&#43;R&#43;and&#43;Python" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;t=MANOVA&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1192,7 +1142,7 @@ print(manova_result.mv_test()) </code></pre>
         
       
       <li>
-        <a href="mailto:?subject=MANOVA%20Analysis%3A%20Unveiling%20Multivariate%20Patterns%20with%20R%20and%20Python&amp;body=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=MANOVA%20in%20R&amp;body=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1209,7 +1159,7 @@ print(manova_result.mv_test()) </code></pre>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;title=MANOVA&#43;Analysis%3A&#43;Unveiling&#43;Multivariate&#43;Patterns&#43;with&#43;R&#43;and&#43;Python" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;title=MANOVA&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1226,7 +1176,7 @@ print(manova_result.mv_test()) </code></pre>
       
       
       <li>
-        <a href="whatsapp://send?text=MANOVA&#43;Analysis%3A&#43;Unveiling&#43;Multivariate&#43;Patterns&#43;with&#43;R&#43;and&#43;Python%20http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=MANOVA&#43;in&#43;R%20http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1243,7 +1193,7 @@ print(manova_result.mv_test()) </code></pre>
       
       
       <li>
-        <a href="https://reddit.com/submit?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;title=MANOVA&#43;Analysis%3A&#43;Unveiling&#43;Multivariate&#43;Patterns&#43;with&#43;R&#43;and&#43;Python" target="_blank" rel="noopener" class="share-btn-reddit" aria-label="reddit-alien">
+        <a href="https://reddit.com/submit?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;title=MANOVA&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-reddit" aria-label="reddit-alien">
           <i class="fab fa-reddit-alien"></i>
         </a>
       </li>
@@ -1260,7 +1210,7 @@ print(manova_result.mv_test()) </code></pre>
       
       
       <li>
-        <a href="https://pinterest.com/pin/create/link/?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;description=MANOVA&#43;Analysis%3A&#43;Unveiling&#43;Multivariate&#43;Patterns&#43;with&#43;R&#43;and&#43;Python" target="_blank" rel="noopener" class="share-btn-pinterest" aria-label="pinterest">
+        <a href="https://pinterest.com/pin/create/link/?url=http%3A%2F%2Fexample.org%2Fpost%2Fmanova%2F&amp;description=MANOVA&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-pinterest" aria-label="pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>

@@ -18,7 +18,7 @@
       <pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate>
       <guid>http://example.org/post/2024-10-10-why-5-significance-level/</guid>
       <description>&lt;p&gt;Statistical inference এর অনেক গুরুত্বপূর্ণ একটি টপিক হচ্ছে hypothesis testing। এটি পড়তে গিয়ে অনেকের মাঝে একটা প্রশ্ন ঘুরপাক খায় যে level of significance কেন 0.05 ধরতে হবে। p-value এর মান 0.05 এর নিচে হলে কেনো null hypothesis রিজেক্ট করতে হবে? এসবের উত্তরই উঠে আসবে এই লেখায়।&lt;/p&gt;
-&lt;p&gt;ইপোথিসিস টেস্টে দুটো হাইপোথিসিস থাকে। Alternative hypothesis (H1) বলে যে বাস্তবে কোনো পরিবর্তন ঘটেনি বা প্রভাব নেই, আর Null hypothesis (H₀) বলে যে, কোনো পরিবর্তন ঘটেনি বা প্রভাব নেই। এই হাইপোথেসিস টেস্ট করার সময় আরো একটি বিষয় নির্ধারণ করে নিতে হয়, যাকে level of significance (alpha) বলা হয়। সাধারণত এর মান 0.05 ধরা হয়। ক্ষেত্রবিশেষে একে 0.10 কিংবা 0.01 ও ধরা হয়ে থাকে। level of significance আসলে হাইপোথেসিস টেস্টে ডিসিশন নেওয়ার জন্য একটি cutoff point / threshold হিসেবে ব্যবহার হয় । যদি টেস্ট করার পর টেস্ট স্ট্যাটিস্টিক (যেমন t statistic, F-statistic, etc.) এর সাথে সংশ্লিষ্ট p-value এর মান 0.05 এর বেশী হয় তাহলে আমরা Null hypothesis-কে reject করে দেই। নইলে রিজেক্ট করি না।&lt;/p&gt;
+&lt;p&gt;হাইপোথেসিস টেস্টে দুটো হাইপোথেসিস থাকে। Alternative hypothesis (H1) বলে যে বাস্তবে কোনো পরিবর্তন ঘটেনি বা প্রভাব নেই, আর Null hypothesis (H₀) বলে যে, কোনো পরিবর্তন ঘটেনি বা প্রভাব নেই। এই হাইপোথেসিস টেস্ট করার সময় আরো একটি বিষয় নির্ধারণ করে নিতে হয়, যাকে level of significance (alpha) বলা হয়। সাধারণত এর মান 0.05 ধরা হয়। ক্ষেত্রবিশেষে একে 0.10 কিংবা 0.01 ও ধরা হয়ে থাকে। level of significance আসলে হাইপোথেসিস টেস্টে ডিসিশন নেওয়ার জন্য একটি cutoff point / threshold হিসেবে ব্যবহার হয় । যদি টেস্ট করার পর টেস্ট স্ট্যাটিস্টিক (যেমন t statistic, F-statistic, etc.) এর সাথে সংশ্লিষ্ট p-value এর মান 0.05 এর বেশী হয় তাহলে আমরা Null hypothesis-কে reject করে দেই। নইলে রিজেক্ট করি না।&lt;/p&gt;
 &lt;p&gt;কিন্তু কেন ৫%? ২০১৩ সালে অক্সফোর্ড উনিভার্সিটি প্রেস থেকে রয়াল স্ট্যাটিস্টিক্যাল সোস্যাইটি এর প্রকাশিত ম্যাগাজিন “Significance”-এ এটি নিয়ে একটি আর্টিকেল প্রকাশিত হয়। সেখানে বলা হয় পরিসংখ্যানবিদরা মিলে একমত হয়ে এই 0.05 কে নির্দিষ্ট করেছেন সবার কাজের সুবিধার্থে। কিন্তু তাতেও এর সঠিক উত্তর আসে না। তারা কেনই বা 0.05 কে নির্ধারণ করলো?&lt;/p&gt;
 &lt;p&gt;এটিকে বুঝার জন্য আমাদেরকে আরেকটু পেছনে যেতে হবে। সম্ভাবনা থেকে শুরু করা যাক। ধরুন আপনার হাতে ২০ টি কাগজ আছে। এর মাঝে ১০ টি কাগজের এক পাশে লাল কলম দিয়ে আপনার নাম লিখা আছে, বাকি ১০ টিতে কিছু লিখা নেই। যদি আপনি লটারির মাধ্যমে এই ২০ টি কাগজ থেকে একটি কাগজ বাছাই করেন তাহলে আপনি আপনার নাম লিখা কার্ড বাছাই করার সম্ভাবনা ১০/২০ = ০.৫।&lt;/p&gt;
 &lt;p&gt;এটিকে যদি একটি জুয়া খেলায় পরিণত করা যায় তাহলে কেমন হবে? আপনার নামযুক্ত কাগজ যদি লটারিতে উঠে তাহলে আপনি জিতবেন, নইলে হারবেন। জিতলে আপনি ১০০ টাকা পাবেন, হারলে ১০০ টাকা দিবেন।&lt;/p&gt;
@@ -41,837 +41,826 @@
       <link>http://example.org/post/cluster-analysis/</link>
       <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
       <guid>http://example.org/post/cluster-analysis/</guid>
-      <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34; id=&#34;toc-introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#types&#34; id=&#34;toc-types&#34;&gt;Types&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#centroid-based-clustering&#34; id=&#34;toc-centroid-based-clustering&#34;&gt;Centroid-based Clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hierarchical-clustering&#34; id=&#34;toc-hierarchical-clustering&#34;&gt;Hierarchical Clustering&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#r-code&#34; id=&#34;toc-r-code&#34;&gt;R Code&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#step-1-load-data&#34; id=&#34;toc-step-1-load-data&#34;&gt;Step 1: Load Data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-2-complete-cases&#34; id=&#34;toc-step-2-complete-cases&#34;&gt;Step 2: Complete Cases&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-3-scaling&#34; id=&#34;toc-step-3-scaling&#34;&gt;Step 3: Scaling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-4-optimal-number-of-clusters&#34; id=&#34;toc-step-4-optimal-number-of-clusters&#34;&gt;Step 4: Optimal Number of Clusters&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#elbow-method&#34; id=&#34;toc-elbow-method&#34;&gt;Elbow Method&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#silhouette-scorewidth&#34; id=&#34;toc-silhouette-scorewidth&#34;&gt;Silhouette Score/Width&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#gap-statistic-method&#34; id=&#34;toc-gap-statistic-method&#34;&gt;Gap Statistic Method&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#combination-of-all&#34; id=&#34;toc-combination-of-all&#34;&gt;Combination of All&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-5-hierarchical-clustering&#34; id=&#34;toc-step-5-hierarchical-clustering&#34;&gt;Step 5: Hierarchical Clustering&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#step-5.1-distance&#34; id=&#34;toc-step-5.1-distance&#34;&gt;Step 5.1: Distance&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-5.2-linkage-criteria&#34; id=&#34;toc-step-5.2-linkage-criteria&#34;&gt;Step 5.2: Linkage Criteria&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-5.3-dendrogram&#34; id=&#34;toc-step-5.3-dendrogram&#34;&gt;Step 5.3: Dendrogram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#step-5-k-means-clustering&#34; id=&#34;toc-step-5-k-means-clustering&#34;&gt;Step 5: K-means Clustering&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#references&#34; id=&#34;toc-references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
+      <description>&lt;hr&gt;
+&lt;p&gt;Now, &lt;code&gt;\(trace(\Sigma)\)&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;\(=trace(\Gamma D\Gamma&#39;)\)&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;\(=trace(\Gamma&#39;\Gamma D)\)&lt;/code&gt;   &lt;a href=&#34;https://en.wikipedia.org/wiki/Trace_%28linear_algebra%29#Cyclic_property&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt; [Cyclic property] &lt;/a&gt;&lt;br&gt;
+&lt;code&gt;\(=trace(D)\)&lt;/code&gt;   [Since, &lt;code&gt;\(\Gamma\)&lt;/code&gt; is an orthogonal matrix]&lt;br&gt;
+&lt;code&gt;\(=\sum_{i=1}^{p}\lambda_i\)&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;cluster-analysis-ca&#34;&gt;Cluster Analysis (CA)&lt;/h1&gt;
 &lt;p&gt;Cluster analysis is a data analysis technique that aims to identify and group observations or data points that are homogeneous, meaning they share similar characteristics or properties. It is a data mining technique and is considered an unsupervised learning algorithm that helps reveal underlying patterns and structures within the data.&lt;/p&gt;
 &lt;p&gt;Cluster analysis is a powerful tool that can be used for a variety of tasks, including:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Customer segmentation: Cluster analysis can be used to segment customers into groups based on their purchase behavior, demographics, or other factors. This can help businesses to target their marketing campaigns more effectively.&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Fraud detection: Cluster analysis can be used to identify fraudulent transactions by finding groups of transactions that are similar in terms of their characteristics.&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Product recommendation: Cluster analysis can be used to recommend products to users based on their past purchase history or other factors.&lt;br /&gt;
-&lt;/li&gt;
+&lt;li&gt;Customer segmentation: Cluster analysis can be used to segment customers into groups based on their purchase behavior, demographics, or other factors. This can help businesses to target their marketing campaigns more effectively.&lt;/li&gt;
+&lt;li&gt;Fraud detection: Cluster analysis can be used to identify fraudulent transactions by finding groups of transactions that are similar in terms of their characteristics.&lt;/li&gt;
+&lt;li&gt;Product recommendation: Cluster analysis can be used to recommend products to users based on their past purchase history or other factors.&lt;/li&gt;
 &lt;li&gt;Anomaly detection: Cluster analysis can be used to identify anomalies or outliers in data. This can be helpful for identifying fraud, detecting system errors, or identifying new trends.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;types&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Types&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;types&#34;&gt;Types&lt;/h1&gt;
 &lt;p&gt;Centroid-based clustering and Hierarchical clustering are two distinct methods commonly used in clustering analysis.&lt;/p&gt;
 &lt;p&gt;In centroid-based clustering, the number of clusters is predetermined and specified before the clustering process begins. The algorithm aims to partition the observations into the specified number of clusters by minimizing the within-cluster sum of squares.&lt;/p&gt;
 &lt;p&gt;In contrast, hierarchical clustering does not require specifying the number of clusters in advance. It generates a tree-like structure called a dendrogram, which shows the hierarchical relationships between the observations at different levels of similarity. By cutting the dendrogram at different heights, we can obtain clusterings for different numbers of clusters, ranging from 1 to the total number of observations.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;index.en_insertimage_1.png&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;centroid-based-clustering&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Centroid-based Clustering&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Centroid-based clustering and hierarchical clustering&#34; srcset=&#34;
+               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_e47af8c59095025576dbcb585d424ea2.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_40c87307684b96ec747e0e7ff975b3bd.webp 760w,
+               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_e47af8c59095025576dbcb585d424ea2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;358&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;centroid-based-clustering&#34;&gt;Centroid-based Clustering&lt;/h2&gt;
 &lt;p&gt;This is a bottom-up approach to clustering, where objects are assigned to non-overlapping clusters based on their proximity to a central point, called a centroid. The most commonly centroid-based clustering algorithms include k-means, k-medoids, and fuzzy c-means.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;index.en_insertimage_2.png&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;hierarchical-clustering&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Hierarchical Clustering&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;K-means vs K-medoids&#34; srcset=&#34;
+               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_2e6c8cc2c37b6d28cafc168eed460045.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_9f2c55140ddc80806e79d8e8ef0eba6c.webp 760w,
+               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_2e6c8cc2c37b6d28cafc168eed460045.webp&#34;
+               width=&#34;526&#34;
+               height=&#34;304&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;hierarchical-clustering&#34;&gt;Hierarchical Clustering&lt;/h2&gt;
 &lt;p&gt;Hierarchical clustering is a top-down approach to clustering that creates a hierarchy of clusters by recursively merging or splitting them based on their similarity. It can be either agglomerative (where objects are merged together to form clusters) or divisive (where clusters are split apart to form smaller clusters).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;index.en_insertimage_3.png&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;r-code&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Code&lt;/h1&gt;
-&lt;div id=&#34;step-1-load-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 1: Load Data&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- read.csv(&amp;quot;df_coffee.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Taking a sample of 20 observations for the demonstration purpose:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(100)
-df &amp;lt;- df[sample(1:nrow(df), size = 20),]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Always check descriptive statistics:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;skimr::skim(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Hierarchical Clustering&#34; srcset=&#34;
+               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_3f0ca94f84ff4c4879cb72aa7d93b702.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_021fb62ba13097a29723a3fd46d8c197.webp 760w,
+               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_3f0ca94f84ff4c4879cb72aa7d93b702.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;422&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;r-code&#34;&gt;R Code&lt;/h1&gt;
+&lt;h2 id=&#34;step-1-load-data&#34;&gt;Step 1: Load Data&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.csv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;df_coffee.csv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Taking a sample of 20 observations for the demonstration purpose:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;set.seed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;[sample&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;nrow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Always check descriptive statistics:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;skimr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;skim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Table: Table 1: Data summary&lt;/p&gt;
 &lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-4&#34;&gt;Table 1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
 &lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;df&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Name&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;df&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;20&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;20&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;16&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;16&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;character&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;character&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;15&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;numeric&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;15&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;________________________&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;None&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;colgroup&gt;
-&lt;col width=&#34;19%&#34; /&gt;
-&lt;col width=&#34;13%&#34; /&gt;
-&lt;col width=&#34;19%&#34; /&gt;
-&lt;col width=&#34;5%&#34; /&gt;
-&lt;col width=&#34;5%&#34; /&gt;
-&lt;col width=&#34;8%&#34; /&gt;
-&lt;col width=&#34;12%&#34; /&gt;
-&lt;col width=&#34;15%&#34; /&gt;
-&lt;/colgroup&gt;
 &lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;min&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;max&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;empty&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;whitespace&lt;/th&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;min&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;max&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;empty&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;whitespace&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Color&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;12&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Color&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
-&lt;table style=&#34;width:100%;&#34;&gt;
-&lt;colgroup&gt;
-&lt;col width=&#34;22%&#34; /&gt;
-&lt;col width=&#34;10%&#34; /&gt;
-&lt;col width=&#34;15%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;col width=&#34;5%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;col width=&#34;6%&#34; /&gt;
-&lt;/colgroup&gt;
+&lt;table&gt;
 &lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;mean&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;sd&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;p0&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;p25&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;p50&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;p75&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;p100&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;hist&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Aroma&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.75&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.35&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.48&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.75&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.50&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▇▆▇▆▃&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Aroma&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.75&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.35&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.17&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.48&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.75&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.50&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▇▆▇▆▃&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Flavor&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.77&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.34&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.56&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.75&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.94&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.50&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▃▃▇▃▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flavor&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.77&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.34&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.17&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.56&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.75&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.94&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.50&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▃▃▇▃▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Aftertaste&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.59&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.31&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.40&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.58&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.77&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.17&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▂▆▇▅▂&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Aftertaste&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.59&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.31&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.40&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.58&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.77&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.17&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▂▆▇▅▂&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Acidity&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.30&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.08&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.50&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.71&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.81&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.25&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▂▃▇▃▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Acidity&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.67&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.30&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.08&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.50&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.71&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.81&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.25&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▂▃▇▃▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Body&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.66&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.25&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.48&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.83&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.17&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▂▃▇▃▂&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Body&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.66&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.25&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.17&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.48&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.67&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.83&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.17&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▂▃▇▃▂&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Balance&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.33&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.42&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.85&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.25&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▅▃▇▃▃&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Balance&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.67&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.33&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.17&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.42&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.67&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.85&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.25&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▅▃▇▃▃&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Uniformity&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Uniformity&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Clean.Cup&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Clean.Cup&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Sweetness&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.00&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Sweetness&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.00&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Overall&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.67&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.38&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.17&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.33&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.62&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.92&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.50&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▇▃▃▁▃&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Overall&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.67&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.38&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.17&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.33&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.62&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.92&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8.50&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▇▃▃▁▃&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Defects&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Defects&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▁▁▇▁▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Total.Cup.Points&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;83.77&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2.09&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;80.17&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;82.50&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;83.70&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;84.89&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;87.58&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▅▇▇▆▅&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Total.Cup.Points&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;83.77&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.09&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;80.17&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;82.50&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;83.70&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;84.89&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;87.58&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▅▇▇▆▅&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Moisture.Percentage&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.94&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1.31&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;9.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;9.70&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;11.20&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;11.83&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;13.10&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▇▃▃▇▃&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Moisture.Percentage&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10.94&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.31&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.70&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;11.20&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;11.83&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;13.10&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▇▃▃▇▃&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Category.One.Defects&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.15&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.49&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2.00&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Category.One.Defects&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.15&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.49&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.00&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Quakers&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.35&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1.14&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5.00&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Quakers&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.35&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.14&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.00&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Three of the variables have no variability (standard deviation of zero). So they should be removed:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- dplyr::select(df, -c(&amp;quot;Uniformity&amp;quot;,&amp;quot;Clean.Cup&amp;quot;,&amp;quot;Sweetness&amp;quot;,&amp;quot;Defects&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can only use numeric variables in cluster analysis functions in R for now. (There are some advanced techniques that discuss methods related to cluster analysis in mixed data types).&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_num &amp;lt;- df[,-ncol(df)]  # removing the last variable in the dataset which is character type&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-2-complete-cases&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 2: Complete Cases&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dplyr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Uniformity&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Clean.Cup&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Sweetness&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Defects&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can only use numeric variables in cluster analysis functions in R for now. (There are some advanced techniques that discuss methods related to cluster analysis in mixed data types).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;ncol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# removing the last variable in the dataset which is character type&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;step-2-complete-cases&#34;&gt;Step 2: Complete Cases&lt;/h2&gt;
 &lt;p&gt;Take only complete cases:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_com &amp;lt;- na.omit(df_num)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-3-scaling&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 3: Scaling&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_com&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;na.omit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;step-3-scaling&#34;&gt;Step 3: Scaling&lt;/h2&gt;
 &lt;p&gt;Scaling the dataset is important because different features may have different scales, and if they are not scaled, then the features with larger scales will have a greater influence on the clustering results.&lt;/p&gt;
 &lt;p&gt;Common scaling techniques used in clustering include standardization (subtracting the mean and dividing by the standard deviation), normalization (scaling the values to a specific range).&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(X_{stand} = \frac{X - \mu_x}{\sigma_x}\)&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&#34;math inline&#34;&gt;\(X_{norm} = \frac{X - X_{min}}{X_{max}-X_{min}}\)&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&#34;math inline&#34;&gt;\(E[Y] = E[\Gamma&amp;#39;X]=\Gamma&amp;#39;E[X]=0\)&lt;/span&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# standardization
-df_scaled &amp;lt;- data.frame(scale(df_com, center = TRUE, scale = TRUE))
-
-# normalization
-# df_scaled &amp;lt;- scale(df_com, 
-#                    center = apply(df_com, 2, min), 
-#                    scale = apply(df_com, 2, function(x) {max(x) - min(x)}))  &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-4-optimal-number-of-clusters&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 4: Optimal Number of Clusters&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;\(X_{stand} = \frac{X - \mu_x}{\sigma_x}\)&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;\(X_{norm} = \frac{X - X_{min}}{X_{max}-X_{min}}\)&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;\(E[Y] = E[\Gamma&#39;X]=\Gamma&#39;E[X]=0\)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# standardization&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;data.frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;center&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# normalization&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# df_scaled &amp;lt;- scale(df_com, &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                    center = apply(df_com, 2, min), &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                    scale = apply(df_com, 2, function(x) {max(x) - min(x)}))  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;step-4-optimal-number-of-clusters&#34;&gt;Step 4: Optimal Number of Clusters&lt;/h2&gt;
 &lt;p&gt;The optimal number of clusters depends on the specific dataset and the application. However, there are a few methods that can be used to help determine the optimal number of clusters in centroid-based clustering.&lt;/p&gt;
-&lt;div id=&#34;elbow-method&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Elbow Method&lt;/h3&gt;
+&lt;h3 id=&#34;elbow-method&#34;&gt;Elbow Method&lt;/h3&gt;
 &lt;p&gt;This method involves plotting the within-cluster sum of squares (WSS) as a function of the number of clusters. The WSS is a measure of how well the data points are clustered together. The elbow method works by looking for the point in the WSS curve where the rate of decrease starts to slow down. This point is often considered to be the optimal number of clusters.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(factoextra)
-fviz_nbclust(df_scaled, kmeans, method = &amp;quot;wss&amp;quot;) +  
-  geom_vline(xintercept = 2, linetype = 2) + # add line for better viz
-  labs(subtitle = &amp;quot;Elbow method&amp;quot;) # add subtitle&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;silhouette-scorewidth&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Silhouette Score/Width&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;factoextra&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;fviz_nbclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kmeans&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;wss&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;geom_vline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xintercept&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;linetype&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# add line for better viz&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;labs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subtitle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Elbow method&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# add subtitle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;!-- ![Elbow Method](Cluster Analysis_insertimage_2.png)    --&gt;
+&lt;h3 id=&#34;silhouette-scorewidth&#34;&gt;Silhouette Score/Width&lt;/h3&gt;
 &lt;p&gt;The silhouette score is a measure of how well each data point is clustered with its own cluster compared to other clusters. It ranges from -1 to 1, with a value of 1 indicating that the data point is perfectly clustered with its own cluster, 0 indicating the data point is on the border between the two clusters and a value of -1 indicating that the data point is equally well-clustered with two or more clusters. The optimal number of clusters is often the number that maximizes the average silhouette score.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_nbclust(df_scaled, kmeans, method = &amp;quot;silhouette&amp;quot;) +  
-  labs(subtitle = &amp;quot;Silhouette method&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;fviz_nbclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kmeans&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;silhouette&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;labs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subtitle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Silhouette method&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;
 &lt;p&gt;To compute Silhouette information for a cluster:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cluster)
-km_res &amp;lt;- kmeans(df_scaled, centers = 2)  # defining cluster
-
-sil &amp;lt;- silhouette(km_res$cluster, dist(df_scaled))
-plot(sil)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_silhouette(sil) + theme_minimal()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#   cluster size ave.sil.width
-# 1       1   12          0.26
-# 2       2    8          0.48&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-11-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;km_res&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;kmeans&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;centers&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# defining cluster&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;sil&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;silhouette&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;km_res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;dist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;fviz_silhouette&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;theme_minimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   cluster size ave.sil.width
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1       1   12          0.26
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2       2    8          0.48
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-11-2.png&#34; width=&#34;672&#34; /&gt;
 &lt;p&gt;A positive silhouette coefficient indicates that an observation is well-matched to its own cluster.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;gap-statistic-method&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Gap Statistic Method&lt;/h3&gt;
+&lt;!-- ![Silhouette Score](Cluster Analysis_insertimage_4.png)    --&gt;
+&lt;h3 id=&#34;gap-statistic-method&#34;&gt;Gap Statistic Method&lt;/h3&gt;
 &lt;p&gt;The gap statistic helps determine the optimal number of clusters by comparing the observed within-cluster dispersion with a reference distribution. The idea is to select the number of clusters that maximizes the gap statistic. A larger gap indicates a more significant deviation from randomness, suggesting a better-defined clustering structure. By comparing the gaps for different numbers of clusters, we can identify the number of clusters that provides the most distinct and meaningful clustering pattern.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_nbclust(df_scaled, kmeans, method = &amp;quot;gap_stat&amp;quot;) +
-  labs(subtitle = &amp;quot;Gap statistic method&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;combination-of-all&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Combination of All&lt;/h3&gt;
-&lt;p&gt;But the clever way is to try out different methods and see what majority returns. See &lt;a href=&#34;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;fviz_nbclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kmeans&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;gap_stat&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;labs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subtitle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Gap statistic method&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;!-- ![Gap Statistic Method](Cluster Analysis_insertimage_6.png)    --&gt;
+&lt;h3 id=&#34;combination-of-all&#34;&gt;Combination of All&lt;/h3&gt;
+&lt;p&gt;But the clever way is to try out different methods and see what majority returns. See &lt;a href=&#34;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;parameter&lt;/code&gt; package comes to help in this case:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(parameters)
-n_clust &amp;lt;- n_clusters(df_scaled,
-                      package = c(&amp;quot;easystats&amp;quot;, &amp;quot;NbClust&amp;quot;, &amp;quot;mclust&amp;quot;),
-                      standardize = TRUE
-                      )
-print(n_clust)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# # Method Agreement Procedure:
-# 
-# The choice of 2 clusters is supported by 7 (31.82%) methods out of 22 (Elbow, Silhouette, kl, Duda, Pseudot2, Ratkowsky, Mcclain).&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(n_clust)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-5-hierarchical-clustering&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 5: Hierarchical Clustering&lt;/h2&gt;
-&lt;div id=&#34;step-5.1-distance&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Step 5.1: Distance&lt;/h3&gt;
-&lt;div id=&#34;numeric-data&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Numeric Data&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;n_clust&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;n_clusters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;easystats&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;NbClust&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;mclust&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;n&#34;&gt;standardize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n_clust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# # Method Agreement Procedure:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# The choice of 2 clusters is supported by 7 (31.82%) methods out of 22 (Elbow, Silhouette, kl, Duda, Pseudot2, Ratkowsky, Mcclain).
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n_clust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;h2 id=&#34;step-5-hierarchical-clustering&#34;&gt;Step 5: Hierarchical Clustering&lt;/h2&gt;
+&lt;h3 id=&#34;step-51-distance&#34;&gt;Step 5.1: Distance&lt;/h3&gt;
+&lt;h4 id=&#34;numeric-data&#34;&gt;Numeric Data&lt;/h4&gt;
 &lt;p&gt;Use the function &lt;code&gt;dist()&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_dist_euc &amp;lt;- dist(df_scaled, method = &amp;#39;euclidian&amp;#39;)
-# df_dist_max &amp;lt;- dist(df_scaled, method = &amp;#39;maximum&amp;#39;)
-# df_dist_man &amp;lt;- dist(df_scaled, method = &amp;#39;manhattan&amp;#39;)
-# df_dist_can &amp;lt;- dist(df_scaled, method = &amp;#39;canberra&amp;#39;)
-# df_dist_mink &amp;lt;- dist(df_scaled, method = &amp;#39;minkowski&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;categorical-data&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Categorical Data&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# dist(dummified_data, method = &amp;quot;binary&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;gower-distance&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Gower Distance&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_dist_euc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;dist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;euclidian&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# df_dist_max &amp;lt;- dist(df_scaled, method = &amp;#39;maximum&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# df_dist_man &amp;lt;- dist(df_scaled, method = &amp;#39;manhattan&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# df_dist_can &amp;lt;- dist(df_scaled, method = &amp;#39;canberra&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# df_dist_mink &amp;lt;- dist(df_scaled, method = &amp;#39;minkowski&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;categorical-data&#34;&gt;Categorical Data&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# dist(dummified_data, method = &amp;#34;binary&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;gower-distance&#34;&gt;Gower Distance&lt;/h4&gt;
 &lt;p&gt;Gower distance is a similarity measure commonly used for clustering categorical and numerical mixed data. It takes into account the different types of variables and calculates the dissimilarity between observations based on their attribute values.&lt;/p&gt;
 &lt;p&gt;For categorical variables, Gower distance measures dissimilarity as the proportion of attributes where two observations differ. For numerical variables, it calculates the standardized absolute difference between the values. The Gower distance is then calculated as the weighted sum of the dissimilarities for all variables.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- dplyr::mutate_if(df, is.character, as.factor) # convert character to factor
-
-df_dist_gower &amp;lt;- cluster::daisy(df, metric = &amp;quot;gower&amp;quot;) # Dissimilarity Matrix Calculation&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-5.2-linkage-criteria&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Step 5.2: Linkage Criteria&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dplyr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mutate_if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is.character&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as.factor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# convert character to factor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_dist_gower&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;daisy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;metric&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;gower&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Dissimilarity Matrix Calculation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-52-linkage-criteria&#34;&gt;Step 5.2: Linkage Criteria&lt;/h3&gt;
 &lt;p&gt;Linkage refers to the way in which clusters are merged together. There are several different linkage criteria that can be used, and the choice of linkage criterion can have a significant impact on the results of the clustering -&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Complete linkage: Maximum distance between two sets&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Single linkage: Minimum distance between two sets&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Average linkage: Average distance between two sets&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Ward’s linkage: Minimize the total within cluster variance&lt;/li&gt;
+&lt;li&gt;Complete linkage: Maximum distance between two sets&lt;/li&gt;
+&lt;li&gt;Single linkage: Minimum distance between two sets&lt;/li&gt;
+&lt;li&gt;Average linkage: Average distance between two sets&lt;/li&gt;
+&lt;li&gt;Ward&amp;rsquo;s linkage: Minimize the total within cluster variance&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;index.en_insertimage_4.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;index.en_insertimage_5.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Different Linkage Criteria&#34; srcset=&#34;
+               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_515e4e24e422a790fa6c2b47a4e8a876.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_0a20b463c6860bec7fa74f121164fb63.webp 760w,
+               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_515e4e24e422a790fa6c2b47a4e8a876.webp&#34;
+               width=&#34;609&#34;
+               height=&#34;659&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Different Linkage Criteria&#34; srcset=&#34;
+               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_640dba3e637fb7c5afd1b7fc625fe6a2.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_58405716f0601d355c53ac781236f78b.webp 760w,
+               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_640dba3e637fb7c5afd1b7fc625fe6a2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;537&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Using the Euclidean distance on the numeric data the following code finds the hierarchical clusters by different linkage methods:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hclust_single &amp;lt;- hclust(df_dist_euc, method = &amp;quot;single&amp;quot;)
-hclust_complete &amp;lt;- hclust(df_dist_euc, method = &amp;quot;complete&amp;quot;)
-hclust_average &amp;lt;- hclust(df_dist_euc, method = &amp;quot;average&amp;quot;)
-hclust_centroid &amp;lt;- hclust(df_dist_euc, method = &amp;quot;centroid&amp;quot;)
-hclust_ward &amp;lt;- hclust(df_dist_euc, method = &amp;quot;ward.D2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Get the cluster information:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cutree(hclust_ward, k = 2) # specify number of clusters&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
-#   1   1   1   1   1   2   2   2   2   1   2   1   2   1   1   2   1   2   2   1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cutree(hclust_ward, h = 0.7) # specify height to cut&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
-#   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Summary by clusters:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
-df_num %&amp;gt;%
-  mutate(cluster = cutree(hclust_ward, k = 2)) %&amp;gt;% 
-  group_by(cluster) %&amp;gt;%
-  summarise(across(everything(), list(Average = mean))) &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# # A tibble: 2 × 12
-#   cluster Aroma_Average Flavor_Average Aftertaste_Average Acidity_Average
-#     &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;
-# 1       1          7.55           7.55               7.37            7.48
-# 2       2          8.00           8.03               7.85            7.91
-# # ℹ 7 more variables: Body_Average &amp;lt;dbl&amp;gt;, Balance_Average &amp;lt;dbl&amp;gt;,
-# #   Overall_Average &amp;lt;dbl&amp;gt;, Total.Cup.Points_Average &amp;lt;dbl&amp;gt;,
-# #   Moisture.Percentage_Average &amp;lt;dbl&amp;gt;, Category.One.Defects_Average &amp;lt;dbl&amp;gt;,
-# #   Quakers_Average &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Dendrogram will help to visualize as well as to determine the number of clusters to use or the height where to cut.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-5.3-dendrogram&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Step 5.3: Dendrogram&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hclust_single&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_dist_euc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;single&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hclust_complete&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_dist_euc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;complete&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hclust_average&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_dist_euc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;average&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hclust_centroid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_dist_euc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;centroid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_dist_euc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ward.D2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Get the cluster information:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;cutree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# specify number of clusters&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   1   1   1   1   1   2   2   2   2   1   2   1   2   1   1   2   1   2   2   1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;cutree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# specify height to cut&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Summary by clusters:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dplyr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;mutate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cutree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;group_by&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;summarise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;across&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;everything&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Average&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# # A tibble: 2 × 12
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   cluster Aroma_Average Flavor_Average Aftertaste_Average Acidity_Average
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#     &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1       1          7.55           7.55               7.37            7.48
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2       2          8.00           8.03               7.85            7.91
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# # ℹ 7 more variables: Body_Average &amp;lt;dbl&amp;gt;, Balance_Average &amp;lt;dbl&amp;gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# #   Overall_Average &amp;lt;dbl&amp;gt;, Total.Cup.Points_Average &amp;lt;dbl&amp;gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# #   Moisture.Percentage_Average &amp;lt;dbl&amp;gt;, Category.One.Defects_Average &amp;lt;dbl&amp;gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# #   Quakers_Average &amp;lt;dbl&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dendrogram will help to visualize as well as to determine the number of clusters to use or the height where to cut.&lt;/p&gt;
+&lt;h3 id=&#34;step-53-dendrogram&#34;&gt;Step 5.3: Dendrogram&lt;/h3&gt;
 &lt;p&gt;Pass the hclust object to the plot function:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(hclust_ward, hang = -1)
-rect.hclust(hclust_ward, k = 2, border = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hang&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;-1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;rect.hclust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;border&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;
 &lt;p&gt;Using dendextend package:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;dendextend&amp;quot;)
-library(dendextend)
-
-plot(color_branches(dend = hclust_ward, k = 2)) # specify k, can also use h to specify height&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(color_branches(dend = hclust_ward, k = 2), 
-     # parameters for nodes
-     nodePar = list(col = 3:2, 
-                    cex = c(1.5, 0.75), 
-                    pch =  21:22,
-                    bg =  c(&amp;quot;light blue&amp;quot;, &amp;quot;pink&amp;quot;),
-                    lab.cex = 0.75, 
-                    lab.col = &amp;quot;tomato&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-21-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# function to get color labels; Change color and cut based on number of clusters
-colLab &amp;lt;- function(n, labelColors = c(&amp;quot;#036564&amp;quot;, &amp;quot;#EB6841&amp;quot;), cut = 2) {
-  clusMember = cutree(hclust_ward, cut)
-  if (is.leaf(n)) {
-    a &amp;lt;- attributes(n)
-    labCol &amp;lt;- labelColors[clusMember[which(names(clusMember) == a$label)]]
-    attr(n, &amp;quot;nodePar&amp;quot;) &amp;lt;- c(a$nodePar, lab.col = labCol)
-  }
-  n
-}
-
-hclust_ward %&amp;gt;% 
-  color_branches(k = 2, col = c(&amp;quot;#036564&amp;quot;, &amp;quot;#EB6841&amp;quot;)) %&amp;gt;% 
-  dendrapply(colLab) %&amp;gt;%  # applying to all nodes
-  plot()  # finally plotting&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ape&amp;quot;)
-plot(as.phylo(hclust_ward), type = &amp;quot;unrooted&amp;quot;, cex = 0.7, no.margin = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;step-5-k-means-clustering&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 5: K-means Clustering&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# install.packages(&amp;#34;dendextend&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dendextend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;color_branches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dend&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# specify k, can also use h to specify height&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;color_branches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dend&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;c1&#34;&gt;# parameters for nodes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;nodePar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;cex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.75&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;pch&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;bg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;light blue&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;pink&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;lab.cex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.75&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;lab.col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;tomato&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-21-2.png&#34; width=&#34;672&#34; /&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# function to get color labels; Change color and cut based on number of clusters&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;colLab&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;labelColors&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;#036564&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;#EB6841&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cut&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;clusMember&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cutree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cut&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;is.leaf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;labCol&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;labelColors[clusMember&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;[which&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clusMember&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;label&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;attr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;nodePar&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nodePar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lab.col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;labCol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;color_branches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;#036564&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;#EB6841&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;dendrapply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;colLab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# applying to all nodes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# finally plotting&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ape&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;as.phylo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hclust_ward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;unrooted&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;no.margin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;h2 id=&#34;step-5-k-means-clustering&#34;&gt;Step 5: K-means Clustering&lt;/h2&gt;
 &lt;p&gt;Categorical data cannot be passed to the kmeans() function in R. The kmeans() function uses the Euclidean distance metric to calculate the distance between observations, and this metric is not defined for categorical data.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;km &amp;lt;- kmeans(df_scaled, centers = 2) # centers specify number of clusters
-km&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# K-means clustering with 2 clusters of sizes 12, 8
-# 
-# Cluster means:
-#        Aroma     Flavor Aftertaste    Acidity       Body    Balance    Overall
-# 1 -0.5530586 -0.5889311 -0.6267575 -0.5641766 -0.5577865 -0.6337761 -0.6825517
-# 2  0.8295879  0.8833967  0.9401363  0.8462649  0.8366797  0.9506641  1.0238275
-#   Total.Cup.Points Moisture.Percentage Category.One.Defects    Quakers
-# 1       -0.6521312           0.3165048            0.2043483  0.2052711
-# 2        0.9781969          -0.4747571           -0.3065225 -0.3079067
-# 
-# Clustering vector:
-# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
-#   1   1   1   1   1   2   2   2   1   1   2   1   2   1   1   2   1   2   2   1 
-# 
-# Within cluster sum of squares by cluster:
-# [1] 88.09225 26.35215
-#  (between_SS / total_SS =  45.2 %)
-# 
-# Available components:
-# 
-# [1] &amp;quot;cluster&amp;quot;      &amp;quot;centers&amp;quot;      &amp;quot;totss&amp;quot;        &amp;quot;withinss&amp;quot;     &amp;quot;tot.withinss&amp;quot;
-# [6] &amp;quot;betweenss&amp;quot;    &amp;quot;size&amp;quot;         &amp;quot;iter&amp;quot;         &amp;quot;ifault&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Visualizing clusters:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fviz_cluster(km, df_scaled, ggtheme = theme_minimal())&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;km&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;kmeans&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;centers&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# centers specify number of clusters&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;km&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# K-means clustering with 2 clusters of sizes 12, 8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Cluster means:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#        Aroma     Flavor Aftertaste    Acidity       Body    Balance    Overall
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1 -0.5530586 -0.5889311 -0.6267575 -0.5641766 -0.5577865 -0.6337761 -0.6825517
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2  0.8295879  0.8833967  0.9401363  0.8462649  0.8366797  0.9506641  1.0238275
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   Total.Cup.Points Moisture.Percentage Category.One.Defects    Quakers
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1       -0.6521312           0.3165048            0.2043483  0.2052711
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2        0.9781969          -0.4747571           -0.3065225 -0.3079067
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Clustering vector:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 202 102 112 151 198   4  55  70  98 135   7 183  43 189 140  51 146  25   2 179 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   1   1   1   1   1   2   2   2   1   1   2   1   2   1   1   2   1   2   2   1 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Within cluster sum of squares by cluster:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# [1] 88.09225 26.35215
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  (between_SS / total_SS =  45.2 %)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Available components:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# [1] &amp;#34;cluster&amp;#34;      &amp;#34;centers&amp;#34;      &amp;#34;totss&amp;#34;        &amp;#34;withinss&amp;#34;     &amp;#34;tot.withinss&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# [6] &amp;#34;betweenss&amp;#34;    &amp;#34;size&amp;#34;         &amp;#34;iter&amp;#34;         &amp;#34;ifault&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Visualizing clusters:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;fviz_cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;km&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df_scaled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ggtheme&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;theme_minimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; /&gt;
 &lt;p&gt;Visualizing clusters in terms of variables in the dataset:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-df_km &amp;lt;- mutate(df_num, cluster = km$cluster)
-df_km %&amp;gt;% ggplot(aes(x = Aroma, y = Aftertaste)) + 
-  geom_point(aes(color = as.factor(cluster))) +
-  labs(color = &amp;quot;Clusters&amp;quot;) + theme_minimal()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ggplot2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_km&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mutate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;km&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_km&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Aroma&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Aftertaste&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.factor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;labs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Clusters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;theme_minimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/cluster-analysis/index.en_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;
 &lt;p&gt;Summary on clusters:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_km %&amp;gt;%
-  group_by(cluster) %&amp;gt;%
-  summarise(across(everything(), list(Average = mean))) &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# # A tibble: 2 × 12
-#   cluster Aroma_Average Flavor_Average Aftertaste_Average Acidity_Average
-#     &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;
-# 1       1          7.56           7.57               7.40            7.50
-# 2       2          8.04           8.06               7.88            7.93
-# # ℹ 7 more variables: Body_Average &amp;lt;dbl&amp;gt;, Balance_Average &amp;lt;dbl&amp;gt;,
-# #   Overall_Average &amp;lt;dbl&amp;gt;, Total.Cup.Points_Average &amp;lt;dbl&amp;gt;,
-# #   Moisture.Percentage_Average &amp;lt;dbl&amp;gt;, Category.One.Defects_Average &amp;lt;dbl&amp;gt;,
-# #   Quakers_Average &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;references&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;References&lt;/h1&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;ISLR&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://uc-r.github.io/kmeans_clustering&#34; class=&#34;uri&#34;&gt;https://uc-r.github.io/kmeans_clustering&lt;/a&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&#34; class=&#34;uri&#34;&gt;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&lt;/a&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.gastonsanchez.com/visually-enforced/how-to/2012/10/03/Dendrograms/&#34; class=&#34;uri&#34;&gt;https://www.gastonsanchez.com/visually-enforced/how-to/2012/10/03/Dendrograms/&lt;/a&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df_km&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;group_by&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;summarise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;across&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;everything&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Average&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# # A tibble: 2 × 12
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   cluster Aroma_Average Flavor_Average Aftertaste_Average Acidity_Average
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#     &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1       1          7.56           7.57               7.40            7.50
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2       2          8.04           8.06               7.88            7.93
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# # ℹ 7 more variables: Body_Average &amp;lt;dbl&amp;gt;, Balance_Average &amp;lt;dbl&amp;gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# #   Overall_Average &amp;lt;dbl&amp;gt;, Total.Cup.Points_Average &amp;lt;dbl&amp;gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# #   Moisture.Percentage_Average &amp;lt;dbl&amp;gt;, Category.One.Defects_Average &amp;lt;dbl&amp;gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# #   Quakers_Average &amp;lt;dbl&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;ISLR&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://uc-r.github.io/kmeans_clustering&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://uc-r.github.io/kmeans_clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#elbow-method&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gastonsanchez.com/visually-enforced/how-to/2012/10/03/Dendrograms/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.gastonsanchez.com/visually-enforced/how-to/2012/10/03/Dendrograms/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</title>
+      <title>MANOVA in R</title>
       <link>http://example.org/post/manova/</link>
       <pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate>
       <guid>http://example.org/post/manova/</guid>
-      <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#intro&#34; id=&#34;toc-intro&#34;&gt;Intro&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#example&#34; id=&#34;toc-example&#34;&gt;Example&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#assumptions&#34; id=&#34;toc-assumptions&#34;&gt;Assumptions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hypothesis&#34; id=&#34;toc-hypothesis&#34;&gt;Hypothesis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#manova-test-statistics&#34; id=&#34;toc-manova-test-statistics&#34;&gt;MANOVA Test Statistics&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#experiment&#34; id=&#34;toc-experiment&#34;&gt;Experiment&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#data-description&#34; id=&#34;toc-data-description&#34;&gt;Data Description&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hypothesis-1&#34; id=&#34;toc-hypothesis-1&#34;&gt;Hypothesis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#manova&#34; id=&#34;toc-manova&#34;&gt;MANOVA&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Intro&lt;/h1&gt;
+      <description>&lt;hr&gt;
+&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their relationships to provide a more comprehensive understanding of the effects of the independent variables. If you have only a single dependent variable, then MANOVA is not required. Regular ANOVA would be more appropriate in such cases.&lt;/p&gt;
 &lt;p&gt;Although separate F tests could be computed for each outcome variable, multiple
 hypothesis testing would result in an increased likelihood of at least one Type I
-error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.&lt;span class=&#34;math inline&#34;&gt;\(^6\)&lt;/span&gt;&lt;/p&gt;
-&lt;div id=&#34;example&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Example&lt;/h2&gt;
+error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.$^6$&lt;/p&gt;
+&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
 &lt;p&gt;For example, if you want to determine if the height of individuals varies across different age groups, ANOVA would be suitable since you have a single dependent variable (height).&lt;/p&gt;
 &lt;p&gt;However, if you have multiple dependent variables that are related to the same set of independent variables, then using MANOVA would be advantageous. For instance, suppose you have data on the height, weight, and body fat percentage of individuals, and you want to investigate if these variables differ based on different exercise routines. In this scenario, MANOVA would be appropriate as you have multiple dependent variables (height, weight, and body fat percentage) that are of interest and are potentially influenced by the independent variable (exercise routine).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;assumptions&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Assumptions&lt;/h1&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;The observations should be independent of each other.&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;There should be no multivariate outliers in the dependent variables.&lt;br /&gt;
-&lt;/li&gt;
+&lt;h3 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.&lt;/li&gt;
+&lt;li&gt;The observations should be independent of each other.&lt;/li&gt;
+&lt;li&gt;There should be no multivariate outliers in the dependent variables.&lt;/li&gt;
 &lt;li&gt;The dependent variables are linearly related.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;hypothesis&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Hypothesis&lt;/h1&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_0:\)&lt;/span&gt; μ1 = ··· = μk against &lt;span class=&#34;math inline&#34;&gt;\(H_1:\)&lt;/span&gt; not all μi’s are the same.&lt;span class=&#34;math inline&#34;&gt;\(^3\)&lt;/span&gt;&lt;br /&gt;
-or,&lt;br /&gt;
-&lt;span class=&#34;math inline&#34;&gt;\(H_0:\)&lt;/span&gt; Group mean vectors are all equal to one another.&lt;br /&gt;
-&lt;span class=&#34;math inline&#34;&gt;\(H_1:\)&lt;/span&gt; At least one pair of treatments is different on at least one variable.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;manova-test-statistics&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;MANOVA Test Statistics&lt;/h1&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Wilk’s Lambda: &lt;span class=&#34;math inline&#34;&gt;\(\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}\)&lt;/span&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Hotelling-Lawley Trace: &lt;span class=&#34;math inline&#34;&gt;\(T^2_0 = trace(\mathbf{HE}^{-1})\)&lt;/span&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Pillai Trace: &lt;span class=&#34;math inline&#34;&gt;\(V = trace(\mathbf{H(H+E)^{-1}})\)&lt;/span&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Roy’s Maximum Root: Largest eigenvalue of &lt;span class=&#34;math inline&#34;&gt;\(HE^{-1}\)&lt;/span&gt;&lt;/li&gt;
+&lt;h3 id=&#34;hypothesis&#34;&gt;Hypothesis&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;\(H_0:\)&lt;/code&gt; μ1 = ··· = μk against &lt;code&gt;\(H_1:\)&lt;/code&gt; not all μi’s are the same.$^3$&lt;br&gt;
+or,&lt;br&gt;
+&lt;code&gt;\(H_0:\)&lt;/code&gt; Group mean vectors are all equal to one another.&lt;br&gt;
+&lt;code&gt;\(H_1:\)&lt;/code&gt; At least one pair of treatments is different on at least one variable.&lt;/p&gt;
+&lt;h2 id=&#34;manova-test-statistics&#34;&gt;MANOVA Test Statistics&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Wilk&amp;rsquo;s Lambda: &lt;code&gt;\(\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}\)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Hotelling-Lawley Trace: &lt;code&gt;\(T^2_0 = trace(\mathbf{HE}^{-1})\)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Pillai Trace: &lt;code&gt;\(V = trace(\mathbf{H(H+E)^{-1}})\)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Roy&amp;rsquo;s Maximum Root: Largest eigenvalue of &lt;code&gt;\(HE^{-1}\)&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai’s test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai’s test is also locally most powerful. &lt;span class=&#34;math inline&#34;&gt;\(^7\)&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;experiment&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Experiment&lt;/h1&gt;
-&lt;div id=&#34;data-description&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Data Description&lt;/h2&gt;
-&lt;p&gt;The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. &lt;span class=&#34;math inline&#34;&gt;\(^4\)&lt;/span&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# reading data
-data &amp;lt;- read.table(&amp;quot;data/MANOVA.txt&amp;quot;, header = T, sep = &amp;quot;\t&amp;quot;)
-
-library(tidyverse)
-data &amp;lt;- data %&amp;gt;% mutate(across(c(&amp;quot;Temperature&amp;quot;,&amp;quot;N.source&amp;quot;), factor))
-summary(data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#   Experiment        Temperature              N.source     Replica     
-#  Length:120         30:40       ammonium chloride:60   Min.   : 1.00  
-#  Class :character   35:40       yeast extract    :60   1st Qu.: 5.75  
-#  Mode  :character   37:40                              Median :10.50  
-#                                                        Mean   :10.50  
-#                                                        3rd Qu.:15.25  
-#                                                        Max.   :20.00  
-#    Dry.weight     Optical.density Product.yield  
-#  Min.   : 1.670   Min.   :0.210   Min.   : 8.40  
-#  1st Qu.: 4.805   1st Qu.:1.770   1st Qu.:41.90  
-#  Median : 6.070   Median :1.910   Median :57.65  
-#  Mean   : 6.024   Mean   :1.976   Mean   :57.10  
-#  3rd Qu.: 7.080   3rd Qu.:2.223   3rd Qu.:72.70  
-#  Max.   :10.300   Max.   :2.480   Max.   :93.10&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data %&amp;gt;% 
-  group_by(Temperature) %&amp;gt;% 
-  summarise(Mean_dry_weight = mean(Dry.weight), 
-            Mean_optical_density = mean(Optical.density),
-            Mean_product_yield = mean(Product.yield))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;# # A tibble: 3 × 4
-#   Temperature Mean_dry_weight Mean_optical_density Mean_product_yield
-#   &amp;lt;fct&amp;gt;                 &amp;lt;dbl&amp;gt;                &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;
-# 1 30                     5.92                 1.92               56.6
-# 2 35                     5.93                 1.99               56.5
-# 3 37                     6.22                 2.01               58.3&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;hypothesis-1&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Hypothesis&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_0:\)&lt;/span&gt; There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;manova&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;MANOVA&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;manova_result &amp;lt;- manova(cbind(Dry.weight, Optical.density, Product.yield) ~ Temperature,
-                        data = data)
-summary(manova_result, test = &amp;quot;Pillai&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#              Df   Pillai approx F num Df den Df Pr(&amp;gt;F)
-# Temperature   2 0.030774  0.60427      6    232 0.7268
-# Residuals   117&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(manova_result, test = &amp;quot;Wilks&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#              Df   Wilks approx F num Df den Df Pr(&amp;gt;F)
-# Temperature   2 0.96939  0.60053      6    230 0.7298
-# Residuals   117&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(manova_result, test = &amp;quot;Hotelling-Lawley&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#              Df Hotelling-Lawley approx F num Df den Df Pr(&amp;gt;F)
-# Temperature   2         0.031409  0.59677      6    228 0.7328
-# Residuals   117&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(manova_result, test = &amp;quot;Roy&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#              Df      Roy approx F num Df den Df Pr(&amp;gt;F)
-# Temperature   2 0.024543  0.94899      3    116 0.4195
-# Residuals   117&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;A p-value lower than 0.05 means the null hypothesis can be rejected.&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
-from statsmodels.multivariate.manova import MANOVA
-
-# Load the data
-data = pd.read_table(&amp;quot;data/MANOVA.txt&amp;quot;, sep=&amp;quot;\t&amp;quot;)
-
-# Perform MANOVA analysis
-# Change variable names
-new_column_names = {
-    &amp;#39;Dry weight&amp;#39;: &amp;#39;Weight&amp;#39;,
-    &amp;#39;Optical density&amp;#39;: &amp;#39;Density&amp;#39;,
-    &amp;#39;Product yield&amp;#39;: &amp;#39;Yield&amp;#39;
-}
-data = data.rename(columns=new_column_names)
-manova_result = MANOVA.from_formula(&amp;#39;Weight + Density + Yield ~ Temperature&amp;#39;, data)
-print(manova_result.mv_test()) &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;#                   Multivariate linear model
-# =============================================================
-#                                                              
-# -------------------------------------------------------------
-#        Intercept        Value  Num DF  Den DF  F Value Pr &amp;gt; F
-# -------------------------------------------------------------
-#           Wilks&amp;#39; lambda 0.8059 3.0000 116.0000  9.3151 0.0000
-#          Pillai&amp;#39;s trace 0.1941 3.0000 116.0000  9.3151 0.0000
-#  Hotelling-Lawley trace 0.2409 3.0000 116.0000  9.3151 0.0000
-#     Roy&amp;#39;s greatest root 0.2409 3.0000 116.0000  9.3151 0.0000
-# -------------------------------------------------------------
-#                                                              
-# -------------------------------------------------------------
-#       Temperature       Value  Num DF  Den DF  F Value Pr &amp;gt; F
-# -------------------------------------------------------------
-#           Wilks&amp;#39; lambda 0.9771 3.0000 116.0000  0.9079 0.4396
-#          Pillai&amp;#39;s trace 0.0229 3.0000 116.0000  0.9079 0.4396
-#  Hotelling-Lawley trace 0.0235 3.0000 116.0000  0.9079 0.4396
-#     Roy&amp;#39;s greatest root 0.0235 3.0000 116.0000  0.9079 0.4396
-# =============================================================&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
+&lt;p&gt;The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai&amp;rsquo;s test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai&amp;rsquo;s test is also locally most powerful. &lt;code&gt;\(^7\)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;experiment&#34;&gt;Experiment&lt;/h2&gt;
+&lt;h3 id=&#34;data-description&#34;&gt;Data Description&lt;/h3&gt;
+&lt;p&gt;The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. &lt;code&gt;\(^4\)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# reading data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;data/MANOVA.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;header&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sep&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\t&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tidyverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mutate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;across&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Temperature&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;N.source&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;factor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   Experiment        Temperature              N.source     Replica     
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Length:120         30:40       ammonium chloride:60   Min.   : 1.00  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Class :character   35:40       yeast extract    :60   1st Qu.: 5.75  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Mode  :character   37:40                              Median :10.50  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#                                                        Mean   :10.50  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#                                                        3rd Qu.:15.25  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#                                                        Max.   :20.00  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#    Dry.weight     Optical.density Product.yield  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Min.   : 1.670   Min.   :0.210   Min.   : 8.40  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  1st Qu.: 4.805   1st Qu.:1.770   1st Qu.:41.90  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Median : 6.070   Median :1.910   Median :57.65  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Mean   : 6.024   Mean   :1.976   Mean   :57.10  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  3rd Qu.: 7.080   3rd Qu.:2.223   3rd Qu.:72.70  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Max.   :10.300   Max.   :2.480   Max.   :93.10
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;group_by&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Temperature&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;summarise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mean_dry_weight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dry.weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Mean_optical_density&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Optical.density&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Mean_product_yield&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Product.yield&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# # A tibble: 3 × 4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   Temperature Mean_dry_weight Mean_optical_density Mean_product_yield
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#   &amp;lt;fct&amp;gt;                 &amp;lt;dbl&amp;gt;                &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1 30                     5.92                 1.92               56.6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2 35                     5.93                 1.99               56.5
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 3 37                     6.22                 2.01               58.3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;hypothesis-1&#34;&gt;Hypothesis&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;\(H_0:\)&lt;/code&gt; There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.&lt;/p&gt;
+&lt;h3 id=&#34;manova&#34;&gt;MANOVA&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;manova&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cbind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dry.weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Optical.density&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Product.yield&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Temperature&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Pillai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#              Df   Pillai approx F num Df den Df Pr(&amp;gt;F)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Temperature   2 0.030774  0.60427      6    232 0.7268
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Residuals   117
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Wilks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#              Df   Wilks approx F num Df den Df Pr(&amp;gt;F)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Temperature   2 0.96939  0.60053      6    230 0.7298
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Residuals   117
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Hotelling-Lawley&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#              Df Hotelling-Lawley approx F num Df den Df Pr(&amp;gt;F)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Temperature   2         0.031409  0.59677      6    228 0.7328
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Residuals   117
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Roy&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#              Df      Roy approx F num Df den Df Pr(&amp;gt;F)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Temperature   2 0.024543  0.94899      3    116 0.4195
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Residuals   117
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;statsmodels.multivariate.manova&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MANOVA&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Load the data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data/MANOVA.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sep&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Perform MANOVA analysis&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Change variable names&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;new_column_names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;Dry weight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Weight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;Optical density&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Density&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;Product yield&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Yield&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;columns&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_column_names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MANOVA&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;from_formula&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Weight + Density + Yield ~ Temperature&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mv_test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#                   Multivariate linear model
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# =============================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#                                                              
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# -------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#        Intercept        Value  Num DF  Den DF  F Value Pr &amp;gt; F
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# -------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#           Wilks&amp;#39; lambda 0.8059 3.0000 116.0000  9.3151 0.0000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#          Pillai&amp;#39;s trace 0.1941 3.0000 116.0000  9.3151 0.0000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Hotelling-Lawley trace 0.2409 3.0000 116.0000  9.3151 0.0000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#     Roy&amp;#39;s greatest root 0.2409 3.0000 116.0000  9.3151 0.0000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# -------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#                                                              
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# -------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#       Temperature       Value  Num DF  Den DF  F Value Pr &amp;gt; F
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# -------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#           Wilks&amp;#39; lambda 0.9771 3.0000 116.0000  0.9079 0.4396
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#          Pillai&amp;#39;s trace 0.0229 3.0000 116.0000  0.9079 0.4396
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  Hotelling-Lawley trace 0.0235 3.0000 116.0000  0.9079 0.4396
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#     Roy&amp;#39;s greatest root 0.0235 3.0000 116.0000  0.9079 0.4396
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# =============================================================
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Refererences:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;a href=&#34;https://online.stat.psu.edu/stat505/lesson/8&#34;&gt;Stat PSU - Lesson 8: Multivariate Analysis of Variance (MANOVA)&lt;/a&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/manova-97e675a96158&#34;&gt;MANOVA, towards data science&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;P.K. Bhattacharya, Prabir Burman - Theory and Methods of Statistics&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.chegg.com/homework-help/questions-and-answers/experiment-temperature-n-source-replica-dry-weight-optical-density-product-yield-batch30aa-q35487503&#34;&gt;Data description&lt;/a&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.applied-maths.com/download/sample-data&#34;&gt;Data source&lt;/a&gt;&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;Applied MANOVA and Discriminant Analysis-Wiley-Interscience (2006)&lt;br /&gt;
-&lt;/li&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://online.stat.psu.edu/stat505/lesson/8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stat PSU - Lesson 8: Multivariate Analysis of Variance (MANOVA)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/manova-97e675a96158&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MANOVA, towards data science&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;P.K. Bhattacharya, Prabir Burman - Theory and Methods of Statistics&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.chegg.com/homework-help/questions-and-answers/experiment-temperature-n-source-replica-dry-weight-optical-density-product-yield-batch30aa-q35487503&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data description&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.applied-maths.com/download/sample-data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Applied MANOVA and Discriminant Analysis-Wiley-Interscience (2006)&lt;/li&gt;
 &lt;li&gt;Srivastava Multivariate Statistics - page 187&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
@@ -1305,22 +1294,99 @@ If you pass &lt;code&gt;user = FALSE&lt;/code&gt; inside the function, then the 
       <link>http://example.org/post/books-multivariate-analysis/</link>
       <pubDate>Sun, 19 Jun 2022 00:00:00 +0000</pubDate>
       <guid>http://example.org/post/books-multivariate-analysis/</guid>
-      <description>
-&lt;script src=&#34;http://example.org/post/books-multivariate-analysis/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+      <description>&lt;hr&gt;
+&lt;p&gt;Nothing is better resource than a book. So, in this post, I&amp;rsquo;ve shared some books that have been extremely helpful to me in my quest to learn multivariate analysis.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Methods of Multivariate Statistics by M.S. Srivastava.&lt;br&gt;
+Read the book &lt;a href=&#34;https://rebrand.ly/srivastava-multivariate-archive&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;online&lt;/a&gt; or &lt;a href=&#34;https://rebrand.ly/Srivastava-Multivariate-Statistics-pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;download the pdf&lt;/a&gt;.&lt;br&gt;
 
 
-&lt;hr /&gt;
-&lt;p&gt;Nothing is better resource than a book. So, in this post, I’ve shared some books that have been extremely helpful to me in my quest to learn multivariate analysis.&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Methods of Multivariate Statistics by M.S. Srivastava.&lt;br /&gt;
-Read the book &lt;a href=&#34;https://rebrand.ly/srivastava-multivariate-archive&#34;&gt;online&lt;/a&gt; or &lt;a href=&#34;https://rebrand.ly/Srivastava-Multivariate-Statistics-pdf&#34;&gt;download the pdf&lt;/a&gt;.&lt;br /&gt;
-&lt;img src=&#34;index.en_insertimage_2.png&#34; width=&#34;250&#34; alt=&#34;Methods of Multivariate Statistics by M.S. Srivastava&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;An Introduction to Multivariate Statistical Analysis by T. W. Anderson&lt;br /&gt;
-&lt;a href=&#34;https://rebrand.ly/Anderson-multivariate-3rd-edition&#34;&gt;Download pdf&lt;/a&gt;&lt;br /&gt;
-&lt;img src=&#34;index.en_insertimage_1.png&#34; width=&#34;250&#34; alt=&#34;An Introduction to Multivariate Statistical Analysis&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;Applied Multivariate Statistical Analysis by Richard A. Johnson and Dean W. Wichern&lt;br /&gt;
-&lt;a href=&#34;https://rebrand.ly/Johnson-applied-multivariate&#34;&gt;Download pdf&lt;/a&gt;&lt;br /&gt;
-&lt;img src=&#34;index.en_insertimage_3.png&#34; width=&#34;250&#34; alt=&#34;Applied Multivariate Statistical Analysis&#34; /&gt;&lt;/li&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Methods of Multivariate Statistics by M.S. Srivastava&#34; srcset=&#34;
+               /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_bae66807ae478d8c59abfe7e765fdefc.webp 400w,
+               /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_d2cfea8c3ae0e205b3a44c230fd2fb4b.webp 760w,
+               /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_bae66807ae478d8c59abfe7e765fdefc.webp&#34;
+               width=&#34;381&#34;
+               height=&#34;568&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+{width=250px}&lt;/li&gt;
+&lt;li&gt;An Introduction to Multivariate Statistical Analysis by T. W. Anderson&lt;br&gt;
+&lt;a href=&#34;https://rebrand.ly/Anderson-multivariate-3rd-edition&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download pdf&lt;/a&gt;&lt;br&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;An Introduction to Multivariate Statistical Analysis&#34; srcset=&#34;
+               /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_b48e0e04ee9ad9dd927d473b02bf9e8a.webp 400w,
+               /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_6f7820ccab439184e611c3adabcdc7f1.webp 760w,
+               /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_b48e0e04ee9ad9dd927d473b02bf9e8a.webp&#34;
+               width=&#34;315&#34;
+               height=&#34;500&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+{width=250px}&lt;/li&gt;
+&lt;li&gt;Applied Multivariate Statistical Analysis by Richard A. Johnson and Dean W. Wichern   &lt;br&gt;
+&lt;a href=&#34;https://rebrand.ly/Johnson-applied-multivariate&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download pdf&lt;/a&gt;&lt;br&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Applied Multivariate Statistical Analysis&#34; srcset=&#34;
+               /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_0c9bbd5d700e903572fc686e5dcd0cba.webp 400w,
+               /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_41dd5b8b8e2d932080f38ee3f61bf30e.webp 760w,
+               /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_0c9bbd5d700e903572fc686e5dcd0cba.webp&#34;
+               width=&#34;447&#34;
+               height=&#34;594&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+{width=250px}&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
