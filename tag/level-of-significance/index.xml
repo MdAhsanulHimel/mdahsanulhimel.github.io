@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hypothesis Tests | Md Ahsanul Islam</title>
-    <link>http://example.org/category/hypothesis-tests/</link>
-      <atom:link href="http://example.org/category/hypothesis-tests/index.xml" rel="self" type="application/rss+xml" />
-    <description>Hypothesis Tests</description>
+    <title>level of significance | Md Ahsanul Islam</title>
+    <link>http://example.org/tag/level-of-significance/</link>
+      <atom:link href="http://example.org/tag/level-of-significance/index.xml" rel="self" type="application/rss+xml" />
+    <description>level of significance</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 10 Oct 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png</url>
-      <title>Hypothesis Tests</title>
-      <link>http://example.org/category/hypothesis-tests/</link>
+      <title>level of significance</title>
+      <link>http://example.org/tag/level-of-significance/</link>
     </image>
     
     <item>
@@ -33,39 +33,6 @@
 &lt;p&gt;$0.5 * 0.5 * 0.5 * 0.5 * 0.5 = 0.03125$&lt;/p&gt;
 &lt;p&gt;টানা এতবার হারার পরে আসলে আপনার সন্দেহ প্রবল হয়েছে যে আসলে খেলাটা ফেয়ার হচ্ছে না। অর্থাৎ আপনি null hypothesis রিজেক্ট করে দিয়েছেন যখন দেখলেন যে খেলাটা ফেয়ার হলে টানা এতবার হারার সম্ভাবনা ৪% এরও কম। অর্থাৎ এমন একটা সিচুয়েশনে গিয়ে আপনি নাল হাইপোথেসিস রিজেক্ট করে দিলেন যখন দেখলেন খেলায় টানা হারার সম্ভাবনা (occurrence of an event) এক্সট্রিম লেভেলে (খুবই কম) চলে গেছে given that জুয়া খেলাটা ফেয়ার (null hypothesis)। p-value এর ডেফিনেশন এখন আপনি সহজে বুঝতে পারবেন - “P-value represents the probability of obtaining a test statistic at least as extreme as the one observed, assuming that the null hypothesis is true.”&lt;/p&gt;
 &lt;p&gt;বিখ্যাত পরিসংখ্যানবিদ রোনাল্ড ফিশার “Statistical Methods for Research Workers”-এ এই সিগনিফিক্যান্স লেভেলের ধারণাটি পোষণ করেন। পরবর্তীতে বিভিন্ন সময়ে টেস্ট স্ট্যাটিস্টিকের ভিত্তিতে ক্রিটিক্যাল ভেলু ক্যালকুলেট করা হয় ১%, ৫% এবং ১০% level of significance-এ। এভাবেই নানান এক্সপেরিমেন্ট এবং থিওরিটিক্যাল ভ্যালিডেশনের মাধ্যমে পরবর্তীতে সময়ের সাথে ৫% কে স্ট্যান্ডার্ড হিসেবে ধরে নেওয়া হয়।&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Shapiro Wilk Test using R</title>
-      <link>http://example.org/post/shapiro-wilk-test/</link>
-      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>http://example.org/post/shapiro-wilk-test/</guid>
-      <description>&lt;hr&gt;
-&lt;p&gt;The normality of data is crucial in parametric hypothesis tests because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, analysis needs to be performed on a small number of samples. As a result, checking for normality is a necessary step.&lt;/p&gt;
-&lt;p&gt;Samuel Sanford Shapiro and Martin Wilk developed a test in &lt;a href=&#34;https://doi.org/10.1093%2Fbiomet%2F52.3-4.591&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1965&lt;/a&gt; for checking the normality of data, which was later named after them as Shapiro-Wilk test. It is appropriate when sample size is less than 50. For data greater than that Shapiro and Francia in &lt;a href=&#34;https://academic.oup.com/biomet/article-abstract/62/2/445/337172&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1972&lt;/a&gt; developed a new testing procedure. For now we will stick to Shapiro-Wilk test.&lt;/p&gt;
-&lt;h1 id=&#34;shapiro-wilk-test-using-r&#34;&gt;Shapiro-Wilk Test using R&lt;/h1&gt;
-&lt;p&gt;Suppose we have the data on age of 18 randomly selected students in a primary school. We need to test whether the data follows a normal distribution or not.&lt;/p&gt;
-&lt;p&gt;Data -&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#  [1]  9 12 11 10 12  9  7  8  8  7 10 10  8  7  9 10 11 12
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Graphically representing the data in a histogram -&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;hist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img src=&#34;http://example.org/post/shapiro-wilk-test/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;
-&lt;p&gt;From the visualization, it is not clear whether the data follows a normal distribution or not because the sample size is small.&lt;/p&gt;
-&lt;p&gt;Hypothesis formulation - &lt;br&gt;
-$H_0$: The data follows a normal distribution with unknown mean and variance.&lt;br&gt;
-$H_1$: The data does not follow a normal distribution. &lt;br&gt;
-We want to test the hypothesis at 5% significance level.&lt;/p&gt;
-&lt;p&gt;Hypothesis testing -&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;shapiro.test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 	Shapiro-Wilk normality test
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# data:  age
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# W = 0.92157, p-value = 0.1378
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Since the p-value is 0.1378 &amp;gt; significance level (0.05), we may not reject the null hypothesis. It means we do not have enough statistical evidence to reject the null hypothesis that the data come from a normal distribution at 5% level of significance.&lt;/p&gt;
 </description>
     </item>
     
