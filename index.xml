@@ -80,10 +80,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Centroid-based clustering and hierarchical clustering&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_e47af8c59095025576dbcb585d424ea2.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_46b95eabafa6b9de35595016ae9aabbf.webp 400w,
                /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_40c87307684b96ec747e0e7ff975b3bd.webp 760w,
                /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_e47af8c59095025576dbcb585d424ea2.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_46b95eabafa6b9de35595016ae9aabbf.webp&#34;
                width=&#34;760&#34;
                height=&#34;358&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -110,10 +110,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;K-means vs K-medoids&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_2e6c8cc2c37b6d28cafc168eed460045.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_ad727a5d8d815acc36f43029aae3a19e.webp 400w,
                /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_9f2c55140ddc80806e79d8e8ef0eba6c.webp 760w,
                /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_2e6c8cc2c37b6d28cafc168eed460045.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_ad727a5d8d815acc36f43029aae3a19e.webp&#34;
                width=&#34;526&#34;
                height=&#34;304&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -140,10 +140,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Hierarchical Clustering&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_3f0ca94f84ff4c4879cb72aa7d93b702.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_acef2e0737b860d961a3195e352c3834.webp 400w,
                /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_021fb62ba13097a29723a3fd46d8c197.webp 760w,
                /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_3f0ca94f84ff4c4879cb72aa7d93b702.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_acef2e0737b860d961a3195e352c3834.webp&#34;
                width=&#34;760&#34;
                height=&#34;422&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -560,10 +560,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Different Linkage Criteria&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_515e4e24e422a790fa6c2b47a4e8a876.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_2ef3cf72b9d3a2b75fa9761e12a99e8b.webp 400w,
                /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_0a20b463c6860bec7fa74f121164fb63.webp 760w,
                /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_515e4e24e422a790fa6c2b47a4e8a876.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_2ef3cf72b9d3a2b75fa9761e12a99e8b.webp&#34;
                width=&#34;609&#34;
                height=&#34;659&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -588,10 +588,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Different Linkage Criteria&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_640dba3e637fb7c5afd1b7fc625fe6a2.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_e6d8d54dc3b66d5931cb1fab9d1b81d5.webp 400w,
                /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_58405716f0601d355c53ac781236f78b.webp 760w,
                /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_640dba3e637fb7c5afd1b7fc625fe6a2.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_e6d8d54dc3b66d5931cb1fab9d1b81d5.webp&#34;
                width=&#34;760&#34;
                height=&#34;537&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -726,32 +726,32 @@
     </item>
     
     <item>
-      <title>MANOVA in R</title>
+      <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</title>
       <link>http://example.org/post/manova/</link>
       <pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate>
       <guid>http://example.org/post/manova/</guid>
       <description>&lt;hr&gt;
-&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;h1 id=&#34;intro&#34;&gt;Intro&lt;/h1&gt;
 &lt;p&gt;MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their relationships to provide a more comprehensive understanding of the effects of the independent variables. If you have only a single dependent variable, then MANOVA is not required. Regular ANOVA would be more appropriate in such cases.&lt;/p&gt;
 &lt;p&gt;Although separate F tests could be computed for each outcome variable, multiple
 hypothesis testing would result in an increased likelihood of at least one Type I
 error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.$^6$&lt;/p&gt;
-&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
 &lt;p&gt;For example, if you want to determine if the height of individuals varies across different age groups, ANOVA would be suitable since you have a single dependent variable (height).&lt;/p&gt;
 &lt;p&gt;However, if you have multiple dependent variables that are related to the same set of independent variables, then using MANOVA would be advantageous. For instance, suppose you have data on the height, weight, and body fat percentage of individuals, and you want to investigate if these variables differ based on different exercise routines. In this scenario, MANOVA would be appropriate as you have multiple dependent variables (height, weight, and body fat percentage) that are of interest and are potentially influenced by the independent variable (exercise routine).&lt;/p&gt;
-&lt;h3 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h3&gt;
+&lt;h1 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.&lt;/li&gt;
 &lt;li&gt;The observations should be independent of each other.&lt;/li&gt;
 &lt;li&gt;There should be no multivariate outliers in the dependent variables.&lt;/li&gt;
 &lt;li&gt;The dependent variables are linearly related.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;hypothesis&#34;&gt;Hypothesis&lt;/h3&gt;
+&lt;h1 id=&#34;hypothesis&#34;&gt;Hypothesis&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;\(H_0:\)&lt;/code&gt; μ1 = ··· = μk against &lt;code&gt;\(H_1:\)&lt;/code&gt; not all μi’s are the same.$^3$&lt;br&gt;
 or,&lt;br&gt;
 &lt;code&gt;\(H_0:\)&lt;/code&gt; Group mean vectors are all equal to one another.&lt;br&gt;
 &lt;code&gt;\(H_1:\)&lt;/code&gt; At least one pair of treatments is different on at least one variable.&lt;/p&gt;
-&lt;h2 id=&#34;manova-test-statistics&#34;&gt;MANOVA Test Statistics&lt;/h2&gt;
+&lt;h1 id=&#34;manova-test-statistics&#34;&gt;MANOVA Test Statistics&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;Wilk&amp;rsquo;s Lambda: &lt;code&gt;\(\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}\)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Hotelling-Lawley Trace: &lt;code&gt;\(T^2_0 = trace(\mathbf{HE}^{-1})\)&lt;/code&gt;&lt;/li&gt;
@@ -759,8 +759,8 @@ or,&lt;br&gt;
 &lt;li&gt;Roy&amp;rsquo;s Maximum Root: Largest eigenvalue of &lt;code&gt;\(HE^{-1}\)&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai&amp;rsquo;s test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai&amp;rsquo;s test is also locally most powerful. &lt;code&gt;\(^7\)&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;experiment&#34;&gt;Experiment&lt;/h2&gt;
-&lt;h3 id=&#34;data-description&#34;&gt;Data Description&lt;/h3&gt;
+&lt;h1 id=&#34;experiment&#34;&gt;Experiment&lt;/h1&gt;
+&lt;h2 id=&#34;data-description&#34;&gt;Data Description&lt;/h2&gt;
 &lt;p&gt;The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. &lt;code&gt;\(^4\)&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# reading data&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;data/MANOVA.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;header&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sep&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\t&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -793,9 +793,9 @@ or,&lt;br&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 1 30                     5.92                 1.92               56.6
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 2 35                     5.93                 1.99               56.5
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 3 37                     6.22                 2.01               58.3
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;hypothesis-1&#34;&gt;Hypothesis&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;hypothesis-1&#34;&gt;Hypothesis&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;\(H_0:\)&lt;/code&gt; There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.&lt;/p&gt;
-&lt;h3 id=&#34;manova&#34;&gt;MANOVA&lt;/h3&gt;
+&lt;h2 id=&#34;manova&#34;&gt;MANOVA&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;manova&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cbind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dry.weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Optical.density&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Product.yield&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Temperature&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;manova_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Pillai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -814,7 +814,8 @@ or,&lt;br&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#              Df      Roy approx F num Df den Df Pr(&amp;gt;F)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Temperature   2 0.024543  0.94899      3    116 0.4195
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Residuals   117
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A p-value lower than 0.05 means the null hypothesis can be rejected.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pd&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;statsmodels.multivariate.manova&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MANOVA&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Load the data&lt;/span&gt;
@@ -1318,10 +1319,10 @@ Read the book &lt;a href=&#34;https://rebrand.ly/srivastava-multivariate-archive
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Methods of Multivariate Statistics by M.S. Srivastava&#34; srcset=&#34;
-               /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_bae66807ae478d8c59abfe7e765fdefc.webp 400w,
+               /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_191ca181588d7f6b607d165af936fad2.webp 400w,
                /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_d2cfea8c3ae0e205b3a44c230fd2fb4b.webp 760w,
                /post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_bae66807ae478d8c59abfe7e765fdefc.webp&#34;
+               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_2_huf6d880453c3e0ffd914eaf63a9b9ccc6_183870_191ca181588d7f6b607d165af936fad2.webp&#34;
                width=&#34;381&#34;
                height=&#34;568&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1348,10 +1349,10 @@ Read the book &lt;a href=&#34;https://rebrand.ly/srivastava-multivariate-archive
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;An Introduction to Multivariate Statistical Analysis&#34; srcset=&#34;
-               /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_b48e0e04ee9ad9dd927d473b02bf9e8a.webp 400w,
+               /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_f1f98f5b4973dfa341c34c7184f88a22.webp 400w,
                /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_6f7820ccab439184e611c3adabcdc7f1.webp 760w,
                /post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_b48e0e04ee9ad9dd927d473b02bf9e8a.webp&#34;
+               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_1_hud98501892c45e7eb78f2124cf4f0b75b_142049_f1f98f5b4973dfa341c34c7184f88a22.webp&#34;
                width=&#34;315&#34;
                height=&#34;500&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1378,10 +1379,10 @@ Read the book &lt;a href=&#34;https://rebrand.ly/srivastava-multivariate-archive
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Applied Multivariate Statistical Analysis&#34; srcset=&#34;
-               /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_0c9bbd5d700e903572fc686e5dcd0cba.webp 400w,
+               /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_2e2b40442420d4fa023bc9692157f81b.webp 400w,
                /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_41dd5b8b8e2d932080f38ee3f61bf30e.webp 760w,
                /post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_0c9bbd5d700e903572fc686e5dcd0cba.webp&#34;
+               src=&#34;http://example.org/post/books-multivariate-analysis/index.en_insertimage_3_hu1c7bc7e2c839f25c4bea4d179e55f61b_263132_2e2b40442420d4fa023bc9692157f81b.webp&#34;
                width=&#34;447&#34;
                height=&#34;594&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

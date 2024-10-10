@@ -56,10 +56,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Centroid-based clustering and hierarchical clustering&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_e47af8c59095025576dbcb585d424ea2.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_46b95eabafa6b9de35595016ae9aabbf.webp 400w,
                /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_40c87307684b96ec747e0e7ff975b3bd.webp 760w,
                /post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_e47af8c59095025576dbcb585d424ea2.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_1_hu8b3f3e115d4fceee2fb66975c4df2a18_59072_46b95eabafa6b9de35595016ae9aabbf.webp&#34;
                width=&#34;760&#34;
                height=&#34;358&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -86,10 +86,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;K-means vs K-medoids&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_2e6c8cc2c37b6d28cafc168eed460045.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_ad727a5d8d815acc36f43029aae3a19e.webp 400w,
                /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_9f2c55140ddc80806e79d8e8ef0eba6c.webp 760w,
                /post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_2e6c8cc2c37b6d28cafc168eed460045.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_2_hua84c7f4e0f99643fdb2d7dec3687728c_53970_ad727a5d8d815acc36f43029aae3a19e.webp&#34;
                width=&#34;526&#34;
                height=&#34;304&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -116,10 +116,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Hierarchical Clustering&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_3f0ca94f84ff4c4879cb72aa7d93b702.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_acef2e0737b860d961a3195e352c3834.webp 400w,
                /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_021fb62ba13097a29723a3fd46d8c197.webp 760w,
                /post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_3f0ca94f84ff4c4879cb72aa7d93b702.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_3_hubd65b9ceddd8128ce27e2e0b239ee117_61418_acef2e0737b860d961a3195e352c3834.webp&#34;
                width=&#34;760&#34;
                height=&#34;422&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -536,10 +536,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Different Linkage Criteria&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_515e4e24e422a790fa6c2b47a4e8a876.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_2ef3cf72b9d3a2b75fa9761e12a99e8b.webp 400w,
                /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_0a20b463c6860bec7fa74f121164fb63.webp 760w,
                /post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_515e4e24e422a790fa6c2b47a4e8a876.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_4_hu2034df4046dd5cf5cdd76040c3dd0836_65577_2ef3cf72b9d3a2b75fa9761e12a99e8b.webp&#34;
                width=&#34;609&#34;
                height=&#34;659&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -564,10 +564,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Different Linkage Criteria&#34; srcset=&#34;
-               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_640dba3e637fb7c5afd1b7fc625fe6a2.webp 400w,
+               /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_e6d8d54dc3b66d5931cb1fab9d1b81d5.webp 400w,
                /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_58405716f0601d355c53ac781236f78b.webp 760w,
                /post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_640dba3e637fb7c5afd1b7fc625fe6a2.webp&#34;
+               src=&#34;http://example.org/post/cluster-analysis/index.en_insertimage_5_hu00d6cc1f72109c614626b77c29c729d7_252568_e6d8d54dc3b66d5931cb1fab9d1b81d5.webp&#34;
                width=&#34;760&#34;
                height=&#34;537&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
