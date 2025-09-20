@@ -1,0 +1,185 @@
+---
+title: 'Markov Chain - A Practical Example'
+author: ''
+date: '2021-05-23'
+slug: markov-chain
+categories:
+  - Stochastic Process
+tags:
+  - markov chain
+  - R
+keywords: []
+description: 'Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes.'
+summary: 'Markov Chain is a special type of stochastic process. It is a popular and straightforward way to statistically model a discrete-time, discrete space stochastic processes. In this post I will show a practical example of markov chain. Let’s try to map the movement of freelancer drivers in Dhaka. We can divide the area of Dhaka into three zones – North Dhaka, Middle Dhaka... '
+images:
+- https://MdAhsanulHimel.github.io.github.io/2021/05/23/markov-chain/TPMDiagramPreview.jpg
+comment: yes
+toc: yes
+autoCollapseToc: yes
+postMetaInFooter: no
+hiddenFromHomePage: no
+contentCopyright: yes
+reward: no
+mathjax: no
+mathjaxEnableSingleDollar: no
+mathjaxEnableAutoNumber: no
+hideHeaderAndFooter: no
+flowchartDiagrams:
+  enable: no
+  options: ''
+sequenceDiagrams:
+  enable: no
+  options: ''
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+library(knitr)
+library(kableExtra)
+```
+
+--- 
+
+## Intro to the problem
+
+In this post I will show a practical example of markov chain. 
+
+Let’s try to map the movement of freelancer drivers in Dhaka. We can divide the area of Dhaka into three zones – North Dhaka, Middle Dhaka and South Dhaka.   
+So we can find the following probabilities for the movement of a driver:
+
+* Among the North Dhaka's freelancer drivers, 30% will remain in North Dhaka, 30% will move to Middle Dhaka, while the remaining 40% will go to South Dhaka.
+* Of all the drivers in Middle Dhaka, 50% and 30% will move to North Dhaka and South Dhaka, respectively; 20% will remain in Middle Zone.
+* In the South Dhaka, drivers have a 40% chance of moving to North Dhaka, 40% chance  of staying in the South Dhaka;  20% drivers will move to Middle Dhaka.
+
+Once a driver is in a particular zone, he can either move to the next zone or stay back in the same zone. His movement will be decided **only by his current state** and not by the sequence of past states.   
+
+The **state space** in this example includes North Dhaka, Middle Dhaka and South Dhaka. It follows all the properties of Markov Chains because the current state has the power to predict the next stage.
+
+## Transition Probability Matrix
+
+Let's construct the transition probability matrix - 
+```{r}
+zone <- c("North","Middle","South")
+zoneTPM <- matrix(c(0.3,0.3,0.4,
+                    0.5,0.2,0.3,
+                    0.4,0.2,0.4), 
+                  nrow=3, byrow=T, dimnames = list(zone,zone))
+```
+
+Hence, the TPM is -
+```{r}
+zoneTPM
+```
+
+The package named `markovchain` can help us in implementing Markov Chains in R.
+
+Install and load the package - 
+```{r, warning=F}
+# install.packages("markovchain")
+library(markovchain)
+```
+
+Now using the function `new()` create a Markov Chain object -
+```{r}
+driverzone <- new("markovchain",
+                  states = zone,
+                  transitionMatrix = zoneTPM,
+                  name = "Driver Movement")
+driverzone
+```
+
+## Transition Diagram
+
+To plot the above transition matrix we can use R package, `diagram`. The package has a function called `plotmat()` that can help us in plotting a state space diagram of the transition matrix in an easy-to-understand manner.
+
+Install and load the package -
+```{r, warning=F}
+# install.packages("diagram")
+library(diagram)
+```
+
+Code for plotting the transition probability diagram -
+```{r}
+plotmat(A = zoneTPM,
+        box.type = "circle",          # shape of box
+        box.lwd = 1,                  # border density of box
+        relsize = 0.9,                # scaling factor for size of graph
+        cex.txt = 0.7,                # size of probabilities
+        lwd = 1,                      # border density of state to state arrows
+        lcol = "black",
+        box.col = "cornsilk1",
+        box.size = 0.1,               # size of box
+        box.prop = 0.6,               # height to width ratio of box
+        arr.length = 0.5, arr.width = 0.2,
+        self.cex = 0.5,                          # size of self probability box
+        self.shifty = -0.03, self.shiftx = 0.13, # location of self prob. box
+        name = c("North Dhaka","Middle Dhaka","South Dhaka"),  # Optional
+        main = "Transition Diagram",
+        cex.main = 1.3                # relative size of main title
+        )
+```
+
+The above Markov Chain can be used to answer some of the future state questions.
+
+## Questions
+
+**Assuming that a driver is currently in the North Zone, what is the probability that the driver will again be in the North Zone after two trips?**
+
+**Answer:** 
+
+Manually:
+
+A driver can reach the North Zone again in his second trip in three different ways:
+1. Staying in the same zone i.e. North Dhaka to North Dhaka
+Probability: P(N-N) = 0.3*0.3 = 0.09
+2. Middle Dhaka to North Dhaka
+Probability: P(M-N) = 0.4*0.4 = 0.12
+3. South Dhaka to North Dhaka
+Probability: P(S-N) = 0.5*0.4 = 0.2
+
+Therefore, probability of second trip to North = 0.09 + 0.12 + 0.20 = 0.41 (0.40 approximately)
+
+Using code:
+
+Using the markov chain object created earlier using the function `new()` -
+```{r}
+driverzone^2
+```
+
+This gives us the direct probability of a driver coming back to the North Zone after two trips.
+
+The calculation can be done for subsequent trips as well. For example, the probability of coming back to North Zone in 4th trip :
+```{r}
+driverzone^3
+```
+
+However if we increase n (No. of trips) the predictive power tends to go down, where the Markov Chain reaches an equilibrium called `stationary state`. 
+In the above case, after 9 trips the state becomes stationary - 
+```{r}
+driverzone^9
+```
+
+## Steady State
+
+The stationary state can be calculated using some linear algebra methods; however, the `driverzone` package has a function called `steadyStates()` that can do the work - 
+```{r}
+steadyStates(driverzone)
+```
+
+So we can say that, in the stationary state, a driver has a probability of 0.385 of ending up in the North Dhaka.
+
+**If there were 100 drivers in all and each completes 9 trips in a day, how many of them will end up in the Middle Dhaka?**
+
+```{r}
+steadyStates(driverzone)*100
+```
+So, around 38 drivers will end up in North Dhaka, 24 in the Middle Dhaka and 37 in the South Dhaka.
+
+## Reference
+
+1. [AN INTRODUCTION TO MARKOV CHAINS USING R](https://dataconomy.com/2018/03/an-introduction-to-markov-chains-using-r/) by [CHAITANYA SAGAR](https://www.linkedin.com/in/chaitanyasagar/)
+
+---
+

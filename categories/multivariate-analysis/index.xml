@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Multivariate Analysis on Ahsan&#39;s Profile</title>
+    <link>https://ahsan.netlify.app/categories/multivariate-analysis/</link>
+    <description>Recent content in Multivariate Analysis on Ahsan&#39;s Profile</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ahsan.netlify.app/categories/multivariate-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cluster Analysis</title>
+      <link>https://ahsan.netlify.app/post/cluster-analysis/</link>
+      <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/post/cluster-analysis/</guid>
+      <description>Discover the power of cluster analysis in R with this comprehensive blog post. Learn the essential techniques, interpret the results, and gain valuable insights from your data.</description>
+    </item>
+    <item>
+      <title>MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</title>
+      <link>https://ahsan.netlify.app/post/manova/</link>
+      <pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/post/manova/</guid>
+      <description>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their&amp;hellip;</description>
+    </item>
+  </channel>
+</rss>

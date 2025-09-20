@@ -2,244 +2,163 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/categories/</loc>
-    <lastmod>2024-10-10T18:28:28+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/hypothesis-test/</loc>
-    <lastmod>2024-10-10T18:28:28+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/hypothesis-tests/</loc>
-    <lastmod>2024-10-10T18:28:28+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/cluster-analysis/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/level-of-significance/</loc>
-    <lastmod>2024-10-10T18:28:28+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/cluster-analysis/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
-    <lastmod>2024-10-10T18:28:28+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/multivariate-analysis/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/2024-10-10-why-5-significance-level/</loc>
-    <lastmod>2024-10-10T18:28:28+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/cluster-analysis/</loc>
-    <lastmod>2023-07-03T19:09:42+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/r/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/cluster-analysis/</loc>
-    <lastmod>2023-07-03T19:09:42+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/multivariate-analysis/</loc>
-    <lastmod>2024-03-04T22:22:09+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/design-of-experiment/</loc>
+    <lastmod>2023-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/r/</loc>
-    <lastmod>2024-03-04T22:22:09+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/manova/</loc>
+    <lastmod>2023-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/design-of-experiment/</loc>
-    <lastmod>2024-03-04T22:22:09+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/manova/</loc>
+    <lastmod>2023-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/manova/</loc>
-    <lastmod>2024-03-04T22:22:09+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/blogs/</loc>
+    <lastmod>2022-12-09T19:53:33+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/post/manova/</loc>
-    <lastmod>2024-03-04T22:22:09+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/example/</loc>
+    <lastmod>2022-12-09T19:53:33+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/talk/inauguration-of-programming-club/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/markdown-syntax/</loc>
+    <lastmod>2022-12-09T19:53:33+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
-    <lastmod>2024-03-12T18:26:44+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/mathjax/</loc>
+    <lastmod>2022-12-09T19:53:33+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/tag/jupyternotebook/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/blogs/math/</loc>
+    <lastmod>2022-12-09T19:53:33+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/category/tech/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/jupyternotebook/</loc>
+    <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/r-in-jupyter-notebook/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/tech/</loc>
+    <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/biostatisics/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/r-in-jupyter-notebook/</loc>
+    <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/biostatistics/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/gallery/</loc>
+    <lastmod>2022-06-25T18:35:46+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/post/kaplan-meier-estimatior-in-r/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/biostatisics/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/multivariate-analysis/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/biostatistics/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/books-multivariate-analysis/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/kaplan-meier-estimatior-in-r/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/resources/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/multivariate-analysis/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/statistics/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/books-multivariate-analysis/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/normality-test/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/resources/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/shapiro-wilk-test/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/statistics/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/shapiro-wilk-test/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/hypothesis-test/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/others/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/hypothesis-tests/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/subject-review/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/normality-test/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/statistics-subject-review/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/shapiro-wilk-test/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/bar-plot/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/shapiro-wilk-test/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/ggplot2-bar-plot/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/others/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/ggplot2/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/subject-review/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/r-programming/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/statistics-subject-review/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/ggplot2-scatter-plot/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/bar-plot/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/markov-chain/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/ggplot2-bar-plot/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/markov-chain/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/ggplot2/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/scatter-plot/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/r-programming/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/category/stochastic-process/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/ggplot2-scatter-plot/</loc>
+    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/tidyverse/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/markov-chain/</loc>
+    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/publication-type/3/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/post/markov-chain/</loc>
+    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/publication/preprint/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/scatter-plot/</loc>
+    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/publication_types/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/categories/stochastic-process/</loc>
+    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tag/source-themes/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/tidyverse/</loc>
+    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/slides/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/blogs/markdown-syntax/</loc>
+    <lastmod>2021-04-03T23:29:21+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/slides/example/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/sample/</loc>
+    <lastmod>2021-04-03T23:29:21+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/tag/deep-learning/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/blogs/emoji-support/</loc>
+    <lastmod>2021-04-03T22:53:58+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/tag/demo/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/emoji-support/</loc>
+    <lastmod>2021-04-03T22:53:58+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/project/example/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/blogs/placeholder-text/</loc>
+    <lastmod>2021-04-03T22:41:10+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/project/external-project/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/placeholder-text/</loc>
+    <lastmod>2021-04-03T22:41:10+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/project/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/blogs/rich-content/</loc>
+    <lastmod>2021-04-03T19:53:33+05:30</lastmod>
   </url><url>
-    <loc>http://example.org/publication-type/2/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/publication/journal-article/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/publication-type/1/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/publication/conference-paper/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/admin/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/post/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/publication/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://example.org/event/</loc>
-    <lastmod>2023-06-22T00:51:18+06:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahsan.netlify.app/tags/rich-content/</loc>
+    <lastmod>2021-04-03T19:53:33+05:30</lastmod>
   </url>
 </urlset>

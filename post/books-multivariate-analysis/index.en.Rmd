@@ -1,0 +1,42 @@
+---
+title: Recommended Books For Multivariate Analysis
+author: Md. Ahsanul Islam
+date: '2022-06-19'
+slug: books-multivariate-analysis
+categories:
+  - Resources
+tags:
+  - Statistics
+  - Multivariate Analysis
+toc: no
+autoCollapseToc: yes
+contentCopyright: yes
+description: "Nothing is better resource than a book. So, in this post, I've shared some books that have been extremely helpful to me in my quest to learn multivariate analysis."
+summary: "Nothing is better resource than a book. So, in this post, I've shared some books that have been extremely helpful to me in my quest ..."
+images:
+- https://MdAhsanulHimel.github.io/2022/06/19/books-multivariate-analysis/books-multivariate-analysis.png
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+```
+
+---
+
+Nothing is better resource than a book. So, in this post, I've shared some books that have been extremely helpful to me in my quest to learn multivariate analysis.
+
+
+1. Methods of Multivariate Statistics by M.S. Srivastava.   
+Read the book [online](https://rebrand.ly/srivastava-multivariate-archive) or [download the pdf](https://rebrand.ly/Srivastava-Multivariate-Statistics-pdf).   
+![Methods of Multivariate Statistics by M.S. Srivastava](index.en_insertimage_2.png){width=250px}
+2. An Introduction to Multivariate Statistical Analysis by T. W. Anderson   
+[Download pdf](https://rebrand.ly/Anderson-multivariate-3rd-edition)   
+![An Introduction to Multivariate Statistical Analysis](index.en_insertimage_1.png){width=250px}
+3. Applied Multivariate Statistical Analysis by Richard A. Johnson and Dean W. Wichern      
+[Download pdf](https://rebrand.ly/Johnson-applied-multivariate)   
+![Applied Multivariate Statistical Analysis](index.en_insertimage_3.png){width=250px}
+
+
+

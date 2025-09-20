@@ -1,16 +1,173 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags | Md Ahsanul Islam</title>
-    <link>http://example.org/tags/</link>
-      <atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
-    <description>Tags</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 10 Oct 2024 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png</url>
-      <title>Tags</title>
-      <link>http://example.org/tags/</link>
-    </image>
-    
+    <title>Tags on Ahsan&#39;s Profile</title>
+    <link>https://ahsan.netlify.app/tags/</link>
+    <description>Recent content in Tags on Ahsan&#39;s Profile</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ahsan.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cluster Analysis</title>
+      <link>https://ahsan.netlify.app/tags/cluster-analysis/</link>
+      <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/cluster-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>R</title>
+      <link>https://ahsan.netlify.app/tags/r/</link>
+      <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/r/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MANOVA</title>
+      <link>https://ahsan.netlify.app/tags/manova/</link>
+      <pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/manova/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Example</title>
+      <link>https://ahsan.netlify.app/tags/example/</link>
+      <pubDate>Fri, 09 Dec 2022 19:53:33 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/example/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown Syntax</title>
+      <link>https://ahsan.netlify.app/tags/markdown-syntax/</link>
+      <pubDate>Fri, 09 Dec 2022 19:53:33 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/markdown-syntax/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mathjax</title>
+      <link>https://ahsan.netlify.app/tags/mathjax/</link>
+      <pubDate>Fri, 09 Dec 2022 19:53:33 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/mathjax/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JupyterNotebook</title>
+      <link>https://ahsan.netlify.app/tags/jupyternotebook/</link>
+      <pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/jupyternotebook/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Biostatisics</title>
+      <link>https://ahsan.netlify.app/tags/biostatisics/</link>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/biostatisics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multivariate Analysis</title>
+      <link>https://ahsan.netlify.app/tags/multivariate-analysis/</link>
+      <pubDate>Sun, 19 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/multivariate-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistics</title>
+      <link>https://ahsan.netlify.app/tags/statistics/</link>
+      <pubDate>Sun, 19 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/statistics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hypothesis Test</title>
+      <link>https://ahsan.netlify.app/tags/hypothesis-test/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/hypothesis-test/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Normality Test</title>
+      <link>https://ahsan.netlify.app/tags/normality-test/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/normality-test/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shapiro Wilk Test</title>
+      <link>https://ahsan.netlify.app/tags/shapiro-wilk-test/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/shapiro-wilk-test/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Subject Review</title>
+      <link>https://ahsan.netlify.app/tags/subject-review/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/subject-review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bar Plot</title>
+      <link>https://ahsan.netlify.app/tags/bar-plot/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/bar-plot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ggplot2</title>
+      <link>https://ahsan.netlify.app/tags/ggplot2/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/ggplot2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markov Chain</title>
+      <link>https://ahsan.netlify.app/tags/markov-chain/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/markov-chain/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Scatter Plot</title>
+      <link>https://ahsan.netlify.app/tags/scatter-plot/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/scatter-plot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tidyverse</title>
+      <link>https://ahsan.netlify.app/tags/tidyverse/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/tags/tidyverse/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sample</title>
+      <link>https://ahsan.netlify.app/tags/sample/</link>
+      <pubDate>Sat, 03 Apr 2021 23:29:21 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/sample/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emoji Support</title>
+      <link>https://ahsan.netlify.app/tags/emoji-support/</link>
+      <pubDate>Sat, 03 Apr 2021 22:53:58 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/emoji-support/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Placeholder Text</title>
+      <link>https://ahsan.netlify.app/tags/placeholder-text/</link>
+      <pubDate>Sat, 03 Apr 2021 22:41:10 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/placeholder-text/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rich Content</title>
+      <link>https://ahsan.netlify.app/tags/rich-content/</link>
+      <pubDate>Sat, 03 Apr 2021 19:53:33 +0530</pubDate>
+      <guid>https://ahsan.netlify.app/tags/rich-content/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

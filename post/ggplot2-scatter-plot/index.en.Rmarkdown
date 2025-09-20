@@ -1,0 +1,667 @@
+---
+title: "Complete guide to scatter plot using ggplot2"
+date: '2021-05-23'
+slug: ggplot2-scatter-plot
+categories:
+  - R Programming
+tags:
+  - R
+  - ggplot2
+  - tidyverse
+  - scatter plot
+description: "R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson's Grammar of Graphics. It divides graphs into semantic components like scales ..."
+summary: "R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson's Grammar of Graphics. It divides graphs into semantic components like scales and layers."
+images:
+- https://MdAhsanulHimel.github.io/2021/05/23/ggplot2-scatter-plot/ggplot2-scatter-plot.png
+toc: yes
+autoCollapseToc: yes
+contentCopyright: yes
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "", prompt = F, message=F, warning = F
+)
+```
+
+---
+
+R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson's Grammar of Graphics. It divides graphs into semantic components like scales and layers. 
+
+After reading this post, you'll be able to create beautiful scatter plots like the one below.
+```{r, echo = FALSE}
+library(ggplot2)
+
+college <- read.csv('Data/college.csv', stringsAsFactors = TRUE)
+
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score",
+       caption = "Source: U.S. Department of Education") +
+  scale_x_continuous(labels = scales::dollar) +
+  theme_classic() +
+  theme(plot.caption.position = "plot",
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) +
+  guides(color = guide_legend(order = 1, 
+                              override.aes = list(alpha = 1, size = 4)),
+         size = guide_legend(order = 2, 
+                             override.aes = list(alpha = 1)))
+```
+
+
+# Getting Started
+
+Install library using `install.packages("ggplot2")`.   
+
+If you've already installed it in your computer then load it - 
+```{r warning=F}
+library("ggplot2")
+```
+
+Loading the data set and do some changes to make it usable - 
+```{r}
+college <- read.csv('Data/college.csv', stringsAsFactors = TRUE)
+```
+
+You can get the data set [here](https://md-ahsanul.github.io/2021/05/23/ggplot2-scatter-plot/Data/college.csv)
+
+---
+
+Calling `ggplot()` function alone just creates a blank canvas -
+```{r}
+ggplot()
+```
+
+Adding `geom_point` layer to the ggplot object to create a scatter plot -
+
+
+Adding a layer to the ggplot object with argument `geom='point'` -
+```{r}
+ggplot(data = college) +
+  layer(geom = 'point', stat = "identity", position = "identity",
+        mapping = aes(x = tuition, y = sat_avg))
+```
+
+But the easier and widely used way of adding a layer is using `geom_*` -
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg))
+```
+
+---
+
+# Shape   
+
+You can change the shape of the points from black dot to something else. For example - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg),
+             shape = 1)
+```
+
+You can use different shapes for different values/levels. For example in our `college` data there is a column named `control`, that has the information on whether a school is public or private.
+
+So if you want to differentiate public vs. private schools but shape you can do that using the `shape` argument inside the aesthetic mapping - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, shape = control))
+```
+
+---
+
+# Color   
+
+You can change the color of the points from black dot to something else. For example - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg),
+             color = 'darkorchid1')
+```
+
+You can know all the color names by running the code `colors()`
+
+Similar to changing shape based on the levels of a variable, you can also change color. For this you need to pass the color argument inside the aesthetic mapping specifying the variable name - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, color = control))
+```
+
+Now you can clearly see how the private and public schools are performing.
+
+## Manually Changing Color
+
+You can assign colors of your choice to plot using the function `scale_color_manual()` -
+```{r}
+manu_colors <- c("#FF8C32", "#06113C")
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, color = control))+
+  scale_color_manual(values = manu_colors)
+```
+
+You can hide the legend using the argument `show.legend` outside of the aesthetic mapping - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, color = control),
+             show.legend = FALSE)+
+  scale_color_manual(values = manu_colors)
+```
+
+
+## `colourpicker` Addin for choosing color
+
+View this [link](https://github.com/daattali/colourpicker) for details on how to install and use this.
+
+```{r}
+CPCOLS <- c("#8B0A50", "#9A32CD")
+
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, color = control))+
+  scale_color_manual(values=CPCOLS)
+```
+
+---
+
+# Point Size 
+
+You can change the size of the points from regular size to something else. For example - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg), size = 2)
+```
+
+Let's alter the size of pointers in accordance to the number of undergraduates in each point - 
+```{r}
+ggplot(data = college) +
+  geom_point(aes(x = tuition, y = sat_avg, size = undergrads))
+```
+
+---
+
+# Adding Transparency/Alpha 
+
+The transparency of the points can be controlled using the argument `alpha` outside of the aesthetic mapping - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, size = undergrads),
+             alpha = 0.35)
+```
+
+`alpha` takes values from 0 to 1.
+
+Notice how transparency of the points in the legend also changes. To remove any transparency we can use the `guides()` function to override the aesthetic of the point - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                           size = undergrads), 
+             alpha = 0.35) +
+  guides(size = guide_legend(override.aes = list(alpha = 1)))
+```
+
+
+---
+
+# Title & Subtitle
+
+Add title and subtitle using the ggtitle -
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  ggtitle("SAT Average score VS Tuition Fee",
+          subtitle = "A comparison study")
+```
+
+I prefer using `labs()` because it gives more space to customization, for example changing label of legends - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study")
+```
+
+## Alignment of Title & Subtitle
+
+To align the title and subtitle in the middle you can customize the theme manually - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads") +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+```
+
+The title and subtitle by default is plotted on the panel. And so the alignment is done based on the panel. If you want to align the plot based on 'plot' than you have to specify it using `plot.title.position` argument inside the function `theme()` -
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads") +
+  theme(plot.title.position = "plot", 
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+```
+
+---
+
+# Axis Labels
+
+Like `ggtile()` there are functions called `xlab()` and `ylab()` that can be used to change axis labels - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  xlab("Tuition Fees") +
+  ylab("SAT Average Score")
+```
+
+But the `labs()` function with arguments `x` and `y` may seem more convenient - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score")
+```
+
+---
+
+
+# Axis Limits
+
+Using `xlim` and `ylim` you can specify the limits - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  xlim(0, 60000) + ylim(700, 1500)
+```
+
+When restricting the axis, some of the values may have removed from the plot.
+
+The `expand_limits()` function does the same work. It does not remove the points, rather adjusts the limits to include all the points -
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  expand_limits(x = c(0, 60000), y = c(700, 1500))
+```
+
+## scale_*_continuous()
+
+This function can be used to manually set the axis labels, breaks, limits and many more. 
+For example -
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads") +
+  scale_x_continuous(name = "Tuition Fees", 
+                     limits = c(0, 56000),  # to change limit
+                     breaks = seq(0, 56000, by = 8000), # to specify breaks
+                     labels = scales::dollar  
+                     ) +
+  scale_y_continuous(name = "SAT Average Score")
+```
+
+To know more run `?scale_x_continuous`.
+
+---
+
+# Caption 
+
+The caption appears in the bottom-right, and is often used for sources, notes or copyright - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score",
+       caption = "Source: U.S. Department of Education") +
+  theme(plot.caption.position = "plot")
+```
+
+---
+
+# Tag
+
+The plot tag appears at the top-left, and is typically used for labelling a subplot - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score",
+       tag = "A")
+```
+
+---
+
+
+# Legend
+
+You can also customize the legends!
+
+## Legend Title
+
+Using the `labs()` function to change the titles of the legends - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       # changing legend labels
+       color = "Control", size = "No. of Undergrads"
+       )
+```
+
+Another way to change the titles is using `guides()` function - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study") +
+  guides(color = guide_legend(title = "Control"),
+         size = guide_legend(title = "No. of Undergrads"))
+```
+
+To hide the legend titles use `element_blank()` - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  theme(legend.title = element_blank())
+```
+
+## Legend Position & Box Direction
+
+To place at the bottom, one under another, and reduce the margin -  
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  theme(legend.position = "bottom",
+        legend.box = "vertical",
+        legend.margin=margin())
+```
+
+The `legend.position` argument takes the values: right, left, bottom, top, none.   
+
+More example - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  theme(legend.position = "right",
+        legend.box = "horizontal",
+        legend.margin=margin())
+```
+
+To justify the contents of a legend's box use `legend.box.just` argument - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       color = "Control", size = "No. of Undergrads",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  theme(legend.position = "bottom",
+        legend.box = "vertical",
+        legend.margin = margin(),
+        legend.box.just = "left")
+```
+
+To hide the legend - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  theme(legend.position = "none")
+```
+
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  theme(legend.position = "right",
+        legend.box = "horizontal",
+        legend.margin=margin())
+```
+
+## Legend Order
+
+Using the `guides()` function, you will be able to assign order in which the legends will be shown. 
+
+For example - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  guides(colour = guide_legend(order = 1),
+         size = guide_legend(order = 2))
+```
+
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(title = "SAT Average score VS Tuition Fee",
+       x = "Tuition Fees", y = "SAT Average Score") +
+  guides(colour = guide_legend(order = 2),
+         size = guide_legend(order = 1))
+```
+
+---
+
+# Customizing Theme
+
+`element_rect()` function with `fill` argument in action in changing colors of different parts - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee",
+       subtitle = "A comparison study",
+       caption = "Source: U.S. Department of Education",
+       tag = "A"
+       ) +
+  theme(plot.caption.position = "plot",
+        plot.background = element_rect(fill='#E2D784'),
+        panel.background = element_rect(fill = '#E5EFC1'),
+        legend.background = element_rect(fill = '#E2D784'),
+        legend.key = element_rect(fill = "#E2D784")
+        ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1, size = 4)),
+         size = guide_legend(override.aes = list(alpha = 1)))
+```
+
+Use `element_blank()` to remove all grids and colors from background -
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee")+
+  theme(panel.background = element_blank())
+```
+
+## Axis grids
+
+Showing both grids in a single color using `panel.grid.major` - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee")+
+  theme(panel.background = element_blank(),
+        panel.grid.major = element_line("grey"))
+```
+
+Showing only X axis grid using `panel.grid.major.x`-
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee")+
+  theme(panel.background = element_blank(),
+        panel.grid.major.x = element_line("grey"))
+```
+
+Similarly Y axis grid - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee")+
+  theme(panel.background = element_blank(),
+        panel.grid.major.y = element_line("grey"))
+```
+
+To hide grids use element_blank() - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee")+
+  theme(panel.background = element_blank(),
+        panel.grid.major = element_blank())
+```
+
+## Using Predefined Themes
+
+List of themes available in ggplot:
+* theme_bw()
+* theme_minimal()
+* theme_linedraw() 
+* theme_light() 
+* theme_dark() 
+* theme_classic() 
+* theme_void() 
+* theme_test()
+
+Using classic theme - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee") +
+  theme_classic()
+```
+
+Using minimal theme - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee") +
+  theme_minimal()
+```
+
+Using dark theme - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee") +
+  theme_bw()
+```
+
+More themes can be found from the package `ggthemes`. Load the package - 
+```{r}
+library(ggthemes)
+```
+
+Details on the themes can be found [here](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/).   
+
+Using the theme solarized - 
+```{r}
+ggplot(data = college) +
+  geom_point(mapping = aes(x = tuition, y = sat_avg, 
+                         color = control, size = undergrads), 
+             alpha = 0.35) +
+  labs(x = "Tuition Fees", y = "SAT Average Score",
+       title = "SAT Average score VS Tuition Fee") +
+  theme_solarized()
+```
+
+---

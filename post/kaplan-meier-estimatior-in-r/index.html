@@ -1,954 +1,332 @@
 <!DOCTYPE html>
-<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: October 11, 2024 --><html lang="en-us" >
+<html lang="en">
 
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.png type="image/gif">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
-  
-  
-    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
-  
 
-  
-  
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
 
 
+<link rel="stylesheet" href="/css/font.css" media="all">
 
 
 
+<meta property="og:url" content="https://ahsan.netlify.app/post/kaplan-meier-estimatior-in-r/">
+  <meta property="og:site_name" content="Ahsan&#39;s Profile">
+  <meta property="og:title" content="The Kaplan-Meier Estimatior in R">
+  <meta property="og:description" content="In this post, we will see how to estimate the survival function in this method using R. Note that, the Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime...">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-06-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-06-21T00:00:00+00:00">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="Biostatisics">
+    <meta property="og:image" content="https://ahsanhimel.github.io/2022/06/21/kaplan-meier-estimatior-in-r/kaplan_r_thumb.png">
 
 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ahsanhimel.github.io/2022/06/21/kaplan-meier-estimatior-in-r/kaplan_r_thumb.png">
+  <meta name="twitter:title" content="The Kaplan-Meier Estimatior in R">
+  <meta name="twitter:description" content="In this post, we will see how to estimate the survival function in this method using R. Note that, the Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime...">
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
 
 
-  
-  
+<link rel="stylesheet" href="/css/theme.css" media="all">
 
 
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
 
 
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --text-link-color: #007bff;
+        --background-color: #fff;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
 
-
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  
-
-  
-  
-  
-    
-      
-      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
-    
-  
-
-  
-  
-
-  
-  
-    
-    <script src="/js/mathjax-config.js"></script>
-  
-
-  
-
-  <link rel="stylesheet" href="/css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css" media="print" onload="this.media='all'">
-
-  
-  
-  
-    
-    
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
-    
-
-    
-    
-    
-    
-      
-      
-    
-    
-    
-
-    
-    
-    
-
-    
-
-    
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-    
-  
-
-  
-  
-  
-  
-  
-  
-  <link rel="stylesheet" href="/css/wowchemy.fbbe4bf850d3214610062d46a08e9f3b.css" />
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-    
-    
-    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
-    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
-  
-
-  
-  
-
-
-
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZNDJNWVC4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url, target) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           if (target !== '_blank') {
-             document.location = url;
-           }
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --text-link-color-dark: #ffffff;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
     }
-    trackOutboundLink(event.target, event.target.getAttribute('target'));  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'G-HZNDJNWVC4', {});
-  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
-
-  
-  document.addEventListener('click', onClickCallback, false);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-
-
-
-
-
-  <meta name="author" content="Md Ahsanul Islam" />
-
-
-
-
-
-  
-
-<meta name="description" content="The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R." />
-
-
-
-<link rel="alternate" hreflang="en-us" href="http://example.org/post/kaplan-meier-estimatior-in-r/" />
-<link rel="canonical" href="http://example.org/post/kaplan-meier-estimatior-in-r/" />
-
-
-
-  <link rel="manifest" href="/manifest.webmanifest" />
-
-
-
-<link rel="icon" type="image/png" href="/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_32x32_fill_lanczos_center_3.png" />
-<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_180x180_fill_lanczos_center_3.png" />
-
-<meta name="theme-color" content="#1565c0" />
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-<meta property="twitter:card" content="summary" />
-
-  <meta property="twitter:site" content="@MdAhsanulHimel" />
-  <meta property="twitter:creator" content="@MdAhsanulHimel" />
-<meta property="twitter:image" content="http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png" />
-<meta property="og:site_name" content="Md Ahsanul Islam" />
-<meta property="og:url" content="http://example.org/post/kaplan-meier-estimatior-in-r/" />
-<meta property="og:title" content="The Kaplan-Meier Estimatior in R | Md Ahsanul Islam" />
-<meta property="og:description" content="The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R." /><meta property="og:image" content="http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
-
-  
-    <meta
-      property="article:published_time"
-      content="2022-06-21T00:00:00&#43;00:00"
-    />
-  
-  
-    <meta property="article:modified_time" content="2023-06-22T00:51:18&#43;06:00">
-  
-
-
-
-
-
-
-    
-
-
-
-
-
-
-  
-
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "http://example.org/post/kaplan-meier-estimatior-in-r/"
-  },
-  "headline": "The Kaplan-Meier Estimatior in R",
-  
-  "datePublished": "2022-06-21T00:00:00Z",
-  "dateModified": "2023-06-22T00:51:18+06:00",
-  
-  "author": {
-    "@type": "Person",
-    "name": "Md Ahsanul Islam"
-  },
-  
-  "publisher": {
-    "@type": "Organization",
-    "name": "Md Ahsanul Islam",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "http://example.org/media/icon_hu49ef3e1d0d5b0c04a29a6baeaf886dea_49687_192x192_fill_lanczos_center_3.png"
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
     }
-  },
-  "description": "The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R."
-}
-</script>
 
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        height: 0px;
+        width: 8px;
+        background-color: var(--background-color);
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: #b0b0b0;
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+
+
+
+<style>
+     
+    header#profileHeader{
+      position: sticky;        
+      top: 0;
+      z-index: 9999;
+      background-color: var(--secondary-color);
+      box-shadow: 0 4px 6px rgba(0,0,0,.08);
+    }
+     
+    #profileHeader,
+    #profileHeader.showHeaderOnTop{
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  </style>
   
 
-  
 
 
 
-
-  
-  
-  
-
-  
-  
-
-  
+<meta name="description" content="In this post, we will see how to estimate the survival function in this method using R. Note that, the Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime...">
+<link rel="stylesheet" href="/css/single.css">
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
 
 
   
-  <title>The Kaplan-Meier Estimatior in R | Md Ahsanul Islam</title>
-
-  
-  
-  
   
 
+  <title>
+The Kaplan-Meier Estimatior in R | Ahsan&#39;s Profile
 
-
-
-
-
-
-
-
-
-
+  </title>
 </head>
 
+<body class="light">
+  
+  
+<header id="profileHeader">
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/fav.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                Ahsan
+                
+            </a>
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="13e92fdf0f41e783116e2406477ecce5" >
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='Search this site...'
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <script src="/js/wowchemy-init.min.6134fdf303475e10e272c9fe5e3043fe.js"></script>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
 
-  
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Search this site...' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
 
+                    
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#education" title="Education">
+                                
+                                    <i class="fas fa-graduation-cap"></i>  
+                                
+                                Education
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#experience" title="Experience">
+                                
+                                    <i class="fas fa-briefcase"></i>  
+                                
+                                Experience
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#publications" title="Research">
+                                
+                                    <i class="fas fa-flask"></i>  
+                                
+                                Research
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/post" title="My Posts">
+                                
+                                    <i class="fas fa-rss"></i>  
+                                
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#contact" title="Contact">
+                                
+                                    <i class="fas fa-address-card"></i>  
+                                
+                                Contact
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#courses" title="Courses">
+                                
+                                    <i class="fas fa-chalkboard-teacher"></i>  
+                                
+                                Courses
+                            </a>
+                        </li>
+                    
 
-<aside class="search-modal" id="search">
-  <div class="container">
-    <section class="search-header">
-
-      <div class="row no-gutters justify-content-between mb-3">
-        <div class="col-6">
-          <h1>Search</h1>
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
         </div>
-        <div class="col-6 col-search-close">
-          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
-        </div>
-      </div>
-
-      <div id="search-box">
-        
-        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
-        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
-        aria-label="Search...">
-        
-      </div>
-
-      
-      
-
-      
-
-    </section>
-    <section class="section-search-results">
-
-      <div id="search-hits">
-        
-      </div>
-
-    </section>
-  </div>
-</aside>
-
-
-
-  <div class="page-header header--fixed">
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-    <div class="container-xl">
-
-      
-      <div class="d-none d-lg-inline-flex">
-        <a class="navbar-brand" href="/">Md Ahsanul Islam</a>
-      </div>
-      
-
-      
-      <button type="button" class="navbar-toggler" data-toggle="collapse"
-              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-      <span><i class="fas fa-bars"></i></span>
-      </button>
-      
-
-      
-      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-        <a class="navbar-brand" href="/">Md Ahsanul Islam</a>
-      </div>
-      
-
-      
-      
-      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
-
-        
-        <ul class="navbar-nav d-md-inline-flex">
-          
-
-          
-
-          
-          
-          
-            
-          
-
-          
-
-          
-          
-          
-          
-
-          
-            
-              
-              
-            
-            
-              
-              
-              
-                
-              
-              
-            
-          
-
-          <li class="nav-item">
-            <a class="nav-link " href="/#about"><span>Home</span></a>
-          </li>
-
-          
-          
-
-          
-
-          
-          
-          
-            
-          
-
-          
-
-          
-          
-          
-          
-
-          
-            
-              
-              
-            
-            
-              
-              
-              
-                
-              
-              
-            
-          
-
-          <li class="nav-item">
-            <a class="nav-link " href="/#skills"><span>Skills</span></a>
-          </li>
-
-          
-          
-
-          
-
-          
-          
-          
-            
-          
-
-          
-
-          
-          
-          
-          
-
-          
-            
-              
-              
-            
-            
-              
-              
-              
-                
-              
-              
-            
-          
-
-          <li class="nav-item">
-            <a class="nav-link " href="/#experience"><span>Experience</span></a>
-          </li>
-
-          
-          
-
-          
-
-          
-          
-          
-            
-          
-
-          
-
-          
-          
-          
-          
-
-          
-            
-              
-              
-            
-            
-              
-              
-              
-                
-              
-              
-            
-          
-
-          <li class="nav-item">
-            <a class="nav-link " href="/#certifications"><span>Certifications</span></a>
-          </li>
-
-          
-          
-
-          
-
-          
-          
-          
-            
-          
-
-          
-
-          
-          
-          
-          
-
-          
-            
-              
-              
-            
-            
-              
-              
-              
-                
-              
-              
-            
-          
-
-          <li class="nav-item">
-            <a class="nav-link " href="/#posts"><span>Posts</span></a>
-          </li>
-
-          
-          
-
-          
-
-          
-          
-          
-            
-          
-
-          
-
-          
-          
-          
-          
-
-          
-            
-              
-              
-            
-            
-              
-              
-              
-                
-              
-              
-            
-          
-
-          <li class="nav-item">
-            <a class="nav-link " href="/#contact"><span>Contact</span></a>
-          </li>
-
-          
-          
-
-        
-
-          
-        </ul>
-      </div>
-
-      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-
-        
-        
-          
-            
-            <li class="nav-item d-none d-lg-inline-flex">
-              <a class="nav-link" href="https://www.linkedin.com/in/MdAhsanulHimel" data-toggle="tooltip" data-placement="bottom" title="Connect on Linkedin" target="_blank" rel="noopener" aria-label="Connect on Linkedin">
-                <i class="fab fa-linkedin" aria-hidden="true"></i>
-              </a>
-            </li>
-          
-            
-            <li class="nav-item d-none d-lg-inline-flex">
-              <a class="nav-link" href="https://github.com/MdAhsanulHimel" data-toggle="tooltip" data-placement="bottom" title="Connect on GitHub" target="_blank" rel="noopener" aria-label="Connect on GitHub">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </a>
-            </li>
-          
-        
-
-        
-        
-        
-        <li class="nav-item">
-          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
-        </li>
-        
-
-        
-        
-        
-        <li class="nav-item dropdown theme-dropdown">
-          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
-            <i class="fas fa-moon" aria-hidden="true"></i>
-          </a>
-          <div class="dropdown-menu">
-            <a href="#" class="dropdown-item js-set-theme-light">
-              <span>Light</span>
-            </a>
-            <a href="#" class="dropdown-item js-set-theme-dark">
-              <span>Dark</span>
-            </a>
-            <a href="#" class="dropdown-item js-set-theme-auto">
-              <span>Automatic</span>
-            </a>
-          </div>
-        </li>
-        
-
-        
-        
-
-      </ul>
-
-    </div>
-  </nav>
+    </nav>
 </header>
-
-
-  </div>
-
-  <div class="page-body">
-    
-    
-    
-
-    <article class="article">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-<div class="article-container pt-3">
-  <h1>The Kaplan-Meier Estimatior in R</h1>
-
-  
-
-  
-    
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
       
-          Last updated on
-      
-    
-    Jun 22, 2023
-  </span>
-  
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">The Kaplan-Meier Estimatior in R</h1>
+            <div class="text-center">
+              Md. Ahsanul Islam <small>|</small>
+              Tuesday, Jun 21, 2022 
+              
+              <span id="readingTime"> min read</span>
+              
+            </div>
+          </div>
 
-  
+          
+          
+          <div class="d-block d-lg-none mb-4">
+            <aside class="toc">
+              <h5>Table of Contents</h5>
+              <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#stratify-by-other-variable">Stratify by Other Variable</a></li>
+  </ul>
+</nav></div>
+            </aside>
+          </div>
+          
 
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    12 min read
-  </span>
-  
+          
+          
+          
+          
+            
+          
 
-  
-  
-  
-  
+          
 
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/biostatistics/">Biostatistics</a></span>
-  
-
-</div>
-
-    
-
-
-
-
-
-  
-</div>
-
-
-
-  <div class="article-container">
-
-    <div class="article-style">
-      <hr>
+          <article class="page-content p-2">
+            <hr>
 <p>The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R.</p>
 <h1 id="packages--data">Packages &amp; Data</h1>
 <p>For fitting a Kaplan-Meier curve, the <code>survival</code> package is required -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">survival</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">survival</span><span style="color:#000;font-weight:bold">)</span>
 </span></span></code></pre></div><p>For this example, I will use the addicts dataset -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">remotes</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&#34;lbraglia/suanselete3&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">addicts</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s">&#39;suanselete3&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">remotes</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">install_github</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;lbraglia/suanselete3&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">data</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addicts</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">package</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;suanselete3&#39;</span><span style="color:#000;font-weight:bold">)</span>
 </span></span></code></pre></div><p>Here, the package <code>suanselete3</code> is an unofficial companion to the textbook &ldquo;Survival Analysis - A Self-Learning Text&rdquo; by D.G. Kleinbaum and M. Klein (3rd Ed., 2012) including all the accompanying datasets. I have loaded the addicts data set from this package.</p>
 <p>Description of the data (event=dropped out) -</p>
 <ol>
@@ -961,782 +339,524 @@
 </ol>
 <h1 id="data-preparation">Data Preparation</h1>
 <p>Let&rsquo;s have an idea about the data set -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">addicts</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#   id clinic status survt prison dose
-</span></span><span class="line"><span class="cl"># 1  1      1      1   428      0   50
-</span></span><span class="line"><span class="cl"># 2  2      1      1   275      1   55
-</span></span><span class="line"><span class="cl"># 3  3      1      1   262      0   55
-</span></span><span class="line"><span class="cl"># 4  4      1      1   183      0   30
-</span></span><span class="line"><span class="cl"># 5  5      1      1   259      1   65
-</span></span><span class="line"><span class="cl"># 6  6      1      1   714      0   55
-</span></span></code></pre></div><p>Check the class of the data set imported in R -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">class</span><span class="p">(</span><span class="n">addicts</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># [1] &#34;data.frame&#34;
-</span></span></code></pre></div><p>It is a data frame. To work with this, firstly, we need to create a <code>Surv</code> object which will be used as a response variable -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Y</span> <span class="o">&lt;-</span> <span class="nf">Surv</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">addicts</span><span class="o">$</span><span class="n">survt</span><span class="p">,</span> <span class="n">event</span> <span class="o">=</span> <span class="n">addicts</span><span class="o">$</span><span class="n">status</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Y</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#   [1]  428   275   262   183   259   714   438   796+  892   393   161+  836 
-</span></span><span class="line"><span class="cl">#  [13]  523   612   212   399   771   514   512   624   209   341   299   826+
-</span></span><span class="line"><span class="cl">#  [25]  262   566+  368   302   602+  652   293   564+  394   755   591   787+
-</span></span><span class="line"><span class="cl">#  [37]  739   550   837   612   581+  523   504   785   774   560   160   482 
-</span></span><span class="line"><span class="cl">#  [49]  518   683   147   563   646   899   857   180   452   760   496   258 
-</span></span><span class="line"><span class="cl">#  [61]  181   386   439+  563+  337   613+  192   405+  667   905+  247   821 
-</span></span><span class="line"><span class="cl">#  [73]  821   517+  346+  294   244    95   376   212    96   532   522   679 
-</span></span><span class="line"><span class="cl">#  [85]  408+  840+  148+  168   489   541+  205   475+  237   517   749   150 
-</span></span><span class="line"><span class="cl">#  [97]  465   708   713+  146+  450   555+  460    53+  122    35   532+  684+
-</span></span><span class="line"><span class="cl"># [109]  769+  591+  769+  609+  932+  932+  587+   26    72+  641+  367+  633+
-</span></span><span class="line"><span class="cl"># [121]  661   232    13   563+  969+ 1052+  944+  881+  190    79   884+  170 
-</span></span><span class="line"><span class="cl"># [133]  286   358+  326+  769+  161   564+  268   611+  322  1076+    2+  788+
-</span></span><span class="line"><span class="cl"># [145]  575+  109   730+  790+  456+  231   143    86+ 1021+  684+  878   216 
-</span></span><span class="line"><span class="cl"># [157]  808+  268   222+  683+  496+  389   126    17   350   531+  317+  461+
-</span></span><span class="line"><span class="cl"># [169]   37   167   358    49   457   127     7    29    62   150+  223   129+
-</span></span><span class="line"><span class="cl"># [181]  204+  129   581   176    30    41   543+  210+  193   434   367   348 
-</span></span><span class="line"><span class="cl"># [193]   28+  337+  175+  149   546    84   283+  533   207   216    28+   67 
-</span></span><span class="line"><span class="cl"># [205]   62+  111+  257   136   342+   41   531+   98+  145    50    53+  103+
-</span></span><span class="line"><span class="cl"># [217]    2+  157    75    19    35   394+  117   175   180   314   480+  325+
-</span></span><span class="line"><span class="cl"># [229]  280   204   366   531+   59    33   540   551+   90    47
-</span></span></code></pre></div><p>Here the time variable <code>survt</code> has been assigned with the plus sign (+) indicating censored and not censored otherwise (based on <code>status</code> variable).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">head</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addicts</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>#   id clinic status survt prison dose
+# 1  1      1      1   428      0   50
+# 2  2      1      1   275      1   55
+# 3  3      1      1   262      0   55
+# 4  4      1      1   183      0   30
+# 5  5      1      1   259      1   65
+# 6  6      1      1   714      0   55
+</code></pre><p>Check the class of the data set imported in R -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">class</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addicts</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code># [1] &#34;data.frame&#34;
+</code></pre><p>It is a data frame. To work with this, firstly, we need to create a <code>Surv</code> object which will be used as a response variable -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">Y</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">Surv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">time</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">addicts</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">survt</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">event</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">addicts</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">status</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Y</span>
+</span></span></code></pre></div><pre tabindex="0"><code>#   [1]  428   275   262   183   259   714   438   796+  892   393   161+  836 
+#  [13]  523   612   212   399   771   514   512   624   209   341   299   826+
+#  [25]  262   566+  368   302   602+  652   293   564+  394   755   591   787+
+#  [37]  739   550   837   612   581+  523   504   785   774   560   160   482 
+#  [49]  518   683   147   563   646   899   857   180   452   760   496   258 
+#  [61]  181   386   439+  563+  337   613+  192   405+  667   905+  247   821 
+#  [73]  821   517+  346+  294   244    95   376   212    96   532   522   679 
+#  [85]  408+  840+  148+  168   489   541+  205   475+  237   517   749   150 
+#  [97]  465   708   713+  146+  450   555+  460    53+  122    35   532+  684+
+# [109]  769+  591+  769+  609+  932+  932+  587+   26    72+  641+  367+  633+
+# [121]  661   232    13   563+  969+ 1052+  944+  881+  190    79   884+  170 
+# [133]  286   358+  326+  769+  161   564+  268   611+  322  1076+    2+  788+
+# [145]  575+  109   730+  790+  456+  231   143    86+ 1021+  684+  878   216 
+# [157]  808+  268   222+  683+  496+  389   126    17   350   531+  317+  461+
+# [169]   37   167   358    49   457   127     7    29    62   150+  223   129+
+# [181]  204+  129   581   176    30    41   543+  210+  193   434   367   348 
+# [193]   28+  337+  175+  149   546    84   283+  533   207   216    28+   67 
+# [205]   62+  111+  257   136   342+   41   531+   98+  145    50    53+  103+
+# [217]    2+  157    75    19    35   394+  117   175   180   314   480+  325+
+# [229]  280   204   366   531+   59    33   540   551+   90    47
+</code></pre><p>Here the time variable <code>survt</code> has been assigned with the plus sign (+) indicating censored and not censored otherwise (based on <code>status</code> variable).</p>
 <h1 id="model">Model</h1>
 <p>In the following code, Y~1 requests an intercept only model -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">kmfit1</span> <span class="o">=</span> <span class="nf">survfit</span><span class="p">(</span><span class="n">Y</span><span class="o">~</span><span class="m">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">kmfit1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call: survfit(formula = Y ~ 1)
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#       n  events  median 0.95LCL 0.95UCL 
-</span></span><span class="line"><span class="cl">#     238     150     504     399     560
-</span></span></code></pre></div><p>The output contains descriptive information on the number of records, the number at risk at time 0, the number of events, and the median estimated survival time with a 95% confidence interval.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">kmfit1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">survfit</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">~</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">kmfit1</span>
+</span></span></code></pre></div><pre tabindex="0"><code># Call: survfit(formula = Y ~ 1)
+# 
+#       n  events  median 0.95LCL 0.95UCL 
+#     238     150     504     399     560
+</code></pre><p>The output contains descriptive information on the number of records, the number at risk at time 0, the number of events, and the median estimated survival time with a 95% confidence interval.</p>
 <p>The summary function shows the survival estimates -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">kmfit1</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call: survfit(formula = Y ~ 1)
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-</span></span><span class="line"><span class="cl">#     7    236       1    0.996 0.00423       0.9875        1.000
-</span></span><span class="line"><span class="cl">#    13    235       1    0.992 0.00597       0.9799        1.000
-</span></span><span class="line"><span class="cl">#    17    234       1    0.987 0.00729       0.9731        1.000
-</span></span><span class="line"><span class="cl">#    19    233       1    0.983 0.00840       0.9667        1.000
-</span></span><span class="line"><span class="cl">#    26    232       1    0.979 0.00937       0.9606        0.997
-</span></span><span class="line"><span class="cl">#    29    229       1    0.975 0.01026       0.9546        0.995
-</span></span><span class="line"><span class="cl">#    30    228       1    0.970 0.01107       0.9488        0.992
-</span></span><span class="line"><span class="cl">#    33    227       1    0.966 0.01182       0.9431        0.989
-</span></span><span class="line"><span class="cl">#    35    226       2    0.957 0.01317       0.9320        0.984
-</span></span><span class="line"><span class="cl">#    37    224       1    0.953 0.01379       0.9265        0.981
-</span></span><span class="line"><span class="cl">#    41    223       2    0.945 0.01493       0.9158        0.974
-</span></span><span class="line"><span class="cl">#    47    221       1    0.940 0.01546       0.9105        0.971
-</span></span><span class="line"><span class="cl">#    49    220       1    0.936 0.01597       0.9053        0.968
-</span></span><span class="line"><span class="cl">#    50    219       1    0.932 0.01646       0.9001        0.965
-</span></span><span class="line"><span class="cl">#    59    216       1    0.927 0.01694       0.8949        0.961
-</span></span><span class="line"><span class="cl">#    62    215       1    0.923 0.01740       0.8897        0.958
-</span></span><span class="line"><span class="cl">#    67    213       1    0.919 0.01785       0.8845        0.954
-</span></span><span class="line"><span class="cl">#    75    211       1    0.914 0.01829       0.8793        0.951
-</span></span><span class="line"><span class="cl">#    79    210       1    0.910 0.01871       0.8742        0.948
-</span></span><span class="line"><span class="cl">#    84    209       1    0.906 0.01913       0.8691        0.944
-</span></span><span class="line"><span class="cl">#    90    207       1    0.901 0.01953       0.8639        0.940
-</span></span><span class="line"><span class="cl">#    95    206       1    0.897 0.01992       0.8588        0.937
-</span></span><span class="line"><span class="cl">#    96    205       1    0.893 0.02029       0.8537        0.933
-</span></span><span class="line"><span class="cl">#   109    202       1    0.888 0.02067       0.8486        0.930
-</span></span><span class="line"><span class="cl">#   117    200       1    0.884 0.02104       0.8435        0.926
-</span></span><span class="line"><span class="cl">#   122    199       1    0.879 0.02140       0.8384        0.922
-</span></span><span class="line"><span class="cl">#   126    198       1    0.875 0.02174       0.8333        0.919
-</span></span><span class="line"><span class="cl">#   127    197       1    0.870 0.02208       0.8282        0.915
-</span></span><span class="line"><span class="cl">#   129    196       1    0.866 0.02241       0.8232        0.911
-</span></span><span class="line"><span class="cl">#   136    194       1    0.862 0.02274       0.8181        0.907
-</span></span><span class="line"><span class="cl">#   143    193       1    0.857 0.02305       0.8131        0.903
-</span></span><span class="line"><span class="cl">#   145    192       1    0.853 0.02336       0.8080        0.900
-</span></span><span class="line"><span class="cl">#   147    190       1    0.848 0.02366       0.8030        0.896
-</span></span><span class="line"><span class="cl">#   149    188       1    0.844 0.02396       0.7979        0.892
-</span></span><span class="line"><span class="cl">#   150    187       1    0.839 0.02426       0.7929        0.888
-</span></span><span class="line"><span class="cl">#   157    185       1    0.835 0.02455       0.7878        0.884
-</span></span><span class="line"><span class="cl">#   160    184       1    0.830 0.02483       0.7828        0.880
-</span></span><span class="line"><span class="cl">#   161    183       1    0.826 0.02510       0.7777        0.876
-</span></span><span class="line"><span class="cl">#   167    181       1    0.821 0.02538       0.7727        0.872
-</span></span><span class="line"><span class="cl">#   168    180       1    0.816 0.02564       0.7676        0.868
-</span></span><span class="line"><span class="cl">#   170    179       1    0.812 0.02590       0.7626        0.864
-</span></span><span class="line"><span class="cl">#   175    178       1    0.807 0.02615       0.7576        0.860
-</span></span><span class="line"><span class="cl">#   176    176       1    0.803 0.02640       0.7526        0.856
-</span></span><span class="line"><span class="cl">#   180    175       2    0.794 0.02689       0.7425        0.848
-</span></span><span class="line"><span class="cl">#   181    173       1    0.789 0.02712       0.7375        0.844
-</span></span><span class="line"><span class="cl">#   183    172       1    0.784 0.02735       0.7325        0.840
-</span></span><span class="line"><span class="cl">#   190    171       1    0.780 0.02757       0.7275        0.836
-</span></span><span class="line"><span class="cl">#   192    170       1    0.775 0.02779       0.7226        0.832
-</span></span><span class="line"><span class="cl">#   193    169       1    0.771 0.02800       0.7176        0.827
-</span></span><span class="line"><span class="cl">#   204    168       1    0.766 0.02821       0.7127        0.823
-</span></span><span class="line"><span class="cl">#   205    166       1    0.761 0.02841       0.7077        0.819
-</span></span><span class="line"><span class="cl">#   207    165       1    0.757 0.02861       0.7027        0.815
-</span></span><span class="line"><span class="cl">#   209    164       1    0.752 0.02881       0.6978        0.811
-</span></span><span class="line"><span class="cl">#   212    162       2    0.743 0.02919       0.6878        0.802
-</span></span><span class="line"><span class="cl">#   216    160       2    0.734 0.02955       0.6779        0.794
-</span></span><span class="line"><span class="cl">#   223    157       1    0.729 0.02973       0.6729        0.790
-</span></span><span class="line"><span class="cl">#   231    156       1    0.724 0.02991       0.6679        0.785
-</span></span><span class="line"><span class="cl">#   232    155       1    0.720 0.03008       0.6630        0.781
-</span></span><span class="line"><span class="cl">#   237    154       1    0.715 0.03024       0.6580        0.777
-</span></span><span class="line"><span class="cl">#   244    153       1    0.710 0.03040       0.6531        0.772
-</span></span><span class="line"><span class="cl">#   247    152       1    0.706 0.03056       0.6481        0.768
-</span></span><span class="line"><span class="cl">#   257    151       1    0.701 0.03071       0.6432        0.764
-</span></span><span class="line"><span class="cl">#   258    150       1    0.696 0.03086       0.6383        0.759
-</span></span><span class="line"><span class="cl">#   259    149       1    0.692 0.03101       0.6333        0.755
-</span></span><span class="line"><span class="cl">#   262    148       2    0.682 0.03128       0.6235        0.746
-</span></span><span class="line"><span class="cl">#   268    146       2    0.673 0.03154       0.6138        0.738
-</span></span><span class="line"><span class="cl">#   275    144       1    0.668 0.03167       0.6089        0.733
-</span></span><span class="line"><span class="cl">#   280    143       1    0.663 0.03179       0.6040        0.729
-</span></span><span class="line"><span class="cl">#   286    141       1    0.659 0.03191       0.5991        0.724
-</span></span><span class="line"><span class="cl">#   293    140       1    0.654 0.03203       0.5942        0.720
-</span></span><span class="line"><span class="cl">#   294    139       1    0.649 0.03214       0.5893        0.716
-</span></span><span class="line"><span class="cl">#   299    138       1    0.645 0.03225       0.5844        0.711
-</span></span><span class="line"><span class="cl">#   302    137       1    0.640 0.03236       0.5796        0.707
-</span></span><span class="line"><span class="cl">#   314    136       1    0.635 0.03246       0.5747        0.702
-</span></span><span class="line"><span class="cl">#   322    134       1    0.631 0.03256       0.5698        0.698
-</span></span><span class="line"><span class="cl">#   337    131       1    0.626 0.03267       0.5648        0.693
-</span></span><span class="line"><span class="cl">#   341    129       1    0.621 0.03277       0.5598        0.689
-</span></span><span class="line"><span class="cl">#   348    126       1    0.616 0.03288       0.5547        0.684
-</span></span><span class="line"><span class="cl">#   350    125       1    0.611 0.03298       0.5496        0.679
-</span></span><span class="line"><span class="cl">#   358    124       1    0.606 0.03308       0.5446        0.675
-</span></span><span class="line"><span class="cl">#   366    122       1    0.601 0.03318       0.5395        0.670
-</span></span><span class="line"><span class="cl">#   367    121       1    0.596 0.03328       0.5343        0.665
-</span></span><span class="line"><span class="cl">#   368    119       1    0.591 0.03338       0.5292        0.660
-</span></span><span class="line"><span class="cl">#   376    118       1    0.586 0.03347       0.5241        0.656
-</span></span><span class="line"><span class="cl">#   386    117       1    0.581 0.03355       0.5189        0.651
-</span></span><span class="line"><span class="cl">#   389    116       1    0.576 0.03364       0.5138        0.646
-</span></span><span class="line"><span class="cl">#   393    115       1    0.571 0.03371       0.5087        0.641
-</span></span><span class="line"><span class="cl">#   394    114       1    0.566 0.03379       0.5036        0.636
-</span></span><span class="line"><span class="cl">#   399    112       1    0.561 0.03386       0.4984        0.631
-</span></span><span class="line"><span class="cl">#   428    109       1    0.556 0.03394       0.4932        0.627
-</span></span><span class="line"><span class="cl">#   434    108       1    0.551 0.03401       0.4879        0.622
-</span></span><span class="line"><span class="cl">#   438    107       1    0.546 0.03408       0.4827        0.617
-</span></span><span class="line"><span class="cl">#   450    105       1    0.540 0.03415       0.4774        0.612
-</span></span><span class="line"><span class="cl">#   452    104       1    0.535 0.03422       0.4722        0.607
-</span></span><span class="line"><span class="cl">#   457    102       1    0.530 0.03428       0.4668        0.602
-</span></span><span class="line"><span class="cl">#   460    101       1    0.525 0.03434       0.4615        0.597
-</span></span><span class="line"><span class="cl">#   465     99       1    0.519 0.03440       0.4562        0.591
-</span></span><span class="line"><span class="cl">#   482     96       1    0.514 0.03447       0.4507        0.586
-</span></span><span class="line"><span class="cl">#   489     95       1    0.509 0.03453       0.4452        0.581
-</span></span><span class="line"><span class="cl">#   496     94       1    0.503 0.03458       0.4398        0.576
-</span></span><span class="line"><span class="cl">#   504     92       1    0.498 0.03463       0.4342        0.570
-</span></span><span class="line"><span class="cl">#   512     91       1    0.492 0.03468       0.4287        0.565
-</span></span><span class="line"><span class="cl">#   514     90       1    0.487 0.03473       0.4232        0.560
-</span></span><span class="line"><span class="cl">#   517     89       1    0.481 0.03476       0.4178        0.554
-</span></span><span class="line"><span class="cl">#   518     87       1    0.476 0.03480       0.4122        0.549
-</span></span><span class="line"><span class="cl">#   522     86       1    0.470 0.03483       0.4067        0.544
-</span></span><span class="line"><span class="cl">#   523     85       2    0.459 0.03488       0.3956        0.533
-</span></span><span class="line"><span class="cl">#   532     80       1    0.453 0.03491       0.3899        0.527
-</span></span><span class="line"><span class="cl">#   533     78       1    0.448 0.03495       0.3841        0.522
-</span></span><span class="line"><span class="cl">#   540     77       1    0.442 0.03497       0.3783        0.516
-</span></span><span class="line"><span class="cl">#   546     74       1    0.436 0.03501       0.3723        0.510
-</span></span><span class="line"><span class="cl">#   550     73       1    0.430 0.03503       0.3664        0.504
-</span></span><span class="line"><span class="cl">#   560     70       1    0.424 0.03507       0.3603        0.498
-</span></span><span class="line"><span class="cl">#   563     69       1    0.418 0.03509       0.3542        0.492
-</span></span><span class="line"><span class="cl">#   581     62       1    0.411 0.03517       0.3474        0.486
-</span></span><span class="line"><span class="cl">#   591     59       1    0.404 0.03525       0.3404        0.479
-</span></span><span class="line"><span class="cl">#   612     54       2    0.389 0.03550       0.3252        0.465
-</span></span><span class="line"><span class="cl">#   624     51       1    0.381 0.03561       0.3175        0.458
-</span></span><span class="line"><span class="cl">#   646     48       1    0.373 0.03574       0.3095        0.450
-</span></span><span class="line"><span class="cl">#   652     47       1    0.365 0.03586       0.3015        0.443
-</span></span><span class="line"><span class="cl">#   661     46       1    0.357 0.03595       0.2935        0.435
-</span></span><span class="line"><span class="cl">#   667     45       1    0.350 0.03601       0.2856        0.428
-</span></span><span class="line"><span class="cl">#   679     44       1    0.342 0.03606       0.2777        0.420
-</span></span><span class="line"><span class="cl">#   683     43       1    0.334 0.03609       0.2699        0.412
-</span></span><span class="line"><span class="cl">#   708     39       1    0.325 0.03616       0.2614        0.404
-</span></span><span class="line"><span class="cl">#   714     37       1    0.316 0.03623       0.2527        0.396
-</span></span><span class="line"><span class="cl">#   739     35       1    0.307 0.03631       0.2437        0.387
-</span></span><span class="line"><span class="cl">#   749     34       1    0.298 0.03635       0.2348        0.379
-</span></span><span class="line"><span class="cl">#   755     33       1    0.289 0.03635       0.2260        0.370
-</span></span><span class="line"><span class="cl">#   760     32       1    0.280 0.03632       0.2173        0.361
-</span></span><span class="line"><span class="cl">#   771     28       1    0.270 0.03638       0.2075        0.352
-</span></span><span class="line"><span class="cl">#   774     27       1    0.260 0.03638       0.1978        0.342
-</span></span><span class="line"><span class="cl">#   785     26       1    0.250 0.03633       0.1882        0.332
-</span></span><span class="line"><span class="cl">#   821     20       2    0.225 0.03675       0.1635        0.310
-</span></span><span class="line"><span class="cl">#   836     17       1    0.212 0.03690       0.1506        0.298
-</span></span><span class="line"><span class="cl">#   837     16       1    0.199 0.03689       0.1380        0.286
-</span></span><span class="line"><span class="cl">#   857     14       1    0.184 0.03688       0.1246        0.273
-</span></span><span class="line"><span class="cl">#   878     13       1    0.170 0.03667       0.1116        0.260
-</span></span><span class="line"><span class="cl">#   892     10       1    0.153 0.03675       0.0958        0.245
-</span></span><span class="line"><span class="cl">#   899      9       1    0.136 0.03639       0.0807        0.230
-</span></span></code></pre></div><p>For specified survival time, the <code>times</code> argument can be used. For example, to produce, survival estimate for survival time 30 -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">kmfit1</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="m">30</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call: survfit(formula = Y ~ 1)
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-</span></span><span class="line"><span class="cl">#    30    228       7     0.97  0.0111        0.949        0.992
-</span></span></code></pre></div><p>To get survival estimates at different survival times, say in interval of 100 -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">kmfit1</span><span class="p">,</span><span class="n">times</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="nf">max</span><span class="p">(</span><span class="n">addicts</span><span class="o">$</span><span class="n">survt</span><span class="p">),</span> <span class="n">by</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call: survfit(formula = Y ~ 1)
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-</span></span><span class="line"><span class="cl">#     0    238       0    1.000  0.0000       1.0000        1.000
-</span></span><span class="line"><span class="cl">#   100    203      25    0.893  0.0203       0.8537        0.933
-</span></span><span class="line"><span class="cl">#   200    168      27    0.771  0.0280       0.7176        0.827
-</span></span><span class="line"><span class="cl">#   300    137      27    0.645  0.0323       0.5844        0.711
-</span></span><span class="line"><span class="cl">#   400    111      17    0.561  0.0339       0.4984        0.631
-</span></span><span class="line"><span class="cl">#   500     92      11    0.503  0.0346       0.4398        0.576
-</span></span><span class="line"><span class="cl">#   600     57      17    0.404  0.0353       0.3404        0.479
-</span></span><span class="line"><span class="cl">#   700     39       9    0.334  0.0361       0.2699        0.412
-</span></span><span class="line"><span class="cl">#   800     21       9    0.250  0.0363       0.1882        0.332
-</span></span><span class="line"><span class="cl">#   900      8       8    0.136  0.0364       0.0807        0.230
-</span></span><span class="line"><span class="cl">#  1000      3       0    0.136  0.0364       0.0807        0.230
-</span></span></code></pre></div><p>To plot the output -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">kmfit1</span><span class="p">,</span> <span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">     <span class="n">xlab</span> <span class="o">=</span> <span class="s">&#34;Survival Time in Days&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">     <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;Survival Probabilities&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><img src="http://example.org/post/kaplan-meier-estimatior-in-r/index.en_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">summary</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kmfit1</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code># Call: survfit(formula = Y ~ 1)
+# 
+#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+#     7    236       1    0.996 0.00423       0.9875        1.000
+#    13    235       1    0.992 0.00597       0.9799        1.000
+#    17    234       1    0.987 0.00729       0.9731        1.000
+#    19    233       1    0.983 0.00840       0.9667        1.000
+#    26    232       1    0.979 0.00937       0.9606        0.997
+#    29    229       1    0.975 0.01026       0.9546        0.995
+#    30    228       1    0.970 0.01107       0.9488        0.992
+#    33    227       1    0.966 0.01182       0.9431        0.989
+#    35    226       2    0.957 0.01317       0.9320        0.984
+#    37    224       1    0.953 0.01379       0.9265        0.981
+#    41    223       2    0.945 0.01493       0.9158        0.974
+#    47    221       1    0.940 0.01546       0.9105        0.971
+#    49    220       1    0.936 0.01597       0.9053        0.968
+#    50    219       1    0.932 0.01646       0.9001        0.965
+#    59    216       1    0.927 0.01694       0.8949        0.961
+#    62    215       1    0.923 0.01740       0.8897        0.958
+#    67    213       1    0.919 0.01785       0.8845        0.954
+#    75    211       1    0.914 0.01829       0.8793        0.951
+#    79    210       1    0.910 0.01871       0.8742        0.948
+#    84    209       1    0.906 0.01913       0.8691        0.944
+#    90    207       1    0.901 0.01953       0.8639        0.940
+#    95    206       1    0.897 0.01992       0.8588        0.937
+#    96    205       1    0.893 0.02029       0.8537        0.933
+#   109    202       1    0.888 0.02067       0.8486        0.930
+#   117    200       1    0.884 0.02104       0.8435        0.926
+#   122    199       1    0.879 0.02140       0.8384        0.922
+#   126    198       1    0.875 0.02174       0.8333        0.919
+#   127    197       1    0.870 0.02208       0.8282        0.915
+#   129    196       1    0.866 0.02241       0.8232        0.911
+#   136    194       1    0.862 0.02274       0.8181        0.907
+#   143    193       1    0.857 0.02305       0.8131        0.903
+#   145    192       1    0.853 0.02336       0.8080        0.900
+#   147    190       1    0.848 0.02366       0.8030        0.896
+#   149    188       1    0.844 0.02396       0.7979        0.892
+#   150    187       1    0.839 0.02426       0.7929        0.888
+#   157    185       1    0.835 0.02455       0.7878        0.884
+#   160    184       1    0.830 0.02483       0.7828        0.880
+#   161    183       1    0.826 0.02510       0.7777        0.876
+#   167    181       1    0.821 0.02538       0.7727        0.872
+#   168    180       1    0.816 0.02564       0.7676        0.868
+#   170    179       1    0.812 0.02590       0.7626        0.864
+#   175    178       1    0.807 0.02615       0.7576        0.860
+#   176    176       1    0.803 0.02640       0.7526        0.856
+#   180    175       2    0.794 0.02689       0.7425        0.848
+#   181    173       1    0.789 0.02712       0.7375        0.844
+#   183    172       1    0.784 0.02735       0.7325        0.840
+#   190    171       1    0.780 0.02757       0.7275        0.836
+#   192    170       1    0.775 0.02779       0.7226        0.832
+#   193    169       1    0.771 0.02800       0.7176        0.827
+#   204    168       1    0.766 0.02821       0.7127        0.823
+#   205    166       1    0.761 0.02841       0.7077        0.819
+#   207    165       1    0.757 0.02861       0.7027        0.815
+#   209    164       1    0.752 0.02881       0.6978        0.811
+#   212    162       2    0.743 0.02919       0.6878        0.802
+#   216    160       2    0.734 0.02955       0.6779        0.794
+#   223    157       1    0.729 0.02973       0.6729        0.790
+#   231    156       1    0.724 0.02991       0.6679        0.785
+#   232    155       1    0.720 0.03008       0.6630        0.781
+#   237    154       1    0.715 0.03024       0.6580        0.777
+#   244    153       1    0.710 0.03040       0.6531        0.772
+#   247    152       1    0.706 0.03056       0.6481        0.768
+#   257    151       1    0.701 0.03071       0.6432        0.764
+#   258    150       1    0.696 0.03086       0.6383        0.759
+#   259    149       1    0.692 0.03101       0.6333        0.755
+#   262    148       2    0.682 0.03128       0.6235        0.746
+#   268    146       2    0.673 0.03154       0.6138        0.738
+#   275    144       1    0.668 0.03167       0.6089        0.733
+#   280    143       1    0.663 0.03179       0.6040        0.729
+#   286    141       1    0.659 0.03191       0.5991        0.724
+#   293    140       1    0.654 0.03203       0.5942        0.720
+#   294    139       1    0.649 0.03214       0.5893        0.716
+#   299    138       1    0.645 0.03225       0.5844        0.711
+#   302    137       1    0.640 0.03236       0.5796        0.707
+#   314    136       1    0.635 0.03246       0.5747        0.702
+#   322    134       1    0.631 0.03256       0.5698        0.698
+#   337    131       1    0.626 0.03267       0.5648        0.693
+#   341    129       1    0.621 0.03277       0.5598        0.689
+#   348    126       1    0.616 0.03288       0.5547        0.684
+#   350    125       1    0.611 0.03298       0.5496        0.679
+#   358    124       1    0.606 0.03308       0.5446        0.675
+#   366    122       1    0.601 0.03318       0.5395        0.670
+#   367    121       1    0.596 0.03328       0.5343        0.665
+#   368    119       1    0.591 0.03338       0.5292        0.660
+#   376    118       1    0.586 0.03347       0.5241        0.656
+#   386    117       1    0.581 0.03355       0.5189        0.651
+#   389    116       1    0.576 0.03364       0.5138        0.646
+#   393    115       1    0.571 0.03371       0.5087        0.641
+#   394    114       1    0.566 0.03379       0.5036        0.636
+#   399    112       1    0.561 0.03386       0.4984        0.631
+#   428    109       1    0.556 0.03394       0.4932        0.627
+#   434    108       1    0.551 0.03401       0.4879        0.622
+#   438    107       1    0.546 0.03408       0.4827        0.617
+#   450    105       1    0.540 0.03415       0.4774        0.612
+#   452    104       1    0.535 0.03422       0.4722        0.607
+#   457    102       1    0.530 0.03428       0.4668        0.602
+#   460    101       1    0.525 0.03434       0.4615        0.597
+#   465     99       1    0.519 0.03440       0.4562        0.591
+#   482     96       1    0.514 0.03447       0.4507        0.586
+#   489     95       1    0.509 0.03453       0.4452        0.581
+#   496     94       1    0.503 0.03458       0.4398        0.576
+#   504     92       1    0.498 0.03463       0.4342        0.570
+#   512     91       1    0.492 0.03468       0.4287        0.565
+#   514     90       1    0.487 0.03473       0.4232        0.560
+#   517     89       1    0.481 0.03476       0.4178        0.554
+#   518     87       1    0.476 0.03480       0.4122        0.549
+#   522     86       1    0.470 0.03483       0.4067        0.544
+#   523     85       2    0.459 0.03488       0.3956        0.533
+#   532     80       1    0.453 0.03491       0.3899        0.527
+#   533     78       1    0.448 0.03495       0.3841        0.522
+#   540     77       1    0.442 0.03497       0.3783        0.516
+#   546     74       1    0.436 0.03501       0.3723        0.510
+#   550     73       1    0.430 0.03503       0.3664        0.504
+#   560     70       1    0.424 0.03507       0.3603        0.498
+#   563     69       1    0.418 0.03509       0.3542        0.492
+#   581     62       1    0.411 0.03517       0.3474        0.486
+#   591     59       1    0.404 0.03525       0.3404        0.479
+#   612     54       2    0.389 0.03550       0.3252        0.465
+#   624     51       1    0.381 0.03561       0.3175        0.458
+#   646     48       1    0.373 0.03574       0.3095        0.450
+#   652     47       1    0.365 0.03586       0.3015        0.443
+#   661     46       1    0.357 0.03595       0.2935        0.435
+#   667     45       1    0.350 0.03601       0.2856        0.428
+#   679     44       1    0.342 0.03606       0.2777        0.420
+#   683     43       1    0.334 0.03609       0.2699        0.412
+#   708     39       1    0.325 0.03616       0.2614        0.404
+#   714     37       1    0.316 0.03623       0.2527        0.396
+#   739     35       1    0.307 0.03631       0.2437        0.387
+#   749     34       1    0.298 0.03635       0.2348        0.379
+#   755     33       1    0.289 0.03635       0.2260        0.370
+#   760     32       1    0.280 0.03632       0.2173        0.361
+#   771     28       1    0.270 0.03638       0.2075        0.352
+#   774     27       1    0.260 0.03638       0.1978        0.342
+#   785     26       1    0.250 0.03633       0.1882        0.332
+#   821     20       2    0.225 0.03675       0.1635        0.310
+#   836     17       1    0.212 0.03690       0.1506        0.298
+#   837     16       1    0.199 0.03689       0.1380        0.286
+#   857     14       1    0.184 0.03688       0.1246        0.273
+#   878     13       1    0.170 0.03667       0.1116        0.260
+#   892     10       1    0.153 0.03675       0.0958        0.245
+#   899      9       1    0.136 0.03639       0.0807        0.230
+</code></pre><p>For specified survival time, the <code>times</code> argument can be used. For example, to produce, survival estimate for survival time 30 -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">summary</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kmfit1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">times</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">30</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code># Call: survfit(formula = Y ~ 1)
+# 
+#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+#    30    228       7     0.97  0.0111        0.949        0.992
+</code></pre><p>To get survival estimates at different survival times, say in interval of 100 -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">summary</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kmfit1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">times</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addicts</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">survt</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code># Call: survfit(formula = Y ~ 1)
+# 
+#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+#     0    238       0    1.000  0.0000       1.0000        1.000
+#   100    203      25    0.893  0.0203       0.8537        0.933
+#   200    168      27    0.771  0.0280       0.7176        0.827
+#   300    137      27    0.645  0.0323       0.5844        0.711
+#   400    111      17    0.561  0.0339       0.4984        0.631
+#   500     92      11    0.503  0.0346       0.4398        0.576
+#   600     57      17    0.404  0.0353       0.3404        0.479
+#   700     39       9    0.334  0.0361       0.2699        0.412
+#   800     21       9    0.250  0.0363       0.1882        0.332
+#   900      8       8    0.136  0.0364       0.0807        0.230
+#  1000      3       0    0.136  0.0364       0.0807        0.230
+</code></pre><p>To plot the output -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">plot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kmfit1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">frame.plot</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">FALSE</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000">xlab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Survival Time in Days&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#000">ylab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Survival Probabilities&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <h2 id="stratify-by-other-variable">Stratify by Other Variable</h2>
 <p>To stratify the survival experience by CLINIC variable we need to fit a different model including the variable CLINIC instead of 1 -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">kmfit2</span> <span class="o">=</span> <span class="nf">survfit</span><span class="p">(</span><span class="n">Y</span> <span class="o">~</span> <span class="n">clinic</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">addicts</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">kmfit2</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call: survfit(formula = Y ~ clinic, data = addicts)
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#            n events median 0.95LCL 0.95UCL
-</span></span><span class="line"><span class="cl"># clinic=1 163    122    428     348     514
-</span></span><span class="line"><span class="cl"># clinic=2  75     28     NA     661      NA
-</span></span></code></pre></div><p>Let&rsquo;s see the survival estimates at a time interval of 100 -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">kmfit2</span><span class="p">,</span><span class="n">times</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">addicts</span><span class="o">$</span><span class="n">survt</span><span class="p">),</span><span class="n">by</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call: survfit(formula = Y ~ clinic, data = addicts)
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#                 clinic=1 
-</span></span><span class="line"><span class="cl">#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-</span></span><span class="line"><span class="cl">#     0    163       0   1.0000  0.0000      1.00000        1.000
-</span></span><span class="line"><span class="cl">#   100    137      20   0.8746  0.0262      0.82467        0.928
-</span></span><span class="line"><span class="cl">#   200    110      20   0.7420  0.0353      0.67601        0.814
-</span></span><span class="line"><span class="cl">#   300     87      20   0.6046  0.0399      0.53120        0.688
-</span></span><span class="line"><span class="cl">#   400     68      14   0.5025  0.0415      0.42741        0.591
-</span></span><span class="line"><span class="cl">#   500     53       9   0.4319  0.0418      0.35719        0.522
-</span></span><span class="line"><span class="cl">#   600     30      16   0.2951  0.0403      0.22570        0.386
-</span></span><span class="line"><span class="cl">#   700     20       8   0.2113  0.0383      0.14818        0.301
-</span></span><span class="line"><span class="cl">#   800     10       8   0.1268  0.0326      0.07660        0.210
-</span></span><span class="line"><span class="cl">#   900      1       7   0.0181  0.0172      0.00283        0.116
-</span></span><span class="line"><span class="cl"># 
-</span></span><span class="line"><span class="cl">#                 clinic=2 
-</span></span><span class="line"><span class="cl">#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-</span></span><span class="line"><span class="cl">#     0     75       0    1.000  0.0000        1.000        1.000
-</span></span><span class="line"><span class="cl">#   100     66       5    0.932  0.0294        0.876        0.991
-</span></span><span class="line"><span class="cl">#   200     58       7    0.832  0.0442        0.750        0.924
-</span></span><span class="line"><span class="cl">#   300     50       7    0.730  0.0530        0.633        0.842
-</span></span><span class="line"><span class="cl">#   400     43       3    0.685  0.0558        0.584        0.804
-</span></span><span class="line"><span class="cl">#   500     39       2    0.653  0.0577        0.549        0.776
-</span></span><span class="line"><span class="cl">#   600     27       1    0.634  0.0590        0.528        0.761
-</span></span><span class="line"><span class="cl">#   700     19       1    0.606  0.0625        0.495        0.742
-</span></span><span class="line"><span class="cl">#   800     11       1    0.575  0.0669        0.457        0.722
-</span></span><span class="line"><span class="cl">#   900      7       1    0.517  0.0812        0.380        0.703
-</span></span><span class="line"><span class="cl">#  1000      3       0    0.517  0.0812        0.380        0.703
-</span></span></code></pre></div><p>Notice for CLINIC=1, survival times stopped at 900 rather than 1000, because no subject was at risk on day 1000.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">kmfit2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">survfit</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Y</span> <span style="color:#ce5c00;font-weight:bold">~</span> <span style="color:#000">clinic</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">data</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">addicts</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">kmfit2</span>
+</span></span></code></pre></div><pre tabindex="0"><code># Call: survfit(formula = Y ~ clinic, data = addicts)
+# 
+#            n events median 0.95LCL 0.95UCL
+# clinic=1 163    122    428     348     514
+# clinic=2  75     28     NA     661      NA
+</code></pre><p>Let&rsquo;s see the survival estimates at a time interval of 100 -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">summary</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kmfit2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">times</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addicts</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">survt</span><span style="color:#000;font-weight:bold">),</span><span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code># Call: survfit(formula = Y ~ clinic, data = addicts)
+# 
+#                 clinic=1 
+#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+#     0    163       0   1.0000  0.0000      1.00000        1.000
+#   100    137      20   0.8746  0.0262      0.82467        0.928
+#   200    110      20   0.7420  0.0353      0.67601        0.814
+#   300     87      20   0.6046  0.0399      0.53120        0.688
+#   400     68      14   0.5025  0.0415      0.42741        0.591
+#   500     53       9   0.4319  0.0418      0.35719        0.522
+#   600     30      16   0.2951  0.0403      0.22570        0.386
+#   700     20       8   0.2113  0.0383      0.14818        0.301
+#   800     10       8   0.1268  0.0326      0.07660        0.210
+#   900      1       7   0.0181  0.0172      0.00283        0.116
+# 
+#                 clinic=2 
+#  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+#     0     75       0    1.000  0.0000        1.000        1.000
+#   100     66       5    0.932  0.0294        0.876        0.991
+#   200     58       7    0.832  0.0442        0.750        0.924
+#   300     50       7    0.730  0.0530        0.633        0.842
+#   400     43       3    0.685  0.0558        0.584        0.804
+#   500     39       2    0.653  0.0577        0.549        0.776
+#   600     27       1    0.634  0.0590        0.528        0.761
+#   700     19       1    0.606  0.0625        0.495        0.742
+#   800     11       1    0.575  0.0669        0.457        0.722
+#   900      7       1    0.517  0.0812        0.380        0.703
+#  1000      3       0    0.517  0.0812        0.380        0.703
+</code></pre><p>Notice for CLINIC=1, survival times stopped at 900 rather than 1000, because no subject was at risk on day 1000.</p>
 <p>We can plot the survival curve for the two clinics -</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">kmfit2</span><span class="p">,</span> <span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">     <span class="n">lty</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;solid&#34;</span><span class="p">,</span><span class="s">&#34;dashed&#34;</span><span class="p">),</span> 
-</span></span><span class="line"><span class="cl">     <span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;#DC7633&#34;</span><span class="p">,</span><span class="s">&#34;#2471A3&#34;</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">     <span class="n">xlab</span> <span class="o">=</span> <span class="s">&#34;Survival Time in Days&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">     <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;Survival Probabilities&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">legend</span><span class="p">(</span><span class="s">&#34;topright&#34;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Clinic 1&#34;</span><span class="p">,</span> <span class="s">&#34;Clinic 2&#34;</span><span class="p">),</span> 
-</span></span><span class="line"><span class="cl">       <span class="n">lty</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;solid&#34;</span><span class="p">,</span><span class="s">&#34;dashed&#34;</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;#DC7633&#34;</span><span class="p">,</span><span class="s">&#34;#2471A3&#34;</span><span class="p">))</span>
-</span></span></code></pre></div><img src="http://example.org/post/kaplan-meier-estimatior-in-r/index.en_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">plot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kmfit2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">frame.plot</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">FALSE</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">lwd</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#000">lty</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;solid&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#34;dashed&#34;</span><span style="color:#000;font-weight:bold">),</span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#000">col</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;#DC7633&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#34;#2471A3&#34;</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000">xlab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Survival Time in Days&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#000">ylab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Survival Probabilities&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">legend</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;topright&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Clinic 1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;Clinic 2&#34;</span><span style="color:#000;font-weight:bold">),</span> 
+</span></span><span style="display:flex;"><span>       <span style="color:#000">lty</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;solid&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#34;dashed&#34;</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">col</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;#DC7633&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#34;#2471A3&#34;</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <p>The plot indicates that subjects from CLINIC=2 have a higher rate of survival than subjects from CLINIC=1.</p>
 <p>Reference:</p>
 <ol>
 <li>Kleinbaum, D. G., &amp; Klein, M. (2012). Survival analysis: a self-learning text (Vol. 3). New York: Springer.</li>
 </ol>
 
-    </div>
+          </article>
+        </div>
+      </div>
 
-    
-
-
-
-
-
-<div class="article-tags">
-  
-  <a class="badge badge-light" href="/tag/r/">R</a>
-  
-  <a class="badge badge-light" href="/tag/biostatisics/">Biostatisics</a>
-  
-</div>
-
-
-
-<div class="share-box">
-  <ul class="share">
-    
       
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-      <li>
-        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F&amp;text=The&#43;Kaplan-Meier&#43;Estimatior&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-      <li>
-        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F&amp;t=The&#43;Kaplan-Meier&#43;Estimatior&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a href="mailto:?subject=The%20Kaplan-Meier%20Estimatior%20in%20R&amp;body=http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F&amp;title=The&#43;Kaplan-Meier&#43;Estimatior&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-      <li>
-        <a href="whatsapp://send?text=The&#43;Kaplan-Meier&#43;Estimatior&#43;in&#43;R%20http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-      <li>
-        <a href="https://reddit.com/submit?url=http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F&amp;title=The&#43;Kaplan-Meier&#43;Estimatior&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-reddit" aria-label="reddit-alien">
-          <i class="fab fa-reddit-alien"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      
-      
-      
-      
-      <li>
-        <a href="https://pinterest.com/pin/create/link/?url=http%3A%2F%2Fexample.org%2Fpost%2Fkaplan-meier-estimatior-in-r%2F&amp;description=The&#43;Kaplan-Meier&#43;Estimatior&#43;in&#43;R" target="_blank" rel="noopener" class="share-btn-pinterest" aria-label="pinterest">
-          <i class="fab fa-pinterest"></i>
-        </a>
-      </li>
-    
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div id="stickySideBar" class="sticky-sidebar">
+          
+          
+          <aside class="toc d-none d-lg-block">
+            <h5>Table of Contents</h5>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#stratify-by-other-variable">Stratify by Other Variable</a></li>
   </ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-  
-  
-  
-    
-  
-  
-  
-  <div class="media author-card content-widget-hr">
-    
-      
-      <a href="http://example.org/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu305d37f8938f319c5b0d2e8b60c79d5c_177351_270x270_fill_q75_lanczos_center.jpg" alt="Md Ahsanul Islam"></a>
-    
-
-    <div class="media-body">
-      <h5 class="card-title"><a href="http://example.org/">Md Ahsanul Islam</a></h5>
-      <h6 class="card-subtitle">Freelance Data Analysis and R Programmer</h6>
-      <p class="card-text">Statistics graduate student currently researching on econometrics</p>
-      <ul class="network-icon" aria-hidden="true">
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="/#contact" >
-        <i class="fas fa-envelope"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://www.linkedin.com/in/MdAhsanulHimel" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://github.com/MdAhsanulHimel" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://www.linkedin.com/in/MdAhsanulHimel" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="/uploads/resume.pdf" >
-        <i class="ai ai-cv"></i>
-      </a>
-    </li>
-  
-</ul>
-
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</article>
-  </div>
-
-  <div class="page-footer">
-    
-    
-    <div class="container">
-      <footer class="site-footer">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-    
-  
-  
-    
-  
-
-  
-
-  
-  <p class="powered-by copyright-license-text">
-    © 2024 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
-  </p>
-  
-
-  <p class="powered-by footer-license-icons">
-    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
-      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
-      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
-      
-        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
-      
-      
-        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
-      
-    </a>
-  </p>
-
-
-
-
-
-  <p class="powered-by">
-    
-    
-    
-      
-      
-      
-      
-      
-      
-      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
-    
-  </p>
-</footer>
-
-    </div>
-    
-  </div>
-
-  
-
-
-<script src="/js/vendor-bundle.min.1d4346c6f7d46c340dc0a9058dd85c13.js"></script>
-
-
-
-
-  
-
-  
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script id="search-hit-fuse-template" type="text/x-template">
-    <div class="search-hit" id="summary-{{key}}">
-      <div class="search-hit-content">
-        <div class="search-hit-name">
-          <a href="{{relpermalink}}">{{title}}</a>
-          <div class="article-metadata search-hit-type">{{type}}</div>
-          <p class="search-hit-description">{{snippet}}</p>
+</nav></div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/r"
+                   target="_blank">
+                  R
+                </a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/biostatisics"
+                   target="_blank">
+                  Biostatisics
+                </a>
+              </li>
+              
+            </ul>
+          </aside>
+          
+
+          
         </div>
       </div>
     </div>
-  </script>
-  
-    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
-  
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-<script id="page-data" type="application/json">{"use_headroom":true}</script>
-
-
-
-  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-<script src="/en/js/wowchemy.min.c84202fca2a6efbbecbaf0e8358c1d51.js"></script>
-
-
-
-
-
-
-
-  
-<div id="modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Cite</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         
-        <pre><code></code></pre>
-      </div>
-      <div class="modal-footer">
-        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
-          <i class="fas fa-copy"></i> Copy
-        </a>
-        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
-        <div id="modal-error"></div>
       </div>
     </div>
   </div>
+
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll"><i class="fas fa-angle-up"></i></button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() { scrollFunction() };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) topScroll.style.display = "block";
+    else topScroll.style.display = "none";
+  }
+  function topFunction() { document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar =  false ;
+  if (stickyNavBar) {
+    let headerElem = document.getElementById("profileHeader");
+    let headerHeight = headerElem.offsetHeight + 25;
+    stickySideBarElem.style.top = headerHeight + "px";
+  } else {
+    stickySideBarElem.style.top = "100px";
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+ 
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/post/cluster-analysis/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Cluster Analysis">Cluster Analysis</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Discover the power of cluster analysis in R with this comprehensive blog post. Learn the essential techniques, interpret the results, and gain valuable insights from your data.</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jul 2, 2023</span>
+                    <a href="/post/cluster-analysis/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/post/manova/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python">MANOVA Analysis: …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their&hellip;</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">May 29, 2023</span>
+                    <a href="/post/manova/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/post/r-in-jupyter-notebook/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Use R in Jupyter Notebook">Use R in Jupyter Notebook</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In this post, I have showed complete procedure of enabling R kernal for Jupyter Notebook, so that you can use R in Jupyter Notebook.</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jul 19, 2022</span>
+                    <a href="/post/r-in-jupyter-notebook/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 </div>
 
+<div class="text-center pt-2">
+    
+    <span class="px-1">
+        <a href="https://github.com/mdahsanulhimel" aria-label="github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                <path id="footer-socialNetworks-github-svg-path"
+                    d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
 
-  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+                <metadata>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                        <rdf:Description about="https://iconscout.com/legal#licenses"
+                            dc:title="Github, Online, Project, Hosting, Square"
+                            dc:description="Github, Online, Project, Hosting, Square" dc:publisher="Iconscout"
+                            dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+                            <dc:creator>
+                                <rdf:Bag>
+                                    <rdf:li>Font Awesome</rdf:li>
+                                </rdf:Bag>
+                            </dc:creator>
+                        </rdf:Description>
+                    </rdf:RDF>
+                </metadata>
+            </svg>
+        </a>
+    </span>
+    
+
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+                <div class="pb-2">
+                    <a href="https://ahsan.netlify.app/" title="Ahsan&#39;s Profile">
+                        <img alt="Footer logo" src="/fav.png"
+                            height="40px" width="40px">
+                    </a>
+                </div>
+            
+            &copy; 2025  All rights reserved
+            <div class="text-secondary">
+                Made with
+                <span class="text-danger">
+                    &#10084;
+                </span>
+                and
+                <a href="https://github.com/gurusabarish/hugo-profile" target="_blank"
+                    title="Designed and developed by gurusabarish">
+                    Hugo Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script>
+    if (document.body.className.includes("dark")) {
+        document.body.classList.remove('dark');
+        localStorage.setItem("pref-theme", 'light');
+    }
+</script>
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
 
 
 
@@ -1748,12 +868,9 @@
 
 
 
-
-
-
-
-
-
-
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
 </body>
+
 </html>

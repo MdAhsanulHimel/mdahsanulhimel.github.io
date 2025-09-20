@@ -1,0 +1,1032 @@
+/* Animation */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-left {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Header animation */
+@keyframes fade-up {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+header .navbar.animate {
+    animation: fade-up 0.5s ease-in;
+}
+
+header {
+    position: fixed;  /* Fixes the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;  /* Ensures the header stays on top of content */
+    background-color: white;  /* Set background to match your theme */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Optional: Add a shadow for better visibility */
+    transition: top 0.3s; /* Smooth transition for any changes */
+}
+
+
+
+
+
+/* Add padding to the body/content to prevent overlap with the fixed header */
+body {
+    padding-top: 0px;  /* Adjust based on the height of your header */
+}
+
+  
+
+/* ToolTip */
+
+.tooltip {
+    line-height: 1rem;
+    border-radius: .5rem !important;
+}
+.tooltip-inner {
+    line-height: 1rem;
+}
+.tooltip .tooltip-arrow { 
+    visibility: hidden !important;
+}
+
+
+
+
+/* hero */
+
+#hero {
+    min-height: 100vh;
+    line-height: 2rem;
+    max-width: 100%;
+}
+#hero .content.animate {
+    animation: fade-left 1s ease-out;
+}
+
+#hero .hero-bottom-svg {
+    opacity: 0.5;
+    position: absolute;
+    bottom: -50px;
+    left: -150px;
+}
+
+#hero .subtitle {
+    font-size: clamp(14px,5vw,16px);
+    opacity: 0.6;
+}
+
+#hero h1 {
+    font-size: clamp(40px, 8vw, 80px);
+    /* color: var(--primary-color) !important; */
+    color: var(--primary-color);
+}
+
+#hero h2 {
+    font-size: clamp(40px, 8vw, 60px);
+    opacity: 0.5;
+}
+
+#hero p {
+    margin: 20px 0px 0px;
+    max-width: 640px;
+    opacity: 0.8;
+}
+
+#hero .image img {
+    box-shadow:0px 8px 56px rgba(15, 80, 100, 0.16);
+    padding: 0;
+    border: 3px solid var(--secondary-color);
+    border-radius: 1rem;
+}
+
+#hero .image.animate img {
+    animation: fade-in 1s ease-out;
+    transition: box-shadow 0.3s;
+}
+
+#hero .image img:hover {
+    cursor: pointer;
+}
+
+#hero .image.animate img:hover {
+    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
+    filter: contrast(1.2);
+    cursor: pointer;
+}
+
+#hero a.btn.social-icon {
+    /* color: var(--primary-color) !important; */
+    color: var(--primary-color);
+    line-height: 0%;
+    border-radius: 50%;
+    margin-top: 50px;
+    padding: 0.7rem;
+    border: 1px solid var(--primary-color);
+    transition: none;
+}
+
+#hero a.btn.social-icon img {
+    width: 1em;
+}
+
+#hero a.btn.social-icon:hover {
+    opacity: 0.8;
+}
+
+#hero a.btn {
+    margin-top: 50px;
+    padding: 0.7rem 1.75rem;
+    border: 1px solid var(--primary-color);
+    /* color: var(--text-color) !important; */
+    color: var(--text-color);
+    border-radius: .75rem;
+    transition: none;
+}
+
+#hero a.btn:focus {
+    box-shadow: none;
+}
+
+#hero a.btn:hover {
+    /* background-color: var(--secondary-color) !important; */
+    background-color: var(--secondary-color);
+    /* color: var(--text-color) !important; */
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+#hero a.btn.social-icon:hover {
+    background-color: var(--background-color) !important;
+    opacity: 0.7;
+}
+
+#hero .hero-content > a {
+    display: inline-block;
+    text-decoration: none;
+    /* color: var(--text-link-color) !important; */
+    color: var(--text-link-color);
+}
+
+#hero .hero-content > a::after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 2px;
+    bottom: 0.37em;
+    background-color: var(--primary-color);
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    opacity: 0.5;
+}
+
+#hero .hero-content > a:hover::after, #hero .hero-content > a:focus::after, #hero .hero-content > a:active::after {
+    width: 100%;
+}
+
+
+
+
+/* About Me Section */
+/* about me */
+#about h3 {
+    color: var(--text-secondary-color) !important;
+}
+
+#about .image img {
+    box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
+    transition: box-shadow 0.3s;
+    padding: 0;
+    border: 0;
+}
+
+#about .image img:hover {
+    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
+}
+
+#about ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    gap: 0px 10px;
+    padding: 0px;
+    margin: 20px 0px 0px;
+    overflow: hidden;
+    list-style: none;
+}
+
+#about ul li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+#about ul li::before {
+    content: "▹";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0px;
+}
+
+#about .content {
+    font-weight: 500;
+    opacity: 0.9 !important;
+    line-height: 1.7rem !important;
+}
+
+#about a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-link-color) !important;
+}
+
+#about a::after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 2px;
+    bottom: 0.37em;
+    background-color: var(--primary-color);
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    opacity: 0.5;
+}
+
+#about a:hover::after, #about a:focus::after, #about a:active::after {
+    width: 100%;
+}
+  
+#about .about-links{ gap:.85rem; }
+#about .about-btn{
+  padding:.6rem 1.1rem; border:1px solid var(--primary-color);
+  border-radius:.75rem; background:var(--secondary-color);
+  color:var(--text-color); line-height:1; transition:opacity .2s;
+}
+#about .about-btn:hover{ opacity:.8; }
+
+#about .about-icon{
+  width:42px;height:42px;border:1px solid var(--primary-color);
+  border-radius:999px; display:inline-flex;align-items:center;justify-content:center;
+  background:var(--secondary-color); transition:opacity .2s;
+}
+#about .about-icon i{ font-size:.95rem; color:var(--text-link-color); }
+#about .about-icon:hover{ opacity:.8; }
+
+  
+
+
+
+  
+/* ===== Experience: make it look exactly like Education ===== */
+
+/* Title color to match Education */
+#experience h3, 
+#experience h2 {
+  color: var(--text-secondary-color) !important;
+}
+
+/* Make every element inside the card use the same background as Education */
+#experience .card * {
+  background-color: var(--secondary-color) !important;
+}
+
+/* Card shell: radius, shadow, border, transitions (mirrors #education .card) */
+#experience .card {
+  border-radius: 1.5rem !important;
+  box-shadow: 0px 8px 56px rgb(15 80 100 / 16%) !important;
+  border: 2px solid var(--text-secondary-color) !important;
+  transition: box-shadow .2s linear, opacity .2s linear, transform .2s linear, border-color .2s linear !important;
+}
+
+/* Remove any leftover left-border from the inline <style> in experience.html */
+#experience .card-body {
+  border-left: 0 !important;
+  border-radius: 1.5rem !important;
+  padding: 2rem !important;
+}
+
+@media all and (max-width: 768px) {
+  #experience .card-body {
+    padding: 2rem 1rem !important;
+  }
+}
+
+/* Hover to match Education */
+#experience .card:hover,
+#experience .card:focus {
+  box-shadow: 0 4px 11px rgb(15 80 100 / 16%) !important;
+  border: 2px solid var(--primary-color) !important;
+  transition: .3s !important;
+}
+
+/* Links inside the experience content (match education link treatment) */
+#experience .card .card-body .primary-font a {
+  color: var(--text-link-color) !important;
+  text-decoration: none !important;
+  opacity: 0.9;
+}
+
+/* Job title (position) darker than rest */
+#experience .card .card-body h3 {
+  color: var(--text-color) !important;   /* main body text color (darker) */
+  font-weight: 600;                      /* make it bold-ish like degree titles */
+}
+
+/* Keep company, dates, and descriptions using the lighter secondary tone */
+#experience .card .card-body .text-muted,
+#experience .card .card-body .primary-font {
+  color: var(--text-secondary-color) !important;
+}
+
+/* Optional: if you want the “underline grows on hover” like the education <h6> */
+#experience .card .card-body .primary-font a::after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 2px;
+  bottom: 0.37em;
+  background-color: var(--primary-color);
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  opacity: 0.5;
+}
+#experience .card .card-body .primary-font a:hover::after,
+#experience .card .card-body .primary-font a:focus::after,
+#experience .card .card-body .primary-font a:active::after {
+  width: 100%;
+}
+
+/* Tighter bullet spacing (like your inline note) */
+#experience .primary-font ul { 
+  margin-bottom: 0; 
+  font-family: --default-font; /* fall back to body font */
+  color: var(--text-secondary-color);
+}
+
+#experience .primary-font li::marker {
+  color: var(--primary-color); /* makes bullets themselves match theme primary */
+}
+
+
+
+
+
+
+
+  
+
+/* Buttons (match education) */
+#experience .card .card-body a.btn,
+#experience .card .card-body .btn {
+  opacity: 0.9;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--text-color) !important;
+  border-radius: .75rem !important;
+  box-shadow: none !important;
+  transition: none !important;
+  background-color: var(--secondary-color) !important; /* ensure outline btns look same */
+}
+#experience .card .card-body a.btn:hover,
+#experience .card .card-body .btn:hover {
+  opacity: 0.8;
+}
+
+/* Logo next to company (keep tidy, optional) */
+#experience img[alt$="logo"] {
+  border-radius: .5rem;
+  box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+}
+
+
+
+
+/* ===== Neutralize legacy tab styles that no longer apply ===== */
+#experience .experience-container,
+#experience .nav-item .nav-link,
+#experience .nav-item .nav-link.active,
+#experience .tab-pane,
+#experience .tab-content {
+  all: unset; /* wipe legacy presentation if those classes hang around */
+}
+
+
+
+
+/* Make company names look like Education school links */
+#experience .company-line { 
+  color: inherit !important;          /* don't force grey like .text-muted */
+}
+
+#experience .company-line .company-link {
+  color: var(--text-link-color) !important;
+  font-weight: 400 !important;        /* not bold */
+  text-decoration: none !important;
+}
+
+#experience .company-line .company-link:hover,
+#experience .company-line .company-link:focus {
+  text-decoration: underline !important;
+  opacity: .9;
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+    Education
+   =========================*/
+  
+  #education .container > h3 {
+    color: var(--text-secondary-color) !important;
+  }
+  
+  /* Index bubble (when index_numbers true) */
+  #education .row .index {
+    opacity: .9;
+    padding: 13px 20px;
+    line-height: 0;
+    border-radius: 50%;
+    max-height: 50px;
+    z-index: 2;
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    font-weight: 700;
+  }
+  
+  /* Card shell */
+  #education .card {
+    background-color: var(--secondary-color) !important;
+    border-radius: 1.5rem;
+    border: 2px solid var(--text-secondary-color) !important;
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+    overflow: hidden; /* keep rounded corners perfect */
+    transition: border-color .25s ease, box-shadow .25s ease, transform .15s ease-in-out;
+  }
+  
+  #education .card:hover,
+  #education .card:focus-within {
+    box-shadow: 0 4px 11px rgb(15 80 100 / 16%);
+    border-color: var(--primary-color) !important;
+  }
+  
+  /* Card body spacing */
+  #education .card .card-body {
+    background-color: var(--secondary-color) !important;
+    border-radius: 1.5rem;
+    padding: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    #education .card .card-body {
+      padding: 2rem 1rem;
+    }
+  }
+  
+  /* Top-right meta (date + result) */
+  #education .card .card-body .float-end small {
+    color: var(--text-secondary-color) !important;
+    opacity: .95;
+  }
+  
+  /* Links inside Education */
+  #education .card .card-body .education-content a,
+  #education .card .card-body a[href] {
+    color: var(--text-link-color) !important;
+    text-decoration: none;
+    opacity: .95;
+  }
+  
+  #education .card .card-body a[href]:hover,
+  #education .card .card-body a[href]:focus {
+    opacity: .85;
+  }
+  
+  /* Underline grow effect for school name (h6 link) */
+  #education .card .card-body > a h6 {
+    display: inline-block;
+    color: var(--text-link-color) !important;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  #education .card .card-body > a h6::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width .25s cubic-bezier(0.645,0.045,0.355,1);
+    opacity: .5;
+  }
+  
+  #education .card .card-body > a h6:hover::after,
+  #education .card .card-body > a h6:focus::after {
+    width: 100%;
+  }
+  
+  /* Buttons (Featured) */
+  #education .card .card-body a.btn {
+    background: transparent;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--text-color) !important;
+    border-radius: .75rem;
+    box-shadow: none;
+    transition: opacity .2s ease;
+    opacity: .95;
+  }
+  
+  #education .card .card-body a.btn:hover,
+  #education .card .card-body a.btn:focus {
+    opacity: .8;
+  }
+  
+  /* Thumbnail logo – same feel as Experience */
+  #education .edu-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: .5rem;
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+  }
+  
+  /* Compact custom bullets */
+  #education .education-content ul {
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  #education .education-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  
+  #education .education-content ul li::before {
+    content: "▹";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 1.2;
+  }
+  
+
+
+
+
+
+
+/* Achievements Section */
+#achievements {
+    background-color: var(--background-color);
+    padding: 2rem 0;
+}
+
+#achievements h3 {
+    color: var(--text-primary-color);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+#achievements a {
+    text-decoration: none;
+}
+
+#achievements .achievement-card {
+    background-color: var(--secondary-color) !important;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    height: 100%;
+}
+
+#achievements .achievement-card .card-head {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+#achievements .achievement-card .card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect for Card */
+#achievements .achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+#achievements .achievement-card:hover .card-img-top {
+    transform: scale(1.05); /* Slight zoom effect on image */
+}
+
+#achievements .achievement-card h5 {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+#achievements .achievement-card .card-text {
+    color: var(--text-secondary-color);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#achievements .achievement-card .btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: .5rem;
+    padding: 0.5rem 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+#achievements .achievement-card .btn:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 767px) {
+    #achievements h3 {
+        font-size: 1.5rem;
+    }
+
+    #achievements .achievement-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Optional: Card Image Placeholder if no image is provided */
+#achievements .card-head {
+    background-color: #f0f0f0;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+#achievements .card-head img {
+    object-fit: cover;
+}
+
+
+
+
+/* =========================
+   Publications (match Education)
+   ========================= */
+
+   #publications .container > h3 {
+    color: var(--text-secondary-color) !important;
+  }
+  
+  /* Keep index bubble OUTSIDE card, left side */
+  #publications .pub-row{
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+  }
+  #publications .pub-index{
+    width:56px;
+    flex:0 0 56px;
+    display:flex;
+    justify-content:center;
+  }
+  #publications .index{
+    opacity:.9;
+    padding:13px 20px;
+    line-height:0;
+    border-radius:50%;
+    max-height:50px;
+    z-index:2;
+    background-color:var(--primary-color) !important;
+    color:var(--secondary-color) !important;
+    font-weight:700;
+  }
+  
+  /* Card shell — EXACTLY like #education .card */
+  #publications .card{
+    background-color:var(--secondary-color) !important;
+    border-radius:1.5rem;
+    border:2px solid var(--text-secondary-color) !important;
+    box-shadow:0px 8px 56px rgb(15 80 100 / 16%);
+    overflow:hidden; /* perfect rounding */
+    transition:border-color .25s ease, box-shadow .25s ease, transform .15s ease-in-out;
+  }
+  #publications .card:hover,
+  #publications .card:focus-within{
+    box-shadow:0 4px 11px rgb(15 80 100 / 16%);
+    border-color:var(--primary-color) !important;
+  }
+  
+  /* Card body spacing — same as Education */
+  #publications .card .card-body{
+    background-color:var(--secondary-color) !important;
+    border-radius:1.5rem;
+    padding:2rem;
+  }
+  @media (max-width:768px){
+    #publications .card .card-body{ padding:2rem 1rem; }
+  }
+  
+  /* Title row (title + DOI + PDF) */
+  #publications .pub-header{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+  }
+  #publications .pub-header .title-wrap{
+    flex:1; min-width:0;
+  }
+  
+  /* Title link: same “not-obviously-a-link” feel */
+  #publications .pub-title-link{
+    color:inherit; text-decoration:none;
+  }
+  #publications .pub-title-link:hover{ opacity:.9; }
+  
+  /* DOI chip (quiet outline) */
+  #publications .doi-chip{
+    display:inline-block;
+    padding:.15rem .5rem;
+    border:1px solid var(--primary-color);
+    border-radius:.75rem;
+    background:var(--secondary-color);
+    color:var(--text-color);
+    text-decoration:none;
+    font-size:.85em; line-height:1.4;
+  }
+  #publications .doi-chip:hover{ opacity:.85; }
+  
+  /* PDF button — same style as Education buttons */
+  #publications .pdf-btn{
+    background:transparent;
+    border:1px solid var(--primary-color) !important;
+    color:var(--text-color) !important;
+    border-radius:.75rem;
+    box-shadow:none;
+    padding:.25rem .6rem;
+    line-height:1.2;
+    opacity:.95;
+  }
+  #publications .pdf-btn:hover,
+  #publications .pdf-btn:focus{ opacity:.85; }
+  
+  /* Meta text (authors/venue/date) tone */
+  #publications .text-muted.small,
+  #publications .pub-date{
+    color:var(--text-secondary-color) !important;
+    opacity:.95;
+  }
+  
+  /* Abstract/body text — use default body color & rhythm */
+  #publications .pub-abstract p,
+  #publications .pub-abstract div,
+  #publications .pub-abstract span{
+    font-family:var(--default-font, inherit);
+    font-weight:400;
+    color:var(--text-color);
+    line-height:1.6;
+  }
+  
+  /* Links inside publications — match Education */
+  #publications .card .card-body a[href]{
+    color:var(--text-link-color) !important;
+    text-decoration:none;
+    opacity:.95;
+  }
+  #publications .card .card-body a[href]:hover,
+  #publications .card .card-body a[href]:focus{ opacity:.85; }
+  
+  /* Badges — subtle outline pills */
+  #publications .pub-badges{
+    display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem;
+  }
+  #publications .pub-badge{
+    background:transparent;
+    color:var(--primary-color);
+    border:1px solid var(--primary-color);
+    border-radius:999px;
+    padding:.25rem .55rem;
+    font-size:.75rem; font-weight:600; line-height:1.2;
+    user-select:none;
+    transition:opacity .2s ease, border-color .2s ease;
+  }
+  #publications .pub-badge:hover{ opacity:.85; }
+  
+
+
+  
+
+/* contact */
+
+#contact h3 {
+    color: var(--text-secondary-color) !important;
+}
+
+#contact .btn {
+    transition: none;
+    transition: opacity 0.3s;
+    border-radius: .5rem !important;
+    border-color: var(--primary-color) !important;
+    background-color: var(--secondary-color) !important;
+    color: var(--text-color) !important;
+}
+
+#contact .btn:hover {
+    opacity: .7;
+}
+
+#contact .btn:focus {
+    box-shadow: none !important;
+}
+
+#contact form .form-control {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: .7rem;
+    border: 1px solid var(--text-secondary-color);
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 5%);
+}
+
+#contact-form-status {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+#contact-form-status svg {
+    height: 18px;
+    width: 18px;
+}
+
+#contact-form-status button {
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 5%);
+    font-size: .6rem !important;
+}
+
+#contact-form-status .alert {
+    border-radius: 0.5rem;
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 5%);
+    padding: .5rem 1rem;
+}
+
+
+
+/* =========================
+   Courses
+   =========================*/
+
+   #courses h3 {
+    color: var(--text-secondary-color) !important;
+  }
+  
+  /* Card shell (same as Education) */
+  #courses .course-card {
+    background-color: var(--secondary-color) !important;
+    border-radius: 1.5rem;
+    border: 2px solid var(--text-secondary-color) !important;
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+    overflow: hidden; /* keep rounded corners perfect */
+    transition: border-color .25s ease, box-shadow .25s ease, transform .15s ease-in-out;
+  }
+  
+  /* Hover/Focus → same subtle lift + border color change */
+  #courses .course-card:hover,
+  #courses .course-card:focus-within {
+    box-shadow: 0 4px 11px rgb(15 80 100 / 16%);
+    border-color: var(--primary-color) !important;
+  }
+  
+  /* Banner keeps aspect even if no image */
+  #courses .course-banner {
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  #courses .course-banner.placeholder {
+    background: rgba(0,0,0,.04);
+  }
+  
+  /* Ribbons/pills in header */
+  #courses .course-mode,
+  #courses .course-cohort,
+  #courses .course-price {
+    position: absolute;
+    top: .5rem;
+    border-radius: 999px;
+    padding: .25rem .55rem;
+    font-size: .75rem;
+    background: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+  }
+  #courses .course-mode { left: .75rem; }
+  #courses .course-cohort { right: 6.25rem; }
+  #courses .course-price { right: .75rem; }
+  
+  /* Live vs Self-paced emphasis */
+  #courses .course-mode.live {
+    background: greenyellow;
+    color: black;
+    border-color: var(--primary-color);
+  }
+  #courses .course-mode.self {
+    background: yellow;
+    color: black;
+    border-color: var(--primary-color);
+  }
+  
+  /* Chips & tags (like Education’s bullets/links style) */
+  #courses .chip {
+    border: 1px solid var(--text-secondary-color);
+    border-radius: 999px;
+    padding: .15rem .5rem;
+    font-size: .75rem;
+    color: var(--text-secondary-color);
+  }
+  #courses .tag {
+    border: 1px solid var(--primary-color);
+    border-radius: 999px;
+    padding: .15rem .5rem;
+    font-size: .75rem;
+    color: var(--primary-color);
+  }
+  
+  /* Bullet points styled like Education */
+  #courses .course-points {
+    list-style: none;
+    padding-left: 0;
+  }
+  #courses .course-points li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  #courses .course-points li::before {
+    content: "▹";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 1.2;
+  }
+  

@@ -1,0 +1,147 @@
+---
+title: 'MANOVA Analysis: Unveiling Multivariate Patterns with R and Python'
+author: Md. Ahsanul Islam
+date: '2023-05-29'
+slug: manova
+categories:
+  - Design of Experiment
+  - Multivariate Analysis
+tags:
+  - R
+  - MANOVA
+toc: yes
+autoCollapseToc: no
+contentCopyright: no
+mathjax: yes
+mathjaxEnableSingleDollar: yes
+mathjaxEnableAutoNumber: yes
+output:
+  blogdown::html_page:
+    keep_md: no
+    toc: yes
+description: 'Learn about the fundamental concepts of MANOVA in R and Python.'
+summary: 'MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their...'
+images:
+- https://MdAhsanulHimel.github.io/2023/05/29/manova/preview.png
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+```
+
+---
+
+# Intro
+
+MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their relationships to provide a more comprehensive understanding of the effects of the independent variables. If you have only a single dependent variable, then MANOVA is not required. Regular ANOVA would be more appropriate in such cases.   
+
+Although separate F tests could be computed for each outcome variable, multiple
+hypothesis testing would result in an increased likelihood of at least one Type I
+error. In addition, because multiple outcome variables are likely to be correlated, the structure underlying the system of outcomes would be ignored with separate tests and statistical power could be decreased. A more appropriate way to examine two or more outcome variables would be to take a multivariate approach.$^6$    
+
+## Example
+
+For example, if you want to determine if the height of individuals varies across different age groups, ANOVA would be suitable since you have a single dependent variable (height).
+
+However, if you have multiple dependent variables that are related to the same set of independent variables, then using MANOVA would be advantageous. For instance, suppose you have data on the height, weight, and body fat percentage of individuals, and you want to investigate if these variables differ based on different exercise routines. In this scenario, MANOVA would be appropriate as you have multiple dependent variables (height, weight, and body fat percentage) that are of interest and are potentially influenced by the independent variable (exercise routine).
+
+# Assumptions
+
+1. The dependent variables are assumed to follow a multivariate normal distribution. This assumption is important for the validity of the statistical tests used in MANOVA.   
+2. The observations should be independent of each other.   
+3. There should be no multivariate outliers in the dependent variables.   
+4. The dependent variables are linearly related.   
+
+# Hypothesis
+
+$H_0:$ μ1 = ··· = μk against $H_1:$ not all μi’s are the same.$^3$   
+or,   
+$H_0:$ Group mean vectors are all equal to one another.   
+$H_1:$ At least one pair of treatments is different on at least one variable.
+
+
+
+# MANOVA Test Statistics
+
+1. Wilk's Lambda: $\Lambda^* = \dfrac{|\mathbf{E}|}{|\mathbf{H+E}|}$    
+2. Hotelling-Lawley Trace: $T^2_0 = trace(\mathbf{HE}^{-1})$    
+3. Pillai Trace: $V = trace(\mathbf{H(H+E)^{-1}})$   
+4. Roy's Maximum Root: Largest eigenvalue of $HE^{-1}$
+
+The power functions of these tests depend on the eigen values. Mardia (1971) has shown that Pillai's test is robust to nonnormality so long as the distribution is symmetrc, John (1967) has shown that under some conditions, Pillai's test is also locally most powerful. $^7$   
+
+# Experiment
+
+## Data Description
+
+The data is from an experiment in which the optimal conditions for growth and product formation were determined for a bacterial strain in a broth with a certain carbon source. Two different nitrogen sources (yeast extract and ammonium chloride) and three different incubation temperatures (30, 35, 37) were evaluated. Bacterial growth was evaluated after 24 hours using dry cell weight (in mg/ml) and optical density at 600 nm. The yield of a desired fermentation product was determined using gas chromatography and expressed in mM. $^4$
+
+```{r}
+# reading data
+data <- read.table("data/MANOVA.txt", header = T, sep = "\t")
+
+library(tidyverse)
+data <- data %>% mutate(across(c("Temperature","N.source"), factor))
+summary(data)
+```
+
+```{r}
+data %>% 
+  group_by(Temperature) %>% 
+  summarise(Mean_dry_weight = mean(Dry.weight), 
+            Mean_optical_density = mean(Optical.density),
+            Mean_product_yield = mean(Product.yield))
+```
+
+## Hypothesis
+
+$H_0:$ There is no significant difference in the average levels of dry weight, optical density, and product yield among two treatment groups.
+
+## MANOVA
+
+```{r}
+manova_result <- manova(cbind(Dry.weight, Optical.density, Product.yield) ~ Temperature,
+                        data = data)
+summary(manova_result, test = "Pillai")
+summary(manova_result, test = "Wilks")
+summary(manova_result, test = "Hotelling-Lawley")
+summary(manova_result, test = "Roy")
+```
+
+A p-value lower than 0.05 means the null hypothesis can be rejected. 
+
+
+```{python}
+import pandas as pd
+from statsmodels.multivariate.manova import MANOVA
+
+# Load the data
+data = pd.read_table("data/MANOVA.txt", sep="\t")
+
+# Perform MANOVA analysis
+# Change variable names
+new_column_names = {
+    'Dry weight': 'Weight',
+    'Optical density': 'Density',
+    'Product yield': 'Yield'
+}
+data = data.rename(columns=new_column_names)
+manova_result = MANOVA.from_formula('Weight + Density + Yield ~ Temperature', data)
+print(manova_result.mv_test()) 
+```
+
+  
+
+---
+
+**Refererences:**  
+
+1. [Stat PSU - Lesson 8: Multivariate Analysis of Variance (MANOVA)](https://online.stat.psu.edu/stat505/lesson/8)    
+2. [MANOVA, towards data science](https://towardsdatascience.com/manova-97e675a96158)
+3. P.K. Bhattacharya, Prabir Burman - Theory and Methods of Statistics    
+4. [Data description](https://www.chegg.com/homework-help/questions-and-answers/experiment-temperature-n-source-replica-dry-weight-optical-density-product-yield-batch30aa-q35487503)    
+5. [Data source](https://www.applied-maths.com/download/sample-data)   
+6. Applied MANOVA and Discriminant Analysis-Wiley-Interscience (2006)   
+7. Srivastava Multivariate Statistics - page 187

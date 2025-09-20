@@ -1,0 +1,349 @@
+---
+title: "Complete guide to bar plot using ggplot2"
+date: '2021-05-25'
+slug: ggplot2-bar-plot
+categories:
+  - R Programming
+tags:
+  - R
+  - ggplot2
+  - bar plot
+description: "R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson's Grammar of Graphics. It divides graphs into semantic components like scales ..."
+summary: "R is great for data visualization. One of the amazing packages in visualization in R is the ggplot2. Hadley Wickham created ggplot2 in 2005 as an implementation of Leland Wilkinson's Grammar of Graphics. It divides graphs into semantic components like scales and layers."
+images:
+- https://MdAhsanulHimel.github.io/2021/05/25/ggplot2-bar-plot/ggplot2-bar-plot.png
+toc: yes
+autoCollapseToc: yes
+contentCopyright: yes
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "", prompt = F, message=F, warning = F
+)
+```
+
+---
+
+Importing the ggplot2 package - 
+```{r}
+library(ggplot2)
+```
+
+Let's use the built in Hair and Eye Color data set -
+```{r}
+HairEyeColor
+```
+This data set is not so suitable for visualization. So we need to do some manipulation before moving on. 
+
+Let's import some necessary packages - 
+```{r}
+library(dplyr)
+```
+
+The data set is then transformed into a form so that we can use it for plotting - 
+```{r}
+df <- HairEyeColor %>%        
+  as_tibble() %>%             
+  tidyr::uncount(n) %>%              
+  mutate_all(as.factor)
+```
+
+More about uncount -
+```{r}
+tibble(a=c(2,1,4),
+       b=c('one','two','three')) %>% tidyr::uncount(a)
+```
+Uncount does the opposite work of count.
+
+Let's see the new data frame now- 
+```{r}
+glimpse(df)
+```
+
+Now it can be used to create bar charts.
+
+---
+
+## A Simple Barplot
+
+```{r}
+ggplot(data = df) +
+  geom_bar(mapping = aes(x = Hair))
+```
+
+The mapping can be done inside the ggplot() function - 
+```{r}
+ggplot(data = df, mapping = aes(x=Hair))+
+  geom_bar(fill = "black") +  
+  labs(title = "Hair Color", 
+       subtitle = "592 Statistics Students",
+       caption = "(From R's built in HairEyeColor sample dataset)",
+       y = "Number of Students", x = NULL)
+```
+
+## Horizontal Bar Chart
+
+Using coord_flip() -
+```{r}
+ggplot(data = df, mapping = aes(x=Hair))+
+  geom_bar(fill = "black") +  
+  labs(title = "Hair Color", 
+       subtitle = "592 Statistics Students",
+       caption = "(From R's built in HairEyeColor sample dataset)",
+       y = "Number of Students", x = NULL) +
+  coord_flip()
+```
+
+Assigning variable to the y axis -
+```{r}
+ggplot(data = df, mapping = aes(y = Hair))+
+  geom_bar(fill = "black") +  
+  labs(title = "Hair Color", 
+       subtitle = "592 Statistics Students",
+       caption = "(From R's built in HairEyeColor sample dataset)",
+       y = "Number of Students", x = NULL)
+```
+
+## Using Colors
+
+fill = {the same variable as the x axis} so that for each variable different colors is shown - 
+```{r}
+ggplot(data = df)+
+  geom_bar(mapping = aes(x = Hair, fill = Hair))+
+  theme(legend.position = "none")  # Don't show the legend
+```
+
+Using hue - 
+```{r}
+ggplot(data = df)+
+  geom_bar(mapping = aes(x = Hair, fill = Hair))+
+  theme(legend.position = "none") +  # Don't show the legend
+  scale_fill_hue(c = 20) # Different values c gives different intensity of colors
+```
+
+### Manually selecting colors
+
+How to manually set colors in a bar chart?   
+Manually selecting colors - 
+
+```{r}
+ggplot(data = df)+
+  geom_bar(mapping = aes(x = Hair, fill = Hair), 
+           col = "black",
+           fill = c("Black","beige","bisque3","red"))+
+  theme(legend.position = "none")
+```
+
+Another way to do that - 
+
+```{r}
+ggplot(data = df)+
+  geom_bar(mapping = aes(x = Hair, fill = Hair), col = "black")+
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("Black","beige","bisque3","red"))
+```
+
+## Modifying Axis Tickmarks
+
+```{r}
+ggplot(df, aes(x = Hair)) +
+  geom_bar() +
+  scale_y_continuous(breaks = seq(0, 300, by=50)) +
+  labs(x = "Colors", y = "Frequency",
+       title = "Bar Chart of Colors",
+       subtitle = "An observational study") +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) # center the title and subtitle
+```
+
+## Stacked Bar Chart
+
+Using fill argument stacked bar can be made - 
+```{r}
+ggplot(data = df) + 
+  geom_bar(mapping = aes(Hair, fill = Sex))
+```
+
+
+### 100% Stacked Bar Chart
+
+Using position = "fill" inside geom_bar - 
+```{r}
+ggplot(df, aes(Hair, fill = Sex)) + 
+  geom_bar(position = "fill") +
+  labs(x="Hair Color", y=NULL) +
+  coord_flip()
+``` 
+
+## Changing Order of Bars
+
+```{r}
+df$Hair <- factor(df$Hair, levels = c("Red", "Black", "Blond", "Brown"))
+ggplot(df, aes(y=Hair, fill = Sex)) + 
+  geom_bar(position = "fill") +
+  labs(x=NULL, y="Hair Color") 
+```
+
+Another way to do this using `scale_y_discrete()`- 
+```{r}
+ggplot(df, aes(y = Hair, fill = Sex)) + 
+  geom_bar(position = "fill") +
+  labs(x=NULL, y="Hair Color") +
+  scale_y_discrete(limits = c("Black","Red","Brown","Blond"))
+```
+
+## Changing Order in Legend's Labels
+
+Using `scale_fill_discrete()` -
+```{r}
+ggplot(df, aes(y = Hair, fill = Sex)) + 
+  geom_bar(position = "fill") +
+  labs(x=NULL, y="Hair Color") +
+  scale_y_discrete(limits = c("Black","Red","Brown","Blond")) +
+  scale_fill_discrete(breaks = c("Male","Female"))
+```
+
+## Changing Order of Stacks
+
+In the following stacked barplot, the left bar denotes female and the right bar denotes male - 
+```{r}
+ggplot(df, aes(x = Hair, fill = Sex)) + 
+  geom_bar(position = "dodge") +
+  labs(x=NULL, y="Hair Color") +
+  scale_x_discrete(limits = c("Black","Red","Brown","Blond"))
+```
+
+If we check the order of levels of Sex we'll see - 
+```{r}
+levels(df$Sex)
+```
+
+Now if the order is changed, the bar will also change its order - 
+```{r}
+df %>% 
+  mutate(Sex = factor(Sex, levels = c("Male","Female"))) %>% 
+  ggplot(aes(x = Hair, fill = Sex)) + 
+  geom_bar(position = "dodge") +
+  labs(x=NULL, y="Hair Color") +
+  scale_x_discrete(limits = c("Black","Red","Brown","Blond"))
+```
+
+This is particularly useful when showing a 100% stacked barplot - 
+```{r}
+df %>%
+  mutate(Hair = factor(Hair,
+                       levels = rev(c("Black","Brown","Red","Blond")))) %>%
+  ggplot(aes(y = Sex, fill = Hair)) + 
+  geom_bar(position = "fill") +
+  labs(x=NULL, y=NULL, fill = "Hair Colors") +
+  scale_fill_manual(values = c("black","#8B4513","#FF0000","#faf0be"),
+                      limits = c("Black","Brown","Red","Blond")) +
+  theme_bw() + theme(legend.position = "bottom")
+```
+
+
+## Changing width of the bars
+
+Width of the bars can be changed using the `width` argument from geom_bar(). It takes values from 0 to 1 - 
+```{r}
+ggplot(df, aes(Hair, fill = Sex)) + 
+  geom_bar(position = "fill", 
+           width = 0.5) +
+  labs(x="Hair Color", y=NULL) +
+  coord_flip()
+```
+
+## Side by Side Bar Chart
+
+Using dodge -
+```{r}
+ggplot(df, aes(Hair, fill = Sex)) + 
+  geom_bar(position = "dodge") +
+  labs(x="Hair Color", y=NULL)
+```
+
+Using dodge2 -
+```{r}
+ggplot(df, aes(Hair, fill = Sex)) + 
+  geom_bar(position = "dodge2") +
+  labs(x="Hair Color", y=NULL)
+```
+
+In the following case we can see that there is no Male who has the hair color red. It fills the whole bar with Female bar -
+```{r}
+df %>% 
+  filter(!(Sex=="Male" & Hair=="Red")) %>% 
+  ggplot(aes(Hair, fill = Sex)) + 
+  geom_bar(position = "dodge2") +
+  labs(x="Hair Color", y=NULL)
+```
+
+To prevent it from happening use position_dodge2(preserve = "single") in position argument - 
+```{r}
+df %>% 
+  filter(!(Sex=="Male" & Hair=="Red")) %>% 
+  ggplot(aes(Hair, fill = Sex)) + 
+  geom_bar(position = position_dodge2(preserve = "single")) +
+  labs(x="Hair Color", y=NULL)
+```
+
+preserve = "total" will fill the whole place - 
+```{r}
+df %>% 
+  filter(!(Sex=="Male" & Hair=="Red")) %>% 
+  ggplot(aes(Hair, fill = Sex)) + 
+  geom_bar(position = position_dodge2(preserve = "total")) +
+  labs(x="Hair Color", y=NULL)
+```
+
+## Column Chart
+
+Column charts data looks like this - (after manipulation)
+```{r message=F}
+hairdf <- df %>% 
+  filter(Sex == "Male") %>% 
+  group_by(Hair) %>% 
+  summarize(frequency = n()) 
+hairdf
+```
+
+This types of data frame can be graphed in column chart using the function geom_col(), not geom_bar(), here is the difference - 
+```{r}
+hairdf %>% 
+  ggplot()+ 
+  geom_col(mapping = aes(x=Hair, y=frequency),
+           fill = c("Black","beige","bisque3","coral2")) +
+  labs(title="Hair Color in Column Chart")
+```
+
+This kind of data can also be graphed by defining `stat = "identity"` in the `geom_bar()` function - 
+```{r}
+hairdf %>% 
+  ggplot() +
+  geom_bar(aes(x = Hair, y = frequency), 
+           stat = "identity")
+```
+
+
+
+## Putting frequencies on each bars
+
+```{r}
+hairdf %>% 
+  ggplot(aes(x = Hair, y = frequency)) +
+  geom_col() +
+  scale_y_continuous(breaks = seq(0, 150, by=30)) +
+  labs(x = "Colors", y = "Frequency",
+       title = "Bar Chart of Colors",
+       subtitle = "An observational study") +
+  geom_text(aes(label= frequency), 
+            vjust=1.2, size=3,
+            col = "white")
+```
+
+
+
+To know more about ggplot2 visit [here](https://rpubs.com/MdAhsanul/ggplot2_scatterplot)
+
+To know more about colors visit [here](https://rpubs.com/MdAhsanul/colors_palettes)

@@ -1,0 +1,68 @@
+---
+title: 'Shapiro Wilk Test using R'
+author: ''
+date: '2022-03-31'
+slug: shapiro-wilk-test
+categories:
+  - Hypothesis Tests
+tags:
+  - shapiro wilk test
+  - normality test
+  - hypothesis test
+  - R
+keywords: []
+description: 'Samuel Sanford Shapiro and Martin Wilk developed a non-parametric test in 1965 to check the normality of the data, which was later named after them as Shapiro-Wilk test.'
+summary: 'The normality of data is crucial in parametric hypothesis tests. Because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, an analysis needs to be performed...'
+images:
+- https://MdAhsanulHimel.github.io/2022/03/31/shapiro-wilk-test/shapiro-wilk-test-cover.png
+comment: yes
+toc: no
+autoCollapseToc: yes
+postMetaInFooter: no
+hiddenFromHomePage: no
+contentCopyright: yes
+mathjax: yes
+mathjaxEnableSingleDollar: yes
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+```
+
+--- 
+
+The normality of data is crucial in parametric hypothesis tests because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, analysis needs to be performed on a small number of samples. As a result, checking for normality is a necessary step.
+
+Samuel Sanford Shapiro and Martin Wilk developed a test in [1965](https://doi.org/10.1093%2Fbiomet%2F52.3-4.591) for checking the normality of data, which was later named after them as Shapiro-Wilk test. It is appropriate when sample size is less than 50. For data greater than that Shapiro and Francia in [1972](https://academic.oup.com/biomet/article-abstract/62/2/445/337172) developed a new testing procedure. For now we will stick to Shapiro-Wilk test.
+
+# Shapiro-Wilk Test using R
+
+Suppose we have the data on age of 18 randomly selected students in a primary school. We need to test whether the data follows a normal distribution or not. 
+
+Data - 
+```{r}
+age = c(9,12,11,10,12,9,7,8,8,7,10,10,8,7,9,10,11,12)
+age
+```
+
+Graphically representing the data in a histogram - 
+```{r}
+hist(age)
+```
+
+From the visualization, it is not clear whether the data follows a normal distribution or not because the sample size is small.
+
+Hypothesis formulation -    
+\$H_0\$: The data follows a normal distribution with unknown mean and variance.   
+\$H_1\$: The data does not follow a normal distribution.    
+We want to test the hypothesis at 5% significance level. 
+
+Hypothesis testing - 
+```{r}
+shapiro.test(x = age)
+```
+
+Since the p-value is 0.1378 > significance level (0.05), we may not reject the null hypothesis. It means we do not have enough statistical evidence to reject the null hypothesis that the data come from a normal distribution at 5% level of significance.
+

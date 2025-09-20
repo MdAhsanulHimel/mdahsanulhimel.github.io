@@ -1,0 +1,139 @@
+---
+title: The Kaplan-Meier Estimatior in R
+author: Md. Ahsanul Islam
+date: '2022-06-21'
+slug: kaplan-meier-estimatior-in-r
+categories:
+  - Biostatistics
+tags:
+  - R
+  - Biostatisics
+toc: yes
+autoCollapseToc: yes
+contentCopyright: yes
+description: 'In this post, we will see how to estimate the survival function in this method using R. Note that, the Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime...'
+summary: 'The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R.'
+images:
+- https://MdAhsanulHimel.github.io/2022/06/21/kaplan-meier-estimatior-in-r/kaplan_r_thumb.png
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+```
+
+---
+
+
+The Kaplan–Meier estimator, often known as the product limit estimator, is a non-parametric statistic used to estimate the survival function using lifetime data. In this post, we will see how to estimate the survival function in this method using R.
+
+# Packages & Data
+
+For fitting a Kaplan-Meier curve, the `survival` package is required -
+```{r}
+library(survival)
+```
+
+For this example, I will use the addicts dataset - 
+```{r}
+remotes::install_github("lbraglia/suanselete3")
+data(addicts, package = 'suanselete3')
+```
+
+Here, the package `suanselete3` is an unofficial companion to the textbook "Survival Analysis - A Self-Learning Text" by D.G. Kleinbaum and M. Klein (3rd Ed., 2012) including all the accompanying datasets. I have loaded the addicts data set from this package.
+
+Description of the data (event=dropped out) - 
+1. ID -- Patient ID   
+2. CLINIC -- Indicates which methadone treatment clinic the patient attended (coded 1 or 2)   
+3. STATUS -- Indicates whether the patient dropped out of the clinic (coded 1) or was censored (coded 0)   
+4. SURVT -- The time (in days) until the patient dropped out of the clinic or was censored   
+5. PRISON -- Indicates whether the patient had a prison record (coded 1) or not (coded 0)   
+6. DOSE -- A continuous variable for the patient's maximum methadone dose (mg/day)    
+
+# Data Preparation
+
+Let's have an idea about the data set - 
+```{r}
+head(addicts)
+```
+
+Check the class of the data set imported in R - 
+```{r}
+class(addicts)
+```
+
+It is a data frame. To work with this, firstly, we need to create a `Surv` object which will be used as a response variable - 
+```{r}
+Y <- Surv(time = addicts$survt, event = addicts$status == 1)
+Y
+```
+
+Here the time variable `survt` has been assigned with the plus sign (+) indicating censored and not censored otherwise (based on `status` variable).
+
+# Model 
+
+In the following code, Y\~1 requests an intercept only model - 
+```{r}
+kmfit1 = survfit(Y~1)
+kmfit1
+```
+
+The output contains descriptive information on the number of records, the number at risk at time 0, the number of events, and the median estimated survival time with a 95% confidence interval.
+
+The summary function shows the survival estimates -
+```{r}
+summary(kmfit1)
+```
+
+For specified survival time, the `times` argument can be used. For example, to produce, survival estimate for survival time 30 -
+
+```{r}
+summary(kmfit1, times = 30)
+```
+
+To get survival estimates at different survival times, say in interval of 100 -
+
+```{r}
+summary(kmfit1,times=seq(0, max(addicts$survt), by=100))
+```
+
+To plot the output - 
+```{r}
+plot(kmfit1, frame.plot=FALSE,
+     xlab = "Survival Time in Days", 
+     ylab = "Survival Probabilities")
+```
+
+## Stratify by Other Variable
+
+To stratify the survival experience by CLINIC variable we need to fit a different model including the variable CLINIC instead of 1 - 
+```{r}
+kmfit2 = survfit(Y ~ clinic, data = addicts)
+kmfit2
+```
+
+Let's see the survival estimates at a time interval of 100 - 
+```{r}
+summary(kmfit2,times=seq(0,max(addicts$survt),by=100))
+```
+
+Notice for CLINIC=1, survival times stopped at 900 rather than 1000, because no subject was at risk on day 1000. 
+
+We can plot the survival curve for the two clinics - 
+```{r}
+plot(kmfit2, frame.plot=FALSE, lwd = 2, 
+     lty = c("solid","dashed"), 
+     col=c("#DC7633","#2471A3"),
+     xlab = "Survival Time in Days", 
+     ylab = "Survival Probabilities")
+legend("topright", c("Clinic 1", "Clinic 2"), 
+       lty = c("solid","dashed"), col=c("#DC7633","#2471A3"))
+```
+
+The plot indicates that subjects from CLINIC=2 have a higher rate of survival than subjects from CLINIC=1.
+
+
+
+Reference:   
+1. Kleinbaum, D. G., & Klein, M. (2012). Survival analysis: a self-learning text (Vol. 3). New York: Springer.   

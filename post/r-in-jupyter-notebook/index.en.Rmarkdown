@@ -1,0 +1,52 @@
+---
+title: Use R in Jupyter Notebook
+author: Md. Ahsanul Islam
+date: '2022-07-19'
+slug: r-in-jupyter-notebook
+categories:
+  - Tech
+tags:
+  - R
+  - JupyterNotebook
+toc: no
+autoCollapseToc: yes
+contentCopyright: yes
+description: 'In this post, I have showed complete procedure of enabling R kernal for Jupyter Notebook, so that you can use R in Jupyter Notebook.'
+summary: 'In this post, I have showed complete procedure of enabling R kernal for Jupyter Notebook, so that you can use R in Jupyter Notebook.'
+images:
+- https://MdAhsanulHimel.github.io/2022/07/19/r-in-jupyter-notebook/index.en_insertimage_1.png
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+```
+
+---
+
+
+To use R in Jupyter Notebook, make sure you have the following things installed in your computer - 
+
+1. [Anaconda distribution](https://www.anaconda.com/products/distribution#windows)   
+2. [R](https://www.r-project.org/)   
+
+Now, to use R in jupyter notebook, follow the steps -    
+1. Install IRkernal package.   
+```install.packages('IRkernel')```   
+![Installing IRkernal](index.en_insertimage_2.png)
+2. Install kernal spec for the current user.   
+```IRkernel::installspec()```   
+![Install spec](index.en_insertimage_3.png)   
+If you pass `user = FALSE` inside the function, then the spec will be installed for all users/system wide.
+
+Done! :smile: :clap:
+
+![R kernal in Jupyter Notebook](index.en_insertimage_1.png)
+
+
+
+
+
+
+
