@@ -3,6 +3,8 @@
 This repository contains the source code for my personal website and blog.
 It’s built with **[Hugo (extended)](https://gohugo.io/)**, authored primarily with **R Markdown (blogdown)**, and themed with a customized fork of **gurusabarish/hugo-profile**. I’ve added several sections and quality-of-life features (courses, enroll form with payments, publications, achievements, etc.).
 
+Visit website: mdahsanulhimel.github.io
+
 ---
 
 ## Quick start
