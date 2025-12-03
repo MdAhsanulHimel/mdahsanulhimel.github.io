@@ -9,7 +9,7 @@ categories:
 tags:
   - R
   - MANOVA
-toc: yes
+toc: true
 autoCollapseToc: no
 contentCopyright: no
 mathjax: yes

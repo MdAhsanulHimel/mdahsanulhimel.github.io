@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.png type="image/gif">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHMN5CZBNV"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHMN5CZBNV');
+        }
+      </script>
+<meta property="og:url" content="https://ahsan.netlify.app/post/2025-09-29-pca/">
+  <meta property="og:site_name" content="Ahsan">
+  <meta property="og:title" content="Principal Component Analysis - Theory and Application with R">
+  <meta property="og:description" content="PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of...">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-03-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-03-21T00:00:00+00:00">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="PCA">
+    <meta property="article:tag" content="Scree Plot">
+    <meta property="article:tag" content="Multivariate Analysis">
+    <meta property="article:tag" content="Eigen Decomposition">
+    <meta property="article:tag" content="Biplot">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Principal Component Analysis - Theory and Application with R">
+  <meta name="twitter:description" content="PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of...">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
+
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --text-link-color: #007bff;
+        --background-color: #fff;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --text-link-color-dark: #ffffff;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        height: 0px;
+        width: 8px;
+        background-color: var(--background-color);
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: #b0b0b0;
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+
+
+
+<style>
+     
+    header#profileHeader{
+      position: sticky;        
+      top: 0;
+      z-index: 9999;
+      background-color: var(--secondary-color);
+      box-shadow: 0 4px 6px rgba(0,0,0,.08);
+    }
+     
+    #profileHeader,
+    #profileHeader.showHeaderOnTop{
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  </style>
+  
+
+
+
+
+<meta name="description" content="PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of...">
+<link rel="stylesheet" href="/css/single.css">
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
+
+
+  
+  
+
+  <title>
+Principal Component Analysis - Theory and Application with R | Ahsan
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<header id="profileHeader">
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/fav.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                Ahsan
+                
+            </a>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='Search this site...'
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Search this site...' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#experience" title="Experience">
+                                
+                                    <i class="fas fa-briefcase"></i>  
+                                
+                                Experience
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#education" title="Education">
+                                
+                                    <i class="fas fa-graduation-cap"></i>  
+                                
+                                Education
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#publications" title="Research">
+                                
+                                    <i class="fas fa-flask"></i>  
+                                
+                                Research
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/post" title="My Posts">
+                                
+                                    <i class="fas fa-rss"></i>  
+                                
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#contact" title="Contact">
+                                
+                                    <i class="fas fa-address-card"></i>  
+                                
+                                Contact
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item navbar-text">
+                            <a class="nav-link" href="/#youtube" title="Youtube">
+                                
+                                    <i class="fas fa-chalkboard-teacher"></i>  
+                                
+                                Youtube
+                            </a>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">Principal Component Analysis - Theory and Application with R</h1>
+            <div class="text-center">
+              Md Ahsanul Islam <small>|</small>
+              Monday, Mar 21, 2022 
+              
+              <span id="readingTime"> min read</span>
+              
+            </div>
+          </div>
+
+          
+          
+          <div class="d-block d-lg-none mb-4">
+            <aside class="toc">
+              <h5>Table of Contents</h5>
+              <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#underlying-theory">Underlying Theory</a>
+      <ul>
+        <li><a href="#pre-requisites">Pre-requisites</a></li>
+        <li><a href="#theory">Theory</a></li>
+        <li><a href="#practical-demonstration">Practical Demonstration</a></li>
+        <li><a href="#dataset">Dataset</a></li>
+        <li><a href="#manual-calculation">Manual Calculation</a></li>
+        <li><a href="#using-prcomp">Using prcomp()</a></li>
+        <li><a href="#scree-plot">Scree plot</a></li>
+        <li><a href="#factominers-pca">FactoMineR’s PCA()</a></li>
+        <li><a href="#biplot">Biplot</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </aside>
+          </div>
+          
+
+          
+          
+          
+          
+            
+          
+
+          
+
+          <article class="page-content p-2">
+            <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>Karl Pearson invented PCA in 1901, defining it as “On lines and planes of closest fit to systems of points in space.”](<a href="https://www.tandfonline.com/doi/abs/10.1080/14786440109462720">https://www.tandfonline.com/doi/abs/10.1080/14786440109462720</a>) Harold Hotelling later developed and named it independently in the <a href="https://content.apa.org/record/1934-00645-001">1930s</a>.</p>
+<p>Principal component analysis (PCA) is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information (variance) in the original data is preserved by those linear combinations. It accomplishes this by generating new uncorrelated variables that gradually maximize variance. Finding such new variables, known as principal components (PCs), is essentially the same as solving an eigenvalue/eigenvector problem.<!-- raw HTML omitted --><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted --></p>
+<p>An eigen vector is a direction of the transformation of the original dataset for which no information in the data is lost and an eigenvalue shows the amount of variance that is explained in the data in that direction. So the eigen vector corresponding to the highest eigenvalue is the first principal component.</p>
+<p>Geometrically to say, PCA is a type of linear transformation of a given dataset \X\ that contains values for a given number of variables (or say coordinates) for a given number of spaces. This linear transformation fits this dataset to a new coordinate system in such a way that the first coordinate (component) has the most variation, and each subsequent coordinate is orthogonal to the first and has less variance.<!-- raw HTML omitted --><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><!-- raw HTML omitted -->,<!-- raw HTML omitted --><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>&lt;\cite&gt;</p>
+<hr>
+<h2 id="underlying-theory">Underlying Theory</h2>
+<p><img src="image/pca1.gif" alt=""></p>
+<h3 id="pre-requisites">Pre-requisites</h3>
+<p>Before diving into the PCA, there are a few things one should be aware of -</p>
+<ol>
+<li>Linear Algebra
+<ul>
+<li>Trace of a matrix and its <a href="https://en.wikipedia.org/wiki/Trace_(linear_algebra)#Properties">properties</a></li>
+<li>Determinant of a matrix</li>
+<li><a href="https://www.youtube.com/watch?v=WTLl03D4TNA">Diagonalization of a matrix</a></li>
+<li><a href="https://math.stackexchange.com/questions/2190841/what-is-orthogonal-transformation">Orthogonal transformation</a></li>
+<li><a href="https://youtu.be/PFDu9oVAE-g">Eigen values and eigen vectors</a></li>
+</ul>
+</li>
+<li>Statistics
+<ul>
+<li>Mean vector</li>
+<li>Variance-Covariance Matrix</li>
+<li>Correlation Matrix</li>
+</ul>
+</li>
+</ol>
+<h3 id="theory">Theory</h3>
+<p>Let, p be the number of variables, n be the number of observations, \ X \ be a \p n\ matrix of a dataset, mean vector \{X}\ be a zero vector and the variance-covariance matrix \\ be a real <a href="https://nhigham.com/2020/07/21/what-is-a-symmetric-positive-definite-matrix/">positive definite matrix</a> or at least <a href="https://www.cse.iitk.ac.in/users/rmittal/prev_course/s14/notes/lec11.pdf">positive semi-definite</a> of rank \r p\.</p>
+<p>Let,\ _i  i=1,2,…,p \ be the eigen values of \\ where, \_1 &gt; _2 &gt; _3 &gt; … &gt; _p\ and their corresponding eigenvectors are \_1, _2, _3, …, _p\.</p>
+<p>where, \D\ is a diagonal matrix where the diagonal elements are the eigenvalues -
+$$
+D =\begin{bmatrix}
+\lambda_1 &amp; 0 &amp; &hellip; &amp; 0\newline
+0 &amp; \lambda_2 &amp; &hellip; &amp; 0\newline
+. &amp; . &amp; &hellip; &amp; .\newline
+0 &amp; 0 &amp; &hellip; &amp; \lambda_p
+\end{bmatrix}_{p\ \times\ p}
+$$</p>
+<p>and the matrix of eigen vectors,
+$$
+\Gamma =\begin{bmatrix} \gamma_1,\ \gamma_2,\ &hellip;\ ,\gamma_p\ \end{bmatrix}_{p\ \times\ p}
+$$</p>
+<p>The matrix \\ diagonalizes \\ such that, \D = ’ \ or, \=D’\</p>
+<p><em>Since \\ is an orthogonal matrix, then \‘=’= I\.<!-- raw HTML omitted --><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted --></em></p>
+<p>We consider an orthogonal transformation (that will preserve all the information) of \X\ into \Y\ by -<br>
+\Y=’X\</p>
+<p>or,<br>
+\
+=’
+\</p>
+<p>Here, \Y_1\, \Y_2\, …, \Y_p\ are the p components of \Y\ and are called the Principal Components.</p>
+<p>For example if \X=[x_1   x_2]\ is a two variable data set and the first eigen vactor is \[a    b]’\.</p>
+<p>Then the first principal component will be - \P_1=x_1a+x_2 b\</p>
+<p>Similarly if the second eigen vector is \[c   d]’\ then the second principal component will be - \P_2=x_1c+x_2 d\</p>
+<hr>
+<h4 id="preserving-variance">Preserving Variance</h4>
+<p><strong>How does the technique preserve the total variation after the transformation?</strong></p>
+<p>Since \\ is the variance-covariance matrix of \X\, we can measure the following things:</p>
+<ol>
+<li>Overall measure of the variability of \X\ as \trace()\ or,</li>
+<li>Generalized variance of \X\ as \||\</li>
+</ol>
+<p>Now, \trace()\<br>
+\=trace(D‘)\<br>
+\=trace(’D)\ <a href="https://en.wikipedia.org/wiki/Trace_(linear_algebra)#Cyclic_property">[Cyclic property]</a><br>
+\=trace(D)\ [Since, \\ is an orthogonal matrix]<br>
+\=_{i=1}^{p}_i\</p>
+<p>Again, \||\<br>
+\=|D‘|\<br>
+\=||| D||’|\<br>
+\=|D|\
+\=_{i=1}^{p}_i\</p>
+<p>Now we have the transformation, \Y=’X\</p>
+<p>Here, \E[Y] = E[’X]=‘E[X]=0\<br>
+and \V(Y)=E[YY’]=E[’XX’]=’E[XX’]=’ =D\</p>
+<p>Thus, for \Y\, overall measure of variability is \trace(D)=_{i=1}<!-- raw HTML omitted -->{p}<em>i\<br>
+or, generalized variance is \|D|=</em>{i=1}<!-- raw HTML omitted -->{p}_i\</p>
+<p>Which shows that the total variation of \X\ remains unchanged in \Y\.</p>
+<hr>
+<h4 id="measuring-accounted-variance-by-pcs">Measuring Accounted Variance by PCs</h4>
+<p><strong>How to know the percentage of variation that is explained by a principal component?</strong></p>
+<p>Since \\ is a positive definite matrix, the strict positivity of \_i\ is guaranteed.</p>
+<p>Now, \Y_1\ is the first principal component corresponding to first eigenvalue \_1\, and similarly \Y_i\ is the i-th principal component corresponding to i-th eigenvalue \_i\.</p>
+<p>The percentage of variation of the original data \X\ explained by the i-th principal component is calculated using \\</p>
+<p>At the beginning of the theory development since \_i\s were taken such as \_1 &gt; _2 &gt; _3 &gt; &gt; _p\, the first principal component explains the largest amount of variation.</p>
+<hr>
+<h3 id="practical-demonstration">Practical Demonstration</h3>
+<h3 id="dataset">Dataset</h3>
+<p>Importing a dataset -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">data</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">readxl</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">read_excel</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;data/1.2 data.xlsx&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">Family</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">ifelse</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">Family</span><span style="color:#ce5c00;font-weight:bold">==</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;Serranidae&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#000">ifelse</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">Family</span><span style="color:#ce5c00;font-weight:bold">==</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;Carangidae&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;Sparidae&#34;</span><span style="color:#000;font-weight:bold">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">df_unstd</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">data[</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">-8</span><span style="color:#000">]</span>
+</span></span></code></pre></div><p><a href="https://mdahsanul.netlify.io/post/2025-09-29-pca/data/1.2%20data.xlsx">Download the dataset</a></p>
+<p>Data description:</p>
+<ol>
+<li>x1: centrum’s length</li>
+<li>x2: anterior centrum’s width</li>
+<li>x3: posterior centrum’s width</li>
+<li>x4: centrum’s height</li>
+<li>x5: distance between the base of the neural spine and the posterior face of the centrum</li>
+<li>x6: distance between the base of the haemal spine and the posterior face of the centrum</li>
+<li>x7: length of anterior zygapophysis along with other variables</li>
+<li>Family: family of fish specimens; 0 - Serranidae, 1 - Carangidae, 2 - Sparidae</li>
+</ol>
+<p><a href="http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2">Correlation plot</a> of the original dataset and the principal component transformed (we’ll see it later) dataset -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ggcorrplot</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">pc_prcomp</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">prcomp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">center</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">scale.</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">corr</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">cor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">a</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">ggcorrplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">corr</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">show.legend</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">F</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#000">hc.order</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">F</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">type</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;upper&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">lab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">T</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#000">digits</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">method</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;square&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#000">colors</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;#6D9EC1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;white&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;#E46726&#34;</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">labs</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Correlations Matrix: Original dataset&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">ggcorrplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">show.legend</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">F</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#000">hc.order</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">F</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">type</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;upper&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">lab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">T</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#000">digits</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">method</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;square&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#000">colors</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;#6D9EC1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;white&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;#E46726&#34;</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">labs</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Correlations Matrix: Principal Component Transformed&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ggpubr</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">ggarrange</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>          <span style="color:#000">ncol</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">nrow</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>The idea is that if many variables correlate with one another, they will all contribute strongly to the same principal component.<!-- raw HTML omitted --><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><!-- raw HTML omitted --></p>
+<h3 id="manual-calculation">Manual Calculation</h3>
+<p>The principal components can be found using things -</p>
+<ol>
+<li>Variance-covariance matrix</li>
+<li>Correlation matrix</li>
+</ol>
+<p>If the data is not standardized, it is suggested to use the correlation matrix in principal component analysis. Because the variance of variable is affected by the scale of measurement.</p>
+<p>But if the data is standardized, both of variance-covariance matrix and correlation matrix gives the same principal components. So, it is recommended to use standardize the data before performing principal component analysis.</p>
+<p>Standardization is done using the following formula -
+$$
+Z = \frac{X-\mu}{\sigma}
+$$</p>
+<p>Calculating mean vector -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">mn</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">colMeans</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">)</span>   <span style="color:#8f5902;font-style:italic"># Mean vector</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">mn</span>
+</span></span></code></pre></div><pre><code>#       x1       x2       x3       x4       x5       x6       x7 
+# 7.297222 5.811111 5.672222 5.672222 2.552778 3.677778 2.369444
+</code></pre>
+<p>Variance-covariance matrix -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre><code>#           x1          x2         x3         x4          x5         x6        x7
+# x1 1.3442778  0.90374603 0.93420635  0.9853492  0.35529365 0.52679365 0.3961984
+# x2 0.9037460  1.28387302 1.17974603  1.4508889 -0.09203175 0.57996825 0.1774921
+# x3 0.9342063  1.17974603 1.35520635  1.5217778  0.06007937 0.58936508 0.2674127
+# x4 0.9853492  1.45088889 1.52177778  2.0803492 -0.11277778 0.79450794 0.2434127
+# x5 0.3552937 -0.09203175 0.06007937 -0.1127778  0.45627778 0.04749206 0.2662302
+# x6 0.5267937  0.57996825 0.58936508  0.7945079  0.04749206 0.38234921 0.1581587
+# x7 0.3961984  0.17749206 0.26741270  0.2434127  0.26623016 0.15815873 0.2718968
+</code></pre>
+<p>Extracting the standard deviations -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">vardf_unstd</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">diag</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">))</span><span style="color:#000">^0.5</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">vardf_unstd</span>
+</span></span></code></pre></div><pre><code>#        x1        x2        x3        x4        x5        x6        x7 
+# 1.1594299 1.1330812 1.1641333 1.4423416 0.6754834 0.6183439 0.5214373
+</code></pre>
+<p>Subtracting the columns by their corresponding means and dividing by their corresponding standard deviations to obtain standardized dataset -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">df_std</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">as.matrix</span><span style="color:#000;font-weight:bold">((</span><span style="color:#000">df_unstd</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">rep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mn</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">each</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">nrow</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">)))</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">rep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vardf_unstd</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">each</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">nrow</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">)))</span> 
+</span></span></code></pre></div><p>Mean vector of the new dataset -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">colMeans</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_std</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><pre><code># x1 x2 x3 x4 x5 x6 x7 
+#  0  0  0  0  0  0  0
+</code></pre>
+<h4 id="using-correlation-matrix">Using Correlation Matrix</h4>
+<p>Using correlation matrix of <strong>standardized</strong> data to calculate eigenvalues -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">eigcorr</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">eigen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_std</span><span style="color:#000;font-weight:bold">))</span>      <span style="color:#8f5902;font-style:italic"># using correlation matrix on standardized data</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">output</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">cbind</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigenvalue</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">cumul_percentage</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cumsum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">))</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>It is seen that the first principal component can explain 64.32% of the total variation in the data. The second principal component explains 25.35% variance. Similarly the third PC explains 4.04% variance.</p>
+<p>Thus the first two principal components together explain 89.66% of the total variance.</p>
+<p>Using correlation matrix of <strong>unstandardized</strong> data to calculate eigenvalues -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">eigcorr</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">eigen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">))</span>      <span style="color:#8f5902;font-style:italic"># using correlation matrix on unstandardized data</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">output</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">cbind</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigenvalue</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">cumul_percentage</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cumsum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">))</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>So, it is verified that the principal components are not affected by the scales if the correlation matrix is used.</p>
+<p>The eigen vectors -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">vectors</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre><code>#        [,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]
+# [1,] -0.402  0.223  0.778  0.114  0.097  0.398 -0.055
+# [2,] -0.423 -0.263  0.218 -0.253  0.268 -0.726 -0.202
+# [3,] -0.438 -0.137 -0.157 -0.619 -0.225  0.246  0.519
+# [4,] -0.423 -0.271 -0.352  0.071 -0.176  0.340 -0.688
+# [5,] -0.110  0.706 -0.027 -0.158 -0.574 -0.297 -0.213
+# [6,] -0.439 -0.084 -0.139  0.713 -0.251 -0.210  0.407
+# [7,] -0.291  0.532 -0.423  0.027  0.667  0.072  0.053
+</code></pre>
+<p>So the principal component transformation of the original data will be -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">princr_df</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">df_std</span> <span style="color:#ce5c00;font-weight:bold">%*%</span> <span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">vectors</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># View the principal components</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">scroll_box</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">height</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;300px&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#000">kable_styling</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#000">kable</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#000">princr_df</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">digits</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">format</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;html&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">col.names</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">paste0</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;PC&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#000">bootstrap_options</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;striped&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;hover&#34;</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#000">full_width</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">T</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">font_size</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">12</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">position</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;left&#34;</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="using-variance-covariance-matrix">Using Variance-Covariance Matrix</h4>
+<p>Using variance-covariance matrix of <strong>standardized</strong> data to calculate eigenvalues -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">eigcov</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">eigen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cov</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_std</span><span style="color:#000;font-weight:bold">))</span>    <span style="color:#8f5902;font-style:italic"># using variance-covariance matrix on standardized data</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">output</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">cbind</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigenvalue</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcov</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">cumul_percentage</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cumsum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcov</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcov</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">))</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>Using variance-covariance matrix of <strong>unstandardized</strong> data to calculate eigenvalues -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">eigcov</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">eigen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cov</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">))</span>    <span style="color:#8f5902;font-style:italic"># using variance-covariance matrix on unstandardized data</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">output</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">cbind</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigenvalue</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcov</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">cumul_percentage</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cumsum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcov</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcov</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">))</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>So the principal components are influenced by the scales. Hence, it is recommended to standardize the data before calculating the principal components.</p>
+<h3 id="using-prcomp">Using prcomp()</h3>
+<p>To make things easier in R, there are two built-in functions to perform PCA - <code>prcomp()</code> and <code>princomp()</code>. The function <code>princomp()</code> uses the spectral decomposition approach while the functions <code>prcomp()</code> and <code>PCA()</code>[from package FactoMineR] use the singular value decomposition (SVD).</p>
+<p><em>Note that are <a href="http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/#:~:text=The%20function%20princomp()%20uses,preferred%20compared%20to%20princomp().">two general methods</a> to perform PCA in R:</em></p>
+<p><em>1. Spectral decomposition which examines the covariances / correlations between variables</em><br>
+<em>2. Singular value decomposition which examines the covariances / correlations between individuals</em></p>
+<p>Due to higher level of accuracy <code>prcomp()</code> is preferred over <code>princomp()</code>. <a href="https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/">Standardization</a> can be done by passing two arguments to the <code>prcomp()</code> function <code>center = TRUE</code> and <code>scale. = TRUE</code> -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">pc_prcomp</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">prcomp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">center</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">scale.</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">summary</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre><code># Importance of components:
+#                           PC1    PC2     PC3     PC4     PC5     PC6     PC7
+# Standard deviation     2.1218 1.3320 0.53204 0.43966 0.38258 0.25684 0.18685
+# Proportion of Variance 0.6432 0.2535 0.04044 0.02761 0.02091 0.00942 0.00499
+# Cumulative Proportion  0.6432 0.8966 0.93706 0.96468 0.98559 0.99501 1.00000
+</code></pre>
+<p>The result is consistent with the manual calculation.</p>
+<p>The function <code>prcomp()</code> returns the following things -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">names</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre><code># [1] &quot;sdev&quot;     &quot;rotation&quot; &quot;center&quot;   &quot;scale&quot;    &quot;x&quot;
+</code></pre>
+<p><code>x</code> denotes the transformed dataset/principal components -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">x</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><code>sdev</code> denotes to the standard deviations of the principal components -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">sdev^2</span>   <span style="color:#8f5902;font-style:italic"># eigenvalues (variances)</span>
+</span></span></code></pre></div><pre><code># [1] 4.50218058 1.77420306 0.28306214 0.19330296 0.14637109 0.06596874 0.03491141
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">apply</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># variance of the principal components</span>
+</span></span></code></pre></div><pre><code>#        PC1        PC2        PC3        PC4        PC5        PC6        PC7 
+# 4.50218058 1.77420306 0.28306214 0.19330296 0.14637109 0.06596874 0.03491141
+</code></pre>
+<p>In <code>rotation</code>, the columns are actually eigen vectors -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">rotation</span>
+</span></span></code></pre></div><pre><code>#           PC1         PC2         PC3         PC4         PC5         PC6
+# x1 -0.4015216 -0.22330581  0.77779224  0.11376703 -0.09709303  0.39818828
+# x2 -0.4228354  0.26263576  0.21829956 -0.25341590 -0.26839234 -0.72641133
+# x3 -0.4382952  0.13669090 -0.15742089 -0.61921884  0.22529984  0.24584891
+# x4 -0.4229505  0.27070943 -0.35156231  0.07051460  0.17588063  0.33970948
+# x5 -0.1100766 -0.70615050 -0.02748501 -0.15839631  0.57425067 -0.29742388
+# x6 -0.4385403  0.08385339 -0.13877297  0.71318889  0.25070443 -0.21049616
+# x7 -0.2908030 -0.53245569 -0.42307656  0.02655884 -0.66650427  0.07182518
+#            PC7
+# x1 -0.05504745
+# x2 -0.20161965
+# x3  0.51942077
+# x4 -0.68769497
+# x5 -0.21252061
+# x6  0.40693163
+# x7  0.05327880
+</code></pre>
+<h4 id="individual-points-plot">Individual Points Plot</h4>
+<p>If we visualize the data by different colors for different level of family we will be able to identify them in clusters because each family type is likely to contain specific characteristics which are now almost entirely explained by the first two principal components -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tidyverse</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">data.frame</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Family</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">Family</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ggplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">aes</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">PC1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">PC2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">color</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">Family</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">geom_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">size</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">theme_bw</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">labs</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;First 2 prinipal components&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Principal Component 1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Principal Component 2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#000">col</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Family&#34;</span><span style="color:#000;font-weight:bold">)</span> 
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="3d-plot">3D Plot</h4>
+<p>The following 3D plot shows the points for the first 3 principal components -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">plotly</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">df2</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">data.frame</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Family</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">Family</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">df2</span> <span style="color:#ce5c00;font-weight:bold">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#000">plot_ly</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">~</span><span style="color:#000">PC1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">~</span><span style="color:#000">PC2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">~</span><span style="color:#000">PC3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">color</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">~</span><span style="color:#000">Family</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#000">add_markers</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000">hovertemplate</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">paste</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#4e9a06">&#39;&lt;br&gt;&lt;b&gt;PC1&lt;/b&gt;: %{x:.2f}&#39;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#4e9a06">&#39;&lt;br&gt;&lt;b&gt;PC2&lt;/b&gt;: %{y:.2f}&#39;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#4e9a06">&#39;&lt;br&gt;&lt;b&gt;PC3&lt;/b&gt;: %{z:.2f}&lt;/b&gt;&#39;</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#000">layout</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># setting axis titles</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">scene</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">xaxis</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;PC1&#39;</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">yaxis</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;PC2&#39;</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">zaxis</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;PC3&#39;</span><span style="color:#000;font-weight:bold">)),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">legend</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">list</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;&lt;b&gt; Family &lt;/b&gt;&#39;</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#000">orientation</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;h&#34;</span><span style="color:#000;font-weight:bold">,</span>   <span style="color:#8f5902;font-style:italic"># show entries horizontally</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#000">xanchor</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;center&#34;</span><span style="color:#000;font-weight:bold">,</span>  <span style="color:#8f5902;font-style:italic"># use center of legend as anchor</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">))</span>            <span style="color:#8f5902;font-style:italic"># put legend in center of x-axis </span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="scree-plot">Scree plot</h3>
+<p><a href="https://en.wikipedia.org/wiki/Scree_plot">Scree plot</a> is useful in determining the number of principal components to retain in a principal component analysis or the number of factors to keep in an exploratory factor analysis-</p>
+<p>Using the manual calculation’s output <code>eigcorr$values</code> to draw a scree plot -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">plot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">type</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">pch</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">19</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000">col</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#952C22&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">main</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Scree plot&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">las</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#000">ylab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Variances Explained&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">xlab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000">xaxt</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;n&#34;</span>  <span style="color:#8f5902;font-style:italic"># to hide x-axis labels</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">axis</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">side</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">at</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">labels</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">paste0</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;PC&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>In 1966, <a href="https://doi.org/10.1207%2Fs15327906mbr0102_10">Raymond B. Cattell</a> invented the scree plot. Scree plot is used to identify statistically significant components. The process is also known as scree test.</p>
+<p>According to the scree test, the components that are at the left side of the elbow are to be retained as significant.<!-- raw HTML omitted --><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --></p>
+<p>Another way to select the components to retain is inspecting the variance of the principal components. If the variance is greater than the average of all the variances then the component will be retained, which in the case of standardized data is -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">mean</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><pre><code># [1] 1
+</code></pre>
+<p>The average will be 1 irrespective of what was used to determine the eigen values and vectors, i.e., var-covariance matrix and correlation matrix if the data was standardized before calculating.</p>
+<p>The scree plot -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">plot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">eigcorr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">type</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">pch</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">19</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000">col</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#952C22&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">main</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Scree plot&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">las</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>     <span style="color:#000">ylab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Variances Explained&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">xlab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000">xaxt</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;n&#34;</span>  <span style="color:#8f5902;font-style:italic"># to hide x-axis labels</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">axis</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">side</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">at</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">labels</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">paste0</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;PC&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">abline</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">h</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">col</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#2E7BF9&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>So the first two principal components will be kept.</p>
+<p><strong>Extra:</strong></p>
+<p>To make a pretty scree plot using ggplot2 with secondary y-axis that shows the percentage of variance explained -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tidyverse</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># creating a tidy data frame</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">data.frame</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">PC</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">paste0</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;PC&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">length</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">sdev</span><span style="color:#000;font-weight:bold">)),</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#000">Variance</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">sdev^2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic"># using the data frame to make plot</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ggplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">aes</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">PC</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">Variance</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">group</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">geom_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">size</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">col</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;red&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">geom_line</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">col</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;red&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">theme_bw</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">scale_y_continuous</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">name</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Variance&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># adding a secondary axis</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">sec.axis</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">sec_axis</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">trans</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">~</span> <span style="color:#000">. </span><span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#000">sum</span><span style="color:#000;font-weight:bold">((</span><span style="color:#000">pc_prcomp</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">sdev</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000">^</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#8f5902;font-style:italic"># name of secondary axis</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">name</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Percentage of Variance Explained&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">labels</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">paste0</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,),</span> <span style="color:#4e9a06">&#34;%&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">geom_line</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">color</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#2E7BF9&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">linetype</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;dashed&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">labs</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Scree plot&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Principal Components&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>Constructing a scree plot using the function <code>fviz_eig()</code> from the <code>factoextra</code> <a href="http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/#:~:text=The%20function%20princomp()%20uses,preferred%20compared%20to%20princomp().">package</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">factoextra</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">fviz_screeplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">addlabels</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">T</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">linecolor</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;red&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#000">choice</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;eigenvalue&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">geom</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;line&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">geom_line</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">color</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#2E7BF9&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">linetype</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;dashed&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">xlab</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Principal Components&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<hr>
+<h3 id="factominers-pca">FactoMineR’s PCA()</h3>
+<p>Aside from using <code>prcomp()</code>, the function <code>PCA()</code> from FactoMineR package can be used which extracts principal components from the correlation matrix -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">FactoMineR</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">pc_fmr</span> <span style="color:#ce5c00;font-weight:bold">&lt;-</span> <span style="color:#000">PCA</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">df_unstd</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">graph</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">F</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">scale.unit</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">T</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><p>To see the eigenvalues of the components and their corresponding information -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">pc_fmr</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">eig</span>
+</span></span></code></pre></div><pre><code>#        eigenvalue percentage of variance cumulative percentage of variance
+# comp 1 4.50218058             64.3168655                          64.31687
+# comp 2 1.77420306             25.3457580                          89.66262
+# comp 3 0.28306214              4.0437449                          93.70637
+# comp 4 0.19330296              2.7614709                          96.46784
+# comp 5 0.14637109              2.0910156                          98.55885
+# comp 6 0.06596874              0.9424106                          99.50127
+# comp 7 0.03491141              0.4987345                         100.00000
+</code></pre>
+<p>Plotting the individual points of the first two principal components in a scatterplot -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">plot.PCA</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_fmr</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">axes</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">))</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="biplot">Biplot</h3>
+<p>We have already constructed PCs using different functions in R. The signs of the components’ are not same in all the cases.
+If we construct the biplots for the two functions used to calculate PCs (Base R’s prcomp() and FactorMineR’s PCA()) using the function <code>fviz_pca_biplot()</code> from the <code>factoextra</code> we will get -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">ggpubr</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">ggarrange</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">fviz_pca_biplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_fmr</span><span style="color:#000;font-weight:bold">,</span>              <span style="color:#8f5902;font-style:italic"># using - FactoMineR&#39;s PCA()</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">repel</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">,</span>        <span style="color:#8f5902;font-style:italic"># to avoid overplotting</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">axes</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>      <span style="color:#8f5902;font-style:italic"># To plot 1st and 2nd PC</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">col.var</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#2E9FDF&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># Variables color</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">col.ind</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#696969&#34;</span><span style="color:#000;font-weight:bold">,</span>  <span style="color:#8f5902;font-style:italic"># Individuals color</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;PCA - Using FactoMineR&#39;s PCA()&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">fviz_pca_biplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_prcomp</span><span style="color:#000;font-weight:bold">,</span>           <span style="color:#8f5902;font-style:italic"># using - base R&#39;s prcomp()</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">repel</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">,</span>        <span style="color:#8f5902;font-style:italic"># to avoid overplotting</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">axes</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>      <span style="color:#8f5902;font-style:italic"># To plot 1st and 2nd PC</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">col.var</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#2E9FDF&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># Variables color</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">col.ind</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#696969&#34;</span><span style="color:#000;font-weight:bold">,</span>  <span style="color:#8f5902;font-style:italic"># Individuals color</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;PCA - Using base R&#39;s prcomp()&#34;</span><span style="color:#000;font-weight:bold">),</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ncol</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">nrow</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p><em>Here, if a positive or negative PC is found depending on the function used it just means that the eigenvector is projected pointing in one direction or 180 degree away in the other direction. The interpretation remains same regardless of the sign, because the variance that is explained is unchanged.<!-- raw HTML omitted --><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><!-- raw HTML omitted --></em></p>
+<p>Another visualization using the <code>ggbiplot()</code> function from <code>ggbiplot</code> package -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># remotes::install_github(&#34;vqv/ggbiplot&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ggbiplot</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ggbiplot</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pc_fmr</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">groups</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">as.factor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">Family</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">ellipse</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">TRUE</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">labs</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Biplot: Using the first two PCs&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#000">col</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Family&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">theme_bw</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://dni.dali.dartmouth.edu/2tzzoxnk26p8/01-mrs-katlynn-jacobs-iv-2/read-8173814775-multivariate-analysis-and-its-applications.pdf">Textbook</a> Bhuyan KC. Multivariate analysis and its applications. New Central Book Agency; 2005.</li>
+</ul>
+<p><a href="https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202">1</a> Jolliffe IT, Cadima J. Principal component analysis: a review and recent developments. Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences. 2016 Apr 13;374(2065):20150202.</p>
+<p><a href="https://www.datacamp.com/community/tutorials/pca-analysis-r">2</a> Datacamp - Principal Component Analysis in R Tutorial</p>
+<p><a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">3</a> StackExchange - Making sense of principal component analysis, eigenvectors &amp; eigenvalues</p>
+<p><a href="https://en.wikipedia.org/wiki/Scree_plot">4</a> Scree plot</p>
+<p><a href="http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/#:~:text=The%20function%20princomp()%20uses,preferred%20compared%20to%20princomp().">5</a> sthda - Principal Component Methods in R: Practical Guide</p>
+<p><a href="https://stats.stackexchange.com/questions/88880/does-the-sign-of-scores-or-of-loadings-in-pca-or-fa-have-a-meaning-may-i-revers">6</a> Does the sign of scores or of loadings in PCA or FA have a meaning? May I reverse the sign?</p>
+<p><a href="https://books.google.com/books?id=FlXwIvSHND8C&amp;pg=PA380">7</a>Alex Dmitrienko; Christy Chuang-Stein; Ralph B. D’Agostino (2007). Pharmaceutical Statistics Using SAS: A Practical Guide. SAS Institute. p. 380. ISBN 978-1-59994-357-2.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202">https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.datacamp.com/community/tutorials/pca-analysis-r">https://www.datacamp.com/community/tutorials/pca-analysis-r</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://math.stackexchange.com/questions/142645/are-all-eigenvectors-of-any-matrix-always-orthogonal">https://math.stackexchange.com/questions/142645/are-all-eigenvectors-of-any-matrix-always-orthogonal</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://www.datacamp.com/community/tutorials/pca-analysis-r">https://www.datacamp.com/community/tutorials/pca-analysis-r</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://books.google.com/books?id=FlXwIvSHND8C&amp;pg=PA380">https://books.google.com/books?id=FlXwIvSHND8C&amp;pg=PA380</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://stats.stackexchange.com/questions/88880/does-the-sign-of-scores-or-of-loadings-in-pca-or-fa-have-a-meaning-may-i-revers">https://stats.stackexchange.com/questions/88880/does-the-sign-of-scores-or-of-loadings-in-pca-or-fa-have-a-meaning-may-i-revers</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+          </article>
+        </div>
+      </div>
+
+      
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div id="stickySideBar" class="sticky-sidebar">
+          
+          
+          <aside class="toc d-none d-lg-block">
+            <h5>Table of Contents</h5>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#underlying-theory">Underlying Theory</a>
+      <ul>
+        <li><a href="#pre-requisites">Pre-requisites</a></li>
+        <li><a href="#theory">Theory</a></li>
+        <li><a href="#practical-demonstration">Practical Demonstration</a></li>
+        <li><a href="#dataset">Dataset</a></li>
+        <li><a href="#manual-calculation">Manual Calculation</a></li>
+        <li><a href="#using-prcomp">Using prcomp()</a></li>
+        <li><a href="#scree-plot">Scree plot</a></li>
+        <li><a href="#factominers-pca">FactoMineR’s PCA()</a></li>
+        <li><a href="#biplot">Biplot</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/r"
+                   target="_blank">
+                  R
+                </a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/pca"
+                   target="_blank">
+                  PCA
+                </a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/scree-plot"
+                   target="_blank">
+                  scree plot
+                </a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/multivariate-analysis"
+                   target="_blank">
+                  Multivariate Analysis
+                </a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/eigen-decomposition"
+                   target="_blank">
+                  Eigen Decomposition
+                </a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="https://ahsan.netlify.app/tags/biplot"
+                   target="_blank">
+                  biplot
+                </a>
+              </li>
+              
+            </ul>
+          </aside>
+          
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll"><i class="fas fa-angle-up"></i></button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() { scrollFunction() };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) topScroll.style.display = "block";
+    else topScroll.style.display = "none";
+  }
+  function topFunction() { document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar =  false ;
+  if (stickyNavBar) {
+    let headerElem = document.getElementById("profileHeader");
+    let headerHeight = headerElem.offsetHeight + 25;
+    stickySideBarElem.style.top = headerHeight + "px";
+  } else {
+    stickySideBarElem.style.top = "100px";
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+      
+  
+   
+   
+  <div class="container py-3" id="recent-posts">
+      
+      
+      
+      
+      <div class="h3 text-center text-secondary py-3">
+          Recent Posts
+      </div>
+      
+      
+      <div class="row justify-content-center">
+          
+          <div class="col-lg-4 col-md-6 pt-2">
+              <div class="card h-100 shadow-sm border-0">
+                  
+                  <div class="card-body bg-transparent p-3">
+                      <a href="/post/cluster-analysis/" class="primary-font text-decoration-none">
+                          <h5 class="card-title" title="Cluster Analysis">Cluster Analysis</h5>
+                      </a>
+                      <div class="card-text secondary-font">
+                          <p class="mb-0">Discover the power of cluster analysis in R with this comprehensive blog post. Learn the essential techniques, interpret the results, and gain valuable insights …</p>
+                      </div>
+                  </div>
+                  <div class="mt-auto card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+                      <span class="text-muted small">Jul 2, 2023</span>
+                      <a href="/post/cluster-analysis/" class="btn btn-outline-info btn-sm">Read</a>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 pt-2">
+              <div class="card h-100 shadow-sm border-0">
+                  
+                  <div class="card-body bg-transparent p-3">
+                      <a href="/post/manova/" class="primary-font text-decoration-none">
+                          <h5 class="card-title" title="MANOVA Analysis: Unveiling Multivariate Patterns with R and Python">MANOVA Analysis: Unveiling Multivariate Patterns with R and Python</h5>
+                      </a>
+                      <div class="card-text secondary-font">
+                          <p class="mb-0">MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for …</p>
+                      </div>
+                  </div>
+                  <div class="mt-auto card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+                      <span class="text-muted small">May 29, 2023</span>
+                      <a href="/post/manova/" class="btn btn-outline-info btn-sm">Read</a>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 pt-2">
+              <div class="card h-100 shadow-sm border-0">
+                  
+                  <div class="card-body bg-transparent p-3">
+                      <a href="/post/r-in-jupyter-notebook/" class="primary-font text-decoration-none">
+                          <h5 class="card-title" title="Use R in Jupyter Notebook">Use R in Jupyter Notebook</h5>
+                      </a>
+                      <div class="card-text secondary-font">
+                          <p class="mb-0">In this post, I have showed complete procedure of enabling R kernal for Jupyter Notebook, so that you can use R in Jupyter Notebook.</p>
+                      </div>
+                  </div>
+                  <div class="mt-auto card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+                      <span class="text-muted small">Jul 19, 2022</span>
+                      <a href="/post/r-in-jupyter-notebook/" class="btn btn-outline-info btn-sm">Read</a>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+        
+        <div class="text-center mt-5">
+            <a href="/post" 
+                class="btn btn-lg btn-outline-info px-5 py-3 rounded-pill shadow-sm animate-click">
+                🚀 View All Posts
+            </a>
+        </div>
+  
+  </div>
+  
+
+
+<style>
+ 
+.animate-click {
+    transition: all 0.25s ease;
+}
+.animate-click:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+</style><div class="text-center pt-2">
+    
+    <span class="px-1">
+        <a href="https://github.com/mdahsanulhimel" aria-label="github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                <path id="footer-socialNetworks-github-svg-path"
+                    d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+
+                <metadata>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                        <rdf:Description about="https://iconscout.com/legal#licenses"
+                            dc:title="Github, Online, Project, Hosting, Square"
+                            dc:description="Github, Online, Project, Hosting, Square" dc:publisher="Iconscout"
+                            dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+                            <dc:creator>
+                                <rdf:Bag>
+                                    <rdf:li>Font Awesome</rdf:li>
+                                </rdf:Bag>
+                            </dc:creator>
+                        </rdf:Description>
+                    </rdf:RDF>
+                </metadata>
+            </svg>
+        </a>
+    </span>
+    
+
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+                <div class="pb-2">
+                    <a href="https://ahsan.netlify.app/" title="Ahsan">
+                        <img alt="Footer logo" src="/fav.png"
+                            height="40px" width="40px">
+                    </a>
+                </div>
+            
+            &copy; 2025  All rights reserved
+            <div class="text-secondary">
+                Made with
+                <span class="text-danger">
+                    &#10084;
+                </span>
+                and
+                <a href="https://github.com/gurusabarish/hugo-profile" target="_blank"
+                    title="Designed and developed by gurusabarish">
+                    Hugo Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script>
+    if (document.body.className.includes("dark")) {
+        document.body.classList.remove('dark');
+        localStorage.setItem("pref-theme", 'light');
+    }
+</script>
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" integrity="sha384-M5jmNxKC9EVnuqeMwRHvFuYUE8Hhp0TgBruj/GZRkYtiMrCRgH7yvv5KY+Owi7TW" crossorigin="anonymous"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\[','\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+</script>
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

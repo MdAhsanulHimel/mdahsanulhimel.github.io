@@ -22,5 +22,12 @@
       <guid>https://ahsan.netlify.app/post/manova/</guid>
       <description>MANOVA (Multivariate analysis of variance) is an extension of ANOVA (Analysis of Variance) technique, which is used to compare means across different groups for a single dependent variable. In MANOVA, the dependent variables are correlated, and the analysis takes into account their&amp;hellip;</description>
     </item>
+    <item>
+      <title>Principal Component Analysis - Theory and Application with R</title>
+      <link>https://ahsan.netlify.app/post/2025-09-29-pca/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/post/2025-09-29-pca/</guid>
+      <description>PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of&amp;hellip;</description>
+    </item>
   </channel>
 </rss>

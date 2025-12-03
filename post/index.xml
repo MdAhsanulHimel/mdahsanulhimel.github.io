@@ -51,6 +51,13 @@
       <description>The normality of data is crucial in parametric hypothesis tests. Because all the parametric tests are based on normal distribution. The central limit theorem states that if the sample size is sufficiently large, the data will be normally distributed. But it may not be attained in all the cases. Typically, an analysis needs to be performed&amp;hellip;</description>
     </item>
     <item>
+      <title>Principal Component Analysis - Theory and Application with R</title>
+      <link>https://ahsan.netlify.app/post/2025-09-29-pca/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/post/2025-09-29-pca/</guid>
+      <description>PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of&amp;hellip;</description>
+    </item>
+    <item>
       <title>পরিসংখ্যান সাবজেক্ট রিভিউ</title>
       <link>https://ahsan.netlify.app/post/statistics-subject-review/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>

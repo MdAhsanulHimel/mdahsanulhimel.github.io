@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eigen Decomposition on Ahsan</title>
+    <link>https://ahsan.netlify.app/tags/eigen-decomposition/</link>
+    <description>Recent content in Eigen Decomposition on Ahsan</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ahsan.netlify.app/tags/eigen-decomposition/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Principal Component Analysis - Theory and Application with R</title>
+      <link>https://ahsan.netlify.app/post/2025-09-29-pca/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/post/2025-09-29-pca/</guid>
+      <description>PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of&amp;hellip;</description>
+    </item>
+  </channel>
+</rss>

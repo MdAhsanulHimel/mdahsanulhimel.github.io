@@ -1,0 +1,588 @@
+---
+title: Principal Component Analysis - Theory and Application with R
+author: Md Ahsanul Islam
+date: '2022-03-21'
+slug: []
+categories:
+  - Multivariate Analysis
+tags:
+  - R
+  - PCA
+  - scree plot
+  - Multivariate Analysis
+  - Eigen Decomposition
+  - biplot
+image: ~
+summary: "PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of..."
+description: "PCA is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information is preserved by those linear combinations. Before diving into the PCA, there are a few things one should be aware of..."
+toc: true
+mathjax: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#", prompt = F, message = F, warning = F
+)
+library(knitr)
+library(kableExtra)
+```
+
+
+---
+          
+## Introduction
+
+Karl Pearson invented PCA in 1901, defining it as "On lines and planes of closest fit to systems of points in space."](https://www.tandfonline.com/doi/abs/10.1080/14786440109462720) Harold Hotelling later developed and named it independently in the [1930s](https://content.apa.org/record/1934-00645-001).
+
+Principal component analysis (PCA) is a technique to transform the original set of variables into a smaller set of linear combination of variables so that most of the statistical information (variance) in the original data is preserved by those linear combinations. It accomplishes this by generating new uncorrelated variables that gradually maximize variance. Finding such new variables, known as principal components (PCs), is essentially the same as solving an eigenvalue/eigenvector problem.<cite>[^1]</cite>
+
+[^1]: [https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202)
+
+An eigen vector is a direction of the transformation of the original dataset for which no information in the data is lost and an eigenvalue shows the amount of variance that is explained in the data in that direction. So the eigen vector corresponding to the highest eigenvalue is the first principal component.
+
+Geometrically to say, PCA is a type of linear transformation of a given dataset \\(X\\) that contains values for a given number of variables (or say coordinates) for a given number of spaces. This linear transformation fits this dataset to a new coordinate system in such a way that the first coordinate (component) has the most variation, and each subsequent coordinate is orthogonal to the first and has less variance.<cite>[^2]</cite>,<cite>[^3]<\cite>
+
+[^2]:  [https://www.datacamp.com/community/tutorials/pca-analysis-r](https://www.datacamp.com/community/tutorials/pca-analysis-r).
+[^3]: [https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579](https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579)
+
+---
+
+
+## Underlying Theory
+
+![](image/pca1.gif)
+
+### Pre-requisites
+
+Before diving into the PCA, there are a few things one should be aware of - 
+
+1. Linear Algebra 
+    - Trace of a matrix and its [properties](https://en.wikipedia.org/wiki/Trace_(linear_algebra)#Properties)
+    - Determinant of a matrix
+    - [Diagonalization of a matrix](https://www.youtube.com/watch?v=WTLl03D4TNA)
+    - [Orthogonal transformation](https://math.stackexchange.com/questions/2190841/what-is-orthogonal-transformation)
+    - [Eigen values and eigen vectors](https://youtu.be/PFDu9oVAE-g)
+2. Statistics
+    - Mean vector
+    - Variance-Covariance Matrix
+    - Correlation Matrix
+
+### Theory
+
+Let, p be the number of variables, n be the number of observations, \\( X \\) be a \\(p \times n\\) matrix of a dataset, mean vector \\(\bar{X}\\) be a zero vector and the variance-covariance matrix \\(\Sigma\\) be a real [positive definite matrix](https://nhigham.com/2020/07/21/what-is-a-symmetric-positive-definite-matrix/) or at least [positive semi-definite](https://www.cse.iitk.ac.in/users/rmittal/prev_course/s14/notes/lec11.pdf) of rank \\(r \le p\\).
+
+Let,\\( \lambda_i\ \forall\ i=1,2,...,p \\) be the eigen values of \\(\Sigma\\) where, \\(\lambda_1 > \lambda_2 > \lambda_3 > ... > \lambda_p\\) and their corresponding eigenvectors are \\(\gamma_1, \gamma_2, \gamma_3, ..., \gamma_p\\).
+
+where, \\(D\\) is a diagonal matrix where the diagonal elements are the eigenvalues -
+$$
+D =\begin{bmatrix} 
+\lambda_1 & 0 & ... & 0\newline 
+0 & \lambda_2 & ... & 0\newline 
+. & . & ... & .\newline 
+0 & 0 & ... & \lambda_p
+\end{bmatrix}_{p\ \times\ p}
+$$
+
+and the matrix of eigen vectors, 
+$$
+\Gamma =\begin{bmatrix} \gamma_1,\ \gamma_2,\ ...\ ,\gamma_p\\ \end{bmatrix}_{p\ \times\ p}
+$$
+
+The matrix \\(\Gamma\\) diagonalizes \\(\Sigma\\) such that, \\(D = \Gamma' \Sigma \Gamma\\) or, \\(\Sigma=\Gamma D\Gamma'\\)   
+
+*Since \\(\Gamma\\) is an orthogonal matrix, then \\(\Gamma\Gamma'=\Gamma'\Gamma =  I\\).<cite>[^4]</cite>* 
+
+[^4]: [https://math.stackexchange.com/questions/142645/are-all-eigenvectors-of-any-matrix-always-orthogonal](https://math.stackexchange.com/questions/142645/are-all-eigenvectors-of-any-matrix-always-orthogonal)
+
+We consider an orthogonal transformation (that will preserve all the information) of \\(X\\) into \\(Y\\) by -  
+\\(Y=\Gamma'X\\)  
+
+or,  
+\\( \begin{bmatrix}Y_1 \newline Y_2 \newline...\newline Y_p\end{bmatrix}=\Gamma'\begin{bmatrix}X_1 \newline X_2 \newline ... \newline X_p\end{bmatrix} \\)
+
+Here, \\(Y_1\\), \\(Y_2\\), ..., \\(Y_p\\) are the p components of \\(Y\\) and are called the Principal Components.  
+
+For example if \\(X=[x_1\ \ \ x_2]\\) is a two variable data set and the first eigen vactor is \\([a\ \ \  b]'\\).  
+
+Then the first principal component will be - \\(P_1=x_1\times a+x_2 \times b\\)  
+
+Similarly if the second eigen vector is \\([c\ \ \ d]'\\) then the second principal component will be - \\(P_2=x_1\times c+x_2 \times d\\)  
+
+---
+
+#### Preserving Variance 
+
+**How does the technique preserve the total variation after the transformation?**
+
+Since \\(\Sigma\\) is the variance-covariance matrix of \\(X\\), we can measure the following things:  
+
+1. Overall measure of the variability of \\(X\\) as \\(trace(\Sigma)\\) or,   
+2. Generalized variance of \\(X\\) as \\(|\Sigma|\\)
+
+Now, \\(trace(\Sigma)\\)   
+\\(=trace(\Gamma D\Gamma')\\)   
+\\(=trace(\Gamma'\Gamma D)\\)   [ [Cyclic property] ](https://en.wikipedia.org/wiki/Trace_(linear_algebra)#Cyclic_property)   
+\\(=trace(D)\\)   [Since, \\(\Gamma\\) is an orthogonal matrix]   
+\\(=\sum_{i=1}^{p}\lambda_i\\)
+
+
+Again, \\(|\Sigma|\\)   
+\\(=|\Sigma D\Sigma'|\\)  
+\\(=|\Sigma|\times| D|\times|\Sigma'|\\)  
+\\(=|D|\\) 
+\\(=\prod_{i=1}^{p}\lambda_i\\) 
+
+
+Now we have the transformation, \\(Y=\Gamma'X\\)    
+
+Here, \\(E[Y] = E[\Gamma'X]=\Gamma'E[X]=0\\)    
+and \\(V(Y)=E[YY']=E[\Gamma'XX'\Gamma]=\Gamma'E[XX']\Gamma=\Gamma' \Sigma \Gamma=D\\)     
+
+Thus, for \\(Y\\), overall measure of variability is \\(trace(D)=\sum_{i=1}^{p}\lambda_i\\)      
+or, generalized variance is \\(|D|=\prod_{i=1}^{p}\lambda_i\\)    
+
+Which shows that the total variation of \\(X\\) remains unchanged in \\(Y\\).
+
+---
+
+#### Measuring Accounted Variance by PCs
+
+**How to know the percentage of variation that is explained by a principal component?**
+
+Since \\(\Sigma\\) is a positive definite matrix, the strict positivity of \\(\lambda_i\\) is guaranteed.   
+
+Now, \\(Y_1\\) is the first principal component corresponding to first eigenvalue \\(\lambda_1\\), and similarly \\(Y_i\\) is the i-th principal component corresponding to i-th eigenvalue \\(\lambda_i\\).   
+
+The percentage of variation of the original data \\(X\\) explained by the i-th principal component is calculated using \\(\frac{\lambda_i}{\sum_{i=1}^{p}\lambda_i}\times 100\\)
+
+At the beginning of the theory development since \\(\lambda_i\\)s were taken such as \\(\lambda_1 > \lambda_2 > \lambda_3 > \dots > \lambda_p\\), the first principal component explains the largest amount of variation.  
+
+
+---
+
+### Practical Demonstration
+
+### Dataset
+
+Importing a dataset - 
+```{r}
+data <- readxl::read_excel("data/1.2 data.xlsx")
+data$Family <- ifelse(data$Family==0, "Serranidae",
+                      ifelse(data$Family==1, "Carangidae", "Sparidae"))
+df_unstd <- data[,-8]
+```
+
+[Download the dataset](https://mdahsanul.netlify.io/post/2025-09-29-pca/data/1.2%20data.xlsx)
+
+Data description: 
+
+1. x1: centrum's length   
+2. x2: anterior centrum's width   
+3. x3: posterior centrum's width   
+4. x4: centrum's height   
+5. x5: distance between the base of the neural spine and the posterior face of the centrum   
+6. x6: distance between the base of the haemal spine and the posterior face of the centrum   
+7. x7: length of anterior zygapophysis along with other variables   
+8. Family: family of fish specimens; 0 - Serranidae, 1 - Carangidae, 2 - Sparidae 
+
+
+[Correlation plot](http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2) of the original dataset and the principal component transformed (we'll see it later) dataset - 
+```{r, echo=TRUE, fig.width=10}
+library(ggcorrplot)
+pc_prcomp <- prcomp(df_unstd, center = TRUE, scale. = TRUE)
+corr <- cor(df_unstd)
+a <- ggcorrplot(corr, show.legend = F, 
+           hc.order = F, type = "upper", lab = T, 
+           digits = 2, method = "square",
+           colors = c("#6D9EC1", "white", "#E46726")) +
+  labs(title = "Correlations Matrix: Original dataset")
+b <- ggcorrplot(cor(pc_prcomp$x), show.legend = F, 
+           hc.order = F, type = "upper", lab = T, 
+           digits = 2, method = "square",
+           colors = c("#6D9EC1", "white", "#E46726")) +
+  labs(title = "Correlations Matrix: Principal Component Transformed")
+ggpubr::ggarrange(a, b, 
+          ncol = 2, nrow = 1)
+```
+
+The idea is that if many variables correlate with one another, they will all contribute strongly to the same principal component.<cite>[^5]</cite>
+
+[^5]: https://www.datacamp.com/community/tutorials/pca-analysis-r
+
+### Manual Calculation
+
+The principal components can be found using things - 
+
+1. Variance-covariance matrix   
+2. Correlation matrix
+
+If the data is not standardized, it is suggested to use the correlation matrix in principal component analysis. Because the variance of variable is affected by the scale of measurement. 
+
+But if the data is standardized, both of variance-covariance matrix and correlation matrix gives the same principal components. So, it is recommended to use standardize the data before performing principal component analysis.
+
+Standardization is done using the following formula - 
+$$
+Z = \frac{X-\mu}{\sigma}
+$$
+
+Calculating mean vector - 
+```{r}
+mn <- colMeans(df_unstd)   # Mean vector
+mn
+```
+
+Variance-covariance matrix -
+```{r}
+var(df_unstd)
+```
+
+Extracting the standard deviations - 
+```{r}
+vardf_unstd <- diag(var(df_unstd))^0.5
+vardf_unstd
+```
+
+Subtracting the columns by their corresponding means and dividing by their corresponding standard deviations to obtain standardized dataset - 
+```{r}
+df_std <- as.matrix((df_unstd - rep(mn,each = nrow(df_unstd)))/rep(vardf_unstd, each = nrow(df_unstd))) 
+```
+
+Mean vector of the new dataset - 
+```{r}
+round(colMeans(df_std))
+```
+
+#### Using Correlation Matrix
+
+Using correlation matrix of **standardized** data to calculate eigenvalues -
+```{r}
+eigcorr <- eigen(cor(df_std))      # using correlation matrix on standardized data
+output <- cbind(eigenvalue = round(eigcorr$values,2),
+      cumul_percentage = round(cumsum(eigcorr$values/sum(eigcorr$values))*100, 2))
+```
+
+```{r, echo = FALSE}
+kable_styling(kable(output, col.names = c("Eigen Values","Cumulative Percentage")),
+              bootstrap_options = c("striped", "hover"),
+              full_width = F,
+              font_size = 12,
+              position = "left")
+```
+
+It is seen that the first principal component can explain 64.32% of the total variation in the data. The second principal component explains 25.35% variance. Similarly the third PC explains 4.04% variance.   
+
+Thus the first two principal components together explain 89.66% of the total variance. 
+
+Using correlation matrix of **unstandardized** data to calculate eigenvalues -
+```{r}
+eigcorr <- eigen(cor(df_unstd))      # using correlation matrix on unstandardized data
+output <- cbind(eigenvalue = round(eigcorr$values,2),
+                cumul_percentage = round(cumsum(eigcorr$values/sum(eigcorr$values))*100, 2))
+```
+
+```{r, echo = FALSE}
+kable_styling(kable(output, col.names = c("Eigen Values","Cumulative Percentage")),
+              bootstrap_options = c("striped", "hover"),
+              full_width = F,
+              font_size = 12,
+              position = "left")
+```
+
+So, it is verified that the principal components are not affected by the scales if the correlation matrix is used. 
+
+The eigen vectors - 
+```{r}
+round(eigcorr$vectors,3)
+```
+
+So the principal component transformation of the original data will be - 
+```{r}
+princr_df <- df_std %*% eigcorr$vectors
+# View the principal components
+scroll_box(height = "300px", 
+           kable_styling(
+             kable(
+               princr_df, digits = 2, format = "html", col.names = paste0("PC", 1:7)
+             ),
+             bootstrap_options = c("striped", "hover"),
+             full_width = T, font_size = 12, position = "left"))
+```
+
+#### Using Variance-Covariance Matrix
+
+Using variance-covariance matrix of **standardized** data to calculate eigenvalues -
+```{r}
+eigcov <- eigen(cov(df_std))    # using variance-covariance matrix on standardized data
+output <- cbind(eigenvalue = round(eigcov$values,2),
+                cumul_percentage = round(cumsum(eigcov$values/sum(eigcov$values))*100,2))
+```
+
+```{r, echo = FALSE}
+kable_styling(kable(output, col.names = c("Eigen Values","Cumulative Percentage")),
+              bootstrap_options = c("striped", "hover"),
+              full_width = F,
+              font_size = 12,
+              position = "left")
+```
+
+Using variance-covariance matrix of **unstandardized** data to calculate eigenvalues -
+```{r}
+eigcov <- eigen(cov(df_unstd))    # using variance-covariance matrix on unstandardized data
+output <- cbind(eigenvalue = round(eigcov$values,2),
+                cumul_percentage = round(cumsum(eigcov$values/sum(eigcov$values))*100,2))
+```
+
+```{r, echo = FALSE}
+kable_styling(kable(output, col.names = c("Eigen Values","Cumulative Percentage")),
+              bootstrap_options = c("striped", "hover"),
+              full_width = F,
+              font_size = 12,
+              position = "left")
+```
+
+So the principal components are influenced by the scales. Hence, it is recommended to standardize the data before calculating the principal components. 
+
+
+### Using prcomp()
+ 
+To make things easier in R, there are two  built-in functions to perform PCA - `prcomp()` and `princomp()`. The function `princomp()` uses the spectral decomposition approach while the functions `prcomp()` and `PCA()`[from package FactoMineR] use the singular value decomposition (SVD). 
+
+*Note that are [two general methods](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/#:~:text=The%20function%20princomp()%20uses,preferred%20compared%20to%20princomp().) to perform PCA in R:*
+
+*1. Spectral decomposition which examines the covariances / correlations between variables*   
+*2. Singular value decomposition which examines the covariances / correlations between individuals*
+
+Due to higher level of accuracy `prcomp()` is preferred over `princomp()`. [Standardization](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/) can be done by passing two arguments to the `prcomp()` function `center = TRUE` and `scale. = TRUE` - 
+```{r}
+pc_prcomp <- prcomp(df_unstd, center = TRUE, scale. = TRUE)
+summary(pc_prcomp)
+```
+The result is consistent with the manual calculation.
+
+The function `prcomp()` returns the following things - 
+```{r}
+names(pc_prcomp)
+```
+
+`x` denotes the transformed dataset/principal components - 
+```{r, eval=FALSE}
+pc_prcomp$x
+```
+
+```{r, echo = FALSE}
+# View the principal components
+scroll_box(height = "300px", 
+           kable_styling(
+             kable(
+               pc_prcomp$x, digits = 2, format = "html", caption = "Principal Components"
+             ),
+             bootstrap_options = c("striped", "hover"),
+             full_width = T, font_size = 12, position = "left"))
+```
+
+`sdev` denotes to the standard deviations of the principal components - 
+```{r}
+pc_prcomp$sdev^2   # eigenvalues (variances)
+apply(pc_prcomp$x, 2, var)  # variance of the principal components
+```
+
+In `rotation`, the columns are actually eigen vectors - 
+```{r}
+pc_prcomp$rotation
+```
+
+
+#### Individual Points Plot
+
+If we visualize the data by different colors for different level of family we will be able to identify them in clusters because each family type is likely to contain specific characteristics which are now almost entirely explained by the first two principal components -
+```{r, class.source = 'fold-hide', fig.height=3, fig.width=6}
+library(tidyverse)
+data.frame(pc_prcomp$x, Family = data$Family) %>% 
+  ggplot(aes(x=PC1, y=PC2, color=Family)) +
+  geom_point(size=2) + theme_bw() +
+  labs(title = "First 2 prinipal components",
+       x = "Principal Component 1", y ="Principal Component 2",
+       col = "Family") 
+```
+
+#### 3D Plot
+
+The following 3D plot shows the points for the first 3 principal components - 
+```{r, class.source = 'fold-hide'}
+library(plotly)
+df2 <- data.frame(pc_prcomp$x, Family = data$Family)
+df2 %>% 
+  plot_ly(x = ~PC1, y = ~PC2, z = ~PC3, color = ~Family) %>% 
+  add_markers(
+         hovertemplate = paste(
+           '<br><b>PC1</b>: %{x:.2f}',
+           '<br><b>PC2</b>: %{y:.2f}',
+           '<br><b>PC3</b>: %{z:.2f}</b>')) %>% 
+  layout(
+    # setting axis titles
+    scene = list(xaxis = list(title = 'PC1'),
+                 yaxis = list(title = 'PC2'),
+                 zaxis = list(title = 'PC3')),
+    legend = list(title=list(text='<b> Family </b>'),
+                  orientation = "h",   # show entries horizontally
+                  xanchor = "center",  # use center of legend as anchor
+                  x = 0.5))            # put legend in center of x-axis 
+```
+
+
+### Scree plot
+
+[Scree plot](https://en.wikipedia.org/wiki/Scree_plot) is useful in determining the number of principal components to retain in a principal component analysis or the number of factors to keep in an exploratory factor analysis-
+
+Using the manual calculation's output `eigcorr$values` to draw a scree plot - 
+```{r}
+plot(x = 1:7, y = eigcorr$values, type = "b", pch = 19,
+     col="#952C22", main = "Scree plot", las = 1, 
+     ylab = "Variances Explained", xlab = "",
+     xaxt = "n"  # to hide x-axis labels
+     )
+axis(side = 1, at = 1:7, labels = paste0("PC",1:7))
+```
+
+In 1966, [Raymond B. Cattell](https://doi.org/10.1207%2Fs15327906mbr0102_10) invented the scree plot. Scree plot is used to identify statistically significant components. The process is also known as scree test.
+
+According to the scree test, the components that are at the left side of the elbow are to be retained as significant.<cite>[^6]</cite>
+
+[^6]: https://books.google.com/books?id=FlXwIvSHND8C&pg=PA380
+
+Another way to select the components to retain is inspecting the variance of the principal components. If the variance is greater than the average of all the variances then the component will be retained, which in the case of standardized data is -  
+```{r}
+mean(eigcorr$values)
+```
+
+The average will be 1 irrespective of what was used to determine the eigen values and vectors, i.e., var-covariance matrix and correlation matrix if the data was standardized before calculating.
+
+The scree plot -
+```{r}
+plot(x = 1:7, y = eigcorr$values, type = "b", pch = 19,
+     col="#952C22", main = "Scree plot", las = 1, 
+     ylab = "Variances Explained", xlab = "",
+     xaxt = "n"  # to hide x-axis labels
+     )
+axis(side = 1, at = 1:7, labels = paste0("PC",1:7))
+abline(h=1, col="#2E7BF9")
+```
+
+So the first two principal components will be kept. 
+
+
+**Extra:** 
+
+To make a pretty scree plot using ggplot2 with secondary y-axis that shows the percentage of variance explained - 
+```{r}
+library(tidyverse)
+# creating a tidy data frame
+data.frame(PC= paste0("PC",1:length(pc_prcomp$sdev)),
+           Variance=pc_prcomp$sdev^2) %>%
+  # using the data frame to make plot
+  ggplot(aes(x=PC, y=Variance, group=1)) +
+  geom_point(size=1, col = "red") +
+  geom_line(col = "red") + theme_bw() +
+  scale_y_continuous(
+    name = "Variance",
+    # adding a secondary axis
+    sec.axis = sec_axis(
+      trans = ~ . / sum((pc_prcomp$sdev) ^ 2),
+      # name of secondary axis
+      name = "Percentage of Variance Explained",
+      labels = function(x) {
+        paste0(round(x * 100,), "%")
+      }
+    )
+    ) +
+  geom_line(y = 1, color = "#2E7BF9", linetype="dashed") +
+  labs(title="Scree plot", x = "Principal Components")
+```
+
+Constructing a scree plot using the function `fviz_eig()` from the `factoextra` [package](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/#:~:text=The%20function%20princomp()%20uses,preferred%20compared%20to%20princomp().).
+
+```{r}
+library(factoextra)
+fviz_screeplot(pc_prcomp, addlabels = T, linecolor = "red",
+               choice = "eigenvalue", geom = "line") +
+  geom_line(y = 1, color = "#2E7BF9", linetype="dashed") +
+  xlab("Principal Components")
+```
+
+---
+
+### FactoMineR's PCA()
+
+Aside from using `prcomp()`, the function `PCA()` from FactoMineR package can be used which extracts principal components from the correlation matrix - 
+```{r}
+library(FactoMineR)
+pc_fmr <- PCA(df_unstd, graph = F, scale.unit = T)
+```
+
+To see the eigenvalues of the components and their corresponding information -
+```{r}
+pc_fmr$eig
+```
+
+Plotting the individual points of the first two principal components in a scatterplot  - 
+```{r}
+plot.PCA(pc_fmr, axes = c(1,2))
+```
+
+### Biplot
+
+We have already constructed PCs using different functions in R. The signs of the components' are not same in all the cases. 
+If we construct the biplots for the two functions used to calculate PCs (Base R's prcomp() and FactorMineR's PCA()) using the function `fviz_pca_biplot()` from the `factoextra` we will get - 
+```{r, fig.height=8}
+ggpubr::ggarrange(
+fviz_pca_biplot(pc_fmr,              # using - FactoMineR's PCA()
+                repel = TRUE,        # to avoid overplotting
+                axes = c(1, 2),      # To plot 1st and 2nd PC
+                col.var = "#2E9FDF", # Variables color
+                col.ind = "#696969",  # Individuals color
+                title = "PCA - Using FactoMineR's PCA()"
+                ),
+fviz_pca_biplot(pc_prcomp,           # using - base R's prcomp()
+                repel = TRUE,        # to avoid overplotting
+                axes = c(1, 2),      # To plot 1st and 2nd PC
+                col.var = "#2E9FDF", # Variables color
+                col.ind = "#696969",  # Individuals color
+                title = "PCA - Using base R's prcomp()"),
+ncol = 1, nrow = 2)
+```
+
+
+*Here, if a positive or negative PC is found depending on the function used it just means that the eigenvector is projected pointing in one direction or 180 degree away in the other direction. The interpretation remains same regardless of the sign, because the variance that is explained is unchanged.<cite>[^7]</cite>*
+
+[^7]: https://stats.stackexchange.com/questions/88880/does-the-sign-of-scores-or-of-loadings-in-pca-or-fa-have-a-meaning-may-i-revers
+
+
+Another visualization using the `ggbiplot()` function from `ggbiplot` package -
+```{r}
+# remotes::install_github("vqv/ggbiplot")
+library(ggbiplot)
+ggbiplot(pc_fmr, groups=as.factor(data$Family), ellipse = TRUE) +
+  labs(title = "Biplot: Using the first two PCs",
+       col = "Family") + theme_bw()
+```
+
+---
+
+## References
+
+- [Textbook](http://dni.dali.dartmouth.edu/2tzzoxnk26p8/01-mrs-katlynn-jacobs-iv-2/read-8173814775-multivariate-analysis-and-its-applications.pdf) Bhuyan KC. Multivariate analysis and its applications. New Central Book Agency; 2005.
+
+[1](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202) Jolliffe IT, Cadima J. Principal component analysis: a review and recent developments. Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences. 2016 Apr 13;374(2065):20150202.
+
+[2](https://www.datacamp.com/community/tutorials/pca-analysis-r) Datacamp - Principal Component Analysis in R Tutorial
+
+[3](https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579) StackExchange - Making sense of principal component analysis, eigenvectors & eigenvalues
+
+[4](https://en.wikipedia.org/wiki/Scree_plot) Scree plot
+
+[5](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/#:~:text=The%20function%20princomp()%20uses,preferred%20compared%20to%20princomp().) sthda - Principal Component Methods in R: Practical Guide
+
+[6](https://stats.stackexchange.com/questions/88880/does-the-sign-of-scores-or-of-loadings-in-pca-or-fa-have-a-meaning-may-i-revers) Does the sign of scores or of loadings in PCA or FA have a meaning? May I reverse the sign?
+
+[7](https://books.google.com/books?id=FlXwIvSHND8C&pg=PA380)Alex Dmitrienko; Christy Chuang-Stein; Ralph B. D'Agostino (2007). Pharmaceutical Statistics Using SAS: A Practical Guide. SAS Institute. p. 380. ISBN 978-1-59994-357-2.
+

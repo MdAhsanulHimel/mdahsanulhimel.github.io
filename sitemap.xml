@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ahsan.netlify.app/</loc>
-    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/post/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/categories/</loc>
     <lastmod>2023-07-02T00:00:00+00:00</lastmod>
@@ -15,9 +18,6 @@
     <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/categories/multivariate-analysis/</loc>
-    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ahsan.netlify.app/post/</loc>
     <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/tags/r/</loc>
@@ -97,6 +97,21 @@
   </url><url>
     <loc>https://ahsan.netlify.app/post/shapiro-wilk-test/</loc>
     <lastmod>2022-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/biplot/</loc>
+    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/eigen-decomposition/</loc>
+    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/pca/</loc>
+    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/post/2025-09-29-pca/</loc>
+    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/scree-plot/</loc>
+    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/categories/others/</loc>
     <lastmod>2021-11-20T00:00:00+00:00</lastmod>

@@ -8,9 +8,8 @@ categories:
 tags:
   - R
   - Cluster Analysis
-toc: yes
-autoCollapseToc: no
-contentCopyright: no
+toc: true
+contentCopyright: yes
 mathjax: yes
 mathjaxEnableSingleDollar: yes
 mathjaxEnableAutoNumber: yes
@@ -18,10 +17,9 @@ output:
   blogdown::html_page:
     keep_md: no
     toc: yes
-description: 'Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data.'
-summary: 'Discover the power of cluster analysis in R with this comprehensive blog post. Learn the essential techniques, interpret the results, and gain valuable insights from your data.'
-images:
-- https://MdAhsanulHimel.github.io/2023/07/02/cluster-analysis/cluster_analysis_preview.png
+description: "Explore the fascinating world of cluster analysis using R. Discover various clustering techniques, such as hierarchical clustering, k-means clustering, and more, as you delve into the process of grouping similar observations together to uncover patterns and structures in your data."
+summary: "Discover the power of cluster analysis in R with this comprehensive blog post. Learn the essential techniques, interpret the results, and gain valuable insights from your data."
+
 ---
 
 ```{r, include=FALSE}
@@ -117,9 +115,9 @@ Scaling the dataset is important because different features may have different s
 
 Common scaling techniques used in clustering include standardization (subtracting the mean and dividing by the standard deviation), normalization (scaling the values to a specific range).
 
-$X_{stand} = \frac{X - \mu_x}{\sigma_x}$   
-$X_{norm} = \frac{X - X_{min}}{X_{max}-X_{min}}$   
-$E[Y] = E[\Gamma'X]=\Gamma'E[X]=0$    
+$$ X_{stand} = \frac{X - \mu_x}{\sigma_x} $$   
+$$ X_{norm} = \frac{X - X_{min}}{X_{max}-X_{min}} $$   
+$$ $E[Y] = E[\Gamma'X]=\Gamma'E[X]=0$$    
 
 ```{r}
 # standardization
