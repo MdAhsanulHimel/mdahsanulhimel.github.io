@@ -5,11 +5,26 @@
     <loc>https://ahsan.netlify.app/</loc>
     <lastmod>2025-12-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://ahsan.netlify.app/categories/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/estimation/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/history/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ahsan.netlify.app/post/</loc>
     <lastmod>2025-12-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ahsan.netlify.app/categories/</loc>
-    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
+    <loc>https://ahsan.netlify.app/categories/statistics/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/tags/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ahsan.netlify.app/post/2025-12-03-the-statistical-civil-war-of-estimation/</loc>
+    <lastmod>2025-12-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/post/cluster-analysis/</loc>
     <lastmod>2023-07-02T00:00:00+00:00</lastmod>
@@ -21,9 +36,6 @@
     <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/tags/r/</loc>
-    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ahsan.netlify.app/tags/</loc>
     <lastmod>2023-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ahsan.netlify.app/categories/design-of-experiment/</loc>

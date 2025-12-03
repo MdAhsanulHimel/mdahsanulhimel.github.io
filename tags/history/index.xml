@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>History on Ahsan</title>
+    <link>https://ahsan.netlify.app/tags/history/</link>
+    <description>Recent content in History on Ahsan</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ahsan.netlify.app/tags/history/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Statistical Civil War of Estimation: Frequentists, Bayesians, and the Quest for Truth</title>
+      <link>https://ahsan.netlify.app/post/2025-12-03-the-statistical-civil-war-of-estimation/</link>
+      <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://ahsan.netlify.app/post/2025-12-03-the-statistical-civil-war-of-estimation/</guid>
+      <description>&lt;p&gt;Today, estimation techniques sit quietly at the center of nearly every data-driven decision, from machine learning models predicting consumer choices to epidemiological simulations projecting disease spread. In the era of high-level programming, however, we rarely look beneath the hood. We treat powerful tools like Maximum Likelihood or Bayesian updates as simple utility functions, often forgetting that they stand on foundations laid by scholars who lived before the invention of the transistor. These early pioneers treated inference as a grand puzzle of logic and truth. While their names may be faded behind the glow of convenient software, the rigorous paths they cut through the wilderness of probability remain the bedrock of our statistical machinery.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

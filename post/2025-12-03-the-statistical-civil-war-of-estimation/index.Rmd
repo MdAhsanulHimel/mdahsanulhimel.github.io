@@ -1,0 +1,57 @@
+---
+title: 'The Statistical Civil War of Estimation: Frequentists, Bayesians, and the
+  Quest for Truth'
+author: Md. Ahsanul Islam
+date: '2025-12-03'
+slug: []
+categories:
+  - Statistics
+tags:
+  - estimation
+  - history
+draft: no
+image: ~
+description: ~
+toc: ~
+---
+
+
+Today, estimation techniques sit quietly at the center of nearly every data-driven decision, from machine learning models predicting consumer choices to epidemiological simulations projecting disease spread. In the era of high-level programming, however, we rarely look beneath the hood. We treat powerful tools like Maximum Likelihood or Bayesian updates as simple utility functions, often forgetting that they stand on foundations laid by scholars who lived before the invention of the transistor. These early pioneers treated inference as a grand puzzle of logic and truth. While their names may be faded behind the glow of convenient software, the rigorous paths they cut through the wilderness of probability remain the bedrock of our statistical machinery.
+
+## The Age of Inverse Probability
+The story begins in the 18th century, an era where probability was largely the domain of theology and gambling. When Thomas Bayes’ work was published after his death in 1763, it addressed a problem of “inverse probability”: given an observed event (data), what can be said about the unobserved cause (parameter)? [1] Pierre-Simon Laplace, the “Newton of France,” later adopted this framework with far greater mathematical rigor. For nearly 150 years, what we now call Bayesian inference was simply “the” method of statistical inference. Scientists operated under the assumption that it was perfectly logical to assign a probability distribution to a parameter, often using a flat or uniform prior (the Principle of Insufficient Reason) when they had no prior knowledge.
+
+## The Frequentist Reformation
+In 1805, Adrien-Marie Legendre introduced the Method of Least Squares (LSE) to reconcile inconsistent observations of celestial bodies, though Carl Friedrich Gauss claimed to have used it as early as 1795 and provided its probabilistic justification in 1809 (linking it to the Normal distribution). [2]
+
+Toward the end of the 19th century, the biometrician Karl Pearson sought computationally feasible ways to fit his system of continuous curves to biological data. In 1894, he formalized the Method of Moments (MoM). [3] Pearson’s logic was grounded in the Law of Large Numbers, which suggests that as sample size increases, sample moments (such as the sample mean or sample variance) converge to their theoretical population counterparts (population mean and variance). The estimation technique is algebraically direct: one establishes a system of equations by setting the sample moments equal to the population moments and solving for the unknown parameters. While MoM estimators are generally consistent, they often lack efficiency, meaning they may have higher variance compared to other methods because they do not utilize the full information contained within the likelihood function.
+
+By the early 20th century, a fissure formed. A new generation of statisticians, led principally by Sir R.A. Fisher, grew deeply uncomfortable with the Bayesian reliance on priors. Fisher viewed the “Principle of Insufficient Reason”, assigning equal probability to all possibilities when ignorant, as mathematically inconsistent and philosophically flawed. He argued that science demanded objectivity, and that introducing a subjective prior belief into the calculation corrupted the purity of the data.
+
+In a series of landmark papers starting in 1922, Fisher effectively dismantled the “inverse probability” monopoly. [4] He replaced it with the concept of likelihood function, which represents the joint probability density of the observed data as a function of the parameter. It is a quantity that behaves like probability but is not a probability distribution and thus requires no prior. The philosophical goal was to find the parameter value that makes the observed data “most probable.” Mathematically, this involves taking the derivative of the log-likelihood function with respect to the parameter and setting it to zero (the score function). MLE is admired for its asymptotic properties: as sample size approaches infinity, MLEs become consistent, unbiased, and theoretically achieve the lowest possible variance (reaching the Cramér-Rao lower bound).
+
+Simultaneously, Jerzy Neyman and Karl Pearson’s son Egon Pearson constructed a rigid decision-making framework based on error rates (Type I and Type II errors) and Confidence Intervals. They redefined probability not as a “degree of belief” (the Bayesian view) but as a “long-run frequency” of repeated sampling. Neyman expanded the scope of inference in 1937 by formalizing Interval Estimation. [5] Neyman argued that because the sample is random, a single point estimate is insufficient. He proposed the Confidence Interval, a frequentist concept where the parameter is fixed but unknown, and the interval itself is the random variable. The construction relies on “pivotal quantities” , functions of the data and parameter whose distributions do not depend on the parameter. If one were to repeat the sampling process infinitely, a 95% confidence interval would contain the true parameter in 95% of those experiments. This contrasted sharply with the Bayesian Credible Interval, which offers a direct probability statement about the parameter itself based on the posterior distribution.
+
+## The Computational Resurrection
+With the rise of computing in the mid-20th century, new terrain opened. One path led toward robustness. The availability of computing power also allowed statisticians to address the limitations of classical parametric models. In 1964, Peter Huber introduced M-Estimation to tackle the issue of outliers, a field known as Robust Statistics. [6] Classical methods like LSE are extremely sensitive to data contamination; a single extreme value can skew the squared error term significantly. Huber’s M-estimators generalize MLE by minimizing a function of the residuals that grows less rapidly than the square (such as the Huber loss function), thereby reducing the influence of outliers while maintaining efficiency for normally distributed data.
+
+Another path returned to the Bayesian tradition. For most of the 20th century, Bayesian inference was constrained by the difficulty of computing posterior distributions. The denominator of Bayes’ theorem involved integrals often too complicated to evaluate analytically. The arrival of Markov Chain Monte Carlo (MCMC) and the Gibbs Sampler (introduced in 1984 by Geman & Geman) changed everything. [7] Instead of solving integrals, one could simulate the posterior directly. Suddenly Bayesian methods became practical, flexible, and suited to hierarchical and high-dimensional models.
+
+Econometrics added a final chapter to the story. The demands of modern econometrics led Lars Peter Hansen to develop the Generalized Method of Moments (GMM) in 1982. [8] It extends Pearson’s idea of Method of Moments into a framework that works even when no likelihood can be written down. Economists often faced models where the exact likelihood function could not be specified, but certain “moment conditions” (theoretical correlations that should be zero) were known. GMM extends Pearson’s Method of Moments to situations where there are more moment conditions than parameters to estimate (over-identification). The technique minimizes a weighted quadratic form of the moment conditions, allowing for consistent estimation without assuming a specific distributional shape for the data errors. This flexibility has made GMM a dominant tool in the analysis of time-series and panel data where strict distributional assumptions often fail. It handles over-identified systems gracefully and thrives in time-series and panel settings where strict distributional assumptions are questionable.
+
+## References
+[1] Bayes, T. (1763). An Essay towards solving a Problem in the Doctrine of Chances. Philosophical Transactions of the Royal Society of London.
+
+[2] Legendre, A. M. (1805). Nouvelles méthodes pour la détermination des orbites des comètes. F. Didot.
+
+[3] Pearson, K. (1894). Contributions to the Mathematical Theory of Evolution. Philosophical Transactions of the Royal Society of London. Series A.
+
+[4] Fisher, R. A. (1922). On the mathematical foundations of theoretical statistics. Philosophical Transactions of the Royal Society of London. Series A.
+
+[5] Neyman, J. (1937). Outline of a Theory of Statistical Estimation Based on the Classical Theory of Probability. Philosophical Transactions of the Royal Society of London. Series A.
+
+[6] Huber, P. J. (1964). Robust Estimation of a Location Parameter. The Annals of Mathematical Statistics.
+
+[7] Geman, S., & Geman, D. (1984). Stochastic Relaxation, Gibbs Distributions, and the Bayesian Restoration of Images. IEEE Transactions on Pattern Analysis and Machine Intelligence.
+
+[8] Hansen, L. P. (1982). Large Sample Properties of Generalized Method of Moments Estimators. Econometrica.
